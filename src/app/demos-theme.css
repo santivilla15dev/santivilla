@@ -1,0 +1,214 @@
+/* Immersive demo themes — CSS variables per [data-demo] */
+
+.demo-theme {
+  background: var(--demo-bg);
+  color: var(--demo-ink);
+  min-height: 100vh;
+  --demo-radius: 0.85rem;
+  --demo-btn-radius: 999px;
+  --demo-eyebrow-tracking: 0.28em;
+  --demo-max: 72rem;
+}
+
+.demo-theme [id] {
+  scroll-margin-top: 6.75rem;
+}
+
+.demo-theme .demo-text-muted {
+  color: color-mix(in srgb, var(--demo-ink) 72%, transparent);
+}
+
+.demo-theme .demo-text-subtle {
+  color: color-mix(in srgb, var(--demo-ink) 55%, transparent);
+}
+
+.demo-theme .demo-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--demo-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--demo-accent);
+}
+
+.demo-theme .demo-panel {
+  background: var(--demo-panel);
+  border: 1px solid var(--demo-border);
+  border-radius: var(--demo-radius);
+}
+
+.demo-theme .demo-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--demo-cta-bg);
+  color: var(--demo-cta-ink);
+  padding: 0.85rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--demo-btn-radius);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.demo-theme .demo-btn-primary:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.demo-theme .demo-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--demo-border-strong);
+  color: var(--demo-ink);
+  padding: 0.85rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--demo-btn-radius);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.demo-theme .demo-btn-ghost:hover {
+  background: color-mix(in srgb, var(--demo-ink) 6%, transparent);
+  border-color: color-mix(in srgb, var(--demo-ink) 35%, transparent);
+}
+
+.demo-theme .demo-map {
+  border-radius: var(--demo-radius);
+  border: 1px solid var(--demo-border);
+  overflow: hidden;
+}
+
+.demo-theme .demo-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 16rem;
+  border: 0;
+  opacity: 0.92;
+}
+
+/* Menú editorial: puntos líderes entre plato y precio */
+.demo-theme .demo-menu-leaders {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.demo-theme .demo-menu-leaders::before {
+  content: none;
+}
+
+.demo-theme .demo-menu-dots {
+  flex: 1;
+  border-bottom: 1px dotted color-mix(in srgb, var(--demo-ink) 28%, transparent);
+  min-width: 1.5rem;
+  transform: translateY(-0.35em);
+}
+
+[data-demo="lugner"] {
+  --demo-bg: #0b1016;
+  --demo-ink: #e8e4dc;
+  --demo-accent: #d4b45a;
+  --demo-accent-secondary: #8fa8bf;
+  --demo-panel: #0e141c;
+  --demo-border: rgba(255, 255, 255, 0.1);
+  --demo-border-strong: rgba(255, 255, 255, 0.35);
+  --demo-cta-bg: #d4b45a;
+  --demo-cta-ink: #1a1408;
+  --demo-cta-band-bg: #d4b45a;
+  --demo-cta-band-ink: #1a1408;
+  --demo-btn-radius: 0.25rem;
+  --demo-radius: 0.25rem;
+  --demo-eyebrow-tracking: 0.22em;
+  --demo-hero-gradient: linear-gradient(
+    to top,
+    #0b1016 0%,
+    rgba(11, 16, 22, 0.85) 40%,
+    rgba(11, 16, 22, 0.2) 100%
+  );
+}
+
+/* Carta vienesa — crema clara */
+[data-demo="gasthaus"] {
+  --demo-bg: #f5f0e8;
+  --demo-ink: #1a1410;
+  --demo-accent: #7c2d12;
+  --demo-accent-secondary: #4a5d4e;
+  --demo-panel: #efe8dc;
+  --demo-border: rgba(26, 20, 16, 0.14);
+  --demo-border-strong: rgba(26, 20, 16, 0.4);
+  --demo-cta-bg: #7c2d12;
+  --demo-cta-ink: #fdf8f3;
+  --demo-cta-band-bg: #7c2d12;
+  --demo-cta-band-ink: #fdf8f3;
+  --demo-btn-radius: 0;
+  --demo-radius: 0;
+  --demo-eyebrow-tracking: 0.2em;
+  --demo-hero-gradient: none;
+}
+
+[data-demo="villa-italia"] {
+  --demo-bg: #1a120e;
+  --demo-ink: #f8f0e8;
+  --demo-accent: #c45c3e;
+  --demo-accent-secondary: #6b7c4a;
+  --demo-panel: #241812;
+  --demo-border: rgba(248, 240, 232, 0.1);
+  --demo-border-strong: rgba(248, 240, 232, 0.35);
+  --demo-cta-bg: #c45c3e;
+  --demo-cta-ink: #fff8f2;
+  --demo-cta-band-bg: #c45c3e;
+  --demo-cta-band-ink: #fff8f2;
+  --demo-btn-radius: 0.35rem;
+  --demo-radius: 0.35rem;
+  --demo-eyebrow-tracking: 0.24em;
+  --demo-hero-gradient: linear-gradient(
+    to top,
+    #1a120e 0%,
+    rgba(26, 18, 14, 0.9) 40%,
+    rgba(26, 18, 14, 0.25) 100%
+  );
+}
+
+/* Lookbook editorial — claro */
+[data-demo="solo-modas"] {
+  --demo-bg: #f7f5f0;
+  --demo-ink: #121212;
+  --demo-accent: #121212;
+  --demo-accent-secondary: #6a6a66;
+  --demo-panel: #ffffff;
+  --demo-border: rgba(18, 18, 18, 0.12);
+  --demo-border-strong: rgba(18, 18, 18, 0.4);
+  --demo-cta-bg: #121212;
+  --demo-cta-ink: #f7f5f0;
+  --demo-cta-band-bg: #121212;
+  --demo-cta-band-ink: #f7f5f0;
+  --demo-btn-radius: 0;
+  --demo-radius: 0;
+  --demo-eyebrow-tracking: 0.12em;
+  --demo-hero-gradient: none;
+}
+
+[data-demo="universo-del-calzado"] {
+  --demo-bg: #0c1210;
+  --demo-ink: #f4f7f2;
+  --demo-accent: #c8f542;
+  --demo-accent-secondary: #dce8d4;
+  --demo-panel: #121a16;
+  --demo-border: rgba(200, 245, 66, 0.18);
+  --demo-border-strong: rgba(244, 247, 242, 0.4);
+  --demo-cta-bg: #c8f542;
+  --demo-cta-ink: #0c1210;
+  --demo-cta-band-bg: #c8f542;
+  --demo-cta-band-ink: #0c1210;
+  --demo-btn-radius: 0.35rem;
+  --demo-radius: 0.5rem;
+  --demo-eyebrow-tracking: 0.18em;
+  --demo-hero-gradient: linear-gradient(
+    to top,
+    #0c1210 0%,
+    rgba(12, 18, 16, 0.96) 32%,
+    rgba(12, 18, 16, 0.55) 62%,
+    rgba(12, 18, 16, 0.2) 100%
+  );
+}

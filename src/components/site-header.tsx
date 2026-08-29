@@ -1,18 +1,30 @@
 import Link from "next/link";
+import { LocaleSwitcher } from "@/components/locale-switcher";
+import type { SiteMessages } from "@/lib/i18n/get-messages";
+import { briefAgentPath, localizedPath } from "@/lib/i18n/paths";
+import type { Locale } from "@/lib/i18n/locales";
 import { site } from "@/lib/site";
 
-const links = [
-  { href: "/trabajos", label: "Trabajos" },
-  { href: "/servicios", label: "Servicios" },
-  { href: "/contacto", label: "Contacto" },
-] as const;
+type Props = {
+  locale: Locale;
+  messages: SiteMessages;
+};
 
-export function SiteHeader() {
+export function SiteHeader({ locale, messages }: Props) {
+  const m = messages.nav;
+  const links = [
+    { href: localizedPath(locale, "/auditoria"), label: m.audit },
+    { href: localizedPath(locale, "/trabajos"), label: m.work },
+    { href: localizedPath(locale, "/servicios"), label: m.services },
+    { href: briefAgentPath(locale), label: m.brief },
+    { href: localizedPath(locale, "/contacto"), label: m.contact },
+  ] as const;
+
   return (
     <header className="sticky top-0 z-40 border-b border-line/60 bg-surface/80 backdrop-blur-md">
       <div className="site-shell flex items-center justify-between gap-4 py-4">
         <Link
-          href="/"
+          href={localizedPath(locale, "/")}
           className="font-display text-xl text-ink transition hover:text-accent sm:text-2xl"
         >
           {site.name}
@@ -27,6 +39,7 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
+          <LocaleSwitcher locale={locale} />
         </nav>
       </div>
     </header>

@@ -1,0 +1,42 @@
+# santivilla — reglas para Cursor / Claude Code
+
+## Stack
+- Next.js 16 App Router (lee AGENTS.md — APIs distintas a versiones antiguas)
+- React 19, TypeScript estricto, Tailwind CSS 4
+- Supabase (Postgres + RLS) para conceptos del Design Agent
+- Vercel para deploy (proyecto: santivilla-rxxn)
+
+## Estructura
+- `src/app/[locale]/(site)/` — portfolio con SiteHeader + SiteFooter (de/en/es)
+- `src/app/(immersive)/demos/` — demos full-bleed sin chrome del portfolio
+- `src/app/api/` — rutas API (audit, design, concepto)
+- `src/lib/i18n/` — locales, middleware Accept-Language, diccionarios
+- `src/lib/legal/` — Impressum + Datenschutz (env ampliable)
+- `src/lib/design-system/` — agente de diseño
+- `src/app/admin/` · `src/app/portal/` — mini-CRM + portal dueño (Supabase Auth)
+- `src/lib/crm/` — leads, sites, CTA events
+- `src/lib/supabase/` — admin (service_role) + browser/server SSR
+
+## Convenciones
+- Server Components por defecto; `"use client"` solo para interactividad (chat, audit form, live edit)
+- Demos honestas: banner Konzept, no datos inventados de clientes reales
+- Tipografía portfolio: Fraunces (display) + Manrope (body)
+- Demos: fondo oscuro, oro `#d4b45a`, contraste legible (no texto fantasma)
+
+## Supabase
+- Writes (insert/update) solo vía `getSupabaseAdmin()` en API routes / Server Components
+- Nunca exponer `SUPABASE_SERVICE_ROLE_KEY` al cliente
+- Tras cambiar schema: actualizar `supabase/migrations/` y `npm run gen:types`
+- RLS: lectura pública de conceptos; escritura solo service_role
+
+## Prohibido sin aprobación explícita
+- Librerías nuevas
+- `any` en TypeScript
+- Middleware de locale (`src/middleware.ts`) + **Supabase Auth** en `/admin`, `/portal`, `/login`
+- Patrones Pages Router (`getServerSideProps`, etc.)
+- Emojis en demos/conceptos premium
+
+## Deploy
+- Producción: `vercel --prod` (proyecto enlazado: santivilla-rxxn)
+- Desactivar Vercel Authentication en Production (portfolio público)
+- Env vars requeridas en Vercel: ver `.env.example`

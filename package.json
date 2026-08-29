@@ -6,12 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "gen:types": "supabase gen types typescript --project-id ${SUPABASE_PROJECT_ID} > src/lib/supabase/database.types.ts",
+    "benchmark:demos": "node scripts/benchmark-demos.mjs",
+    "prospect:maps": "node scripts/maps-prospect.mjs"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.44",
+    "@supabase/ssr": "^0.12.5",
+    "@supabase/supabase-js": "^2.112.4",
+    "ai": "^7.0.83",
     "next": "16.3.3",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
