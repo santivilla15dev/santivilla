@@ -9,6 +9,7 @@
     "lint": "eslint",
     "gen:types": "supabase gen types typescript --project-id ${SUPABASE_PROJECT_ID} > src/lib/supabase/database.types.ts",
     "benchmark:demos": "node scripts/benchmark-demos.mjs",
+    "benchmark:portfolio": "node scripts/benchmark-portfolio.mjs",
     "prospect:maps": "node scripts/maps-prospect.mjs"
   },
   "dependencies": {

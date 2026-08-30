@@ -2,7 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { CtaButtons } from "@/components/cta-buttons";
 import { DemoMetricsStrip } from "@/components/demo-metrics-strip";
-import { stadtgalerieBenchmark } from "@/lib/demos/benchmarks";
+import { formatMs } from "@/lib/audit/pagespeed";
+import {
+  portfolioHomeBenchmark,
+  stadtgalerieBenchmark,
+} from "@/lib/demos/benchmarks";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { pageMetadata } from "@/lib/i18n/metadata";
 import { localizedPath } from "@/lib/i18n/paths";
@@ -175,6 +179,39 @@ export default async function HomePage({ params }: Props) {
               {c.proofCtaWork}
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-line/70 py-16">
+        <div className="site-shell max-w-3xl">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+            {c.selfScoreEyebrow}
+          </p>
+          <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
+            <span className="tabular-nums">{portfolioHomeBenchmark.performance}</span>
+            {c.selfScoreTitle}
+          </h2>
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
+            {c.selfScoreBody}
+          </p>
+          <p className="mt-3 text-sm text-muted">
+            {c.selfScoreMeta} · LCP{" "}
+            {formatMs(portfolioHomeBenchmark.lcpMs)} ·{" "}
+            {new Date(portfolioHomeBenchmark.measuredAt).toLocaleDateString(
+              locale === "en" ? "en-GB" : locale === "es" ? "es-ES" : "de-AT",
+              { year: "numeric", month: "short", day: "numeric" },
+            )}
+          </p>
+          <p className="mt-6">
+            <a
+              href={`https://pagespeed.web.dev/analysis?url=${encodeURIComponent(portfolioHomeBenchmark.url)}&form_factor=mobile`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-accent underline-offset-4 hover:underline"
+            >
+              {c.selfScoreLink}
+            </a>
+          </p>
         </div>
       </section>
 

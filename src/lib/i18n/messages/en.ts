@@ -174,6 +174,12 @@ export const enMessages: SiteMessages = {
       "Typical Typo3 mall vs. Stadtgalerie West concept. Numbers from Google PageSpeed Insights (mobile). Public demo is fictional — not an official site.",
     proofCtaDemo: "View Stadtgalerie demo",
     proofCtaWork: "See work →",
+    selfScoreEyebrow: "This page",
+    selfScoreTitle: "/100 on mobile",
+    selfScoreBody:
+      "The same metric I use in the audit. Measured with Google Lighthouse (mobile lab).",
+    selfScoreMeta: "Lighthouse · mobile",
+    selfScoreLink: "Open in PageSpeed →",
     includesEyebrow: "One service",
     includesTitle: "How we build your website",
     includesLead:

@@ -174,6 +174,12 @@ export const deMessages: SiteMessages = {
       "Typisches Typo3-Zentrum vs. Konzept Stadtgalerie West. Zahlen von Google PageSpeed Insights (Mobile). Öffentliche Demo ist fiktiv — keine offizielle Site.",
     proofCtaDemo: "Stadtgalerie Demo ansehen",
     proofCtaWork: "Arbeiten ansehen →",
+    selfScoreEyebrow: "Diese Seite",
+    selfScoreTitle: "/100 auf Mobil",
+    selfScoreBody:
+      "Dieselbe Kennzahl wie im Audit. Gemessen mit Google Lighthouse (Mobile Lab).",
+    selfScoreMeta: "Lighthouse · Mobil",
+    selfScoreLink: "In PageSpeed öffnen →",
     includesEyebrow: "Ein Service",
     includesTitle: "So bauen wir deine Website",
     includesLead:

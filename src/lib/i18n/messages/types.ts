@@ -67,6 +67,11 @@ export type SiteMessages = {
     proofBody: string;
     proofCtaDemo: string;
     proofCtaWork: string;
+    selfScoreEyebrow: string;
+    selfScoreTitle: string;
+    selfScoreBody: string;
+    selfScoreMeta: string;
+    selfScoreLink: string;
     includesEyebrow: string;
     includesTitle: string;
     includesLead: string;

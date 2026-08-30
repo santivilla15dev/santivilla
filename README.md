@@ -94,9 +94,10 @@ Tras configurar `PAGESPEED_API_KEY`:
 
 ```bash
 npm run benchmark:demos
+npm run benchmark:portfolio
 ```
 
-Actualiza [`src/lib/demos/benchmarks.ts`](src/lib/demos/benchmarks.ts) con LCP/Performance medidos (PSI mobile).
+Actualiza [`src/lib/demos/benchmarks.ts`](src/lib/demos/benchmarks.ts) con LCP/Performance medidos (PSI/Lighthouse mobile). `benchmark:portfolio` actualiza solo el score de la home (`portfolioHomeBenchmark`; requiere `PAGESPEED_API_KEY`).
 
 ## Setup local
 1. `npm install`

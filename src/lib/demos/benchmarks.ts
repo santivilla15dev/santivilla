@@ -1,4 +1,4 @@
-/** Pre-calculated PSI mobile benchmarks — refresh with `npm run benchmark:demos` */
+/** Pre-calculated PSI mobile benchmarks — refresh demos with `npm run benchmark:demos`; portfolio with `npm run benchmark:portfolio` */
 
 export type BenchmarkSnapshot = {
   url: string;
@@ -70,5 +70,32 @@ export const stadtgalerieBenchmark: DemoBenchmark = {
   },
   measuredAt: "2026-08-28T12:00:00.000Z",
   source: "Google PageSpeed Insights API",
+  strategy: "mobile",
+};
+
+export type SiteSelfBenchmark = {
+  url: string;
+  performance: number;
+  accessibility: number;
+  lcpMs: number;
+  fcpMs: number;
+  measuredAt: string;
+  source: string;
+  strategy: "mobile";
+};
+
+/**
+ * Portfolio home — refresh with `npm run benchmark:portfolio`.
+ * Measured 2026-08-30 via Lighthouse mobile lab against
+ * https://santivilla-rxxn.vercel.app/ (santivilla.com returned DEPLOYMENT_DISABLED).
+ */
+export const portfolioHomeBenchmark: SiteSelfBenchmark = {
+  url: "https://santivilla-rxxn.vercel.app",
+  performance: 97,
+  accessibility: 96,
+  lcpMs: 2558,
+  fcpMs: 1058,
+  measuredAt: "2026-08-30T11:29:04.420Z",
+  source: "Google Lighthouse (mobile lab)",
   strategy: "mobile",
 };

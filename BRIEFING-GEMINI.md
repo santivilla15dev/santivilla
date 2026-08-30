@@ -29,7 +29,7 @@ Copia este archivo completo y pégaselo a Gemini. Al final tienes un prompt list
 - Herramientas IA (auditoría responsive, Design Agent, Brief→landing, carta digital, Micro-Bot WhatsApp, copy local, Maps→Konzept) son **features / cómo demuestras valor** dentro del servicio — no líneas de producto competidoras en la primera impresión.
 - Un dueño que entra debe entender en segundos: *vendes webs*; el lead magnet fuerte es **probar con su URL**; WhatsApp queda a un clic. No elegir entre “auditoría vs bot vs brief” en el hero.
 - **Casos Viena ≠ plantillas por rubro:** en home y `/trabajos`, **Wien público = Stadtgalerie West** (centro ficticio); Gasthaus + Villa Italia / Solo Modas / Universo = plantillas. **Lugner City** queda **solo pitch 1:1** (`/demos/lugner`, noindex, **sin enlaces** desde el chrome del portafolio).
-- **Prueba social en home:** métricas Lighthouse PSI anonimizadas (Typo3 · Zentrum → Konzept Stadtgalerie). Sin testimonios inventados; citas solo con permiso real de un piloto.
+- **Prueba social en home:** métricas Lighthouse PSI anonimizadas (Typo3 · Zentrum → Konzept Stadtgalerie). **Score propio:** home muestra Performance Lighthouse móvil de esta página (snapshot en `portfolioHomeBenchmark`; refrescar con `npm run benchmark:portfolio`). Sin testimonios inventados; citas solo con permiso real de un piloto.
 
 ---
 
@@ -63,7 +63,7 @@ Flujo: Portafolio (`santivilla.com`) → Demo personalizada → Pitch antes/desp
 
 | Ruta | Qué es |
 |------|--------|
-| `/` | Home: CTA auditoría + WhatsApp; demo pública Stadtgalerie; prueba social PSI anonimizada; teaser Desde €400; proceso de construcción unificado |
+| `/` | Home: CTA auditoría + WhatsApp; demo pública Stadtgalerie; prueba social PSI anonimizada; **score propio** Lighthouse móvil; teaser Desde €400; proceso de construcción unificado |
 | `/trabajos` | Wien (Stadtgalerie West) + Vorlagen nach Branche + precios |
 | `/servicios` | 3 paquetes + extras del proyecto (carta, bot, copy, brief…) |
 | `/contacto` | WhatsApp, email, Cal.com, formulario → lead |

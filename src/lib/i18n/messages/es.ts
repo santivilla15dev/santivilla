@@ -174,6 +174,12 @@ export const esMessages: SiteMessages = {
       "Typo3 típico de un Zentrum frente al Konzept Stadtgalerie West. Cifras de Google PageSpeed Insights (móvil). Demo pública ficticia — no un sitio oficial.",
     proofCtaDemo: "Ver demo Stadtgalerie",
     proofCtaWork: "Ver trabajos →",
+    selfScoreEyebrow: "Esta página",
+    selfScoreTitle: "/100 en móvil",
+    selfScoreBody:
+      "La misma métrica que uso en la auditoría. Medido con Google Lighthouse (lab móvil).",
+    selfScoreMeta: "Lighthouse · móvil",
+    selfScoreLink: "Ver en PageSpeed →",
     includesEyebrow: "Un solo servicio",
     includesTitle: "Así construimos tu web",
     includesLead:
