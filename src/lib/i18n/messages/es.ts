@@ -104,6 +104,12 @@ export const esMessages: SiteMessages = {
     work: "Trabajos",
     services: "Servicios",
     contact: "Contacto",
+    localeHint: "Portafolio (ES) · el sitio de cliente es DE",
+    localeLabels: {
+      de: "Deutsch — clientes en Wien",
+      en: "English — portfolio / partners",
+      es: "Español — portafolio",
+    },
   },
   footer: {
     navLabel: "Navegación",

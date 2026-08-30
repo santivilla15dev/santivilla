@@ -104,6 +104,12 @@ export const enMessages: SiteMessages = {
     work: "Work",
     services: "Services",
     contact: "Contact",
+    localeHint: "Portfolio mode · client-facing site is DE",
+    localeLabels: {
+      de: "Deutsch — clients in Vienna",
+      en: "English — portfolio / partners",
+      es: "Español — portfolio",
+    },
   },
   footer: {
     navLabel: "Navigation",

@@ -12,7 +12,7 @@ Copia este archivo completo y pégaselo a Gemini. Al final tienes un prompt list
 - **Negocio:** crear y vender websites modernas a negocios locales (restaurantes, locales, centros comerciales)
 - **Objetivo:** ingresos extra vendiendo sitios mobile-first + mantenimiento mensual
 - **Idiomas:**
-  - Portafolio: español / alemán / inglés
+  - Portafolio: español / alemán / inglés — **DE = modo cliente (Wien)**; **ES/EN = modo portafolio** (hint + labels en el switcher)
   - Demos de clientes austriacos (ej. Lugner): **alemán**
 - **Cómo cierro ventas:** WhatsApp + cita de 15 min (Cal.com)
 - **Regla de negocio:** demos/conceptos gratis para pitch; código/entrega solo con depósito 30–50%
@@ -152,7 +152,7 @@ No quiero que reescriba el stack técnico. Quiero ideas creativas y de negocio:
 - No fingir proyectos oficiales de clientes reales
 - No scrapear directorios enteros; demos conceptuales con datos públicos
 - Stack real: Next.js + Supabase + Vercel (no asumir sitio estático puro)
-- Copy ES/DE/EN en portafolio; DE para demos austriacas
+- Copy ES/DE/EN en portafolio; **DE = clientes Wien**, **ES/EN = portafolio** (explícito en switcher + hint del header); DE para demos austriacas
 - Diseño: evitar purple gradients, Inter, cream+serif terracotta, dashboard clutter
 
 ---

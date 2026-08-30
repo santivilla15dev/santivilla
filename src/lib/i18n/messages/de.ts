@@ -104,6 +104,12 @@ export const deMessages: SiteMessages = {
     work: "Arbeiten",
     services: "Leistungen",
     contact: "Kontakt",
+    localeHint: "Für Betriebe in Wien",
+    localeLabels: {
+      de: "Deutsch — Kunden in Wien",
+      en: "English — Portfolio / Partner",
+      es: "Español — Portfolio",
+    },
   },
   footer: {
     navLabel: "Navigation",

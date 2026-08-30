@@ -6,9 +6,10 @@ import { switchLocalePath } from "@/lib/i18n/paths";
 
 type Props = {
   locale: Locale;
+  labels: Record<Locale, string>;
 };
 
-export function LocaleSwitcher({ locale }: Props) {
+export function LocaleSwitcher({ locale, labels }: Props) {
   const pathname = usePathname();
 
   function onSwitch(target: Locale) {
@@ -23,6 +24,8 @@ export function LocaleSwitcher({ locale }: Props) {
           key={loc}
           type="button"
           onClick={() => onSwitch(loc)}
+          title={labels[loc]}
+          aria-label={labels[loc]}
           className={`rounded-full px-2.5 py-1 uppercase transition ${
             loc === locale
               ? "bg-ink text-surface"

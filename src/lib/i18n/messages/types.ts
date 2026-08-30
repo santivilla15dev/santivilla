@@ -27,6 +27,8 @@ export type SiteMessages = {
     work: string;
     services: string;
     contact: string;
+    localeHint: string;
+    localeLabels: { de: string; en: string; es: string };
   };
   footer: {
     navLabel: string;

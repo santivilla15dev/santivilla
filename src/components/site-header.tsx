@@ -37,7 +37,8 @@ export function SiteHeader({ locale, messages }: Props) {
               {link.label}
             </Link>
           ))}
-          <LocaleSwitcher locale={locale} />
+          <p className="hidden text-xs text-muted sm:block">{m.localeHint}</p>
+          <LocaleSwitcher locale={locale} labels={m.localeLabels} />
         </nav>
       </div>
     </header>
