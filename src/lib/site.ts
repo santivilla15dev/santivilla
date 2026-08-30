@@ -145,7 +145,7 @@ export const lugnerCase = projects.find((p) => p.slug === "lugner")!;
 /** Copy de la home — narrativa para clientes locales */
 export const homeContent = {
   heroLead:
-    "Diseño y construyo webs claras para restaurantes, locales y centros — perfectas en móvil, tablet y desktop.",
+    "Tus clientes deciden en segundos si se quedan. Yo construyo webs que ganan esos segundos — para restaurantes, locales y centros en Wien.",
   intro: {
     eyebrow: "De qué se trata",
     title: "Una web que tus clientes entienden en segundos",
@@ -190,14 +190,6 @@ export const homeContent = {
   work: {
     title: "Trabajos y demos",
     body: "Ejemplos en vivo que puedes abrir y mandar por WhatsApp. Las demos son propuestas conceptuales, no sitios oficiales de esos negocios.",
-  },
-  process: {
-    title: "Cómo trabajo",
-    steps: [
-      "Me cuentas qué necesita tu negocio (o pruebas Mobile Erst con tu URL).",
-      "Diseño y construyo el sitio responsive en días, no meses.",
-      "Lanzamos con dominio, hosting y WhatsApp listo para tus clientes.",
-    ],
   },
 } as const;
 

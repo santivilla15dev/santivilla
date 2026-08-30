@@ -43,18 +43,11 @@ const packages: SiteMessages["packages"] = [
 
 const projects: SiteMessages["projects"] = [
   {
-    slug: "mobile-erst",
-    title: "Mobile Erst — Responsive audit",
-    type: "Product",
-    href: "/auditoria",
-    blurb:
-      "Paste a URL: score + automatic HTML concept (Santi Design Agent) for all devices.",
-  },
-  {
     slug: "lugner",
     title: "Lugner City — Redesign concept",
     type: "Shopping center",
     href: "/demos/lugner",
+    group: "vienna",
     blurb:
       "Mobile-first proposal for Lugner City (Vienna). Concept, not the official site.",
     beforeNote:
@@ -64,35 +57,39 @@ const projects: SiteMessages["projects"] = [
   },
   {
     slug: "restaurant",
-    title: "Gasthaus Am Hof — Template",
+    title: "Gasthaus Am Hof — Gastro template",
     type: "Restaurant",
     href: "/demos/restaurant",
+    group: "template",
     blurb:
-      "Reusable template: menu, hours, map and WhatsApp reservation.",
+      "Gastro template: menu, hours, map and WhatsApp reservation.",
   },
   {
     slug: "villa-italia",
-    title: "Villa Italia — Pizzeria demo",
+    title: "Villa Italia — Pizzeria",
     type: "Pizzeria",
     href: "/demos/villa-italia",
+    group: "template",
     blurb:
-      "Demo for a Colombia pizzeria: menu, hours, delivery and WhatsApp — mobile-first.",
+      "Pizzeria template: menu, hours, delivery and WhatsApp — mobile-first.",
   },
   {
     slug: "solo-modas",
-    title: "Solo Modas — Fashion retail",
+    title: "Solo Modas — Fashion",
     type: "Fashion",
     href: "/demos/solo-modas",
+    group: "template",
     blurb:
-      "Demo clothing store Colombia: categories, multiple locations, hours and WhatsApp.",
+      "Fashion retail template: categories, multiple locations, hours and WhatsApp.",
   },
   {
     slug: "universo-del-calzado",
     title: "Universo del Calzado — Sports",
     type: "Sports retail",
     href: "/demos/universo-del-calzado",
+    group: "template",
     blurb:
-      "Demo Santa Rosa de Osos: shoes, club shirts, two stores and WhatsApp — mobile-first.",
+      "Sports retail template: catalog, two stores and WhatsApp — mobile-first.",
   },
 ];
 
@@ -104,10 +101,8 @@ export const enMessages: SiteMessages = {
     ogLocale: "en_US",
   },
   nav: {
-    audit: "Mobile Erst",
     work: "Work",
     services: "Services",
-    brief: "Brief",
     contact: "Contact",
   },
   footer: {
@@ -127,9 +122,11 @@ export const enMessages: SiteMessages = {
   },
   home: {
     heroLead:
-      "I design and build clear websites for restaurants, shops and centers — perfect on mobile, tablet and desktop.",
+      "Guests decide in seconds whether to stay. I build websites that win those seconds — for restaurants, shops and centers in Vienna.",
+    heroSub: "Clear. Fast. Mobile first.",
     heroCardEyebrow: "How your site should feel",
-    heroCardTitle: "Clear. Fast. Mobile-ready.",
+    heroCardTitle: "Clear. Fast. Mobile first.",
+    heroDemoCta: "View demo",
     heroAuditLink: "Try Mobile Erst →",
     introEyebrow: "What it's about",
     introTitle: "A website guests understand in seconds",
@@ -154,41 +151,64 @@ export const enMessages: SiteMessages = {
         body: "Landing, business site or maintenance. You know what's included from day one.",
       },
     ],
-    clientDesignEyebrow: "Design for clients",
+    clientDesignEyebrow: "How we work",
     clientDesignTitle: "How we work on design together",
     clientDesignBody:
       "First I create a Konzept: a visual idea of how your business could look online. It's not the official site — an honest demo. You can request changes (menu, hours, language) and when it fits, I launch the real site with domain, hosting and WhatsApp.",
     clientDesignSteps: [
-      "Audit or demo: we look at your current site or a close template.",
+      "Audit or demo: your URL or a close template for your niche.",
       "Konzept: responsive design with your info (or data you send).",
-      "Feedback: WhatsApp or agent chat — refine until you say yes.",
+      "Feedback: WhatsApp — refine until you say yes.",
       "Real website: launch, domain, done — no more legacy CMS.",
     ],
     clientDesignCtaDemo: "View Lugner demo",
-    clientDesignCtaAudit: "Try Mobile Erst",
-    mobileErstEyebrow: "Product",
-    mobileErstTitle: "Mobile Erst",
-    mobileErstBody:
-      "Paste a URL: responsive score (0–100) and automatic HTML concept with Santi Design Agent. Ideal for before/after with the owner.",
-    mobileErstCta: "Open audit",
-    mobileErstScoreNote:
-      "Responsive score · Auto concept · WhatsApp-ready to share",
+    clientDesignCtaAudit: "Free check: see how your URL looks →",
+    includesEyebrow: "Your website",
+    includesTitle: "What's included in your website",
+    includesLead:
+      "Not separate products — building blocks of the same service, when your business needs them.",
+    includes: [
+      {
+        title: "Responsive audit",
+        body: "Score 0–100 and auto concept from your URL — clear before/after.",
+        linkLabel: "Try with your URL →",
+        tool: "audit",
+      },
+      {
+        title: "Digital menu",
+        body: "Photo of the menu → dishes and prices in a mobile preview.",
+        linkLabel: "See how it works →",
+        tool: "menu",
+      },
+      {
+        title: "WhatsApp help",
+        body: "Quick answers on seating, hours, parking; bookings to the real chat.",
+        linkLabel: "See example →",
+        tool: "microbot",
+      },
+      {
+        title: "Local copy",
+        body: "Copy adapted to the audience (not literal translation) DE/EN/ES.",
+        linkLabel: "See example →",
+        tool: "copy",
+      },
+      {
+        title: "Brief → landing",
+        body: "Describe the business in a few lines and see a landing draft.",
+        linkLabel: "Try it →",
+        tool: "brief",
+      },
+    ],
     workTitle: "Work & demos",
     workBody:
-      "Live examples to open and share on WhatsApp. Demos are concepts, not official sites.",
+      "Vienna cases first. Then niche templates. Demos are concepts, not official sites.",
     workLink: "View all →",
-    processTitle: "How I work",
-    processSteps: [
-      "You tell me what your business needs (or try Mobile Erst with your URL).",
-      "I design and build the responsive site in days, not months.",
-      "Launch with domain, hosting and WhatsApp — ready for guests.",
-    ],
   },
   services: {
     title: "Services",
-    lead: "First you understand the concept (how your business could look). Then we build the real site. Three clear packages — mobile, tablet, desktop.",
+    lead: "One clear product: your website. First the concept, then the real site. Three clear packages — mobile, tablet, desktop.",
     packageLabel: "Package",
-    alsoTitle: "Also available",
+    alsoTitle: "Included or available in your project",
     alsoItems: [
       "Shopping center / multi-shop — from ~€3,000–8,000+ depending on shops, languages, CMS.",
       "Pitch demo — like Lugner, to show the owner a vision.",
@@ -198,7 +218,7 @@ export const enMessages: SiteMessages = {
   },
   work: {
     title: "Work",
-    lead: "Live cases and demos. Concepts — not official sites — so you see the mobile leap.",
+    lead: "Vienna case first (Lugner). Then niche templates you can adapt to your business.",
     lugnerEyebrow: "Pitch case · Vienna",
     lugnerTitle: "Lugner City: before vs after",
     lugnerBody:
@@ -212,7 +232,13 @@ export const enMessages: SiteMessages = {
     openDemoCta: "Open Lugner demo",
     konzeptNote:
       "Konzept / redesign proposal — not the official Lugner City website.",
-    moreTitle: "More pieces",
+    viennaTitle: "Vienna",
+    viennaLead:
+      "Local pitch case: Lugner City — hot lead in Vienna.",
+    templatesTitle: "Templates by niche",
+    templatesLead:
+      "Reusable structures: gastro, pizzeria, fashion and sports.",
+    templatesNote: "Also tested internationally.",
     open: "Open",
     pricingTitle: "Guide prices",
     pricingLead:
@@ -234,6 +260,9 @@ export const enMessages: SiteMessages = {
     title: "Contact",
     lead: "Want to see how it could look first? Try",
     leadAudit: "or write me — next step in minutes.",
+    auditLinkLabel: "Mobile Erst",
+    briefAlt: "Prefer to write a brief instead of calling?",
+    briefLink: "Open Brief Agent →",
     email: "Email",
     whatsapp: "WhatsApp",
     openChat: "Open chat",
@@ -332,7 +361,7 @@ export const enMessages: SiteMessages = {
     previewEmpty: "No dishes detected — try a sharper photo.",
     homeCta: "Photograph your menu →",
     servicesBullet:
-      "Menu digitization — upload a photo, mobile preview in seconds (restaurant hook).",
+      "Available in your project: menu digitization — photo → mobile preview (restaurant).",
   },
   microBot: {
     title: "Micro-Bot WhatsApp",
@@ -358,7 +387,7 @@ export const enMessages: SiteMessages = {
       "Hi Santi, I want the Micro-Bot WhatsApp for my restaurant.",
     homeCta: "Micro-Bot WhatsApp →",
     servicesBullet:
-      "Micro-Bot WhatsApp — filters tables/hours/parking and hands off bookings.",
+      "Available in your project: Micro-Bot WhatsApp — tables/hours/parking → booking chat.",
     bullets: [
       "Top 3 questions as chips — instant answers",
       "Free text: AI detects booking intent",
@@ -404,7 +433,7 @@ export const enMessages: SiteMessages = {
       "Hi Santi, I want the copy generator for my business.",
     homeCta: "Local copy adaptation →",
     servicesBullet:
-      "Copy generator — cultural adaptation instead of translation (DE/EN/ES).",
+      "Available in your project: local copy — cultural adaptation (not literal translation) DE/EN/ES.",
     tabAgent: "Agent",
     tabCopy: "Copy",
     bullets: [
@@ -442,7 +471,7 @@ export const enMessages: SiteMessages = {
       "Hi Santi, I generated a brief with the Brief Agent and want the real website.",
     homeCta: "Brief → landing →",
     servicesBullet:
-      "Brief Agent — textarea → Zod JSON → React components (Hero / Features / Contact).",
+      "Available in your project: Brief → conceptual landing from a few lines of text.",
     reviseLabel: "Edit with natural language",
     revisePlaceholder: "e.g. Shorten the headline · Change CTA to Book · Darker look",
     reviseSubmit: "Apply",
@@ -481,12 +510,6 @@ export const enMessages: SiteMessages = {
   packages,
   projects,
   projectsForHome: projects.map((p) => {
-    if (p.slug === "mobile-erst") {
-      return {
-        ...p,
-        blurb: "Find out if your current site fails on mobile — concept in minutes.",
-      };
-    }
     if (p.slug === "lugner") {
       return {
         ...p,

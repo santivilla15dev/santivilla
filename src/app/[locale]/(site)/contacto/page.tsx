@@ -3,7 +3,7 @@ import { CtaButtons } from "@/components/cta-buttons";
 import { ContactForm } from "@/components/contact-form";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { pageMetadata } from "@/lib/i18n/metadata";
-import { localizedPath } from "@/lib/i18n/paths";
+import { briefAgentPath, localizedPath } from "@/lib/i18n/paths";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { site, whatsappHref } from "@/lib/site";
 import { notFound } from "next/navigation";
@@ -39,7 +39,7 @@ export default async function ContactoPage({ params }: Props) {
           href={localizedPath(locale, "/auditoria")}
           className="text-accent underline-offset-4 hover:underline"
         >
-          Mobile Erst
+          {c.auditLinkLabel}
         </Link>{" "}
         {c.leadAudit}
       </p>
@@ -92,6 +92,16 @@ export default async function ContactoPage({ params }: Props) {
               </a>
             </p>
             <p className="text-muted">{site.location}</p>
+          </div>
+
+          <div className="border-t border-line pt-8">
+            <p className="text-base text-muted">{c.briefAlt}</p>
+            <Link
+              href={briefAgentPath(locale)}
+              className="mt-2 inline-block text-sm font-medium text-accent underline-offset-4 hover:underline"
+            >
+              {c.briefLink}
+            </Link>
           </div>
 
           <ContactForm

@@ -3,9 +3,15 @@ import Link from "next/link";
 import { CtaButtons } from "@/components/cta-buttons";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { pageMetadata } from "@/lib/i18n/metadata";
-import { localizedPath, menuDigitizerPath, microBotPath, copyAdaptPath, briefAgentPath } from "@/lib/i18n/paths";
+import {
+  briefAgentPath,
+  copyAdaptPath,
+  localizedPath,
+  menuDigitizerPath,
+  microBotPath,
+} from "@/lib/i18n/paths";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
-import { site } from "@/lib/site";
+import { site, whatsappHref } from "@/lib/site";
 import { notFound } from "next/navigation";
 
 export const revalidate = 3600;
@@ -14,6 +20,24 @@ const HERO_PHOTO =
   "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80";
 
 type Props = { params: Promise<{ locale: string }> };
+
+function includeHref(
+  locale: Locale,
+  tool: "audit" | "menu" | "microbot" | "copy" | "brief",
+): string {
+  switch (tool) {
+    case "audit":
+      return localizedPath(locale, "/auditoria");
+    case "menu":
+      return menuDigitizerPath(locale);
+    case "microbot":
+      return microBotPath(locale);
+    case "copy":
+      return copyAdaptPath(locale);
+    case "brief":
+      return briefAgentPath(locale);
+  }
+}
 
 export async function generateMetadata({ params }: Props) {
   const { locale: raw } = await params;
@@ -27,12 +51,11 @@ export default async function HomePage({ params }: Props) {
   const locale = raw as Locale;
   const messages = getMessages(locale);
   const c = messages.home;
+  const w = messages.work;
   const cta = messages.cta;
-  const menuCta = messages.menuDigitizer.homeCta;
-  const microBotCta = messages.microBot.homeCta;
-  const copyCta = messages.copyAdapt.homeCta;
-  const briefCta = messages.briefAgent.homeCta;
   const projects = messages.projectsForHome;
+  const viennaProjects = projects.filter((p) => p.group === "vienna");
+  const templateProjects = projects.filter((p) => p.group === "template");
 
   return (
     <>
@@ -48,20 +71,33 @@ export default async function HomePage({ params }: Props) {
             <p className="animate-rise-delay-1 mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
               {c.heroLead}
             </p>
-            <div className="animate-rise-delay-2 mt-8 flex flex-wrap items-center gap-4">
-              <CtaButtons
-                pulse
-                whatsappLabel={cta.whatsapp}
-                scheduleLabel={cta.schedule}
-                whatsappMessage={cta.defaultWhatsapp}
-              />
+            <p className="animate-rise-delay-1 mt-3 text-base font-medium tracking-wide text-ink sm:text-lg">
+              {c.heroSub}
+            </p>
+            <div className="animate-rise-delay-2 mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href={whatsappHref(cta.defaultWhatsapp)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta-pulse inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
+              >
+                {cta.whatsapp}
+              </a>
+              <Link
+                href="/demos/lugner"
+                className="inline-flex items-center justify-center rounded-full border border-ink/20 bg-surface px-5 py-3 text-sm font-medium text-ink transition hover:border-accent hover:bg-accent-soft"
+              >
+                {c.heroDemoCta}
+              </Link>
+            </div>
+            <p className="animate-rise-delay-2 mt-4">
               <Link
                 href={localizedPath(locale, "/auditoria")}
                 className="text-sm font-medium text-accent underline-offset-4 hover:underline"
               >
                 {c.heroAuditLink}
               </Link>
-            </div>
+            </p>
           </div>
 
           <div className="animate-rise-delay-1 relative mx-auto w-full max-w-md">
@@ -95,6 +131,46 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       <section className="border-t border-line/70 py-20">
+        <div className="site-shell grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+              {c.clientDesignEyebrow}
+            </p>
+            <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
+              {c.clientDesignTitle}
+            </h2>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
+              {c.clientDesignBody}
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Link
+                href="/demos/lugner"
+                className="rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
+              >
+                {c.clientDesignCtaDemo}
+              </Link>
+              <Link
+                href={localizedPath(locale, "/auditoria")}
+                className="text-sm font-medium text-accent underline-offset-4 hover:underline"
+              >
+                {c.clientDesignCtaAudit}
+              </Link>
+            </div>
+          </div>
+          <ol className="space-y-5 border-l border-accent/40 pl-6">
+            {c.clientDesignSteps.map((step, i) => (
+              <li key={step} className="relative">
+                <span className="font-display absolute -left-[1.85rem] top-0 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full bg-accent text-xs text-white">
+                  {i + 1}
+                </span>
+                <p className="leading-relaxed text-muted">{step}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="border-t border-line/70 py-20">
         <div className="site-shell max-w-3xl">
           <p className="animate-fade text-xs font-medium uppercase tracking-[0.2em] text-accent">
             {c.introEyebrow}
@@ -120,9 +196,7 @@ export default async function HomePage({ params }: Props) {
                 className="animate-rise border-t border-ink/15 pt-6"
                 style={{ animationDelay: `${i * 0.06}s` }}
               >
-                <p className="font-display text-sm text-accent">
-                  0{i + 1}
-                </p>
+                <p className="font-display text-sm text-accent">0{i + 1}</p>
                 <h3 className="font-display mt-2 text-2xl text-ink">
                   {item.title}
                 </h3>
@@ -130,106 +204,41 @@ export default async function HomePage({ params }: Props) {
               </li>
             ))}
           </ul>
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Link
-              href={briefAgentPath(locale)}
-              className="inline-flex rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
-            >
-              {briefCta}
-            </Link>
-            <Link
-              href={microBotPath(locale)}
-              className="text-sm font-medium text-accent underline-offset-4 hover:underline"
-            >
-              {microBotCta}
-            </Link>
-            <Link
-              href={copyAdaptPath(locale)}
-              className="text-sm font-medium text-accent underline-offset-4 hover:underline"
-            >
-              {copyCta}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-line/70 py-20">
-        <div className="site-shell grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-              {c.clientDesignEyebrow}
-            </p>
-            <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
-              {c.clientDesignTitle}
-            </h2>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-              {c.clientDesignBody}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/demos/lugner"
-                className="rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
-              >
-                {c.clientDesignCtaDemo}
-              </Link>
-              <Link
-                href={localizedPath(locale, "/auditoria")}
-                className="rounded-full border border-ink/20 bg-surface px-5 py-3 text-sm font-medium text-ink"
-              >
-                {c.clientDesignCtaAudit}
-              </Link>
-            </div>
-          </div>
-          <ol className="space-y-5 border-l border-accent/40 pl-6">
-            {c.clientDesignSteps.map((step, i) => (
-              <li key={step} className="relative">
-                <span className="font-display absolute -left-[1.85rem] top-0 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full bg-accent text-xs text-white">
-                  {i + 1}
-                </span>
-                <p className="leading-relaxed text-muted">{step}</p>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 
       <section className="border-t border-line/70 bg-ink py-20 text-surface">
-        <div className="site-shell grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#c9a227]">
-              {c.mobileErstEyebrow}
-            </p>
-            <h2 className="font-display mt-3 text-4xl sm:text-5xl">
-              {c.mobileErstTitle}
-            </h2>
-            <p className="mt-4 max-w-xl text-lg text-surface/70">
-              {c.mobileErstBody}
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link
-                href={localizedPath(locale, "/auditoria")}
-                className="inline-flex rounded-full bg-[#c9a227] px-6 py-3 text-sm font-medium text-ink transition hover:brightness-110"
+        <div className="site-shell">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#c9a227]">
+            {c.includesEyebrow}
+          </p>
+          <h2 className="font-display mt-3 text-4xl sm:text-5xl">
+            {c.includesTitle}
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg text-surface/70">
+            {c.includesLead}
+          </p>
+          <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {c.includes.map((item) => (
+              <li
+                key={item.tool}
+                className="border-t border-white/15 pt-6"
               >
-                {c.mobileErstCta}
-              </Link>
-              <Link
-                href={menuDigitizerPath(locale)}
-                className="text-sm font-medium text-[#c9a227] underline-offset-4 hover:underline"
-              >
-                {menuCta}
-              </Link>
-              <Link
-                href={briefAgentPath(locale)}
-                className="text-sm font-medium text-[#c9a227] underline-offset-4 hover:underline"
-              >
-                {briefCta}
-              </Link>
-            </div>
-          </div>
-          <div className="border border-white/10 p-8">
-            <p className="font-display text-5xl text-[#c9a227]">0–100</p>
-            <p className="mt-3 text-sm text-surface/60">{c.mobileErstScoreNote}</p>
-          </div>
+                <h3 className="font-display text-xl text-surface">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-surface/65">
+                  {item.body}
+                </p>
+                <Link
+                  href={includeHref(locale, item.tool)}
+                  className="mt-4 inline-block text-sm font-medium text-[#c9a227] underline-offset-4 hover:underline"
+                >
+                  {item.linkLabel}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -250,51 +259,76 @@ export default async function HomePage({ params }: Props) {
             </Link>
           </div>
 
-          <ul className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <li key={project.slug}>
-                <Link
-                  href={
-                    project.href.startsWith("/demos")
-                      ? project.href
-                      : localizedPath(locale, project.href)
-                  }
-                  className="group block border-t border-ink/15 pt-6 transition hover:border-accent"
-                >
-                  <p className="text-xs uppercase tracking-[0.18em] text-muted">
-                    {project.type}
-                  </p>
-                  <h3 className="font-display mt-2 text-2xl text-ink transition group-hover:text-accent">
-                    {project.title}
-                  </h3>
-                  <p className="mt-3 text-muted">{project.blurb}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-12">
+            <h3 className="font-display text-2xl text-ink sm:text-3xl">
+              {w.viennaTitle}
+            </h3>
+            <p className="mt-2 max-w-lg text-sm text-muted">{w.viennaLead}</p>
+            <ul className="mt-8 grid gap-6 md:grid-cols-2">
+              {viennaProjects.map((project) => (
+                <li key={project.slug}>
+                  <Link
+                    href={
+                      project.href.startsWith("/demos")
+                        ? project.href
+                        : localizedPath(locale, project.href)
+                    }
+                    className="group block border-t border-ink/15 pt-6 transition hover:border-accent"
+                  >
+                    <p className="text-xs uppercase tracking-[0.18em] text-muted">
+                      {project.type}
+                    </p>
+                    <h4 className="font-display mt-2 text-2xl text-ink transition group-hover:text-accent">
+                      {project.title}
+                    </h4>
+                    <p className="mt-3 text-muted">{project.blurb}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-16">
+            <h3 className="font-display text-2xl text-ink sm:text-3xl">
+              {w.templatesTitle}
+            </h3>
+            <p className="mt-2 max-w-lg text-sm text-muted">
+              {w.templatesLead}
+            </p>
+            <p className="mt-2 text-sm text-accent">{w.templatesNote}</p>
+            <ul className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {templateProjects.map((project) => (
+                <li key={project.slug}>
+                  <Link
+                    href={
+                      project.href.startsWith("/demos")
+                        ? project.href
+                        : localizedPath(locale, project.href)
+                    }
+                    className="group block border-t border-ink/15 pt-6 transition hover:border-accent"
+                  >
+                    <p className="text-xs uppercase tracking-[0.18em] text-muted">
+                      {project.type}
+                    </p>
+                    <h4 className="font-display mt-2 text-2xl text-ink transition group-hover:text-accent">
+                      {project.title}
+                    </h4>
+                    <p className="mt-3 text-muted">{project.blurb}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
       <section className="border-t border-line/70 bg-surface/60 py-20">
-        <div className="site-shell max-w-3xl">
-          <h2 className="font-display text-4xl text-ink">{c.processTitle}</h2>
-          <ol className="mt-8 space-y-6">
-            {c.processSteps.map((step, i) => (
-              <li key={step} className="flex gap-4">
-                <span className="font-display text-2xl text-accent">
-                  0{i + 1}
-                </span>
-                <p className="pt-1 text-lg text-muted">{step}</p>
-              </li>
-            ))}
-          </ol>
-          <div className="mt-10">
-            <CtaButtons
-              whatsappLabel={cta.whatsapp}
-              scheduleLabel={cta.schedule}
-              whatsappMessage={cta.defaultWhatsapp}
-            />
-          </div>
+        <div className="site-shell">
+          <CtaButtons
+            whatsappLabel={cta.whatsapp}
+            scheduleLabel={cta.schedule}
+            whatsappMessage={cta.defaultWhatsapp}
+          />
         </div>
       </section>
     </>

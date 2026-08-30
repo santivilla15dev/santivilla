@@ -12,6 +12,7 @@ export type ProjectMessages = {
   type: string;
   href: string;
   blurb: string;
+  group: "vienna" | "template";
   beforeNote?: string;
   afterNote?: string;
 };
@@ -23,10 +24,8 @@ export type SiteMessages = {
     ogLocale: string;
   };
   nav: {
-    audit: string;
     work: string;
     services: string;
-    brief: string;
     contact: string;
   };
   footer: {
@@ -44,8 +43,10 @@ export type SiteMessages = {
   };
   home: {
     heroLead: string;
+    heroSub: string;
     heroCardEyebrow: string;
     heroCardTitle: string;
+    heroDemoCta: string;
     heroAuditLink: string;
     introEyebrow: string;
     introTitle: string;
@@ -58,16 +59,18 @@ export type SiteMessages = {
     clientDesignSteps: string[];
     clientDesignCtaDemo: string;
     clientDesignCtaAudit: string;
-    mobileErstEyebrow: string;
-    mobileErstTitle: string;
-    mobileErstBody: string;
-    mobileErstCta: string;
-    mobileErstScoreNote: string;
+    includesEyebrow: string;
+    includesTitle: string;
+    includesLead: string;
+    includes: {
+      title: string;
+      body: string;
+      linkLabel: string;
+      tool: "audit" | "menu" | "microbot" | "copy" | "brief";
+    }[];
     workTitle: string;
     workBody: string;
     workLink: string;
-    processTitle: string;
-    processSteps: string[];
   };
   services: {
     title: string;
@@ -91,7 +94,11 @@ export type SiteMessages = {
     openDemo: string;
     openDemoCta: string;
     konzeptNote: string;
-    moreTitle: string;
+    viennaTitle: string;
+    viennaLead: string;
+    templatesTitle: string;
+    templatesLead: string;
+    templatesNote: string;
     open: string;
     pricingTitle: string;
     pricingLead: string;
@@ -110,6 +117,9 @@ export type SiteMessages = {
     title: string;
     lead: string;
     leadAudit: string;
+    auditLinkLabel: string;
+    briefAlt: string;
+    briefLink: string;
     email: string;
     whatsapp: string;
     openChat: string;

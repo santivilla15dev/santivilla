@@ -43,18 +43,11 @@ const packages: SiteMessages["packages"] = [
 
 const projects: SiteMessages["projects"] = [
   {
-    slug: "mobile-erst",
-    title: "Mobile Erst — Auditoría responsive",
-    type: "Producto",
-    href: "/auditoria",
-    blurb:
-      "Pega una URL: score + concepto HTML automático (Santi Design Agent) para todos los dispositivos.",
-  },
-  {
     slug: "lugner",
     title: "Lugner City — Redesign Konzept",
     type: "Centro comercial",
     href: "/demos/lugner",
+    group: "vienna",
     blurb:
       "Propuesta mobile-first del sitio de Lugner City (Wien). Concepto, no sitio oficial.",
     beforeNote:
@@ -64,35 +57,39 @@ const projects: SiteMessages["projects"] = [
   },
   {
     slug: "restaurant",
-    title: "Gasthaus Am Hof — Plantilla",
+    title: "Gasthaus Am Hof — Plantilla gastro",
     type: "Restaurante",
     href: "/demos/restaurant",
+    group: "template",
     blurb:
-      "Plantilla reutilizable: menú, horarios, mapa y reserva por WhatsApp.",
+      "Plantilla gastro: menú, horarios, mapa y reserva por WhatsApp.",
   },
   {
     slug: "villa-italia",
     title: "Villa Italia — Pizzería",
     type: "Pizzería",
     href: "/demos/villa-italia",
+    group: "template",
     blurb:
-      "Demo para pizzería en Colombia: carta, horarios, domicilios y WhatsApp — mobile-first.",
+      "Plantilla pizzería: carta, horarios, delivery y WhatsApp — mobile-first.",
   },
   {
     slug: "solo-modas",
     title: "Solo Modas — Tienda de ropa",
     type: "Moda",
     href: "/demos/solo-modas",
+    group: "template",
     blurb:
-      "Demo retail Colombia: categorías, varias sedes, horarios y WhatsApp — mobile-first.",
+      "Plantilla retail moda: categorías, varias sedes, horarios y WhatsApp.",
   },
   {
     slug: "universo-del-calzado",
     title: "Universo del Calzado — Deportes",
     type: "Retail deportivo",
     href: "/demos/universo-del-calzado",
+    group: "template",
     blurb:
-      "Demo Santa Rosa de Osos: zapatos, camisetas de club, dos sedes y WhatsApp — mobile-first.",
+      "Plantilla retail deportivo: catálogo, dos sedes y WhatsApp — mobile-first.",
   },
 ];
 
@@ -104,10 +101,8 @@ export const esMessages: SiteMessages = {
     ogLocale: "es_ES",
   },
   nav: {
-    audit: "Mobile Erst",
     work: "Trabajos",
     services: "Servicios",
-    brief: "Brief",
     contact: "Contacto",
   },
   footer: {
@@ -127,9 +122,11 @@ export const esMessages: SiteMessages = {
   },
   home: {
     heroLead:
-      "Diseño y construyo webs claras para restaurantes, locales y centros — perfectas en móvil, tablet y desktop.",
+      "Tus clientes deciden en segundos si se quedan. Yo construyo webs que ganan esos segundos — para restaurantes, locales y centros en Wien.",
+    heroSub: "Clara. Rápida. Mobile primero.",
     heroCardEyebrow: "Así debería sentirse tu web",
-    heroCardTitle: "Clara. Rápida. Lista para el móvil.",
+    heroCardTitle: "Clara. Rápida. Mobile primero.",
+    heroDemoCta: "Ver demo",
     heroAuditLink: "Probar Mobile Erst →",
     introEyebrow: "De qué se trata",
     introTitle: "Una web que tus clientes entienden en segundos",
@@ -154,41 +151,64 @@ export const esMessages: SiteMessages = {
         body: "Landing, sitio de negocio o mantenimiento. Sabes qué incluye cada paquete desde el día uno.",
       },
     ],
-    clientDesignEyebrow: "Diseño para clientes",
+    clientDesignEyebrow: "Cómo trabajamos",
     clientDesignTitle: "Así trabajamos el diseño juntos",
     clientDesignBody:
       "Primero creo un Konzept: una propuesta visual de cómo podría verse tu negocio online. No es el sitio oficial — es una demo honesta para que veas el salto. Puedes pedir cambios (menú, horarios, idioma) y, cuando encaje, lanzo la web real con dominio, hosting y WhatsApp listo.",
     clientDesignSteps: [
-      "Audit o demo: vemos tu web actual o una plantilla cercana a tu rubro.",
+      "Audit o demo: URL de tu web o una plantilla cercana a tu rubro.",
       "Konzept: diseño responsive con tu info (o datos que me pases).",
-      "Feedback: WhatsApp o el chat del agente — afinamos hasta que digas sí.",
+      "Feedback: WhatsApp — afinamos hasta que digas sí.",
       "Web real: publicamos, conectamos dominio y dejas de depender de sitios antiguos.",
     ],
     clientDesignCtaDemo: "Ver demo Lugner",
-    clientDesignCtaAudit: "Probar Mobile Erst",
-    mobileErstEyebrow: "Producto",
-    mobileErstTitle: "Mobile Erst",
-    mobileErstBody:
-      "Pega la URL de tu negocio: recibes un score responsive (0–100) y un concepto HTML automático con el Santi Design Agent. Ideal para enseñar el “antes / después” al dueño.",
-    mobileErstCta: "Abrir auditoría",
-    mobileErstScoreNote:
-      "Score responsive · Konzept automático · WhatsApp listo para compartir",
+    clientDesignCtaAudit: "Probar gratis cómo se ve tu URL →",
+    includesEyebrow: "Tu web",
+    includesTitle: "Qué incluye tu web",
+    includesLead:
+      "No son productos aparte: son piezas del mismo servicio — disponibles cuando tu negocio las necesita.",
+    includes: [
+      {
+        title: "Auditoría responsive",
+        body: "Score 0–100 y concepto automático a partir de tu URL — para ver el antes/después.",
+        linkLabel: "Probar con tu URL →",
+        tool: "audit",
+      },
+      {
+        title: "Carta digital",
+        body: "Foto de la carta → platos y precios en preview móvil, listo para la web.",
+        linkLabel: "Ver cómo funciona →",
+        tool: "menu",
+      },
+      {
+        title: "Ayuda por WhatsApp",
+        body: "Respuestas rápidas a sitio, horarios y aparcar; reservas al chat real.",
+        linkLabel: "Ver ejemplo →",
+        tool: "microbot",
+      },
+      {
+        title: "Copy local",
+        body: "Textos adaptados al público (no traducción literal) en DE/EN/ES.",
+        linkLabel: "Ver ejemplo →",
+        tool: "copy",
+      },
+      {
+        title: "Brief → landing",
+        body: "Describes el negocio en unas líneas y ves un borrador de landing.",
+        linkLabel: "Probar →",
+        tool: "brief",
+      },
+    ],
     workTitle: "Trabajos y demos",
     workBody:
-      "Ejemplos en vivo que puedes abrir y mandar por WhatsApp. Las demos son propuestas conceptuales, no sitios oficiales.",
+      "Primero casos en Wien. Luego plantillas por rubro. Las demos son propuestas conceptuales, no sitios oficiales.",
     workLink: "Ver todos →",
-    processTitle: "Cómo trabajo",
-    processSteps: [
-      "Me cuentas qué necesita tu negocio (o pruebas Mobile Erst con tu URL).",
-      "Diseño y construyo el sitio responsive en días, no meses.",
-      "Lanzamos con dominio, hosting y WhatsApp listo para tus clientes.",
-    ],
   },
   services: {
     title: "Servicios",
-    lead: "Primero entiendes el concepto (cómo se vería tu negocio). Luego construimos la web real. Tres paquetes simples — claros en móvil, tablet y desktop.",
+    lead: "Un producto claro: tu web. Primero ves el concepto; luego construimos el sitio real. Tres paquetes simples — claros en móvil, tablet y desktop.",
     packageLabel: "Paquete",
-    alsoTitle: "También ofrezco",
+    alsoTitle: "Incluido o disponible en tu proyecto",
     alsoItems: [
       "Centro comercial / multi-tienda — desde ~€3.000–8.000+ según shops, idiomas y CMS.",
       "Demo de pitch — te preparo una vista previa conceptual (como Lugner) para enseñar al dueño.",
@@ -198,7 +218,7 @@ export const esMessages: SiteMessages = {
   },
   work: {
     title: "Trabajos",
-    lead: "Casos y demos en vivo. Propuestas conceptuales — no sitios oficiales — para que veas el salto en móvil.",
+    lead: "Primero el caso Wien (Lugner). Después, plantillas por rubro que puedes adaptar.",
     lugnerEyebrow: "Caso de venta · Wien",
     lugnerTitle: "Lugner City: antes vs después",
     lugnerBody:
@@ -212,7 +232,13 @@ export const esMessages: SiteMessages = {
     openDemoCta: "Abrir demo Lugner",
     konzeptNote:
       "Konzept / Redesign-Vorschlag — keine offizielle Website von Lugner City.",
-    moreTitle: "Más piezas",
+    viennaTitle: "Wien",
+    viennaLead:
+      "Caso de pitch local: Lugner City — lead caliente en Viena.",
+    templatesTitle: "Plantillas por rubro",
+    templatesLead:
+      "Estructuras reutilizables: gastro, pizzería, moda y deportes.",
+    templatesNote: "También probado internacionalmente.",
     open: "Abrir",
     pricingTitle: "Precios orientativos",
     pricingLead:
@@ -234,6 +260,9 @@ export const esMessages: SiteMessages = {
     title: "Contacto",
     lead: "¿Quieres ver primero cómo quedaría? Prueba",
     leadAudit: "o escríbeme: te cuento el siguiente paso en minutos.",
+    auditLinkLabel: "Mobile Erst",
+    briefAlt: "¿Prefieres escribir un brief en vez de llamar?",
+    briefLink: "Abrir Brief Agent →",
     email: "Email",
     whatsapp: "WhatsApp",
     openChat: "Abrir chat",
@@ -332,7 +361,7 @@ export const esMessages: SiteMessages = {
     previewEmpty: "No se detectaron platos — prueba una foto más nítida.",
     homeCta: "Fotografiar tu carta →",
     servicesBullet:
-      "Digitalización de carta — sube una foto, preview móvil en segundos (hook gastro).",
+      "Disponible en el proyecto: digitalización de carta — foto → preview móvil (gastro).",
   },
   microBot: {
     title: "Micro-Bot WhatsApp",
@@ -358,7 +387,7 @@ export const esMessages: SiteMessages = {
       "Hola Santi, quiero el Micro-Bot WhatsApp para mi local.",
     homeCta: "Micro-Bot WhatsApp →",
     servicesBullet:
-      "Micro-Bot WhatsApp — filtra sitio/horarios/aparcar y pasa reservas a WhatsApp.",
+      "Disponible en el proyecto: Micro-Bot WhatsApp — sitio/horarios/aparcar → reserva al chat.",
     bullets: [
       "3 preguntas frecuentes como chips — respuesta instantánea",
       "Texto libre: la IA detecta intención de reserva",
@@ -404,7 +433,7 @@ export const esMessages: SiteMessages = {
       "Hola Santi, quiero el generador de copy para mi local.",
     homeCta: "Adaptar copy local →",
     servicesBullet:
-      "Generador de copy — adaptación cultural en lugar de traducción (DE/EN/ES).",
+      "Disponible en el proyecto: copy local — adaptación cultural (no traducción literal) DE/EN/ES.",
     tabAgent: "Agente",
     tabCopy: "Copy",
     bullets: [
@@ -442,7 +471,7 @@ export const esMessages: SiteMessages = {
       "Hola Santi, generé un brief con el Brief Agent y quiero la web real.",
     homeCta: "Brief → landing →",
     servicesBullet:
-      "Brief Agent — textarea → JSON Zod → componentes React (Hero / Features / Contact).",
+      "Disponible en el proyecto: Brief → landing conceptual desde unas líneas de texto.",
     reviseLabel: "Editar con lenguaje natural",
     revisePlaceholder: "Ej. Acorta el headline · Cambia el CTA a Reservar · Más oscuro",
     reviseSubmit: "Aplicar",
@@ -481,13 +510,6 @@ export const esMessages: SiteMessages = {
   packages,
   projects,
   projectsForHome: projects.map((p) => {
-    if (p.slug === "mobile-erst") {
-      return {
-        ...p,
-        blurb:
-          "Descubre si tu web actual falla en móvil y genera un concepto nuevo en minutos.",
-      };
-    }
     if (p.slug === "lugner") {
       return {
         ...p,
@@ -499,7 +521,7 @@ export const esMessages: SiteMessages = {
       return {
         ...p,
         blurb:
-          "Plantilla gastro lista: menú, horarios, mapa y reserva por WhatsApp en un flujo simple.",
+          "Plantilla gastro: menú, horarios, mapa y reserva por WhatsApp en un flujo simple.",
       };
     }
     return p;

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import type { SiteMessages } from "@/lib/i18n/get-messages";
-import { briefAgentPath, localizedPath } from "@/lib/i18n/paths";
+import { localizedPath } from "@/lib/i18n/paths";
 import type { Locale } from "@/lib/i18n/locales";
 import { site } from "@/lib/site";
 
@@ -13,10 +13,8 @@ type Props = {
 export function SiteHeader({ locale, messages }: Props) {
   const m = messages.nav;
   const links = [
-    { href: localizedPath(locale, "/auditoria"), label: m.audit },
     { href: localizedPath(locale, "/trabajos"), label: m.work },
     { href: localizedPath(locale, "/servicios"), label: m.services },
-    { href: briefAgentPath(locale), label: m.brief },
     { href: localizedPath(locale, "/contacto"), label: m.contact },
   ] as const;
 

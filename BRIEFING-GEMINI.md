@@ -12,10 +12,23 @@ Copia este archivo completo y pégaselo a Gemini. Al final tienes un prompt list
 - **Negocio:** crear y vender websites modernas a negocios locales (restaurantes, locales, centros comerciales)
 - **Objetivo:** ingresos extra vendiendo sitios mobile-first + mantenimiento mensual
 - **Idiomas:**
-  - Portafolio: español (+ alemán donde haga falta, porque el cliente está en Austria)
+  - Portafolio: español / alemán / inglés
   - Demos de clientes austriacos (ej. Lugner): **alemán**
-- **Cómo cierro ventas:** WhatsApp + cita de 15 min (Cal.com/Calendly)
+- **Cómo cierro ventas:** WhatsApp + cita de 15 min (Cal.com)
 - **Regla de negocio:** demos/conceptos gratis para pitch; código/entrega solo con depósito 30–50%
+
+---
+
+## Posicionamiento (regla fija)
+
+**Un solo producto público: websites** para negocios locales.
+
+- Nav del portafolio: solo **Trabajos · Servicios · Contacto** (sin “Mobile Erst”, “Brief”, bots, etc. en el chrome).
+- Hero: marca + **promesa afilada** (segundos / quedarse) + Wien/rubros · subtexto *Klar. Schnell. Mobile zuerst.* debajo del lead · **2 CTAs** WhatsApp + Ver demo; Mobile Erst solo enlace terciario. Sin “Agendar” en el hero.
+- Brief Agent no va en el nav: vive en **Kontakt** como alternativa (“¿preferís escribir un brief…?”) y en “Qué incluye” / Leistungen.
+- Herramientas IA (auditoría responsive, Design Agent, Brief→landing, carta digital, Micro-Bot WhatsApp, copy local, Maps→Konzept) son **features / cómo demuestras valor** dentro del servicio — no líneas de producto competidoras en la primera impresión.
+- Un dueño que entra desde WhatsApp debe entender en segundos: *vendes webs*; puede escribirte o ver una demo. No elegir entre “auditoría vs bot vs brief”.
+- **Casos Viena ≠ plantillas por rubro:** en home y `/trabajos`, **Wien = solo Lugner** (lead caliente); Gasthaus + Villa Italia / Solo Modas / Universo van en “Vorlagen nach Branche” / plantillas — sin vender Colombia como mercado; una línea de prueba social (*Auch international getestet*).
 
 ---
 
@@ -39,21 +52,33 @@ Flujo: Portafolio (`santivilla.com`) → Demo personalizada → Pitch antes/desp
 
 ## Qué ya está construido (estado real)
 
-**Stack:** Next.js (App Router) + Tailwind + deploy en Vercel  
+**Stack:** Next.js 16 (App Router) + React 19 + Tailwind 4 + Supabase + deploy en Vercel  
 **URL actual en vivo:** https://santivilla-rxxn.vercel.app  
 **Repo:** https://github.com/santivilla15dev/santivilla  
-**Pendiente:** conectar dominio `santivilla.com`, WhatsApp real, Cal.com real
+**Pendiente:** conectar dominio `santivilla.com`, WhatsApp/Cal reales si faltan
 
-### Páginas del portafolio
+### Páginas del portafolio (chrome)
 
 | Ruta | Qué es |
 |------|--------|
-| `/` | Home: marca “Santi Villa” como héroe, tagline, CTA WhatsApp + Agendar, preview móvil |
-| `/trabajos` | Demos + comparación antes/después Lugner + precios orientativos |
-| `/servicios` | 3 paquetes |
-| `/contacto` | WhatsApp, email, embed Cal.com, formulario mailto |
-| `/demos/lugner` | Demo rediseño Lugner City (DE, mobile-first, banner no oficial) |
-| `/demos/restaurant` | Plantilla ficticia “Gasthaus Am Hof” (menú, horarios, mapa, WhatsApp) |
+| `/` | Home: marca “Santi Villa”, promesa webs, CTA WhatsApp + Ver demo; tools como “Qué incluye tu web” más abajo |
+| `/trabajos` | Wien (Lugner) + Vorlagen nach Branche (Gasthaus + plantillas) + precios |
+| `/servicios` | 3 paquetes + extras del proyecto (carta, bot, copy, brief…) |
+| `/contacto` | WhatsApp, email, Cal.com, formulario → lead |
+
+### Lead magnets / tools (existen, no van en nav/hero)
+
+| Ruta | Rol |
+|------|-----|
+| `/auditoria` | Mobile Erst — score + Konzept desde URL |
+| `/brief` | Brief Agent — texto → landing conceptual |
+| `/digitalizar-carta` | OCR carta → preview |
+| `/micro-bot` | FAQ + handoff WhatsApp |
+| `/copy-lokal` | Adaptación cultural de copy |
+| `/maps-konzept` | Prospección interna Maps → Konzept |
+| `/demos/lugner` | Demo rediseño Lugner City (DE) |
+| `/demos/restaurant` | “Gasthaus Am Hof” + Micro-Bot |
+| `/admin` · `/portal` | Mini-CRM + portal del dueño (Supabase Auth) |
 
 ### Paquetes / precios orientativos (Austria / EU)
 
@@ -86,7 +111,7 @@ Banner: “Konzept / Redesign-Vorschlag — keine offizielle Website von Lugner 
 No quiero que reescriba el stack técnico. Quiero ideas creativas y de negocio:
 
 1. **Posicionamiento y copy**
-   - Taglines más fuertes (ES + DE)
+   - Taglines más fuertes (ES + DE) que digan “websites”, no catálogo de tools
    - Frases de hero / servicios / pitch WhatsApp
    - Cómo sonar local en Viena sin parecer agencia genérica
 
@@ -107,22 +132,23 @@ No quiero que reescriba el stack técnico. Quiero ideas creativas y de negocio:
 5. **Go-to-market en Viena**
    - Cómo contactar dueños / managers (WhatsApp, email, visita)
    - Scripts de mensaje cortos
-   - Ofertas de entrada (ej. “auditoría móvil gratis + mockup”)
+   - Ofertas de entrada enmarcadas como *paso del servicio web* (ej. “te muestro cómo se vería tu sitio en móvil”), no como segundo producto
 
 6. **Contenido del sitio**
    - Textos de casos / FAQ / proceso de trabajo
-   - Qué añadir a `/trabajos` y `/servicios` para convertir mejor
+   - Qué añadir a `/trabajos` y `/servicios` para convertir mejor **sin** volver a llenar el nav de ofertas
 
 ---
 
 ## Constraints que Gemini debe respetar
 
 - Marca personal: **Santi Villa** / `santivilla.com` (no inventar nombre de agencia)
+- **Un producto en hero/nav: websites.** Tools IA = features del servicio
 - Primero mobile; demos pensadas para enseñar en el teléfono
 - No fingir proyectos oficiales de clientes reales
 - No scrapear directorios enteros; demos conceptuales con datos públicos
-- No CMS/Supabase todavía (sitio estático / Next simple)
-- Copy en ES para portafolio; DE para demos austriacas
+- Stack real: Next.js + Supabase + Vercel (no asumir sitio estático puro)
+- Copy ES/DE/EN en portafolio; DE para demos austriacas
 - Diseño: evitar purple gradients, Inter, cream+serif terracotta, dashboard clutter
 
 ---
@@ -135,15 +161,16 @@ Actúa como director creativo + estratega de marketing local en Viena.
 Contexto (léelo completo): el briefing de arriba sobre Santi Villa.
 
 Ya tengo el sitio en vivo en Vercel (https://santivilla-rxxn.vercel.app) y demos de Lugner + restaurante.
+Posicionamiento fijo: vendo WEBSITES; las tools IA no compiten en hero/nav.
 Quiero ideas, no código.
 
 Entrégame:
-1) 5 taglines ES + 5 DE para Santi Villa
+1) 5 taglines ES + 5 DE para Santi Villa (producto = webs)
 2) 3 direcciones visuales distintas (mood, color, tipografía, atmósfera) respetando mis constraints
 3) Mejoras concretas para la demo Lugner City (UX móvil, secciones, storytelling antes/después)
 4) 3 plantillas de negocio adicionales para vender en Viena (estructura de secciones)
 5) 5 mensajes cortos de WhatsApp/email para contactar negocios (incluido uno para Lugner, transparente y ético)
-6) Checklist de mejoras del portafolio para subir conversión en 7 días
+6) Checklist de mejoras del portafolio para subir conversión en 7 días — sin volver a fragmentar la oferta en el nav
 
 Sé concreto, accionable y local (Austria/Wien). Evita consejos genéricos de “agencia digital”.
 ```

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { SiteMessages } from "@/lib/i18n/get-messages";
-import { briefAgentPath, legalPath, localizedPath } from "@/lib/i18n/paths";
+import { legalPath, localizedPath } from "@/lib/i18n/paths";
 import type { Locale } from "@/lib/i18n/locales";
 import { site, whatsappHref } from "@/lib/site";
 
@@ -28,11 +28,6 @@ export function SiteFooter({ locale, messages }: Props) {
           </p>
           <ul className="space-y-2 text-surface/80">
             <li>
-              <Link href={localizedPath(locale, "/auditoria")} className="hover:text-surface">
-                {n.audit}
-              </Link>
-            </li>
-            <li>
               <Link href={localizedPath(locale, "/trabajos")} className="hover:text-surface">
                 {n.work}
               </Link>
@@ -40,11 +35,6 @@ export function SiteFooter({ locale, messages }: Props) {
             <li>
               <Link href={localizedPath(locale, "/servicios")} className="hover:text-surface">
                 {n.services}
-              </Link>
-            </li>
-            <li>
-              <Link href={briefAgentPath(locale)} className="hover:text-surface">
-                {n.brief}
               </Link>
             </li>
             <li>
