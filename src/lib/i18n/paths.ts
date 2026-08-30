@@ -1,8 +1,9 @@
 import { isLocale, type Locale } from "./locales";
 
 const LEGAL_SLUGS = {
-  impressum: { de: "impressum", en: "imprint", es: "impressum" },
-  datenschutz: { de: "datenschutz", en: "privacy", es: "datenschutz" },
+  impressum: { de: "impressum", en: "impressum", es: "impressum" },
+  datenschutz: { de: "datenschutz", en: "privacy-policy", es: "privacidad" },
+  agb: { de: "agb", en: "terms", es: "terminos" },
 } as const;
 
 export type LegalPage = keyof typeof LEGAL_SLUGS;

@@ -1,8 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CaseResults } from "@/components/case-results";
 import { CtaButtons } from "@/components/cta-buttons";
 import { DemoMetricsStrip } from "@/components/demo-metrics-strip";
+import { FaqAccordion } from "@/components/faq-accordion";
 import { formatMs } from "@/lib/audit/pagespeed";
+import {
+  CASE_RESULT_IDS,
+  resolveCaseResults,
+} from "@/lib/cases/results";
 import {
   portfolioHomeBenchmark,
   stadtgalerieBenchmark,
@@ -37,6 +43,12 @@ export default async function HomePage({ params }: Props) {
   const projects = messages.projectsForHome;
   const viennaProjects = projects.filter((p) => p.group === "vienna");
   const templateProjects = projects.filter((p) => p.group === "template");
+  const resultItems = resolveCaseResults(c.resultsItems, {
+    [CASE_RESULT_IDS.stadtgalerie]: {
+      before: String(stadtgalerieBenchmark.before.performance),
+      after: String(stadtgalerieBenchmark.after.performance),
+    },
+  });
 
   return (
     <>
@@ -215,6 +227,26 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
+      <section className="border-t border-line/70 bg-surface/50 py-20">
+        <div className="site-shell">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+            {c.resultsEyebrow}
+          </p>
+          <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
+            {c.resultsTitle}
+          </h2>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
+            {c.resultsLead}
+          </p>
+          <CaseResults
+            items={resultItems}
+            placeholderBadge={c.resultsPlaceholderBadge}
+            beforeLabel={c.resultsBeforeLabel}
+            afterLabel={c.resultsAfterLabel}
+          />
+        </div>
+      </section>
+
       <section className="border-t border-line/70 py-20">
         <div className="site-shell max-w-3xl">
           <p className="animate-fade text-xs font-medium uppercase tracking-[0.2em] text-accent">
@@ -383,6 +415,18 @@ export default async function HomePage({ params }: Props) {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-line/70 py-20">
+        <div className="site-shell max-w-3xl">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+            {c.faqEyebrow}
+          </p>
+          <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
+            {c.faqTitle}
+          </h2>
+          <FaqAccordion items={c.faqItems} />
         </div>
       </section>
 

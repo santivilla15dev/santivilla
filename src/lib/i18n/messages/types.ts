@@ -35,8 +35,25 @@ export type SiteMessages = {
     legalLabel: string;
     impressum: string;
     datenschutz: string;
+    agb: string;
     copyright: string;
     tagline: string;
+  };
+  consent: {
+    title: string;
+    body: string;
+    acceptAll: string;
+    rejectNonEssential: string;
+    customize: string;
+    save: string;
+    necessaryLabel: string;
+    necessaryHint: string;
+    analyticsLabel: string;
+    analyticsHint: string;
+    marketingLabel: string;
+    marketingHint: string;
+    privacyLink: string;
+    closeCustomize: string;
   };
   cta: {
     whatsapp: string;
@@ -89,6 +106,25 @@ export type SiteMessages = {
     workTitle: string;
     workBody: string;
     workLink: string;
+    faqEyebrow: string;
+    faqTitle: string;
+    faqItems: { id: string; question: string; answer: string }[];
+    resultsEyebrow: string;
+    resultsTitle: string;
+    resultsLead: string;
+    resultsPlaceholderBadge: string;
+    resultsBeforeLabel: string;
+    resultsAfterLabel: string;
+    resultsItems: {
+      id: string;
+      name: string;
+      sector: string;
+      metricLabel: string;
+      before?: string;
+      after?: string;
+      quote: string | null;
+      isPlaceholder: boolean;
+    }[];
   };
   services: {
     title: string;
@@ -96,6 +132,7 @@ export type SiteMessages = {
     packageLabel: string;
     alsoTitle: string;
     alsoItems: string[];
+    agbLink: string;
     whatsappMessage: string;
   };
   work: {

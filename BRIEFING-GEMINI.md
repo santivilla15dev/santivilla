@@ -16,6 +16,10 @@ Copia este archivo completo y pégaselo a Gemini. Al final tienes un prompt list
   - Demos de clientes austriacos (ej. Lugner): **alemán**
 - **Cómo cierro ventas:** WhatsApp + cita de 15 min (Cal.com)
 - **Regla de negocio:** demos/conceptos gratis para pitch; código/entrega solo con depósito 30–50%
+- **Impressum:** § 5 ECG en `/[locale]/impressum` (DE/ES/EN); placeholders `[Por completar…]` hasta rellenar `NEXT_PUBLIC_LEGAL_*` (ver `.env.example`). Footer enlaza en los tres idiomas. `/en/imprint` → redirect a `/en/impressum`.
+- **Datenschutz / Privacidad:** RGPD en `/de/datenschutz`, `/es/privacidad`, `/en/privacy-policy` (redirects legacy). Terceros reales: Vercel, Supabase, Anthropic, Google Places, Higgsfield (opc.), WhatsApp, Cal.com, email — **sin** Vercel Analytics ni Meta Pixel. Cookie `sv_locale` (+ Auth en admin/portal). Ancla `#cookies`.
+- **Cookie consent:** banner opt-in en chrome del portafolio (Aceptar todo / Rechazar no esenciales / Personalizar); preferencia en `sv_consent`; `ConsentScriptGate` para futuros scripts. Sin Analytics/Pixel instalados aún.
+- **AGB / Términos:** públicas en `/de/agb`, `/es/terminos`, `/en/terms` — proceso, depósito 30–50%, plazos orientativos, 2 rondas en web real, garantía “ves el diseño antes de pagar”; enlaces en footer y `/servicios`. No sustituyen AGB de abogado.
 
 ---
 

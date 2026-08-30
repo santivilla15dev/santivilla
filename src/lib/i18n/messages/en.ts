@@ -114,11 +114,28 @@ export const enMessages: SiteMessages = {
   footer: {
     navLabel: "Navigation",
     legalLabel: "Legal",
-    impressum: "Imprint",
-    datenschutz: "Privacy",
+    impressum: "Impressum",
+    datenschutz: "Privacy policy",
+    agb: "Terms",
     copyright:
       "Demos are concepts — not official websites of the businesses shown.",
     tagline: "Modern websites — clear on every device",
+  },
+  consent: {
+    title: "Cookies & privacy",
+    body: "We use necessary cookies for language and — only if you opt in — optional analytics or marketing cookies. In v1 we load no tracking scripts until you enable those categories.",
+    acceptAll: "Accept all",
+    rejectNonEssential: "Reject non-essential",
+    customize: "Customize",
+    save: "Save preferences",
+    necessaryLabel: "Necessary",
+    necessaryHint: "Language (sv_locale), site security, and Auth on admin/portal. Always on.",
+    analyticsLabel: "Analytics",
+    analyticsHint: "Usage measurement. No analytics script in v1 until we enable it and you consent.",
+    marketingLabel: "Marketing",
+    marketingHint: "Pixels or ads. None in v1 until we enable them and you consent.",
+    privacyLink: "Cookie policy →",
+    closeCustomize: "Back",
   },
   cta: {
     whatsapp: "WhatsApp",
@@ -226,6 +243,85 @@ export const enMessages: SiteMessages = {
     workBody:
       "Vienna cases first. Then niche templates. Demos are concepts, not official sites.",
     workLink: "View all →",
+    faqEyebrow: "FAQ",
+    faqTitle: "Frequently asked questions",
+    faqItems: [
+      {
+        id: "timeline",
+        question: "How long until my site is ready?",
+        answer:
+          "After deposit and a closed brief: landing ~1–2 weeks; business site ~2–4 weeks; shopping-center class projects ~4–8+ weeks. Timelines depend on timely feedback and content from you.",
+      },
+      {
+        id: "design",
+        question: "What if I don’t like the design?",
+        answer:
+          "We refine the free Konzept via WhatsApp until you say yes — you see the design before paying a euro for the real site. The paid build includes 2 revision rounds before the remaining balance.",
+      },
+      {
+        id: "assets",
+        question: "What do I need to give you to start?",
+        answer:
+          "Copy (or drafts), photos of the venue/products, logo if you have one (otherwise placeholders), opening hours, WhatsApp or booking link, and a short brief on what to highlight. That starts the Konzept.",
+      },
+      {
+        id: "deposit",
+        question: "How does the deposit work?",
+        answer:
+          "You reserve the date with a 30–50% deposit of the agreed price (SEPA transfer / Austrian invoice). The rest is due on code handover or go-live. The deposit is non-refundable if you cancel after booking; you won’t be charged the balance if the project isn’t delivered.",
+      },
+      {
+        id: "hosting",
+        question: "Does it include maintenance or hosting?",
+        answer:
+          "Site packages include domain + Vercel hosting setup. Monthly maintenance (€50–150) is optional: content updates, basic monitoring, and WhatsApp support.",
+      },
+      {
+        id: "location",
+        question: "Do you work outside Vienna?",
+        answer:
+          "Yes. Focus is Vienna/Austria, but remote work with businesses outside Vienna (and outside AT) is fine.",
+      },
+    ],
+    resultsEyebrow: "Results",
+    resultsTitle: "Before / after in numbers",
+    resultsLead:
+      "One clear metric per project. The first is a measured public Konzept; the other two are placeholders until real clients grant permission.",
+    resultsPlaceholderBadge: "Placeholder — TODO",
+    resultsBeforeLabel: "Before",
+    resultsAfterLabel: "After",
+    resultsItems: [
+      {
+        id: "stadtgalerie-konzept",
+        name: "Shopping center · Konzept",
+        sector: "Public Konzept",
+        metricLabel: "Lighthouse Performance (mobile)",
+        quote: null,
+        isPlaceholder: false,
+      },
+      {
+        // TODO: replace with real local café / business when permitted
+        id: "todo-local-cafe",
+        name: "Local café (generic)",
+        sector: "Placeholder",
+        metricLabel: "Mobile LCP",
+        before: "4.2 s",
+        after: "0.9 s",
+        quote: null,
+        isPlaceholder: true,
+      },
+      {
+        // TODO: replace with real salon / service business when permitted
+        id: "todo-salon",
+        name: "Salon / service (generic)",
+        sector: "Placeholder",
+        metricLabel: "Mobile visits",
+        before: "~48%",
+        after: "~71%",
+        quote: null,
+        isPlaceholder: true,
+      },
+    ],
   },
   services: {
     title: "Services",
@@ -237,6 +333,7 @@ export const enMessages: SiteMessages = {
       "Pitch demo — like Stadtgalerie, to show the owner a vision.",
       "Domain + hosting — Vercel setup included in site packages.",
     ],
+    agbLink: "Process, deposit & guarantee (see the design before you pay) → Terms",
     whatsappMessage: "Hi Santi, I'd like to quote a website package.",
   },
   work: {

@@ -67,10 +67,15 @@ export function pageMetadata(
 
 export function legalMetadata(
   locale: Locale,
-  page: "impressum" | "datenschutz",
+  page: "impressum" | "datenschutz" | "agb",
 ): Metadata {
   const m = getMessages(locale);
-  const title = page === "impressum" ? m.footer.impressum : m.footer.datenschutz;
+  const title =
+    page === "impressum"
+      ? m.footer.impressum
+      : page === "datenschutz"
+        ? m.footer.datenschutz
+        : m.footer.agb;
 
   return {
     title,

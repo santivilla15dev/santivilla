@@ -2,23 +2,19 @@ import { LegalPageView } from "@/components/legal-page-view";
 import { getDatenschutz } from "@/lib/legal/impressum-content";
 import { legalMetadata } from "@/lib/i18n/metadata";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
-import { notFound, permanentRedirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const { locale: raw } = await params;
-  if (!isLocale(raw) || raw === "en") return {};
-  if (raw === "es") return {};
-  return legalMetadata("de", "datenschutz");
+  if (!isLocale(raw) || raw !== "en") return {};
+  return legalMetadata("en", "datenschutz");
 }
 
-/** DE canonical. ES legacy → /es/privacidad. */
-export default async function DatenschutzPage({ params }: Props) {
+export default async function PrivacyPolicyPage({ params }: Props) {
   const { locale: raw } = await params;
-  if (!isLocale(raw)) notFound();
-  if (raw === "en") notFound();
-  if (raw === "es") permanentRedirect("/es/privacidad");
+  if (raw !== "en") notFound();
   const locale = raw as Locale;
   return <LegalPageView content={getDatenschutz(locale)} />;
 }

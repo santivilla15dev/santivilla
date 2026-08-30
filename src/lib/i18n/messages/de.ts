@@ -116,9 +116,26 @@ export const deMessages: SiteMessages = {
     legalLabel: "Rechtliches",
     impressum: "Impressum",
     datenschutz: "Datenschutz",
+    agb: "AGB",
     copyright:
       "Demos sind Konzepte — keine offiziellen Websites der gezeigten Betriebe.",
     tagline: "Moderne Websites — klar auf jedem Gerät",
+  },
+  consent: {
+    title: "Cookies & Datenschutz",
+    body: "Wir nutzen notwendige Cookies für die Sprache und — nur mit Ihrer Zustimmung — optionale Analyse- oder Marketing-Cookies. In v1 laden wir keine Tracking-Skripte, bevor Sie diese Kategorien freigeben.",
+    acceptAll: "Alles akzeptieren",
+    rejectNonEssential: "Nur notwendige",
+    customize: "Einstellungen",
+    save: "Einstellungen speichern",
+    necessaryLabel: "Notwendig",
+    necessaryHint: "Sprache (sv_locale), Sicherheit und Auth für Admin/Portal. Immer aktiv.",
+    analyticsLabel: "Analyse",
+    analyticsHint: "Nutzungsstatistik. In v1 kein Analyse-Skript, bis wir es aktivieren und Sie zustimmen.",
+    marketingLabel: "Marketing",
+    marketingHint: "Pixel oder Werbung. In v1 keines, bis wir es aktivieren und Sie zustimmen.",
+    privacyLink: "Cookie-Hinweise lesen →",
+    closeCustomize: "Zurück",
   },
   cta: {
     whatsapp: "WhatsApp",
@@ -226,6 +243,85 @@ export const deMessages: SiteMessages = {
     workBody:
       "Zuerst Cases aus Wien. Dann Vorlagen nach Branche. Demos sind Konzepte, keine offiziellen Sites.",
     workLink: "Alle ansehen →",
+    faqEyebrow: "FAQ",
+    faqTitle: "Häufige Fragen",
+    faqItems: [
+      {
+        id: "timeline",
+        question: "Wie lange dauert meine Website?",
+        answer:
+          "Nach Anzahlung und geschlossenem Brief: Landing ca. 1–2 Wochen; Business-Site ca. 2–4 Wochen; Center-Projekte ca. 4–8+ Wochen. Fristen hängen von zeitnahem Feedback und Inhalten ab.",
+      },
+      {
+        id: "design",
+        question: "Was, wenn mir das Design nicht gefällt?",
+        answer:
+          "Zuerst feilen wir das Konzept per WhatsApp kostenlos bis zum Ja — du siehst das Design, bevor du einen Euro für die echte Site zahlst. Beim bezahlten Build sind 2 Korrekturrunden vor der Restzahlung inklusive.",
+      },
+      {
+        id: "assets",
+        question: "Was brauche ich von dir zum Start?",
+        answer:
+          "Texte (oder Entwürfe), Fotos von Lokal/Produkten, Logo falls vorhanden (sonst Platzhalter), Öffnungszeiten, WhatsApp- oder Buchungslink und einen kurzen Brief, was hervorgehoben werden soll. Damit startet das Konzept.",
+      },
+      {
+        id: "deposit",
+        question: "Wie funktioniert die Anzahlung?",
+        answer:
+          "Du reservierst den Termin mit 30–50% des vereinbarten Preises (SEPA-Überweisung / Rechnung AT). Der Rest bei Code-Übergabe oder Go-Live. Die Anzahlung ist bei Storno nach Reservierung nicht erstattungsfähig; der Rest wird nicht verlangt, wenn nicht geliefert wird.",
+      },
+      {
+        id: "hosting",
+        question: "Sind Wartung oder Hosting inklusive?",
+        answer:
+          "Site-Pakete enthalten Domain- + Vercel-Hosting-Setup. Monatliche Wartung (€50–150) ist optional: Content-Updates, Basis-Monitoring und WhatsApp-Support.",
+      },
+      {
+        id: "location",
+        question: "Arbeitest du auch außerhalb Wiens?",
+        answer:
+          "Ja. Fokus Wien/Österreich — remote aber problemlos auch außerhalb Wiens (und außerhalb AT).",
+      },
+    ],
+    resultsEyebrow: "Ergebnisse",
+    resultsTitle: "Vorher / nachher in Zahlen",
+    resultsLead:
+      "Eine klare Kennzahl pro Projekt. Das erste ist ein gemessenes öffentliches Konzept; die beiden anderen sind Platzhalter bis echte Kunden erlauben.",
+    resultsPlaceholderBadge: "Platzhalter — TODO",
+    resultsBeforeLabel: "Vorher",
+    resultsAfterLabel: "Nachher",
+    resultsItems: [
+      {
+        id: "stadtgalerie-konzept",
+        name: "Einkaufszentrum · Konzept",
+        sector: "Öffentliches Konzept",
+        metricLabel: "Lighthouse Performance (Mobile)",
+        quote: null,
+        isPlaceholder: false,
+      },
+      {
+        // TODO: replace with real local café / business when permitted
+        id: "todo-local-cafe",
+        name: "Lokales Café (generisch)",
+        sector: "Platzhalter",
+        metricLabel: "LCP Mobile",
+        before: "4,2 s",
+        after: "0,9 s",
+        quote: null,
+        isPlaceholder: true,
+      },
+      {
+        // TODO: replace with real salon / service business when permitted
+        id: "todo-salon",
+        name: "Salon / Service (generisch)",
+        sector: "Platzhalter",
+        metricLabel: "Mobile Besuche",
+        before: "~48 %",
+        after: "~71 %",
+        quote: null,
+        isPlaceholder: true,
+      },
+    ],
   },
   services: {
     title: "Leistungen",
@@ -237,6 +333,7 @@ export const deMessages: SiteMessages = {
       "Pitch-Demo — wie Stadtgalerie, um dem Inhaber eine Vorstellung zu zeigen.",
       "Domain + Hosting — Vercel-Setup in den Site-Paketen enthalten.",
     ],
+    agbLink: "Ablauf, Anzahlung und Garantie (Design sehen vor Zahlung) → AGB",
     whatsappMessage: "Hallo Santi, ich möchte ein Web-Paket anfragen.",
   },
   work: {

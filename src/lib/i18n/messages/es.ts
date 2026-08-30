@@ -115,10 +115,27 @@ export const esMessages: SiteMessages = {
     navLabel: "Navegación",
     legalLabel: "Legal",
     impressum: "Impressum",
-    datenschutz: "Datenschutz",
+    datenschutz: "Privacidad",
+    agb: "Términos",
     copyright:
       "Demos conceptuales no son sitios oficiales de los negocios mostrados.",
     tagline: "Webs modernas que se ven bien en cualquier dispositivo",
+  },
+  consent: {
+    title: "Cookies y privacidad",
+    body: "Usamos cookies necesarias para el idioma y, solo si las aceptas, cookies opcionales de analítica o marketing. En v1 no cargamos scripts de tracking hasta que optes por esas categorías.",
+    acceptAll: "Aceptar todo",
+    rejectNonEssential: "Rechazar no esenciales",
+    customize: "Personalizar",
+    save: "Guardar preferencias",
+    necessaryLabel: "Necesarias",
+    necessaryHint: "Idioma (sv_locale), seguridad del sitio y Auth en admin/portal. Siempre activas.",
+    analyticsLabel: "Analítica",
+    analyticsHint: "Medición de uso del sitio. Ningún script de analítica en v1 hasta que lo activemos y tú aceptes.",
+    marketingLabel: "Marketing",
+    marketingHint: "Píxeles o anuncios. Ninguno en v1 hasta que lo activemos y tú aceptes.",
+    privacyLink: "Ver política de cookies →",
+    closeCustomize: "Volver",
   },
   cta: {
     whatsapp: "WhatsApp",
@@ -226,6 +243,85 @@ export const esMessages: SiteMessages = {
     workBody:
       "Primero casos en Wien. Luego plantillas por rubro. Las demos son propuestas conceptuales, no sitios oficiales.",
     workLink: "Ver todos →",
+    faqEyebrow: "FAQ",
+    faqTitle: "Preguntas frecuentes",
+    faqItems: [
+      {
+        id: "timeline",
+        question: "¿Cuánto tarda en estar lista mi web?",
+        answer:
+          "Tras el depósito y un brief cerrado: landing ~1–2 semanas; sitio de negocio ~2–4 semanas; proyectos tipo centro comercial ~4–8+ semanas. Los plazos dependen de que me envíes feedback y contenidos a tiempo.",
+      },
+      {
+        id: "design",
+        question: "¿Qué pasa si no me gusta el diseño?",
+        answer:
+          "Primero afinamos el Konzept gratis por WhatsApp hasta que digas sí — ves el diseño antes de pagar un euro por la web real. En el build de pago van incluidas 2 rondas de revisión antes del saldo.",
+      },
+      {
+        id: "assets",
+        question: "¿Qué necesito darte para empezar?",
+        answer:
+          "Textos (o borradores), fotos del local/productos, logo si lo tienes (si no, usamos placeholders), horarios, enlace de WhatsApp o reserva, y un brief corto de lo que quieres destacar. Con eso arranca el Konzept.",
+      },
+      {
+        id: "deposit",
+        question: "¿Cómo funciona el pago del depósito?",
+        answer:
+          "Reservas la fecha con un depósito del 30–50% del precio acordado (transferencia SEPA / factura en Austria). El resto se factura a la entrega del código o al go-live. El depósito no se reembolsa si cancelas después de reservar; el saldo no se cobra si no entrego.",
+      },
+      {
+        id: "hosting",
+        question: "¿Incluye mantenimiento o hosting?",
+        answer:
+          "Los paquetes de sitio incluyen el setup de dominio + hosting en Vercel. El mantenimiento mensual (€50–150) es opcional: cambios de contenido, monitoreo básico y soporte por WhatsApp.",
+      },
+      {
+        id: "location",
+        question: "¿Trabajas fuera de Viena?",
+        answer:
+          "Sí. El foco es Wien y Austria, pero trabajo remoto con negocios fuera de Viena (y fuera de AT) sin problema.",
+      },
+    ],
+    resultsEyebrow: "Resultados",
+    resultsTitle: "Antes / después en números",
+    resultsLead:
+      "Una métrica clara por proyecto. El primero es un Konzept público medido; los otros dos son placeholders hasta tener permiso de clientes reales.",
+    resultsPlaceholderBadge: "Placeholder — TODO",
+    resultsBeforeLabel: "Antes",
+    resultsAfterLabel: "Después",
+    resultsItems: [
+      {
+        id: "stadtgalerie-konzept",
+        name: "Centro comercial · Konzept",
+        sector: "Konzept público",
+        metricLabel: "Lighthouse Performance (móvil)",
+        quote: null,
+        isPlaceholder: false,
+      },
+      {
+        // TODO: replace with real local café / business when permitted
+        id: "todo-local-cafe",
+        name: "Café local (genérico)",
+        sector: "Placeholder",
+        metricLabel: "LCP móvil",
+        before: "4,2 s",
+        after: "0,9 s",
+        quote: null,
+        isPlaceholder: true,
+      },
+      {
+        // TODO: replace with real salon / service business when permitted
+        id: "todo-salon",
+        name: "Salón / servicio (genérico)",
+        sector: "Placeholder",
+        metricLabel: "Visitas desde móvil",
+        before: "~48 %",
+        after: "~71 %",
+        quote: null,
+        isPlaceholder: true,
+      },
+    ],
   },
   services: {
     title: "Servicios",
@@ -237,6 +333,7 @@ export const esMessages: SiteMessages = {
       "Demo de pitch — te preparo una vista previa conceptual (como Stadtgalerie) para enseñar al dueño.",
       "Dominio + hosting — setup en Vercel incluido en los paquetes de sitio.",
     ],
+    agbLink: "Proceso, depósito y garantía (ves el diseño antes de pagar) → Términos",
     whatsappMessage: "Hola Santi, quiero cotizar un paquete de web.",
   },
   work: {

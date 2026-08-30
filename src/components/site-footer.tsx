@@ -60,6 +60,11 @@ export function SiteFooter({ locale, messages }: Props) {
               </Link>
             </li>
             <li>
+              <Link href={legalPath(locale, "agb")} className="hover:text-surface">
+                {f.agb}
+              </Link>
+            </li>
+            <li>
               <a href={`mailto:${site.email}`} className="hover:text-surface">
                 {site.email}
               </a>

@@ -2,7 +2,7 @@ import { CtaButtons } from "@/components/cta-buttons";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { pageMetadata } from "@/lib/i18n/metadata";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
-import { briefAgentPath } from "@/lib/i18n/paths";
+import { briefAgentPath, legalPath } from "@/lib/i18n/paths";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -59,6 +59,15 @@ export default async function ServiciosPage({ params }: Props) {
           </article>
         ))}
       </div>
+
+      <p className="mt-8 max-w-2xl text-sm text-muted">
+        <Link
+          href={legalPath(locale, "agb")}
+          className="font-medium text-accent underline-offset-4 hover:underline"
+        >
+          {s.agbLink}
+        </Link>
+      </p>
 
       <section className="mt-16 max-w-3xl">
         <h2 className="font-display text-3xl text-ink">{s.alsoTitle}</h2>
