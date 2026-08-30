@@ -24,7 +24,7 @@ Copia este archivo completo y pégaselo a Gemini. Al final tienes un prompt list
 **Un solo producto público: websites** para negocios locales.
 
 - Nav del portafolio: solo **Trabajos · Servicios · Contacto** (sin “Mobile Erst”, “Brief”, bots, etc. en el chrome).
-- Hero: marca + **promesa afilada** (segundos / quedarse) + Wien/rubros · subtexto *Klar. Schnell. Mobile zuerst.* debajo del lead · **CTA primario** = Mobile Erst / URL (`/auditoria`, botón sólido + pulse) · **CTA secundario** = WhatsApp (borde/discreto, sin pulse). Demo Lugner **no** en el hero: solo en el bloque de 4 pasos. Sin “Agendar” en el hero.
+- Hero: marca + **promesa afilada** (segundos / quedarse) + Wien/rubros · subtexto *Klar. Schnell. Mobile zuerst.* debajo del lead · **CTA primario** = Mobile Erst / URL (`/auditoria`, botón sólido + pulse) · **CTA secundario** = WhatsApp (borde/discreto, sin pulse). Visual del hero = **mockup móvil** con `/demos/lugner-hero.jpg` (asset propio), no stock Unsplash. Botón “Ver demo” solo en el bloque de 4 pasos. Sin “Agendar” en el hero.
 - Brief Agent no va en el nav: vive en **Kontakt** como alternativa (“¿preferís escribir un brief…?”) y en Servicios; en home, “Qué incluye” es solo título + descripción (sin links a tools).
 - Herramientas IA (auditoría responsive, Design Agent, Brief→landing, carta digital, Micro-Bot WhatsApp, copy local, Maps→Konzept) son **features / cómo demuestras valor** dentro del servicio — no líneas de producto competidoras en la primera impresión.
 - Un dueño que entra debe entender en segundos: *vendes webs*; el lead magnet fuerte es **probar con su URL**; WhatsApp queda a un clic. No elegir entre “auditoría vs bot vs brief” en el hero.

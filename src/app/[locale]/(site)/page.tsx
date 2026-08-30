@@ -12,8 +12,7 @@ import { notFound } from "next/navigation";
 
 export const revalidate = 3600;
 
-const HERO_PHOTO =
-  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80";
+const HERO_PHOTO = "/demos/lugner-hero.jpg";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -70,27 +69,31 @@ export default async function HomePage({ params }: Props) {
             </div>
           </div>
 
-          <div className="animate-rise-delay-1 relative mx-auto w-full max-w-md">
+          <div className="animate-rise-delay-1 relative mx-auto w-full max-w-[280px] sm:max-w-[300px]">
             <div
               className="absolute -inset-10 rounded-full bg-accent/10 blur-3xl"
               aria-hidden
             />
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-ink/10 bg-ink shadow-[var(--shadow)]">
-              <div className="relative aspect-[4/5] w-full">
+            <div className="relative rounded-[2rem] border-[10px] border-ink bg-ink p-1 shadow-[var(--shadow)]">
+              <div
+                className="mx-auto mb-2 h-1.5 w-16 rounded-full bg-ink/80 ring-1 ring-white/10"
+                aria-hidden
+              />
+              <div className="relative aspect-[9/16] w-full overflow-hidden rounded-[1.35rem] bg-ink">
                 <Image
                   src={HERO_PHOTO}
-                  alt=""
+                  alt={c.heroCardAlt}
                   fill
                   priority
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 90vw, 420px"
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 280px, 300px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6 text-surface">
-                  <p className="text-xs uppercase tracking-[0.18em] text-surface/55">
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 text-surface sm:p-6">
+                  <p className="text-[10px] uppercase tracking-[0.18em] text-surface/55 sm:text-xs">
                     {c.heroCardEyebrow}
                   </p>
-                  <p className="font-display mt-2 text-2xl leading-tight sm:text-3xl">
+                  <p className="font-display mt-2 text-xl leading-tight sm:text-2xl">
                     {c.heroCardTitle}
                   </p>
                 </div>

@@ -124,8 +124,9 @@ export const enMessages: SiteMessages = {
     heroLead:
       "Guests decide in seconds whether to stay. I build websites that win those seconds — for restaurants, shops and centers in Vienna.",
     heroSub: "Clear. Fast. Mobile first.",
-    heroCardEyebrow: "How your site should feel",
-    heroCardTitle: "Clear. Fast. Mobile first.",
+    heroCardEyebrow: "Concept · Vienna 15",
+    heroCardTitle: "Lugner City on mobile",
+    heroCardAlt: "Lugner City demo on a phone",
     heroAuditCta: "Try with your URL",
     introEyebrow: "What it's about",
     introTitle: "A website guests understand in seconds",

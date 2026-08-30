@@ -46,6 +46,7 @@ export type SiteMessages = {
     heroSub: string;
     heroCardEyebrow: string;
     heroCardTitle: string;
+    heroCardAlt: string;
     heroAuditCta: string;
     introEyebrow: string;
     introTitle: string;

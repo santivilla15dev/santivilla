@@ -124,8 +124,9 @@ export const deMessages: SiteMessages = {
     heroLead:
       "Deine Gäste entscheiden in Sekunden, ob sie bleiben. Ich baue Websites, die diese Sekunden gewinnen — für Restaurants, Shops und Center in Wien.",
     heroSub: "Klar. Schnell. Mobile zuerst.",
-    heroCardEyebrow: "So sollte sich deine Website anfühlen",
-    heroCardTitle: "Klar. Schnell. Mobile zuerst.",
+    heroCardEyebrow: "Konzept · Wien 15",
+    heroCardTitle: "Lugner City am Handy",
+    heroCardAlt: "Lugner City Demo auf dem Handy",
     heroAuditCta: "Mit deiner URL testen",
     introEyebrow: "Worum es geht",
     introTitle: "Eine Website, die Gäste in Sekunden verstehen",
