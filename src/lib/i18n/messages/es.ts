@@ -43,17 +43,17 @@ const packages: SiteMessages["packages"] = [
 
 const projects: SiteMessages["projects"] = [
   {
-    slug: "lugner",
-    title: "Lugner City — Redesign Konzept",
+    slug: "stadtgalerie",
+    title: "Stadtgalerie West — Konzept centro",
     type: "Centro comercial",
-    href: "/demos/lugner",
+    href: "/demos/stadtgalerie",
     group: "vienna",
     blurb:
-      "Propuesta mobile-first del sitio de Lugner City (Wien). Concepto, no sitio oficial.",
+      "Plantilla mobile-first de centro comercial en Wien. Concepto ficticio, no un sitio oficial.",
     beforeNote:
-      "El sitio actual (lugner.at) viene de Typo3 clásico: difícil de usar en el móvil.",
+      "Muchos centros aún viven en Typo3 antiguo: zoom en móvil, info clave enterrada.",
     afterNote:
-      "Nueva home con horarios, shops, anfahrt y contacto en un solo flujo táctil.",
+      "Home clara: horarios, shops, anfahrt y contacto en un solo flujo táctil.",
   },
   {
     slug: "restaurant",
@@ -95,7 +95,7 @@ const projects: SiteMessages["projects"] = [
 
 export const esMessages: SiteMessages = {
   meta: {
-    title: "Santi Villa — Webs para negocios locales",
+    title: "Santi Villa — Webs para negocios locales en Wien",
     description:
       "Webs modernas y responsive (móvil, tablet, desktop) para restaurantes, locales y centros comerciales. Wien / Remote.",
     ogLocale: "es_ES",
@@ -124,10 +124,16 @@ export const esMessages: SiteMessages = {
     heroLead:
       "Tus clientes deciden en segundos si se quedan. Yo construyo webs que ganan esos segundos — para restaurantes, locales y centros en Wien.",
     heroSub: "Clara. Rápida. Mobile primero.",
+    heroH1: "Webs para negocios locales en Wien",
+    heroCost:
+      "En móvil, el 53% de las visitas se abandona si la página tarda más de 3 s (Google, Need for Mobile Speed, 2016). Una web lenta no “se ve fea”: pierde clientes antes de que te lean.",
     heroCardEyebrow: "Konzept · Wien 15",
-    heroCardTitle: "Lugner City en el móvil",
-    heroCardAlt: "Demo Lugner City en móvil",
-    heroAuditCta: "Probar con tu URL",
+    heroCardTitle: "Stadtgalerie West en el móvil",
+    heroCardAlt: "Demo Stadtgalerie West en móvil",
+    heroAuditCta: "Probar gratis con tu URL",
+    heroFreeNote:
+      "Auditoría y Konzept inicial sin costo y sin compromiso. Solo cotizas cuando quieras la web real.",
+    heroGuarantee: "Ves el diseño antes de pagar un euro.",
     introEyebrow: "De qué se trata",
     introTitle: "Una web que tus clientes entienden en segundos",
     introBody:
@@ -143,8 +149,8 @@ export const esMessages: SiteMessages = {
         body: "WhatsApp, llamada o reserva visibles. Menos fricción = más clientes que te escriben.",
       },
       {
-        title: "Ves el concepto antes de decidir",
-        body: "Te muestro un redesign de ejemplo (Konzept). Si te gusta, lo convertimos en web real.",
+        title: "Ves el diseño antes de pagar",
+        body: "Te muestro un redesign (Konzept) sin costo. Ves cómo quedaría antes de pagar un euro por la web real.",
       },
       {
         title: "Precios y alcance claros",
@@ -152,50 +158,50 @@ export const esMessages: SiteMessages = {
       },
     ],
     clientDesignEyebrow: "Cómo trabajamos",
-    clientDesignTitle: "Así trabajamos el diseño juntos",
+    clientDesignTitle: "Ves el diseño antes de pagar",
     clientDesignBody:
-      "Primero creo un Konzept: una propuesta visual de cómo podría verse tu negocio online. No es el sitio oficial — es una demo honesta para que veas el salto. Puedes pedir cambios (menú, horarios, idioma) y, cuando encaje, lanzo la web real con dominio, hosting y WhatsApp listo.",
+      "Ves el diseño antes de pagar un euro: primero un Konzept gratis — propuesta visual de cómo podría verse tu negocio online. No es el sitio oficial; es una demo honesta, sin costo y sin compromiso. Puedes pedir cambios (menú, horarios, idioma) y, cuando encaje, lanzo la web real con dominio, hosting y WhatsApp listo.",
     clientDesignSteps: [
-      "Audit o demo: URL de tu web o una plantilla cercana a tu rubro.",
-      "Konzept: diseño responsive con tu info (o datos que me pases).",
+      "Audit o demo (gratis): URL de tu web o una plantilla cercana a tu rubro.",
+      "Konzept (gratis): diseño responsive con tu info (o datos que me pases).",
       "Feedback: WhatsApp — afinamos hasta que digas sí.",
-      "Web real: publicamos, conectamos dominio y dejas de depender de sitios antiguos.",
+      "Web real (presupuesto cerrado): publicamos, conectamos dominio y dejas de depender de sitios antiguos.",
     ],
-    clientDesignCtaDemo: "Ver demo Lugner",
+    clientDesignCtaDemo: "Ver demo Stadtgalerie",
     proofEyebrow: "Caso medido · Wien",
-    proofTitle: "Lugner City — móvil antes / después",
+    proofTitle: "Centro comercial — móvil antes / después",
     proofBody:
-      "Mismo negocio, dos webs en el teléfono: el sitio actual frente al Konzept. Cifras de Google PageSpeed Insights (móvil). No es el sitio oficial — es evidencia del salto.",
-    proofCtaDemo: "Ver demo Lugner",
+      "Typo3 típico de un Zentrum frente al Konzept Stadtgalerie West. Cifras de Google PageSpeed Insights (móvil). Demo pública ficticia — no un sitio oficial.",
+    proofCtaDemo: "Ver demo Stadtgalerie",
     proofCtaWork: "Ver trabajos →",
-    includesEyebrow: "Tu web",
-    includesTitle: "Qué incluye tu web",
+    includesEyebrow: "Un solo servicio",
+    includesTitle: "Así construimos tu web",
     includesLead:
-      "No son productos aparte: son piezas del mismo servicio — disponibles cuando tu negocio las necesita.",
+      "Paso a paso, dentro del mismo proyecto. Estas piezas entran cuando tu negocio las necesita — no son productos aparte.",
     includes: [
       {
-        title: "Auditoría responsive",
-        body: "Score 0–100 y concepto automático a partir de tu URL — para ver el antes/después.",
+        title: "Empezamos con tu URL",
+        body: "Score 0–100 y concepto automático a partir de tu web — para ver el salto antes/después.",
         tool: "audit",
       },
       {
-        title: "Carta digital",
-        body: "Foto de la carta → platos y precios en preview móvil, listo para la web.",
+        title: "Pasamos la carta a la web",
+        body: "Foto de la carta → platos y precios en preview móvil, listos para el sitio.",
         tool: "menu",
       },
       {
-        title: "Ayuda por WhatsApp",
-        body: "Respuestas rápidas a sitio, horarios y aparcar; reservas al chat real.",
+        title: "Contacto a un toque",
+        body: "Respuestas rápidas a sitio, horarios y aparcar; reservas al chat real de WhatsApp.",
         tool: "microbot",
       },
       {
-        title: "Copy local",
-        body: "Textos adaptados al público (no traducción literal) en DE/EN/ES.",
+        title: "Textos que suenan locales",
+        body: "Copy adaptado al público (no traducción literal) en DE/EN/ES.",
         tool: "copy",
       },
       {
-        title: "Brief → landing",
-        body: "Describes el negocio en unas líneas y ves un borrador de landing.",
+        title: "Si prefieres escribir",
+        body: "Un brief corto se convierte en borrador de landing — mismo proyecto, otro punto de partida.",
         tool: "brief",
       },
     ],
@@ -216,30 +222,32 @@ export const esMessages: SiteMessages = {
     alsoTitle: "Incluido o disponible en tu proyecto",
     alsoItems: [
       "Centro comercial / multi-tienda — desde ~€3.000–8.000+ según shops, idiomas y CMS.",
-      "Demo de pitch — te preparo una vista previa conceptual (como Lugner) para enseñar al dueño.",
+      "Demo de pitch — te preparo una vista previa conceptual (como Stadtgalerie) para enseñar al dueño.",
       "Dominio + hosting — setup en Vercel incluido en los paquetes de sitio.",
     ],
     whatsappMessage: "Hola Santi, quiero cotizar un paquete de web.",
   },
   work: {
     title: "Trabajos",
-    lead: "Primero el caso Wien (Lugner). Después, plantillas por rubro que puedes adaptar.",
-    lugnerEyebrow: "Caso de venta · Wien",
-    lugnerTitle: "Lugner City: antes vs después",
+    lead: "Primero el caso Wien (centro comercial). Después, plantillas por rubro que puedes adaptar.",
+    lugnerEyebrow: "Plantilla · Wien",
+    lugnerTitle: "Stadtgalerie West: antes vs después",
     lugnerBody:
-      "El sitio actual (lugner.at) viene de Typo3 antiguo: en el móvil hay que hacer zoom y la info clave pelea por espacio. La demo es mobile-first — Konzept, no sitio oficial.",
+      "Muchos centros comerciales aún pelean con Typo3 en el móvil. La demo pública es un Konzept ficticio mobile-first — no un sitio oficial de ningún centro real.",
     before: "Antes",
     after: "Después · Demo",
     beforeNote: "Layout denso · tipografía pequeña · difícil en móvil.",
     afterNote: "Home clara: horarios, shops, anfahrt y contacto en un solo flujo.",
+    beforeHost: "Typo3 · Zentrum",
+    caseBrand: "Stadtgalerie West",
     viewCurrent: "Ver sitio actual →",
     openDemo: "Abrir demo →",
-    openDemoCta: "Abrir demo Lugner",
+    openDemoCta: "Abrir demo Stadtgalerie",
     konzeptNote:
-      "Konzept / Redesign-Vorschlag — keine offizielle Website von Lugner City.",
+      "Konzept ficticio — no es el sitio oficial de ningún centro comercial.",
     viennaTitle: "Wien",
     viennaLead:
-      "Caso de pitch local: Lugner City — lead caliente en Viena.",
+      "Plantilla pública de centro comercial en Viena (Stadtgalerie West).",
     templatesTitle: "Plantillas por rubro",
     templatesLead:
       "Estructuras reutilizables: gastro, pizzería, moda y deportes.",
@@ -250,16 +258,16 @@ export const esMessages: SiteMessages = {
       "Orientativos en euros (Austria / EU). El depósito (30–50%) reserva la fecha; la entrega del código es al pagar.",
     centerNote: "Centro comercial (multi-sección + shops): desde ~€3.000 según alcance.",
     whatsappMessage:
-      "Hola Santi, vi tus trabajos (Lugner / restaurante) y quiero hablar de un proyecto.",
+      "Hola Santi, vi tus trabajos (Stadtgalerie / restaurante) y quiero hablar de un proyecto.",
     metricsTitle: "Cifras · Lighthouse mobile",
     metricsSource: "Google PageSpeed Insights API",
-    metricsBefore: "Antes (lugner.at)",
+    metricsBefore: "Antes (Typo3 · Zentrum)",
     metricsAfter: "Después (demo)",
     metricsPerformance: "Performance",
     metricsLcp: "LCP",
     metricsFcp: "FCP",
     metricsUxNote:
-      "WhatsApp 1 tap en hero vs. sin enlace en lugner.at — hecho UX, no promesa de analytics.",
+      "WhatsApp 1 tap en hero vs. sitios Typo3 sin enlace claro — hecho UX, no promesa de analytics.",
   },
   contact: {
     title: "Contacto",
@@ -285,7 +293,7 @@ export const esMessages: SiteMessages = {
     pitchQuote:
       "“Hola, soy Santi — rediseñé cómo se vería tu sitio en el móvil. ¿Tenemos 15 min?”",
     pitchBody:
-      "Usa ese mensaje con el link de /demos/lugner o tu demo personalizada. Transparencia: es un concepto, no el sitio oficial.",
+      "Usa ese mensaje con el link de /demos/stadtgalerie o tu demo personalizada. Transparencia: es un concepto, no el sitio oficial.",
     mailSubject: "Consulta web — santivilla.com",
     mailBody: "Hola Santi,\n\nMe gustaría hablar de una web para...\n",
     whatsappMessage:
@@ -295,7 +303,7 @@ export const esMessages: SiteMessages = {
     eyebrow: "Mobile Erst · Santi Design Agent",
     title: "Audit al instante.",
     titleBreak: "Concepto automático.",
-    lead: "1) Pegas la URL → score en móvil, tablet y desktop. 2) Generas un concepto HTML responsive con el agente. 3) Si te gusta, WhatsApp y lo convertimos en web real.",
+    lead: "Gratis y sin compromiso: 1) Pegas la URL → score en móvil, tablet y desktop. 2) Generas un concepto HTML responsive con el agente. 3) Si te gusta, WhatsApp y cotizamos la web real.",
     steps: ["01 Audit", "02 Concepto IA", "03 WhatsApp / deal"],
     uxScoreLabel: "UX Score",
     lighthouseLabel: "Lighthouse mobile",
@@ -515,7 +523,7 @@ export const esMessages: SiteMessages = {
   packages,
   projects,
   projectsForHome: projects.map((p) => {
-    if (p.slug === "lugner") {
+    if (p.slug === "stadtgalerie") {
       return {
         ...p,
         blurb:

@@ -1,5 +1,6 @@
 export type DemoThemeId =
   | "lugner"
+  | "stadtgalerie"
   | "gasthaus"
   | "villa-italia"
   | "solo-modas"
@@ -18,6 +19,15 @@ export type DemoTheme = {
 export const demoThemes: Record<DemoThemeId, DemoTheme> = {
   lugner: {
     id: "lugner",
+    nav: [
+      { href: "#zeiten", label: "Zeiten" },
+      { href: "#shops", label: "Shops" },
+      { href: "#anfahrt", label: "Anfahrt" },
+      { href: "#kontakt", label: "Kontakt" },
+    ],
+  },
+  stadtgalerie: {
+    id: "stadtgalerie",
     nav: [
       { href: "#zeiten", label: "Zeiten" },
       { href: "#shops", label: "Shops" },

@@ -105,7 +105,8 @@
   transform: translateY(-0.35em);
 }
 
-[data-demo="lugner"] {
+[data-demo="lugner"],
+[data-demo="stadtgalerie"] {
   --demo-bg: #0b1016;
   --demo-ink: #e8e4dc;
   --demo-accent: #d4b45a;

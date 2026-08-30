@@ -44,10 +44,14 @@ export type SiteMessages = {
   home: {
     heroLead: string;
     heroSub: string;
+    heroH1: string;
+    heroCost: string;
     heroCardEyebrow: string;
     heroCardTitle: string;
     heroCardAlt: string;
     heroAuditCta: string;
+    heroFreeNote: string;
+    heroGuarantee: string;
     introEyebrow: string;
     introTitle: string;
     introBody: string;
@@ -97,6 +101,8 @@ export type SiteMessages = {
     after: string;
     beforeNote: string;
     afterNote: string;
+    beforeHost: string;
+    caseBrand: string;
     viewCurrent: string;
     openDemo: string;
     openDemoCta: string;

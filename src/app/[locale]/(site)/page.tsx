@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CtaButtons } from "@/components/cta-buttons";
 import { DemoMetricsStrip } from "@/components/demo-metrics-strip";
-import { lugnerBenchmark } from "@/lib/demos/benchmarks";
+import { stadtgalerieBenchmark } from "@/lib/demos/benchmarks";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { pageMetadata } from "@/lib/i18n/metadata";
 import { localizedPath } from "@/lib/i18n/paths";
@@ -42,11 +42,19 @@ export default async function HomePage({ params }: Props) {
             <p className="animate-fade text-sm font-medium uppercase tracking-[0.22em] text-accent">
               {site.location}
             </p>
-            <h1 className="animate-rise font-display mt-4 text-[clamp(3.4rem,10vw,6.5rem)] leading-[0.92] text-ink">
-              {site.name}
+            <h1 className="animate-rise font-display mt-4 text-ink">
+              <span className="block text-[clamp(3.4rem,10vw,6.5rem)] leading-[0.92]">
+                {site.name}
+              </span>
+              <span className="mt-4 block max-w-xl text-[clamp(1.35rem,3.5vw,1.85rem)] font-medium leading-snug tracking-normal text-ink/90">
+                {c.heroH1}
+              </span>
             </h1>
             <p className="animate-rise-delay-1 mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
               {c.heroLead}
+            </p>
+            <p className="animate-rise-delay-1 mt-4 max-w-xl text-sm leading-relaxed text-muted">
+              {c.heroCost}
             </p>
             <p className="animate-rise-delay-1 mt-3 text-base font-medium tracking-wide text-ink sm:text-lg">
               {c.heroSub}
@@ -67,6 +75,12 @@ export default async function HomePage({ params }: Props) {
                 {cta.whatsapp}
               </a>
             </div>
+            <p className="animate-rise-delay-2 mt-3 max-w-xl text-sm text-muted">
+              {c.heroFreeNote}
+            </p>
+            <p className="animate-rise-delay-2 mt-2 max-w-xl text-sm font-medium text-ink">
+              {c.heroGuarantee}
+            </p>
           </div>
 
           <div className="animate-rise-delay-1 relative mx-auto w-full max-w-[280px] sm:max-w-[300px]">
@@ -117,7 +131,7 @@ export default async function HomePage({ params }: Props) {
             </p>
             <div className="mt-8">
               <Link
-                href="/demos/lugner"
+                href="/demos/stadtgalerie"
                 className="inline-flex rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
               >
                 {c.clientDesignCtaDemo}
@@ -146,10 +160,10 @@ export default async function HomePage({ params }: Props) {
             {c.proofTitle}
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted">{c.proofBody}</p>
-          <DemoMetricsStrip benchmark={lugnerBenchmark} labels={w} />
+          <DemoMetricsStrip benchmark={stadtgalerieBenchmark} labels={w} />
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link
-              href="/demos/lugner"
+              href="/demos/stadtgalerie"
               className="inline-flex rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
             >
               {c.proofCtaDemo}
@@ -212,13 +226,16 @@ export default async function HomePage({ params }: Props) {
           <p className="mt-4 max-w-2xl text-lg text-surface/70">
             {c.includesLead}
           </p>
-          <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {c.includes.map((item) => (
+          <ol className="mt-12 max-w-2xl space-y-8">
+            {c.includes.map((item, i) => (
               <li
                 key={item.tool}
                 className="border-t border-white/15 pt-6"
               >
-                <h3 className="font-display text-xl text-surface">
+                <p className="font-display text-sm text-[#c9a227]">
+                  0{i + 1}
+                </p>
+                <h3 className="font-display mt-2 text-2xl text-surface">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-surface/65">
@@ -226,7 +243,7 @@ export default async function HomePage({ params }: Props) {
                 </p>
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
       </section>
 

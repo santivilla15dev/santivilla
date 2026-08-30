@@ -14,29 +14,42 @@ type MetricsLabels = {
 
 function formatDate(iso: string): string {
   try {
-    return new Date(iso).toLocaleDateString("de-AT", { year: "numeric", month: "short", day: "numeric" });
+    return new Date(iso).toLocaleDateString("de-AT", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
   } catch {
     return iso;
   }
 }
 
-export function DemoMetricsStrip({ benchmark, labels, compact = false }: {
+export function DemoMetricsStrip({
+  benchmark,
+  labels,
+  compact = false,
+}: {
   benchmark: DemoBenchmark;
   labels: MetricsLabels;
   compact?: boolean;
 }) {
-  const { before, after, measuredAt, source } = benchmark;
+  const { before, after, measuredAt, source, beforeHostLabel } = benchmark;
   if (compact) {
     return (
       <p className="text-[11px] leading-relaxed text-[#e8e4dc]/70">
-        Demo LCP {formatMs(after.lcpMs)} · lugner.at LCP {formatMs(before.lcpMs)} · PSI mobile · {formatDate(measuredAt)}
+        Demo LCP {formatMs(after.lcpMs)} · {beforeHostLabel} LCP{" "}
+        {formatMs(before.lcpMs)} · PSI mobile · {formatDate(measuredAt)}
       </p>
     );
   }
   return (
     <section className="mt-10 rounded-[var(--radius)] border border-line bg-surface/80 p-6 shadow-[var(--shadow)]">
-      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-accent">{labels.metricsTitle}</p>
-      <p className="mt-1 text-xs text-muted">{source} · {formatDate(measuredAt)}</p>
+      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-accent">
+        {labels.metricsTitle}
+      </p>
+      <p className="mt-1 text-xs text-muted">
+        {source} · {formatDate(measuredAt)}
+      </p>
       <div className="mt-6 overflow-x-auto">
         <table className="w-full min-w-[320px] text-left text-sm">
           <thead>

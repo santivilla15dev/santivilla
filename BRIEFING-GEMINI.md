@@ -24,12 +24,12 @@ Copia este archivo completo y pégaselo a Gemini. Al final tienes un prompt list
 **Un solo producto público: websites** para negocios locales.
 
 - Nav del portafolio: solo **Trabajos · Servicios · Contacto** (sin “Mobile Erst”, “Brief”, bots, etc. en el chrome).
-- Hero: marca + **promesa afilada** (segundos / quedarse) + Wien/rubros · subtexto *Klar. Schnell. Mobile zuerst.* debajo del lead · **CTA primario** = Mobile Erst / URL (`/auditoria`, botón sólido + pulse) · **CTA secundario** = WhatsApp (borde/discreto, sin pulse). Visual del hero = **mockup móvil** con `/demos/lugner-hero.jpg` (asset propio), no stock Unsplash. Botón “Ver demo” solo en el bloque de 4 pasos. Sin “Agendar” en el hero.
-- Brief Agent no va en el nav: vive en **Kontakt** como alternativa (“¿preferís escribir un brief…?”) y en Servicios; en home, “Qué incluye” es solo título + descripción (sin links a tools).
+- Hero: marca + **promesa afilada** (segundos / quedarse) + Wien/rubros · **H1** = *Santi Villa* + línea keyword (*Webs para negocios locales en Wien* / DE·EN equivalentes) · **ancla de costo**: 53% de visitas móviles abandonadas si carga &gt;3s (Google, *Need for Mobile Speed*, 2016) · subtexto *Klar. Schnell. Mobile zuerst.* · **CTA primario** = “Probar gratis con tu URL” (`/auditoria`, sólido + pulse) + nota *sin costo / sin compromiso* · **CTA secundario** = WhatsApp (borde/discreto, sin pulse). Visual del hero = **mockup móvil** (asset propio) etiquetado **Stadtgalerie West**, no stock Unsplash. Botón “Ver demo” → `/demos/stadtgalerie` solo en el bloque de 4 pasos. Sin “Agendar” en el hero.
+- Brief Agent no va en el nav: vive en **Kontakt** como alternativa (“¿preferís escribir un brief…?”) y en Servicios; en home, “Así construimos tu web” es **un proceso numerado** (piezas del mismo proyecto), no un catálogo de 5 tools con CTAs.
 - Herramientas IA (auditoría responsive, Design Agent, Brief→landing, carta digital, Micro-Bot WhatsApp, copy local, Maps→Konzept) son **features / cómo demuestras valor** dentro del servicio — no líneas de producto competidoras en la primera impresión.
 - Un dueño que entra debe entender en segundos: *vendes webs*; el lead magnet fuerte es **probar con su URL**; WhatsApp queda a un clic. No elegir entre “auditoría vs bot vs brief” en el hero.
-- **Casos Viena ≠ plantillas por rubro:** en home y `/trabajos`, **Wien = solo Lugner** (lead caliente); Gasthaus + Villa Italia / Solo Modas / Universo van en “Vorlagen nach Branche” / plantillas — sin vender Colombia como mercado; una línea de prueba social (*Auch international getestet*).
-- **Prueba social en home:** métricas Lighthouse PSI del caso Lugner (antes live / después Konzept). Sin testimonios inventados ni conteos falsos; citas solo con permiso real de un piloto.
+- **Casos Viena ≠ plantillas por rubro:** en home y `/trabajos`, **Wien público = Stadtgalerie West** (centro ficticio); Gasthaus + Villa Italia / Solo Modas / Universo = plantillas. **Lugner City** queda **solo pitch 1:1** (`/demos/lugner`, noindex, **sin enlaces** desde el chrome del portafolio).
+- **Prueba social en home:** métricas Lighthouse PSI anonimizadas (Typo3 · Zentrum → Konzept Stadtgalerie). Sin testimonios inventados; citas solo con permiso real de un piloto.
 
 ---
 
@@ -42,12 +42,13 @@ Copia este archivo completo y pégaselo a Gemini. Al final tienes un prompt list
 
 Flujo: Portafolio (`santivilla.com`) → Demo personalizada → Pitch antes/después + WhatsApp → Depósito + entrega
 
-**Lead caliente actual:** https://www.lugner.at — Lugner City, centro comercial en Viena 15 (Gablenzgasse). Su web es Typo3 antigua, muy mala en móvil, poco responsive.
+**Lead caliente (pitch privado):** https://www.lugner.at — Lugner City. Demo 1:1 en `/demos/lugner` (noindex, no enlazada desde el portafolio público). Público: `/demos/stadtgalerie` (Stadtgalerie West, ficticio).
 
 **Ética / legal en demos:**
 - Banner claro: concepto / rediseño, **no es el sitio oficial**
 - No fingir ser su agencia
-- Pitch transparente: “Hice un rediseño conceptual del móvil; ¿les interesa modernizarlo?”
+- Pitch transparente con Lugner solo en conversación 1:1
+- No exponer el pitch Lugner en hero/nav/trabajos públicos
 
 ---
 
@@ -62,8 +63,8 @@ Flujo: Portafolio (`santivilla.com`) → Demo personalizada → Pitch antes/desp
 
 | Ruta | Qué es |
 |------|--------|
-| `/` | Home: marca “Santi Villa”, promesa webs, CTA primario auditoría URL + WhatsApp secundario; demo en proceso 4 pasos; prueba social = métricas Lugner PSI; teaser **Desde €400** → `/servicios`; “Qué incluye” sin links |
-| `/trabajos` | Wien (Lugner) + Vorlagen nach Branche (Gasthaus + plantillas) + precios |
+| `/` | Home: CTA auditoría + WhatsApp; demo pública Stadtgalerie; prueba social PSI anonimizada; teaser Desde €400; proceso de construcción unificado |
+| `/trabajos` | Wien (Stadtgalerie West) + Vorlagen nach Branche + precios |
 | `/servicios` | 3 paquetes + extras del proyecto (carta, bot, copy, brief…) |
 | `/contacto` | WhatsApp, email, Cal.com, formulario → lead |
 
@@ -77,7 +78,8 @@ Flujo: Portafolio (`santivilla.com`) → Demo personalizada → Pitch antes/desp
 | `/micro-bot` | FAQ + handoff WhatsApp |
 | `/copy-lokal` | Adaptación cultural de copy |
 | `/maps-konzept` | Prospección interna Maps → Konzept |
-| `/demos/lugner` | Demo rediseño Lugner City (DE) |
+| `/demos/stadtgalerie` | Demo pública centro comercial ficticio (DE) |
+| `/demos/lugner` | Pitch 1:1 Lugner City — **noindex, no enlazar desde portafolio** |
 | `/demos/restaurant` | “Gasthaus Am Hof” + Micro-Bot |
 | `/admin` · `/portal` | Mini-CRM + portal del dueño (Supabase Auth) |
 
@@ -145,7 +147,7 @@ No quiero que reescriba el stack técnico. Quiero ideas creativas y de negocio:
 
 - Marca personal: **Santi Villa** / `santivilla.com` (no inventar nombre de agencia)
 - **Un producto en hero/nav: websites.** Tools IA = features del servicio
-- **Jerarquía CTA home:** 1) auditoría/URL · 2) WhatsApp · demo Lugner solo en el flujo de 4 pasos · “Qué incluye” sin links a tools
+- **Jerarquía CTA home:** 1) auditoría/URL (**gratis / sin compromiso** explícito en CTA + nota bajo botones) · garantía verbalizada **“ves el diseño antes de pagar un euro”** (Konzept gratis; no money-back post-entrega) · 2) WhatsApp · demo pública Stadtgalerie en el flujo de 4 pasos · “Así construimos tu web” sin links a tools · Lugner solo por WhatsApp/reunión. Audit + Konzept inicial gratis también en `/auditoria` y en el bloque de 4 pasos; web real = presupuesto cerrado.
 - Primero mobile; demos pensadas para enseñar en el teléfono
 - No fingir proyectos oficiales de clientes reales
 - No scrapear directorios enteros; demos conceptuales con datos públicos

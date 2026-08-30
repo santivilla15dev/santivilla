@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CtaButtons } from "@/components/cta-buttons";
 import { DemoMetricsStrip } from "@/components/demo-metrics-strip";
-import { lugnerBenchmark } from "@/lib/demos/benchmarks";
+import { stadtgalerieBenchmark } from "@/lib/demos/benchmarks";
 import { getMessages } from "@/lib/i18n/get-messages";
 import type { ProjectMessages } from "@/lib/i18n/messages/types";
 import { pageMetadata } from "@/lib/i18n/metadata";
@@ -151,13 +151,13 @@ export default async function TrabajosPage({ params }: Props) {
                 <span className="size-1.5 rounded-full bg-ink/25" aria-hidden />
                 <span className="size-1.5 rounded-full bg-ink/25" aria-hidden />
                 <span className="ml-2 truncate text-[10px] text-muted">
-                  lugner.at
+                  {w.beforeHost}
                 </span>
               </div>
               <div className="relative aspect-[4/5] bg-[#d8dde2]">
                 <Image
                   src="/trabajos/lugner-before.jpg"
-                  alt="lugner.at"
+                  alt={w.beforeHost}
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 768px) 100vw, 45vw"
@@ -168,14 +168,6 @@ export default async function TrabajosPage({ params }: Props) {
             <p className="mt-4 text-sm leading-relaxed text-muted">
               {w.beforeNote}
             </p>
-            <a
-              href="https://www.lugner.at"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 text-sm text-accent underline-offset-2 hover:underline"
-            >
-              {w.viewCurrent}
-            </a>
           </div>
 
           <div className="flex flex-col">
@@ -183,7 +175,7 @@ export default async function TrabajosPage({ params }: Props) {
               {w.after}
             </p>
             <Link
-              href="/demos/lugner"
+              href="/demos/stadtgalerie"
               className="group mt-4 block overflow-hidden border border-ink/20 transition hover:border-accent"
             >
               <div className="flex items-center gap-1.5 border-b border-white/10 bg-[#0b1016] px-3 py-2">
@@ -197,7 +189,7 @@ export default async function TrabajosPage({ params }: Props) {
               <div className="relative aspect-[4/5] overflow-hidden bg-[#0b1016]">
                 <Image
                   src={AFTER_HERO}
-                  alt=""
+                  alt={w.caseBrand}
                   fill
                   className="object-cover object-center opacity-55 transition duration-700 group-hover:scale-[1.03] group-hover:opacity-60"
                   sizes="(max-width: 768px) 100vw, 45vw"
@@ -211,7 +203,7 @@ export default async function TrabajosPage({ params }: Props) {
                     Wien 15
                   </p>
                   <p className="font-display mt-2 text-[clamp(1.75rem,4vw,2.35rem)] leading-[0.9] tracking-tight text-[#f5f1e8]">
-                    Lugner City
+                    {w.caseBrand}
                   </p>
                   <p className="mt-3 max-w-[22ch] text-xs leading-relaxed text-[#e8e4dc]/90 sm:text-sm">
                     Öffnungszeiten · Shops · Anfahrt — klar auf dem Handy.
@@ -230,7 +222,7 @@ export default async function TrabajosPage({ params }: Props) {
 
         <div className="mt-10 flex flex-col items-center gap-4 text-center">
           <Link
-            href="/demos/lugner"
+            href="/demos/stadtgalerie"
             className="inline-flex bg-accent px-7 py-3.5 text-sm font-semibold text-white transition hover:brightness-110"
           >
             {w.openDemoCta}
@@ -238,7 +230,7 @@ export default async function TrabajosPage({ params }: Props) {
           <p className="max-w-md text-xs text-muted">{w.konzeptNote}</p>
         </div>
 
-        <DemoMetricsStrip benchmark={lugnerBenchmark} labels={w} />
+        <DemoMetricsStrip benchmark={stadtgalerieBenchmark} labels={w} />
       </section>
 
       <section className="site-shell mt-20 border-t border-line pt-14 sm:mt-24 sm:pt-16">

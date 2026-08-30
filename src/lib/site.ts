@@ -90,16 +90,16 @@ export const projects = [
     tags: ["Lead magnet", "Agente", "Responsive"],
   },
   {
-    slug: "lugner",
-    title: "Lugner City — Redesign Konzept",
+    slug: "stadtgalerie",
+    title: "Stadtgalerie West — Konzept centro",
     type: "Centro comercial",
-    href: "/demos/lugner",
+    href: "/demos/stadtgalerie",
     blurb:
-      "Propuesta mobile-first del sitio de Lugner City (Wien). Concepto, no sitio oficial.",
+      "Plantilla mobile-first de centro comercial en Wien. Concepto ficticio, no un sitio oficial.",
     beforeNote:
-      "El sitio actual (lugner.at) viene de Typo3 clásico: difícil de usar en el móvil.",
+      "Muchos centros aún viven en Typo3 antiguo: zoom en móvil, info clave enterrada.",
     afterNote:
-      "Nueva home con horarios, shops, anfahrt y contacto en un solo flujo táctil.",
+      "Home clara: horarios, shops, anfahrt y contacto en un solo flujo táctil.",
     tags: ["Demo", "Mobile-first", "DE"],
   },
   {
@@ -140,7 +140,7 @@ export const projects = [
   },
 ] as const;
 
-export const lugnerCase = projects.find((p) => p.slug === "lugner")!;
+export const viennaMallCase = projects.find((p) => p.slug === "stadtgalerie")!;
 
 /** Copy de la home — narrativa para clientes locales */
 export const homeContent = {
@@ -179,7 +179,7 @@ export const homeContent = {
       "Feedback: WhatsApp o el chat del agente — afinamos hasta que digas sí.",
       "Web real: publicamos, conectamos dominio y dejas de depender de sitios antiguos.",
     ],
-    ctaDemo: "Ver demo Lugner",
+    ctaDemo: "Ver demo Stadtgalerie",
     ctaAudit: "Probar con tu URL",
   },
   mobileErst: {
@@ -202,7 +202,7 @@ export const projectsForHome = projects.map((p) => {
         "Descubre si tu web actual falla en móvil y genera un concepto nuevo en minutos.",
     };
   }
-  if (p.slug === "lugner") {
+  if (p.slug === "stadtgalerie") {
     return {
       ...p,
       blurb:
