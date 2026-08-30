@@ -161,6 +161,12 @@ export const esMessages: SiteMessages = {
       "Web real: publicamos, conectamos dominio y dejas de depender de sitios antiguos.",
     ],
     clientDesignCtaDemo: "Ver demo Lugner",
+    proofEyebrow: "Caso medido · Wien",
+    proofTitle: "Lugner City — móvil antes / después",
+    proofBody:
+      "Mismo negocio, dos webs en el teléfono: el sitio actual frente al Konzept. Cifras de Google PageSpeed Insights (móvil). No es el sitio oficial — es evidencia del salto.",
+    proofCtaDemo: "Ver demo Lugner",
+    proofCtaWork: "Ver trabajos →",
     includesEyebrow: "Tu web",
     includesTitle: "Qué incluye tu web",
     includesLead:
@@ -192,6 +198,11 @@ export const esMessages: SiteMessages = {
         tool: "brief",
       },
     ],
+    pricingEyebrow: "Precios",
+    pricingFrom: "Desde €400",
+    pricingBody:
+      "Landing clara en móvil con WhatsApp y setup de dominio. Sitios de negocio y mantenimiento con alcance cerrado — sin sorpresas.",
+    pricingLink: "Ver paquetes →",
     workTitle: "Trabajos y demos",
     workBody:
       "Primero casos en Wien. Luego plantillas por rubro. Las demos son propuestas conceptuales, no sitios oficiales.",

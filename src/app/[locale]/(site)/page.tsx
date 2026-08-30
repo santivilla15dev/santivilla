@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CtaButtons } from "@/components/cta-buttons";
+import { DemoMetricsStrip } from "@/components/demo-metrics-strip";
+import { lugnerBenchmark } from "@/lib/demos/benchmarks";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { pageMetadata } from "@/lib/i18n/metadata";
 import { localizedPath } from "@/lib/i18n/paths";
@@ -132,6 +134,33 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
+      <section className="border-t border-line/70 bg-surface/50 py-20">
+        <div className="site-shell max-w-3xl">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+            {c.proofEyebrow}
+          </p>
+          <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
+            {c.proofTitle}
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted">{c.proofBody}</p>
+          <DemoMetricsStrip benchmark={lugnerBenchmark} labels={w} />
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Link
+              href="/demos/lugner"
+              className="inline-flex rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
+            >
+              {c.proofCtaDemo}
+            </Link>
+            <Link
+              href={localizedPath(locale, "/trabajos")}
+              className="text-sm font-medium text-accent underline-offset-4 hover:underline"
+            >
+              {c.proofCtaWork}
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="border-t border-line/70 py-20">
         <div className="site-shell max-w-3xl">
           <p className="animate-fade text-xs font-medium uppercase tracking-[0.2em] text-accent">
@@ -195,6 +224,28 @@ export default async function HomePage({ params }: Props) {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="border-t border-line/70 py-20">
+        <div className="site-shell max-w-3xl">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+            {c.pricingEyebrow}
+          </p>
+          <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
+            {c.pricingFrom}
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted">
+            {c.pricingBody}
+          </p>
+          <p className="mt-8">
+            <Link
+              href={localizedPath(locale, "/servicios")}
+              className="text-sm font-medium text-accent underline-offset-4 hover:underline"
+            >
+              {c.pricingLink}
+            </Link>
+          </p>
         </div>
       </section>
 

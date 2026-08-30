@@ -161,6 +161,12 @@ export const deMessages: SiteMessages = {
       "Echte Website: Launch, Domain, fertig — kein altes Typo3 mehr.",
     ],
     clientDesignCtaDemo: "Lugner Demo ansehen",
+    proofEyebrow: "Gemessener Fall · Wien",
+    proofTitle: "Lugner City — Mobile vorher / nachher",
+    proofBody:
+      "Gleicher Betrieb, zwei Sites am Handy: Live-Site vs. Konzept. Zahlen von Google PageSpeed Insights (Mobile). Keine offizielle Website — Beleg für den Sprung.",
+    proofCtaDemo: "Lugner Demo ansehen",
+    proofCtaWork: "Arbeiten ansehen →",
     includesEyebrow: "Deine Website",
     includesTitle: "Was deine Website umfasst",
     includesLead:
@@ -192,6 +198,11 @@ export const deMessages: SiteMessages = {
         tool: "brief",
       },
     ],
+    pricingEyebrow: "Preise",
+    pricingFrom: "Ab €400",
+    pricingBody:
+      "Klare Mobile-Landing mit WhatsApp und Domain-Setup. Geschäfts-Sites und Wartung mit festem Scope — ohne Überraschungen.",
+    pricingLink: "Pakete ansehen →",
     workTitle: "Arbeiten & Demos",
     workBody:
       "Zuerst Cases aus Wien. Dann Vorlagen nach Branche. Demos sind Konzepte, keine offiziellen Sites.",

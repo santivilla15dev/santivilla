@@ -29,6 +29,7 @@ Copia este archivo completo y pégaselo a Gemini. Al final tienes un prompt list
 - Herramientas IA (auditoría responsive, Design Agent, Brief→landing, carta digital, Micro-Bot WhatsApp, copy local, Maps→Konzept) son **features / cómo demuestras valor** dentro del servicio — no líneas de producto competidoras en la primera impresión.
 - Un dueño que entra debe entender en segundos: *vendes webs*; el lead magnet fuerte es **probar con su URL**; WhatsApp queda a un clic. No elegir entre “auditoría vs bot vs brief” en el hero.
 - **Casos Viena ≠ plantillas por rubro:** en home y `/trabajos`, **Wien = solo Lugner** (lead caliente); Gasthaus + Villa Italia / Solo Modas / Universo van en “Vorlagen nach Branche” / plantillas — sin vender Colombia como mercado; una línea de prueba social (*Auch international getestet*).
+- **Prueba social en home:** métricas Lighthouse PSI del caso Lugner (antes live / después Konzept). Sin testimonios inventados ni conteos falsos; citas solo con permiso real de un piloto.
 
 ---
 
@@ -61,7 +62,7 @@ Flujo: Portafolio (`santivilla.com`) → Demo personalizada → Pitch antes/desp
 
 | Ruta | Qué es |
 |------|--------|
-| `/` | Home: marca “Santi Villa”, promesa webs, CTA primario auditoría URL + WhatsApp secundario; demo solo en proceso 4 pasos; “Qué incluye” sin links |
+| `/` | Home: marca “Santi Villa”, promesa webs, CTA primario auditoría URL + WhatsApp secundario; demo en proceso 4 pasos; prueba social = métricas Lugner PSI; teaser **Desde €400** → `/servicios`; “Qué incluye” sin links |
 | `/trabajos` | Wien (Lugner) + Vorlagen nach Branche (Gasthaus + plantillas) + precios |
 | `/servicios` | 3 paquetes + extras del proyecto (carta, bot, copy, brief…) |
 | `/contacto` | WhatsApp, email, Cal.com, formulario → lead |

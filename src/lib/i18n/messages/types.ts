@@ -57,6 +57,11 @@ export type SiteMessages = {
     clientDesignBody: string;
     clientDesignSteps: string[];
     clientDesignCtaDemo: string;
+    proofEyebrow: string;
+    proofTitle: string;
+    proofBody: string;
+    proofCtaDemo: string;
+    proofCtaWork: string;
     includesEyebrow: string;
     includesTitle: string;
     includesLead: string;
@@ -65,6 +70,10 @@ export type SiteMessages = {
       body: string;
       tool: "audit" | "menu" | "microbot" | "copy" | "brief";
     }[];
+    pricingEyebrow: string;
+    pricingFrom: string;
+    pricingBody: string;
+    pricingLink: string;
     workTitle: string;
     workBody: string;
     workLink: string;

@@ -161,6 +161,12 @@ export const enMessages: SiteMessages = {
       "Real website: launch, domain, done — no more legacy CMS.",
     ],
     clientDesignCtaDemo: "View Lugner demo",
+    proofEyebrow: "Measured case · Vienna",
+    proofTitle: "Lugner City — mobile before / after",
+    proofBody:
+      "Same business, two sites on the phone: live site vs. concept. Numbers from Google PageSpeed Insights (mobile). Not the official site — proof of the jump.",
+    proofCtaDemo: "View Lugner demo",
+    proofCtaWork: "See work →",
     includesEyebrow: "Your website",
     includesTitle: "What's included in your website",
     includesLead:
@@ -192,6 +198,11 @@ export const enMessages: SiteMessages = {
         tool: "brief",
       },
     ],
+    pricingEyebrow: "Pricing",
+    pricingFrom: "From €400",
+    pricingBody:
+      "A clear mobile landing with WhatsApp and domain setup. Business sites and retainers with a fixed scope — no surprises.",
+    pricingLink: "See packages →",
     workTitle: "Work & demos",
     workBody:
       "Vienna cases first. Then niche templates. Demos are concepts, not official sites.",
