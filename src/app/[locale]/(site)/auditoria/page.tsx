@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: Props) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
   const m = getMessages(raw);
-  return pageMetadata(raw, "audit", "/auditoria", "Mobile Erst", m.audit.lead);
+  return pageMetadata(raw, "audit", "/auditoria", undefined, m.audit.lead);
 }
 
 function auditLangForLocale(locale: Locale): AuditLang {

@@ -117,6 +117,7 @@ export const esMessages: SiteMessages = {
     impressum: "Impressum",
     datenschutz: "Privacidad",
     agb: "Términos",
+    about: "Sobre mí",
     copyright:
       "Demos conceptuales no son sitios oficiales de los negocios mostrados.",
     tagline: "Webs modernas que se ven bien en cualquier dispositivo",
@@ -153,10 +154,29 @@ export const esMessages: SiteMessages = {
     heroCardEyebrow: "Konzept · Wien 15",
     heroCardTitle: "Stadtgalerie West en el móvil",
     heroCardAlt: "Demo Stadtgalerie West en móvil",
-    heroAuditCta: "Probar gratis con tu URL",
+    heroAuditCta: "Audita tu web gratis",
     heroFreeNote:
       "Auditoría y Konzept inicial sin costo y sin compromiso. Solo cotizas cuando quieras la web real.",
     heroGuarantee: "Ves el diseño antes de pagar un euro.",
+    trustSignalsLabel: "Señales de confianza",
+    trustSignals: [
+      {
+        id: "hosting",
+        label: "HTTPS · hosting Vercel — velocidad real",
+      },
+      {
+        id: "payment",
+        label: "Depósito: SEPA / factura AT",
+      },
+      {
+        id: "coverage",
+        label: "Viena y alrededores",
+      },
+      {
+        id: "response",
+        label: "Respondo en menos de 24 h",
+      },
+    ],
     introEyebrow: "De qué se trata",
     introTitle: "Una web que tus clientes entienden en segundos",
     introBody:
@@ -190,12 +210,12 @@ export const esMessages: SiteMessages = {
       "Feedback: WhatsApp — afinamos hasta que digas sí.",
       "Web real (presupuesto cerrado): publicamos, conectamos dominio y dejas de depender de sitios antiguos.",
     ],
-    clientDesignCtaDemo: "Ver demo Stadtgalerie",
+    clientDesignCtaDemo: "Ver demo Stadtgalerie →",
     proofEyebrow: "Caso medido · Wien",
     proofTitle: "Centro comercial — móvil antes / después",
     proofBody:
       "Typo3 típico de un Zentrum frente al Konzept Stadtgalerie West. Cifras de Google PageSpeed Insights (móvil). Demo pública ficticia — no un sitio oficial.",
-    proofCtaDemo: "Ver demo Stadtgalerie",
+    proofCtaDemo: "Ver demo Stadtgalerie →",
     proofCtaWork: "Ver trabajos →",
     selfScoreEyebrow: "Esta página",
     selfScoreTitle: "/100 en móvil",
@@ -283,6 +303,14 @@ export const esMessages: SiteMessages = {
           "Sí. El foco es Wien y Austria, pero trabajo remoto con negocios fuera de Viena (y fuera de AT) sin problema.",
       },
     ],
+    aboutEyebrow: "Sobre mí",
+    aboutTitle: "Santi Villa",
+    aboutBody:
+      "Trabajo solo: hablas con quien diseña, programa y publica. Sin capas de cuenta ni markup de agencia — plazos y precio claros desde el día uno. Estoy en Wien y también remoto, para negocios locales que quieren una web que se entiende en el móvil.",
+    aboutStackLabel: "Stack",
+    aboutStack:
+      "Next.js + Vercel — sitios rápidos, HTTPS y deploys limpios (la misma base que medimos en esta página).",
+    aboutPhotoAlt: "Santi Villa — foto pendiente (placeholder)",
     resultsEyebrow: "Resultados",
     resultsTitle: "Antes / después en números",
     resultsLead:
@@ -357,6 +385,7 @@ export const esMessages: SiteMessages = {
     viennaTitle: "Wien",
     viennaLead:
       "Plantilla pública de centro comercial en Viena (Stadtgalerie West).",
+    demoCta: "Abrir demo Stadtgalerie →",
     templatesTitle: "Plantillas por rubro",
     templatesLead:
       "Estructuras reutilizables: gastro, pizzería, moda y deportes.",
@@ -409,8 +438,8 @@ export const esMessages: SiteMessages = {
       "Hola Santi, quiero hablar de una web para mi negocio.",
   },
   audit: {
-    eyebrow: "Mobile Erst · Santi Design Agent",
-    title: "Audit al instante.",
+    eyebrow: "Auditoría · gratis",
+    title: "Auditoría al instante.",
     titleBreak: "Concepto automático.",
     lead: "Gratis y sin compromiso: 1) Pegas la URL → score en móvil, tablet y desktop. 2) Generas un concepto HTML responsive con el agente. 3) Si te gusta, WhatsApp y cotizamos la web real.",
     steps: ["01 Audit", "02 Concepto IA", "03 WhatsApp / deal"],
@@ -445,7 +474,7 @@ export const esMessages: SiteMessages = {
     eyebrow: "Santi Design Agent",
     title: "Concepto automático",
     lead: "Preview generado desde el audit. Habla con el agente para cambiar menú, info, idioma… No es el sitio oficial. Si te gusta, lo convertimos en web real.",
-    backLink: "← Volver a Mobile Erst",
+    backLink: "← Volver a la auditoría",
     seoBadge: "SEO · JSON-LD",
     seoTooltip:
       "Datos Schema.org legibles por Google — generados automáticamente desde datos del negocio.",
@@ -562,7 +591,7 @@ export const esMessages: SiteMessages = {
       "Alemán austriaco para locales, inglés fresco para turistas",
       "Platos, ofertas o servicios — un texto, varios públicos",
       "Enlace compartible para alinear con el equipo",
-      "Integrado en conceptos Mobile Erst",
+      "Integrado en conceptos de auditoría",
     ],
   },
   briefAgent: {
@@ -625,7 +654,7 @@ export const esMessages: SiteMessages = {
     bullets: [
       "Fotos reales de Google si existen — si no, imágenes IA",
       "URL slug /k/nombre para pitch por WhatsApp",
-      "Guardado en Supabase como conceptos Mobile Erst",
+      "Guardado en Supabase como conceptos de auditoría",
       "Batch: npm run prospect:maps",
     ],
   },

@@ -44,7 +44,7 @@ export function pageMetadata(
     if (segment === "services") title = m.services.title;
     else if (segment === "work") title = m.work.title;
     else if (segment === "contact") title = m.contact.title;
-    else if (segment === "audit") title = "Mobile Erst";
+    else if (segment === "audit") title = m.audit.title;
     else if (segment === "concept") title = m.concept.title;
     else title = m.meta.title;
   }

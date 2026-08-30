@@ -42,6 +42,14 @@ export function SiteFooter({ locale, messages }: Props) {
                 {n.contact}
               </Link>
             </li>
+            <li>
+              <Link
+                href={`${localizedPath(locale, "/")}#about`}
+                className="hover:text-surface"
+              >
+                {f.about}
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="text-sm">

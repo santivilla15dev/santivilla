@@ -117,6 +117,7 @@ export const deMessages: SiteMessages = {
     impressum: "Impressum",
     datenschutz: "Datenschutz",
     agb: "AGB",
+    about: "Über mich",
     copyright:
       "Demos sind Konzepte — keine offiziellen Websites der gezeigten Betriebe.",
     tagline: "Moderne Websites — klar auf jedem Gerät",
@@ -153,10 +154,29 @@ export const deMessages: SiteMessages = {
     heroCardEyebrow: "Konzept · Wien 15",
     heroCardTitle: "Stadtgalerie West am Handy",
     heroCardAlt: "Stadtgalerie West Demo auf dem Handy",
-    heroAuditCta: "Kostenlos mit deiner URL testen",
+    heroAuditCta: "Website kostenlos prüfen",
     heroFreeNote:
       "Audit und erstes Konzept kostenlos und unverbindlich. Du zahlst erst, wenn du die echte Website willst.",
     heroGuarantee: "Du siehst das Design, bevor du einen Euro zahlst.",
+    trustSignalsLabel: "Vertrauenssignale",
+    trustSignals: [
+      {
+        id: "hosting",
+        label: "HTTPS · Hosting Vercel — echte Speed",
+      },
+      {
+        id: "payment",
+        label: "Anzahlung: SEPA / Rechnung AT",
+      },
+      {
+        id: "coverage",
+        label: "Wien und Umgebung",
+      },
+      {
+        id: "response",
+        label: "Antwort in unter 24 Std.",
+      },
+    ],
     introEyebrow: "Worum es geht",
     introTitle: "Eine Website, die Gäste in Sekunden verstehen",
     introBody:
@@ -190,12 +210,12 @@ export const deMessages: SiteMessages = {
       "Feedback: WhatsApp — Feinschliff bis du Ja sagst.",
       "Echte Website (fester Preisrahmen): Launch, Domain, fertig — kein altes Typo3 mehr.",
     ],
-    clientDesignCtaDemo: "Stadtgalerie Demo ansehen",
+    clientDesignCtaDemo: "Stadtgalerie Demo ansehen →",
     proofEyebrow: "Gemessener Fall · Wien",
     proofTitle: "Einkaufszentrum — Mobile vorher / nachher",
     proofBody:
       "Typisches Typo3-Zentrum vs. Konzept Stadtgalerie West. Zahlen von Google PageSpeed Insights (Mobile). Öffentliche Demo ist fiktiv — keine offizielle Site.",
-    proofCtaDemo: "Stadtgalerie Demo ansehen",
+    proofCtaDemo: "Stadtgalerie Demo ansehen →",
     proofCtaWork: "Arbeiten ansehen →",
     selfScoreEyebrow: "Diese Seite",
     selfScoreTitle: "/100 auf Mobil",
@@ -283,6 +303,14 @@ export const deMessages: SiteMessages = {
           "Ja. Fokus Wien/Österreich — remote aber problemlos auch außerhalb Wiens (und außerhalb AT).",
       },
     ],
+    aboutEyebrow: "Über mich",
+    aboutTitle: "Santi Villa",
+    aboutBody:
+      "Ich arbeite allein: du sprichst mit dem, der gestaltet, baut und live schaltet. Keine Account-Schichten, kein Agentur-Aufschlag — klare Fristen und Preise ab Tag eins. Basis Wien, auch remote für lokale Betriebe, die eine Website wollen, die am Handy klar ist.",
+    aboutStackLabel: "Stack",
+    aboutStack:
+      "Next.js + Vercel — schnelle Sites, HTTPS und saubere Deploys (dieselbe Basis, die wir auf dieser Seite messen).",
+    aboutPhotoAlt: "Santi Villa — Foto ausstehend (Platzhalter)",
     resultsEyebrow: "Ergebnisse",
     resultsTitle: "Vorher / nachher in Zahlen",
     resultsLead:
@@ -357,6 +385,7 @@ export const deMessages: SiteMessages = {
     viennaTitle: "Wien",
     viennaLead:
       "Öffentliche Vorlage: Einkaufszentrum in Wien (Stadtgalerie West).",
+    demoCta: "Stadtgalerie Demo öffnen →",
     templatesTitle: "Vorlagen nach Branche",
     templatesLead:
       "Wiederverwendbare Strukturen: Gastro, Pizzeria, Mode und Sport.",

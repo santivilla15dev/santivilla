@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AboutSection } from "@/components/about-section";
 import { CaseResults } from "@/components/case-results";
 import { CtaButtons } from "@/components/cta-buttons";
 import { DemoMetricsStrip } from "@/components/demo-metrics-strip";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { TrustSignals } from "@/components/trust-signals";
 import { formatMs } from "@/lib/audit/pagespeed";
 import {
   CASE_RESULT_IDS,
@@ -75,10 +77,10 @@ export default async function HomePage({ params }: Props) {
             <p className="animate-rise-delay-1 mt-3 text-base font-medium tracking-wide text-ink sm:text-lg">
               {c.heroSub}
             </p>
-            <div className="animate-rise-delay-2 mt-8 flex flex-wrap items-center gap-3">
+            <div className="animate-rise-delay-2 mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
               <Link
                 href={localizedPath(locale, "/auditoria")}
-                className="cta-pulse inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
+                className="cta-pulse inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 text-base font-medium text-white transition hover:brightness-110"
               >
                 {c.heroAuditCta}
               </Link>
@@ -86,7 +88,7 @@ export default async function HomePage({ params }: Props) {
                 href={whatsappHref(cta.defaultWhatsapp)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-ink/20 bg-surface px-5 py-3 text-sm font-medium text-ink transition hover:border-accent hover:bg-accent-soft"
+                className="text-sm font-medium text-muted underline-offset-4 transition hover:text-accent hover:underline"
               >
                 {cta.whatsapp}
               </a>
@@ -133,6 +135,15 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
+      <section
+        className="border-t border-line/70 bg-surface/40 py-5 sm:py-6"
+        aria-label={c.trustSignalsLabel}
+      >
+        <div className="site-shell">
+          <TrustSignals items={c.trustSignals} />
+        </div>
+      </section>
+
       <section className="border-t border-line/70 py-20">
         <div className="site-shell grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div>
@@ -148,7 +159,7 @@ export default async function HomePage({ params }: Props) {
             <div className="mt-8">
               <Link
                 href="/demos/stadtgalerie"
-                className="inline-flex rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
+                className="text-sm font-medium text-muted underline-offset-4 transition hover:text-accent hover:underline"
               >
                 {c.clientDesignCtaDemo}
               </Link>
@@ -180,7 +191,7 @@ export default async function HomePage({ params }: Props) {
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link
               href="/demos/stadtgalerie"
-              className="inline-flex rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
+              className="text-sm font-medium text-muted underline-offset-4 transition hover:text-accent hover:underline"
             >
               {c.proofCtaDemo}
             </Link>
@@ -360,6 +371,14 @@ export default async function HomePage({ params }: Props) {
               {w.viennaTitle}
             </h3>
             <p className="mt-2 max-w-lg text-sm text-muted">{w.viennaLead}</p>
+            <p className="mt-3">
+              <Link
+                href="/demos/stadtgalerie"
+                className="text-sm font-medium text-accent underline-offset-4 hover:underline"
+              >
+                {w.demoCta}
+              </Link>
+            </p>
             <ul className="mt-8 grid gap-6 md:grid-cols-2">
               {viennaProjects.map((project) => (
                 <li key={project.slug}>
@@ -417,6 +436,17 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      <AboutSection
+        copy={{
+          eyebrow: c.aboutEyebrow,
+          title: c.aboutTitle,
+          body: c.aboutBody,
+          stackLabel: c.aboutStackLabel,
+          stack: c.aboutStack,
+          photoAlt: c.aboutPhotoAlt,
+        }}
+      />
 
       <section className="border-t border-line/70 py-20">
         <div className="site-shell max-w-3xl">

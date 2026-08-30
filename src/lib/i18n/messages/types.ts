@@ -36,6 +36,7 @@ export type SiteMessages = {
     impressum: string;
     datenschutz: string;
     agb: string;
+    about: string;
     copyright: string;
     tagline: string;
   };
@@ -71,6 +72,11 @@ export type SiteMessages = {
     heroAuditCta: string;
     heroFreeNote: string;
     heroGuarantee: string;
+    trustSignalsLabel: string;
+    trustSignals: {
+      id: "hosting" | "payment" | "coverage" | "response";
+      label: string;
+    }[];
     introEyebrow: string;
     introTitle: string;
     introBody: string;
@@ -109,6 +115,12 @@ export type SiteMessages = {
     faqEyebrow: string;
     faqTitle: string;
     faqItems: { id: string; question: string; answer: string }[];
+    aboutEyebrow: string;
+    aboutTitle: string;
+    aboutBody: string;
+    aboutStackLabel: string;
+    aboutStack: string;
+    aboutPhotoAlt: string;
     resultsEyebrow: string;
     resultsTitle: string;
     resultsLead: string;
@@ -153,6 +165,7 @@ export type SiteMessages = {
     konzeptNote: string;
     viennaTitle: string;
     viennaLead: string;
+    demoCta: string;
     templatesTitle: string;
     templatesLead: string;
     templatesNote: string;
