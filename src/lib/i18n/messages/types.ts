@@ -46,8 +46,7 @@ export type SiteMessages = {
     heroSub: string;
     heroCardEyebrow: string;
     heroCardTitle: string;
-    heroDemoCta: string;
-    heroAuditLink: string;
+    heroAuditCta: string;
     introEyebrow: string;
     introTitle: string;
     introBody: string;
@@ -58,14 +57,12 @@ export type SiteMessages = {
     clientDesignBody: string;
     clientDesignSteps: string[];
     clientDesignCtaDemo: string;
-    clientDesignCtaAudit: string;
     includesEyebrow: string;
     includesTitle: string;
     includesLead: string;
     includes: {
       title: string;
       body: string;
-      linkLabel: string;
       tool: "audit" | "menu" | "microbot" | "copy" | "brief";
     }[];
     workTitle: string;

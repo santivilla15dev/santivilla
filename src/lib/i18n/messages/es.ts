@@ -126,8 +126,7 @@ export const esMessages: SiteMessages = {
     heroSub: "Clara. Rápida. Mobile primero.",
     heroCardEyebrow: "Así debería sentirse tu web",
     heroCardTitle: "Clara. Rápida. Mobile primero.",
-    heroDemoCta: "Ver demo",
-    heroAuditLink: "Probar Mobile Erst →",
+    heroAuditCta: "Probar con tu URL",
     introEyebrow: "De qué se trata",
     introTitle: "Una web que tus clientes entienden en segundos",
     introBody:
@@ -162,7 +161,6 @@ export const esMessages: SiteMessages = {
       "Web real: publicamos, conectamos dominio y dejas de depender de sitios antiguos.",
     ],
     clientDesignCtaDemo: "Ver demo Lugner",
-    clientDesignCtaAudit: "Probar gratis cómo se ve tu URL →",
     includesEyebrow: "Tu web",
     includesTitle: "Qué incluye tu web",
     includesLead:
@@ -171,31 +169,26 @@ export const esMessages: SiteMessages = {
       {
         title: "Auditoría responsive",
         body: "Score 0–100 y concepto automático a partir de tu URL — para ver el antes/después.",
-        linkLabel: "Probar con tu URL →",
         tool: "audit",
       },
       {
         title: "Carta digital",
         body: "Foto de la carta → platos y precios en preview móvil, listo para la web.",
-        linkLabel: "Ver cómo funciona →",
         tool: "menu",
       },
       {
         title: "Ayuda por WhatsApp",
         body: "Respuestas rápidas a sitio, horarios y aparcar; reservas al chat real.",
-        linkLabel: "Ver ejemplo →",
         tool: "microbot",
       },
       {
         title: "Copy local",
         body: "Textos adaptados al público (no traducción literal) en DE/EN/ES.",
-        linkLabel: "Ver ejemplo →",
         tool: "copy",
       },
       {
         title: "Brief → landing",
         body: "Describes el negocio en unas líneas y ves un borrador de landing.",
-        linkLabel: "Probar →",
         tool: "brief",
       },
     ],
@@ -260,7 +253,7 @@ export const esMessages: SiteMessages = {
     title: "Contacto",
     lead: "¿Quieres ver primero cómo quedaría? Prueba",
     leadAudit: "o escríbeme: te cuento el siguiente paso en minutos.",
-    auditLinkLabel: "Mobile Erst",
+    auditLinkLabel: "Probar con tu URL",
     briefAlt: "¿Prefieres escribir un brief en vez de llamar?",
     briefLink: "Abrir Brief Agent →",
     email: "Email",

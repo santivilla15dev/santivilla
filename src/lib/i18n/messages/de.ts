@@ -126,8 +126,7 @@ export const deMessages: SiteMessages = {
     heroSub: "Klar. Schnell. Mobile zuerst.",
     heroCardEyebrow: "So sollte sich deine Website anfühlen",
     heroCardTitle: "Klar. Schnell. Mobile zuerst.",
-    heroDemoCta: "Demo ansehen",
-    heroAuditLink: "Mobile Erst testen →",
+    heroAuditCta: "Mit deiner URL testen",
     introEyebrow: "Worum es geht",
     introTitle: "Eine Website, die Gäste in Sekunden verstehen",
     introBody:
@@ -162,7 +161,6 @@ export const deMessages: SiteMessages = {
       "Echte Website: Launch, Domain, fertig — kein altes Typo3 mehr.",
     ],
     clientDesignCtaDemo: "Lugner Demo ansehen",
-    clientDesignCtaAudit: "Kostenlos testen, wie deine URL wirkt →",
     includesEyebrow: "Deine Website",
     includesTitle: "Was deine Website umfasst",
     includesLead:
@@ -171,31 +169,26 @@ export const deMessages: SiteMessages = {
       {
         title: "Responsive-Audit",
         body: "Score 0–100 und Auto-Konzept von deiner URL — Vorher/Nachher sichtbar.",
-        linkLabel: "Mit deiner URL testen →",
         tool: "audit",
       },
       {
         title: "Digitale Speisekarte",
         body: "Foto der Karte → Gerichte und Preise im Mobile-Preview.",
-        linkLabel: "So funktioniert’s →",
         tool: "menu",
       },
       {
         title: "WhatsApp-Hilfe",
         body: "Schnelle Antworten zu Platz, Zeiten, Parken; Reservierung in den echten Chat.",
-        linkLabel: "Beispiel ansehen →",
         tool: "microbot",
       },
       {
         title: "Lokaler Copy",
         body: "Texte an Zielgruppe angepasst (keine wörtliche Übersetzung) DE/EN/ES.",
-        linkLabel: "Beispiel ansehen →",
         tool: "copy",
       },
       {
         title: "Brief → Landing",
         body: "Kurz beschreiben — und einen Landing-Entwurf sehen.",
-        linkLabel: "Ausprobieren →",
         tool: "brief",
       },
     ],

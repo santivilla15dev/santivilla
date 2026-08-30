@@ -180,11 +180,11 @@ export const homeContent = {
       "Web real: publicamos, conectamos dominio y dejas de depender de sitios antiguos.",
     ],
     ctaDemo: "Ver demo Lugner",
-    ctaAudit: "Probar Mobile Erst",
+    ctaAudit: "Probar con tu URL",
   },
   mobileErst: {
     eyebrow: "Producto",
-    title: "Mobile Erst",
+    title: "Auditoría con tu URL",
     body: "Pega la URL de tu negocio: recibes un score responsive (0–100) y un concepto HTML automático con el Santi Design Agent. Ideal para enseñar el “antes / después” al dueño o a ti mismo.",
   },
   work: {

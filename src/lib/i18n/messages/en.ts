@@ -126,8 +126,7 @@ export const enMessages: SiteMessages = {
     heroSub: "Clear. Fast. Mobile first.",
     heroCardEyebrow: "How your site should feel",
     heroCardTitle: "Clear. Fast. Mobile first.",
-    heroDemoCta: "View demo",
-    heroAuditLink: "Try Mobile Erst →",
+    heroAuditCta: "Try with your URL",
     introEyebrow: "What it's about",
     introTitle: "A website guests understand in seconds",
     introBody:
@@ -162,7 +161,6 @@ export const enMessages: SiteMessages = {
       "Real website: launch, domain, done — no more legacy CMS.",
     ],
     clientDesignCtaDemo: "View Lugner demo",
-    clientDesignCtaAudit: "Free check: see how your URL looks →",
     includesEyebrow: "Your website",
     includesTitle: "What's included in your website",
     includesLead:
@@ -171,31 +169,26 @@ export const enMessages: SiteMessages = {
       {
         title: "Responsive audit",
         body: "Score 0–100 and auto concept from your URL — clear before/after.",
-        linkLabel: "Try with your URL →",
         tool: "audit",
       },
       {
         title: "Digital menu",
         body: "Photo of the menu → dishes and prices in a mobile preview.",
-        linkLabel: "See how it works →",
         tool: "menu",
       },
       {
         title: "WhatsApp help",
         body: "Quick answers on seating, hours, parking; bookings to the real chat.",
-        linkLabel: "See example →",
         tool: "microbot",
       },
       {
         title: "Local copy",
         body: "Copy adapted to the audience (not literal translation) DE/EN/ES.",
-        linkLabel: "See example →",
         tool: "copy",
       },
       {
         title: "Brief → landing",
         body: "Describe the business in a few lines and see a landing draft.",
-        linkLabel: "Try it →",
         tool: "brief",
       },
     ],
@@ -260,7 +253,7 @@ export const enMessages: SiteMessages = {
     title: "Contact",
     lead: "Want to see how it could look first? Try",
     leadAudit: "or write me — next step in minutes.",
-    auditLinkLabel: "Mobile Erst",
+    auditLinkLabel: "Try with your URL",
     briefAlt: "Prefer to write a brief instead of calling?",
     briefLink: "Open Brief Agent →",
     email: "Email",

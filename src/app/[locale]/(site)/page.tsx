@@ -3,13 +3,7 @@ import Link from "next/link";
 import { CtaButtons } from "@/components/cta-buttons";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { pageMetadata } from "@/lib/i18n/metadata";
-import {
-  briefAgentPath,
-  copyAdaptPath,
-  localizedPath,
-  menuDigitizerPath,
-  microBotPath,
-} from "@/lib/i18n/paths";
+import { localizedPath } from "@/lib/i18n/paths";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { site, whatsappHref } from "@/lib/site";
 import { notFound } from "next/navigation";
@@ -20,24 +14,6 @@ const HERO_PHOTO =
   "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80";
 
 type Props = { params: Promise<{ locale: string }> };
-
-function includeHref(
-  locale: Locale,
-  tool: "audit" | "menu" | "microbot" | "copy" | "brief",
-): string {
-  switch (tool) {
-    case "audit":
-      return localizedPath(locale, "/auditoria");
-    case "menu":
-      return menuDigitizerPath(locale);
-    case "microbot":
-      return microBotPath(locale);
-    case "copy":
-      return copyAdaptPath(locale);
-    case "brief":
-      return briefAgentPath(locale);
-  }
-}
 
 export async function generateMetadata({ params }: Props) {
   const { locale: raw } = await params;
@@ -75,29 +51,21 @@ export default async function HomePage({ params }: Props) {
               {c.heroSub}
             </p>
             <div className="animate-rise-delay-2 mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                href={localizedPath(locale, "/auditoria")}
+                className="cta-pulse inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
+              >
+                {c.heroAuditCta}
+              </Link>
               <a
                 href={whatsappHref(cta.defaultWhatsapp)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cta-pulse inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
+                className="inline-flex items-center justify-center rounded-full border border-ink/20 bg-surface px-5 py-3 text-sm font-medium text-ink transition hover:border-accent hover:bg-accent-soft"
               >
                 {cta.whatsapp}
               </a>
-              <Link
-                href="/demos/lugner"
-                className="inline-flex items-center justify-center rounded-full border border-ink/20 bg-surface px-5 py-3 text-sm font-medium text-ink transition hover:border-accent hover:bg-accent-soft"
-              >
-                {c.heroDemoCta}
-              </Link>
             </div>
-            <p className="animate-rise-delay-2 mt-4">
-              <Link
-                href={localizedPath(locale, "/auditoria")}
-                className="text-sm font-medium text-accent underline-offset-4 hover:underline"
-              >
-                {c.heroAuditLink}
-              </Link>
-            </p>
           </div>
 
           <div className="animate-rise-delay-1 relative mx-auto w-full max-w-md">
@@ -142,18 +110,12 @@ export default async function HomePage({ params }: Props) {
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
               {c.clientDesignBody}
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="mt-8">
               <Link
                 href="/demos/lugner"
-                className="rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
+                className="inline-flex rounded-full bg-accent px-5 py-3 text-sm font-medium text-white transition hover:brightness-110"
               >
                 {c.clientDesignCtaDemo}
-              </Link>
-              <Link
-                href={localizedPath(locale, "/auditoria")}
-                className="text-sm font-medium text-accent underline-offset-4 hover:underline"
-              >
-                {c.clientDesignCtaAudit}
               </Link>
             </div>
           </div>
@@ -230,12 +192,6 @@ export default async function HomePage({ params }: Props) {
                 <p className="mt-3 text-sm leading-relaxed text-surface/65">
                   {item.body}
                 </p>
-                <Link
-                  href={includeHref(locale, item.tool)}
-                  className="mt-4 inline-block text-sm font-medium text-[#c9a227] underline-offset-4 hover:underline"
-                >
-                  {item.linkLabel}
-                </Link>
               </li>
             ))}
           </ul>

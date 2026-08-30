@@ -24,10 +24,10 @@ Copia este archivo completo y pégaselo a Gemini. Al final tienes un prompt list
 **Un solo producto público: websites** para negocios locales.
 
 - Nav del portafolio: solo **Trabajos · Servicios · Contacto** (sin “Mobile Erst”, “Brief”, bots, etc. en el chrome).
-- Hero: marca + **promesa afilada** (segundos / quedarse) + Wien/rubros · subtexto *Klar. Schnell. Mobile zuerst.* debajo del lead · **2 CTAs** WhatsApp + Ver demo; Mobile Erst solo enlace terciario. Sin “Agendar” en el hero.
-- Brief Agent no va en el nav: vive en **Kontakt** como alternativa (“¿preferís escribir un brief…?”) y en “Qué incluye” / Leistungen.
+- Hero: marca + **promesa afilada** (segundos / quedarse) + Wien/rubros · subtexto *Klar. Schnell. Mobile zuerst.* debajo del lead · **CTA primario** = Mobile Erst / URL (`/auditoria`, botón sólido + pulse) · **CTA secundario** = WhatsApp (borde/discreto, sin pulse). Demo Lugner **no** en el hero: solo en el bloque de 4 pasos. Sin “Agendar” en el hero.
+- Brief Agent no va en el nav: vive en **Kontakt** como alternativa (“¿preferís escribir un brief…?”) y en Servicios; en home, “Qué incluye” es solo título + descripción (sin links a tools).
 - Herramientas IA (auditoría responsive, Design Agent, Brief→landing, carta digital, Micro-Bot WhatsApp, copy local, Maps→Konzept) son **features / cómo demuestras valor** dentro del servicio — no líneas de producto competidoras en la primera impresión.
-- Un dueño que entra desde WhatsApp debe entender en segundos: *vendes webs*; puede escribirte o ver una demo. No elegir entre “auditoría vs bot vs brief”.
+- Un dueño que entra debe entender en segundos: *vendes webs*; el lead magnet fuerte es **probar con su URL**; WhatsApp queda a un clic. No elegir entre “auditoría vs bot vs brief” en el hero.
 - **Casos Viena ≠ plantillas por rubro:** en home y `/trabajos`, **Wien = solo Lugner** (lead caliente); Gasthaus + Villa Italia / Solo Modas / Universo van en “Vorlagen nach Branche” / plantillas — sin vender Colombia como mercado; una línea de prueba social (*Auch international getestet*).
 
 ---
@@ -61,16 +61,16 @@ Flujo: Portafolio (`santivilla.com`) → Demo personalizada → Pitch antes/desp
 
 | Ruta | Qué es |
 |------|--------|
-| `/` | Home: marca “Santi Villa”, promesa webs, CTA WhatsApp + Ver demo; tools como “Qué incluye tu web” más abajo |
+| `/` | Home: marca “Santi Villa”, promesa webs, CTA primario auditoría URL + WhatsApp secundario; demo solo en proceso 4 pasos; “Qué incluye” sin links |
 | `/trabajos` | Wien (Lugner) + Vorlagen nach Branche (Gasthaus + plantillas) + precios |
 | `/servicios` | 3 paquetes + extras del proyecto (carta, bot, copy, brief…) |
 | `/contacto` | WhatsApp, email, Cal.com, formulario → lead |
 
-### Lead magnets / tools (existen, no van en nav/hero)
+### Lead magnets / tools (existen; no van en nav; auditoría sí es CTA primario del hero)
 
 | Ruta | Rol |
 |------|-----|
-| `/auditoria` | Mobile Erst — score + Konzept desde URL |
+| `/auditoria` | Mobile Erst — score + Konzept desde URL (**CTA primario home**) |
 | `/brief` | Brief Agent — texto → landing conceptual |
 | `/digitalizar-carta` | OCR carta → preview |
 | `/micro-bot` | FAQ + handoff WhatsApp |
@@ -144,6 +144,7 @@ No quiero que reescriba el stack técnico. Quiero ideas creativas y de negocio:
 
 - Marca personal: **Santi Villa** / `santivilla.com` (no inventar nombre de agencia)
 - **Un producto en hero/nav: websites.** Tools IA = features del servicio
+- **Jerarquía CTA home:** 1) auditoría/URL · 2) WhatsApp · demo Lugner solo en el flujo de 4 pasos · “Qué incluye” sin links a tools
 - Primero mobile; demos pensadas para enseñar en el teléfono
 - No fingir proyectos oficiales de clientes reales
 - No scrapear directorios enteros; demos conceptuales con datos públicos
