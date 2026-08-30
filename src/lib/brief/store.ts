@@ -20,11 +20,14 @@ function memoryStore(): GlobalBriefStore {
 }
 
 function normalizeBriefPayload(raw: unknown): BriefPayload {
-  const p = raw as BriefPayload;
-  if (p?.images?.heroUrl) return p;
+  const p = raw as BriefPayload & { imagePrompts?: unknown };
+  // Never expose LLM imagePrompts on persisted/UI payloads.
+  const { imagePrompts: _omit, ...rest } = p ?? {};
+  const base = rest as BriefPayload;
+  if (base?.images?.heroUrl) return base;
   return {
-    ...p,
-    businessKind: p?.businessKind ?? "other",
+    ...base,
+    businessKind: base?.businessKind ?? "other",
     images: {
       heroUrl: "",
       secondaryUrl: "",

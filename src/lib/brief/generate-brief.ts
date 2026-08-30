@@ -1,6 +1,6 @@
 import { generateObject } from "ai";
 import { createAnthropic } from "@ai-sdk/anthropic";
-import { briefSchema, type BriefPayload } from "./schema";
+import { briefSchema, toBriefPayload, type BriefPayload } from "./schema";
 import { resolveBriefImages } from "./resolve-images";
 import type { Locale } from "@/lib/i18n/locales";
 
@@ -45,7 +45,11 @@ Rules:
 - colors: high-contrast, readable palette for a landing page. Prefer stone/teal/warm accents.
   Avoid generic purple-on-white, purple-indigo gradients, and the cliché cream+#terracotta AI look.
   background and ink must contrast strongly (e.g. light bg + dark ink, or dark bg + light ink).
-- ctaLabel: short action for WhatsApp or contact (e.g. "Reservar" / "WhatsApp" / "Anfragen").`,
+- ctaLabel: short action for WhatsApp or contact (e.g. "Reservar" / "WhatsApp" / "Anfragen").
+- imagePrompts: exactly 3 English cinematic photo prompts (hero ~16:9, context/interior ~4:3, detail ~1:1).
+  Photorealistic; no text, logos, or watermarks in the image.
+  MUST match the owner's real business theme (boats → marina/yacht/sea; bakery → bread/oven; gym → training floor).
+  NEVER default to generic office, kitchen cabinets, or boutique retail unless that is the actual business.`,
     prompt: `Business brief from the owner:\n\n${params.text.slice(0, 2000)}`,
   });
 
@@ -53,7 +57,8 @@ Rules:
     kind: object.businessKind,
     businessName: object.businessName,
     inputText: `${params.text}\n${object.businessName}\n${object.headline}\n${object.subheadline}`,
+    imagePrompts: object.imagePrompts,
   });
 
-  return { ...object, images };
+  return toBriefPayload(object, images);
 }

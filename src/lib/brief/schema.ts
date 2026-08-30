@@ -39,6 +39,12 @@ export const briefSchema = z.object({
     ink: hexColor,
   }),
   ctaLabel: z.string().min(1).max(40),
+  /**
+   * Exactly 3 English photo prompts (hero, context, detail).
+   * Use array+length (not z.tuple): Anthropic structured output rejects tuple/prefixItems schemas.
+   * Stripped before save/UI.
+   */
+  imagePrompts: z.array(z.string().min(20).max(280)).length(3),
 });
 
 export type BriefLlmPayload = z.infer<typeof briefSchema>;
@@ -50,6 +56,21 @@ export type BriefImages = {
   source: "nano-banana" | "unsplash";
 };
 
-export type BriefPayload = BriefLlmPayload & {
+/** Public/persisted brief: LLM fields without imagePrompts, plus resolved image URLs. */
+export type BriefPayload = Omit<BriefLlmPayload, "imagePrompts"> & {
   images: BriefImages;
 };
+
+export function stripImagePrompts(
+  llm: BriefLlmPayload,
+): Omit<BriefLlmPayload, "imagePrompts"> {
+  const { imagePrompts: _omit, ...rest } = llm;
+  return rest;
+}
+
+export function toBriefPayload(
+  llm: BriefLlmPayload,
+  images: BriefImages,
+): BriefPayload {
+  return { ...stripImagePrompts(llm), images };
+}

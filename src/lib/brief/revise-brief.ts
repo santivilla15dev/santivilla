@@ -2,7 +2,11 @@ import { generateObject } from "ai";
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { isBriefConfigured } from "./generate-brief";
 import { resolveBriefImages } from "./resolve-images";
-import { briefSchema, type BriefLlmPayload, type BriefPayload } from "./schema";
+import {
+  briefSchema,
+  toBriefPayload,
+  type BriefPayload,
+} from "./schema";
 import type { Locale } from "@/lib/i18n/locales";
 
 function languageName(locale: Locale): string {
@@ -18,7 +22,7 @@ export function wantsVisualRefresh(message: string): boolean {
   );
 }
 
-function stripImages(payload: BriefPayload): BriefLlmPayload {
+function publicFieldsForRevise(payload: BriefPayload) {
   const { images: _omit, ...rest } = payload;
   return rest;
 }
@@ -41,7 +45,11 @@ export async function reviseBriefPayload(params: {
     apiKey: process.env.ANTHROPIC_API_KEY,
   });
 
-  const currentJson = JSON.stringify(stripImages(params.current), null, 2);
+  const currentJson = JSON.stringify(
+    publicFieldsForRevise(params.current),
+    null,
+    2,
+  );
 
   const { object } = await generateObject({
     model: anthropic("claude-sonnet-4-5"),
@@ -55,22 +63,26 @@ Rules:
 - Preserve businessName unless the user asks to rename.
 - Exactly 3 features always.
 - Colors: high contrast, readable. Avoid purple-on-white and cream+#terracotta clichés.
-- businessKind: cafe for bakeries; shop for non-food retail; pizzeria/gasthaus for restaurants.`,
-    prompt: `Current landing JSON:\n${currentJson}\n\nUser revision request:\n${message}\n\nReturn the full updated JSON object.`,
+- businessKind: cafe for bakeries; shop for non-food retail; pizzeria/gasthaus for restaurants.
+- imagePrompts: exactly 3 English cinematic photo prompts matching the ACTUAL business theme
+  (hero, context, detail). Photorealistic; no text/logos. Update them when the theme or visuals change;
+  otherwise keep them coherent with the business (never generic office/kitchen unless that is the business).`,
+    prompt: `Current landing JSON:\n${currentJson}\n\nUser revision request:\n${message}\n\nReturn the full updated JSON object including imagePrompts.`,
   });
 
   const kindChanged = object.businessKind !== params.current.businessKind;
   const refreshImages = wantsVisualRefresh(message) || kindChanged;
 
   if (!refreshImages && params.current.images?.heroUrl) {
-    return { ...object, images: params.current.images };
+    return toBriefPayload(object, params.current.images);
   }
 
   const images = await resolveBriefImages({
     kind: object.businessKind,
     businessName: object.businessName,
     inputText: `${message}\n${object.businessName}\n${object.headline}\n${object.subheadline}`,
+    imagePrompts: object.imagePrompts,
   });
 
-  return { ...object, images };
+  return toBriefPayload(object, images);
 }
