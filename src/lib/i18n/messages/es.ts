@@ -53,7 +53,7 @@ const projects: SiteMessages["projects"] = [
     beforeNote:
       "Muchos centros aún viven en Typo3 antiguo: zoom en móvil, info clave enterrada.",
     afterNote:
-      "Home clara: horarios, shops, anfahrt y contacto en un solo flujo táctil.",
+      "Home clara: horarios, tiendas, cómo llegar y contacto en un solo flujo táctil.",
   },
   {
     slug: "restaurant",
@@ -105,6 +105,8 @@ export const esMessages: SiteMessages = {
     services: "Servicios",
     contact: "Contacto",
     localeHint: "Portafolio (ES) · el sitio de cliente es DE",
+    menuOpen: "Abrir menú",
+    menuClose: "Cerrar menú",
     localeLabels: {
       de: "Deutsch — clientes en Wien",
       en: "English — portfolio / partners",
@@ -366,14 +368,14 @@ export const esMessages: SiteMessages = {
   work: {
     title: "Trabajos",
     lead: "Primero el caso Wien (centro comercial). Después, plantillas por rubro que puedes adaptar.",
-    lugnerEyebrow: "Plantilla · Wien",
-    lugnerTitle: "Stadtgalerie West: antes vs después",
-    lugnerBody:
+    stadtgalerieEyebrow: "Plantilla · Wien",
+    stadtgalerieTitle: "Stadtgalerie West: antes vs después",
+    stadtgalerieBody:
       "Muchos centros comerciales aún pelean con Typo3 en el móvil. La demo pública es un Konzept ficticio mobile-first — no un sitio oficial de ningún centro real.",
     before: "Antes",
     after: "Después · Demo",
     beforeNote: "Layout denso · tipografía pequeña · difícil en móvil.",
-    afterNote: "Home clara: horarios, shops, anfahrt y contacto en un solo flujo.",
+    afterNote: "Home clara: horarios, tiendas, cómo llegar y contacto en un solo flujo.",
     beforeHost: "Typo3 · Zentrum",
     caseBrand: "Stadtgalerie West",
     viewCurrent: "Ver sitio actual →",
@@ -516,7 +518,7 @@ export const esMessages: SiteMessages = {
   microBot: {
     title: "Micro-Bot WhatsApp",
     lead: "Tres preguntas que te llaman cada día — sitio, horarios, aparcar. Respuesta al instante, reserva por WhatsApp. No es un chatbot molesto.",
-    eyebrow: "Producto · Gastro",
+    eyebrow: "Incluido en tu web · Gastro",
     chipAvailability: "¿Hay sitio hoy?",
     chipHours: "Horarios",
     chipParking: "Aparcar",
@@ -548,7 +550,7 @@ export const esMessages: SiteMessages = {
   copyAdapt: {
     title: "Adaptar copy local",
     lead: "No es traducción literal — la IA adapta platos, ofertas y servicios al público y la cultura (ej. alemán formal austriaco para locales vs. inglés fresco para turistas).",
-    eyebrow: "Producto · Contenido",
+    eyebrow: "Incluido en tu web · Contenido",
     sourceLabel: "Texto original",
     sourcePlaceholder: "ej. Schnitzel vienés de ternera con ensalada de patata…",
     sourceLocaleLabel: "Idioma origen",
@@ -596,7 +598,7 @@ export const esMessages: SiteMessages = {
   briefAgent: {
     title: "Brief → landing",
     lead: "Describe tu negocio en unas líneas. La IA rellena un esquema seguro (sin HTML) y pintamos Hero, servicios y contacto con componentes fijos.",
-    eyebrow: "Producto · Brief Agent",
+    eyebrow: "Incluido en tu web · Brief Agent",
     textareaLabel: "Tu brief",
     textareaPlaceholder:
       "Ej. Somos una panadería artesanal en el 7. Bezirk. Horneamos pan de masa madre y pasteles. Queremos más reservas de catering y visitas de vecinos…",
@@ -664,7 +666,7 @@ export const esMessages: SiteMessages = {
       return {
         ...p,
         blurb:
-          "Cómo se vería un centro comercial de Wien con horarios, shops y contacto claros en el móvil.",
+          "Cómo se vería un centro comercial de Wien con horarios, tiendas y contacto claros en el móvil.",
       };
     }
     if (p.slug === "restaurant") {

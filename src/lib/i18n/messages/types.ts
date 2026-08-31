@@ -28,6 +28,8 @@ export type SiteMessages = {
     services: string;
     contact: string;
     localeHint: string;
+    menuOpen: string;
+    menuClose: string;
     localeLabels: { de: string; en: string; es: string };
   };
   footer: {
@@ -150,9 +152,9 @@ export type SiteMessages = {
   work: {
     title: string;
     lead: string;
-    lugnerEyebrow: string;
-    lugnerTitle: string;
-    lugnerBody: string;
+    stadtgalerieEyebrow: string;
+    stadtgalerieTitle: string;
+    stadtgalerieBody: string;
     before: string;
     after: string;
     beforeNote: string;

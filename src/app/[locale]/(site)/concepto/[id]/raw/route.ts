@@ -14,7 +14,7 @@ export async function GET(_req: Request, { params }: Params) {
   const concept = await getConcept(id);
   if (!concept) {
     return new Response(
-      `<!DOCTYPE html><html><body style="font-family:system-ui;padding:2rem"><h1>Konzept abgelaufen</h1><p>Bitte erneut unter Mobile Erst generieren.</p><a href="${auditHref}">Mobile Erst</a></body></html>`,
+      `<!DOCTYPE html><html><body style="font-family:system-ui;padding:2rem"><h1>Konzept abgelaufen</h1><p>Bitte erneut in der Audit-Seite generieren.</p><a href="${auditHref}">Zum Audit</a></body></html>`,
       { status: 404, headers: { "Content-Type": "text/html; charset=utf-8" } },
     );
   }

@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: Props) {
   const report = await getAuditReport(id);
   return {
     title: report
-      ? `Mobile Erst — ${report.hostname}`
-      : "Mobile Erst Report",
+      ? `Audit Report — ${report.hostname}`
+      : "Audit Report",
     robots: { index: false, follow: false },
   };
 }
@@ -42,7 +42,7 @@ export default async function AuditReportPage({ params }: Props) {
 
       <header className="border-b border-line pb-6">
         <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
-          Mobile Erst · Report
+          Audit · Report
         </p>
         <h1 className="font-display mt-2 text-4xl text-ink">{report.hostname}</h1>
         <p className="mt-1 text-sm text-muted">{report.url}</p>

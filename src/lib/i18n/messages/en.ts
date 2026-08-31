@@ -105,6 +105,8 @@ export const enMessages: SiteMessages = {
     services: "Services",
     contact: "Contact",
     localeHint: "Portfolio mode · client-facing site is DE",
+    menuOpen: "Open menu",
+    menuClose: "Close menu",
     localeLabels: {
       de: "Deutsch — clients in Vienna",
       en: "English — portfolio / partners",
@@ -361,14 +363,14 @@ export const enMessages: SiteMessages = {
       "Domain + hosting — Vercel setup included in site packages.",
     ],
     agbLink: "Process, deposit & guarantee (see the design before you pay) → Terms",
-    whatsappMessage: "Hi Santi, I'd like to quote a website package.",
+    whatsappMessage: "Hi Santi, I'd like a quote for a website package.",
   },
   work: {
     title: "Work",
     lead: "Vienna case first (shopping center). Then niche templates you can adapt to your business.",
-    lugnerEyebrow: "Template · Vienna",
-    lugnerTitle: "Stadtgalerie West: before vs after",
-    lugnerBody:
+    stadtgalerieEyebrow: "Template · Vienna",
+    stadtgalerieTitle: "Stadtgalerie West: before vs after",
+    stadtgalerieBody:
       "Many shopping centers still fight Typo3 on mobile. The public demo is a fictional mobile-first concept — not an official site for any real center.",
     before: "Before",
     after: "After · Demo",
@@ -516,7 +518,7 @@ export const enMessages: SiteMessages = {
   microBot: {
     title: "Micro-Bot WhatsApp",
     lead: "Three questions that flood your phone — tables, hours, parking. Instant answers, booking via WhatsApp. Not an annoying chatbot.",
-    eyebrow: "Product · Restaurant",
+    eyebrow: "Part of your site · Restaurant",
     chipAvailability: "Tables today?",
     chipHours: "Opening hours",
     chipParking: "Parking",
@@ -548,7 +550,7 @@ export const enMessages: SiteMessages = {
   copyAdapt: {
     title: "Local copy adaptation",
     lead: "Not literal translation — AI adapts menu items, offers and services to audience and culture (e.g. formal Austrian German for locals vs. fresh English for tourists).",
-    eyebrow: "Product · Content",
+    eyebrow: "Part of your site · Content",
     sourceLabel: "Source text",
     sourcePlaceholder: "e.g. Wiener schnitzel from veal with potato salad…",
     sourceLocaleLabel: "Source language",
@@ -596,7 +598,7 @@ export const enMessages: SiteMessages = {
   briefAgent: {
     title: "Brief → landing",
     lead: "Describe your business in a few lines. The AI fills a safe schema (no HTML) and we render Hero, features and contact with fixed React components.",
-    eyebrow: "Product · Brief Agent",
+    eyebrow: "Part of your site · Brief Agent",
     textareaLabel: "Your brief",
     textareaPlaceholder:
       "e.g. We’re an artisan bakery in Vienna’s 7th district. Sourdough and pastries. We want more catering bookings and neighborhood foot traffic…",

@@ -27,7 +27,7 @@ export function MenuPreviewView({
 
       <header className="mx-auto max-w-lg px-5 pb-8 pt-10">
         <p className="text-[11px] uppercase tracking-[0.28em] text-[#d4b45a]">
-          Konzept · Mobile Erst
+          Konzept · Preview
         </p>
         <h1 className="font-display mt-3 text-4xl leading-tight text-[#f5f1e8]">
           {title}

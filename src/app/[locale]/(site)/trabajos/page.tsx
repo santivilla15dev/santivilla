@@ -134,10 +134,10 @@ export default async function TrabajosPage({ params }: Props) {
         </p>
         <p className="mt-2 max-w-xl text-sm text-muted">{w.viennaLead}</p>
         <h2 className="font-display mt-4 max-w-[16ch] text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] tracking-tight text-ink">
-          {w.lugnerTitle}
+          {w.stadtgalerieTitle}
         </h2>
         <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">
-          {w.lugnerBody}
+          {w.stadtgalerieBody}
         </p>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-8 lg:gap-10">

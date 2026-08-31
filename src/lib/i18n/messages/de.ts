@@ -105,6 +105,8 @@ export const deMessages: SiteMessages = {
     services: "Leistungen",
     contact: "Kontakt",
     localeHint: "Für Betriebe in Wien",
+    menuOpen: "Menü öffnen",
+    menuClose: "Menü schließen",
     localeLabels: {
       de: "Deutsch — Kunden in Wien",
       en: "English — Portfolio / Partner",
@@ -366,9 +368,9 @@ export const deMessages: SiteMessages = {
   work: {
     title: "Arbeiten",
     lead: "Zuerst der Wien-Case (Einkaufszentrum). Danach Vorlagen nach Branche — anpassbar für deinen Betrieb.",
-    lugnerEyebrow: "Vorlage · Wien",
-    lugnerTitle: "Stadtgalerie West: vorher vs. nachher",
-    lugnerBody:
+    stadtgalerieEyebrow: "Vorlage · Wien",
+    stadtgalerieTitle: "Stadtgalerie West: vorher vs. nachher",
+    stadtgalerieBody:
       "Viele Center kämpfen noch mit Typo3 am Handy. Die öffentliche Demo ist ein fiktives mobile-first Konzept — keine offizielle Site eines echten Centers.",
     before: "Vorher",
     after: "Nachher · Demo",
@@ -410,7 +412,7 @@ export const deMessages: SiteMessages = {
     title: "Kontakt",
     lead: "Willst du zuerst sehen, wie es aussehen könnte? Probiere",
     leadAudit: "oder schreib mir — nächster Schritt in Minuten.",
-    auditLinkLabel: "Mobile Erst",
+    auditLinkLabel: "Mit deiner URL testen",
     briefAlt: "Lieber ein Brief schreiben statt anrufen?",
     briefLink: "Brief Agent öffnen →",
     email: "E-Mail",
@@ -437,7 +439,7 @@ export const deMessages: SiteMessages = {
       "Hallo Santi, ich möchte über eine Website für meinen Betrieb sprechen.",
   },
   audit: {
-    eyebrow: "Mobile Erst · Santi Design Agent",
+    eyebrow: "Audit · kostenlos · Santi Design Agent",
     title: "Audit sofort.",
     titleBreak: "Konzept automatisch.",
     lead: "Kostenlos und unverbindlich: 1) URL einfügen → Score auf Handy, Tablet, Desktop. 2) Responsives HTML-Konzept mit dem Agenten. 3) Gefällt es? WhatsApp — wir kalkulieren die echte Site.",
@@ -473,7 +475,7 @@ export const deMessages: SiteMessages = {
     eyebrow: "Santi Design Agent",
     title: "Automatisches Konzept",
     lead: "Preview aus dem Audit. Sprich mit dem Agenten für Menü, Infos, Sprache… Keine offizielle Website. Gefällt es? Wir bauen die echte Site.",
-    backLink: "← Zurück zu Mobile Erst",
+    backLink: "← Zurück zum Audit",
     seoBadge: "SEO · JSON-LD",
     seoTooltip:
       "Maschinenlesbare Schema.org-Daten für Google — automatisch aus Betriebsdaten generiert.",
@@ -516,7 +518,7 @@ export const deMessages: SiteMessages = {
   microBot: {
     title: "Micro-Bot WhatsApp",
     lead: "Drei Fragen, die jeden Tag anrufen — Platz, Zeiten, Parken. Antwort in Sekunden, Reservierung per WhatsApp. Kein nerviger Chatbot.",
-    eyebrow: "Produkt · Gastro",
+    eyebrow: "Teil deiner Website · Gastro",
     chipAvailability: "Platz heute?",
     chipHours: "Öffnungszeiten",
     chipParking: "Parken",
@@ -548,7 +550,7 @@ export const deMessages: SiteMessages = {
   copyAdapt: {
     title: "Copy lokal anpassen",
     lead: "Keine wortwörtliche Übersetzung — KI passt Menütexte, Angebote und Services an Zielgruppe und Kultur an (z. B. formelles Österreichisches Deutsch vs. frisches Englisch für Touristen).",
-    eyebrow: "Produkt · Content",
+    eyebrow: "Teil deiner Website · Content",
     sourceLabel: "Originaltext",
     sourcePlaceholder: "z. B. Wiener Schnitzel vom Kalb mit Erdäpfelsalat…",
     sourceLocaleLabel: "Quellsprache",
@@ -596,7 +598,7 @@ export const deMessages: SiteMessages = {
   briefAgent: {
     title: "Brief → Landing",
     lead: "Beschreib dein Business in ein paar Zeilen. Die KI füllt ein sicheres Schema (ohne HTML) — wir rendern Hero, Leistungen und Kontakt mit festen React-Komponenten.",
-    eyebrow: "Produkt · Brief Agent",
+    eyebrow: "Teil deiner Website · Brief Agent",
     textareaLabel: "Dein Brief",
     textareaPlaceholder:
       "z. B. Wir sind eine Handwerksbäckerei im 7. Bezirk. Sauerteigbrot und Patisserie. Mehr Catering-Anfragen und Nachbarschaftsbesuche…",

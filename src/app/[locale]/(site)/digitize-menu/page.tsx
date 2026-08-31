@@ -26,7 +26,7 @@ export default async function DigitizeMenuPage({ params }: Props) {
   return (
     <div className="site-shell py-16 sm:py-20">
       <p className="text-sm font-medium uppercase tracking-[0.22em] text-accent">
-        Mobile Erst · Digital Menu
+        Part of your site · Digital menu
       </p>
       <h1 className="font-display mt-3 text-5xl text-ink sm:text-6xl">{m.title}</h1>
       <p className="mt-5 max-w-2xl text-lg text-muted">{m.lead}</p>
