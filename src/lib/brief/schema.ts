@@ -61,6 +61,18 @@ export type BriefPayload = Omit<BriefLlmPayload, "imagePrompts"> & {
   images: BriefImages;
 };
 
+/** Persisted shape (imagePrompts stripped, images attached). Rows failing this are treated as gone. */
+export const briefPayloadStoredSchema = briefSchema
+  .omit({ imagePrompts: true })
+  .extend({
+    images: z.object({
+      heroUrl: z.string(),
+      secondaryUrl: z.string(),
+      detailUrl: z.string(),
+      source: z.enum(["nano-banana", "unsplash"]),
+    }),
+  });
+
 export function stripImagePrompts(
   llm: BriefLlmPayload,
 ): Omit<BriefLlmPayload, "imagePrompts"> {

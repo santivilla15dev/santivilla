@@ -1,6 +1,6 @@
 import type { Json } from "@/lib/supabase/database.types";
 import { getSupabaseAdmin, isSupabaseConfigured } from "@/lib/supabase/admin";
-import type { BriefPayload } from "./schema";
+import { briefPayloadStoredSchema, type BriefPayload } from "./schema";
 import type { BriefRecord } from "./types";
 import type { Locale } from "@/lib/i18n/locales";
 import { isLocale } from "@/lib/i18n/locales";
@@ -19,22 +19,26 @@ function memoryStore(): GlobalBriefStore {
   return g.__santiBriefs;
 }
 
-function normalizeBriefPayload(raw: unknown): BriefPayload {
+function normalizeBriefPayload(raw: unknown): BriefPayload | null {
   const p = raw as BriefPayload & { imagePrompts?: unknown };
   // Never expose LLM imagePrompts on persisted/UI payloads.
   const { imagePrompts: _omit, ...rest } = p ?? {};
   const base = rest as BriefPayload;
-  if (base?.images?.heroUrl) return base;
-  return {
-    ...base,
-    businessKind: base?.businessKind ?? "other",
-    images: {
-      heroUrl: "",
-      secondaryUrl: "",
-      detailUrl: "",
-      source: "unsplash",
-    },
-  };
+  const withDefaults = base?.images?.heroUrl
+    ? base
+    : {
+        ...base,
+        businessKind: base?.businessKind ?? "other",
+        images: {
+          heroUrl: "",
+          secondaryUrl: "",
+          detailUrl: "",
+          source: "unsplash" as const,
+        },
+      };
+  // Payload corrupto/incompleto → null (la página responde 404, no 500).
+  const parsed = briefPayloadStoredSchema.safeParse(withDefaults);
+  return parsed.success ? parsed.data : null;
 }
 
 export function makeBriefId(): string {
@@ -76,7 +80,9 @@ export async function getBrief(id: string): Promise<BriefRecord | null> {
   if (!isSupabaseConfigured()) {
     const hit = memoryStore().briefs.get(id);
     if (!hit) return null;
-    return { ...hit, payload: normalizeBriefPayload(hit.payload) };
+    const payload = normalizeBriefPayload(hit.payload);
+    if (!payload) return null;
+    return { ...hit, payload };
   }
 
   const supabase = getSupabaseAdmin();
@@ -91,12 +97,14 @@ export async function getBrief(id: string): Promise<BriefRecord | null> {
 
   const localeRaw = data.locale;
   const locale: Locale = isLocale(localeRaw) ? localeRaw : "es";
+  const payload = normalizeBriefPayload(data.payload);
+  if (!payload) return null;
 
   return {
     id: data.id,
     locale,
     input: data.input,
-    payload: normalizeBriefPayload(data.payload),
+    payload,
     createdAt: data.created_at,
     editToken: data.edit_token,
   };
