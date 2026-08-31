@@ -1,3 +1,5 @@
+import "server-only";
+
 import type { ArtDirection } from "./art-direction";
 import type { SiteFacts } from "./extract-site";
 import type { ConceptSeoPayload } from "@/lib/seo/types";

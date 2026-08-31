@@ -8,7 +8,7 @@ import type {
   AuditLang,
   AuditResult,
 } from "@/lib/audit/types";
-import { formatMs } from "@/lib/audit/pagespeed";
+import { formatMs } from "@/lib/audit/vitals-format";
 import { AuditAudioPlayer } from "@/components/audit-audio-player";
 import { LighthouseReport } from "@/components/lighthouse-report";
 import { localizedPath } from "@/lib/i18n/paths";

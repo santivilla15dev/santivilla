@@ -1,4 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { NextResponse, type NextRequest } from "next/server";
 import type { Database } from "./database.types";
 
@@ -30,5 +31,25 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  return { supabaseResponse, user };
+  return { supabaseResponse, user, supabase };
+}
+
+/**
+ * Role check with the caller's own session (RLS: "users read own profile").
+ * No service_role in the edge middleware bundle.
+ */
+export async function hasAdminRole(
+  supabase: SupabaseClient<Database>,
+  userId: string,
+): Promise<boolean> {
+  try {
+    const { data } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", userId)
+      .maybeSingle();
+    return data?.role === "admin";
+  } catch {
+    return false;
+  }
 }

@@ -1,3 +1,5 @@
+import "server-only";
+
 import type { Json } from "@/lib/supabase/database.types";
 import { getSupabaseAdmin, isSupabaseConfigured } from "@/lib/supabase/admin";
 import { briefPayloadStoredSchema, type BriefPayload } from "./schema";

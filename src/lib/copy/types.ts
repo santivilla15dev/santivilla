@@ -1,6 +1,8 @@
 import type { BusinessKind } from "@/lib/design-system/art-direction";
 import type { Locale } from "@/lib/i18n/locales";
 
+export const DEMO_COPY_ID = "demo-konzept";
+
 export type CopyAudience = "local" | "tourist" | "business";
 
 export type CopyContentType = "service" | "offer" | "dish" | "general";

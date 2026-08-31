@@ -8,9 +8,8 @@ import {
   type Locale,
 } from "@/lib/i18n/locales";
 import { stripLocalePrefix } from "@/lib/i18n/paths";
-import { updateSession } from "@/lib/supabase/middleware";
+import { hasAdminRole, updateSession } from "@/lib/supabase/middleware";
 import { safeNextPath } from "@/lib/auth/next-path";
-import { getSupabaseAdmin, isSupabaseConfigured } from "@/lib/supabase/admin";
 
 const LOCALE_HEADER = "x-locale";
 
@@ -32,21 +31,6 @@ function shouldSkipLocale(pathname: string): boolean {
 
 function isProtected(pathname: string): boolean {
   return PROTECTED_PREFIXES.some((p) => pathname.startsWith(p));
-}
-
-async function hasAdminRole(userId: string): Promise<boolean> {
-  if (!isSupabaseConfigured()) return false;
-  try {
-    const admin = getSupabaseAdmin();
-    const { data } = await admin
-      .from("profiles")
-      .select("role")
-      .eq("id", userId)
-      .maybeSingle();
-    return data?.role === "admin";
-  } catch {
-    return false;
-  }
 }
 
 function resolveLocale(request: NextRequest): Locale {
@@ -74,7 +58,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (hasSupabase && (isProtected(pathname) || pathname === "/login")) {
-    const { supabaseResponse, user } = await updateSession(request);
+    const { supabaseResponse, user, supabase } = await updateSession(request);
 
     if (isProtected(pathname) && !user) {
       const loginUrl = request.nextUrl.clone();
@@ -84,7 +68,7 @@ export async function middleware(request: NextRequest) {
     }
 
     if (pathname.startsWith("/admin") && user) {
-      const isAdmin = await hasAdminRole(user.id);
+      const isAdmin = await hasAdminRole(supabase, user.id);
       if (!isAdmin) {
         const portalUrl = request.nextUrl.clone();
         portalUrl.pathname = "/portal";

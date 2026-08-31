@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { DEMO_MENU_ID } from "@/lib/menu/store";
-import type { MenuDraft } from "@/lib/menu/types";
+import { DEMO_MENU_ID, type MenuDraft } from "@/lib/menu/types";
 import { menuDigitizerPath, localizedPath } from "@/lib/i18n/paths";
 import type { Locale } from "@/lib/i18n/locales";
 import type { SiteMessages } from "@/lib/i18n/messages/types";

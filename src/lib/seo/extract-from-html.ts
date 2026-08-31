@@ -1,3 +1,5 @@
+import "server-only";
+
 import type { SiteFacts } from "@/lib/design-system/extract-site";
 import { generateText } from "ai";
 import { createAnthropic } from "@ai-sdk/anthropic";

@@ -5,7 +5,7 @@ import { CtaButtons } from "@/components/cta-buttons";
 import { DemoMetricsStrip } from "@/components/demo-metrics-strip";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { TrustSignals } from "@/components/trust-signals";
-import { formatMs } from "@/lib/audit/pagespeed";
+import { formatMs } from "@/lib/audit/vitals-format";
 import {
   portfolioHomeBenchmark,
   stadtgalerieBenchmark,

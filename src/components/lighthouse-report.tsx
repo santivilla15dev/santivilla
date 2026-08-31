@@ -1,5 +1,5 @@
 import type { LighthouseMetrics } from "@/lib/audit/types";
-import { formatCls, formatMs, rateCls, rateFcp, rateLcp, rateTbt, type VitalRating } from "@/lib/audit/pagespeed";
+import { formatCls, formatMs, rateCls, rateFcp, rateLcp, rateTbt, type VitalRating } from "@/lib/audit/vitals-format";
 import type { SiteMessages } from "@/lib/i18n/messages/types";
 
 type L = SiteMessages["audit"];

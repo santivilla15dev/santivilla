@@ -1,3 +1,5 @@
+import "server-only";
+
 import { generateConceptHtml } from "@/lib/design-system/generate";
 import { generateConceptImages } from "@/lib/design-system/images";
 import {

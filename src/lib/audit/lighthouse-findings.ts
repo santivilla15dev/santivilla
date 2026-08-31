@@ -1,6 +1,6 @@
 import type { AuditLang, AuditResult, Finding } from "./types";
 import type { LighthouseMetrics } from "./types";
-import { formatMs } from "./pagespeed";
+import { formatMs } from "./vitals-format";
 
 function t(lang: AuditLang, es: string, de: string) {
   return lang === "de" ? de : es;

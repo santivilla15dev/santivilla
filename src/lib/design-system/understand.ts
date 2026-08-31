@@ -1,3 +1,5 @@
+import "server-only";
+
 import { generateText } from "ai";
 import { createAnthropic } from "@ai-sdk/anthropic";
 import type { BusinessTemplate } from "@/lib/audit/types";

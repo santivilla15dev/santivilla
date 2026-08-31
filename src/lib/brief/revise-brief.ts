@@ -1,3 +1,5 @@
+import "server-only";
+
 import { generateObject } from "ai";
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { isBriefConfigured } from "./generate-brief";

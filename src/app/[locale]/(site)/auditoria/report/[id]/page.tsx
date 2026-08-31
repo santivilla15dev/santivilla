@@ -2,7 +2,7 @@ import Link from "next/link";
 import { AuditReportActions } from "@/components/audit-report-actions";
 import { LighthouseReport } from "@/components/lighthouse-report";
 import { getAuditReport } from "@/lib/audit/store";
-import { formatMs } from "@/lib/audit/pagespeed";
+import { formatMs } from "@/lib/audit/vitals-format";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { localizedPath } from "@/lib/i18n/paths";
 import { isLocale, type Locale } from "@/lib/i18n/locales";

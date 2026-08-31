@@ -1,3 +1,5 @@
+import "server-only";
+
 import { getArtDirection, type BusinessKind } from "./art-direction";
 
 export type ConceptImages = {

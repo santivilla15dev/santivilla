@@ -1,6 +1,8 @@
+import "server-only";
+
 import type { Json } from "@/lib/supabase/database.types";
 import { getSupabaseAdmin, isSupabaseConfigured } from "@/lib/supabase/admin";
-import type { MenuDraft } from "./types";
+import { DEMO_MENU_ID, type MenuDraft } from "./types";
 
 type GlobalMenuStore = {
   drafts: Map<string, MenuDraft>;
@@ -15,8 +17,6 @@ function memoryStore(): GlobalMenuStore {
   }
   return g.__santiMenuDrafts;
 }
-
-export const DEMO_MENU_ID = "demo-konzept";
 
 export const demoMenuDraft: MenuDraft = {
   id: DEMO_MENU_ID,

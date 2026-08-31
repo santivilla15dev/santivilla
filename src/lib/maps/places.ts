@@ -1,3 +1,5 @@
+import "server-only";
+
 import type { PlaceFacts, PlaceReview } from "./types";
 
 const FIELD_MASK = [

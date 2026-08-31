@@ -3,10 +3,9 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { BusinessKind } from "@/lib/design-system/art-direction";
-import type { CopyDraft, CopyTarget } from "@/lib/copy/types";
+import { DEMO_COPY_ID, type CopyDraft, type CopyTarget } from "@/lib/copy/types";
 import type { Locale } from "@/lib/i18n/locales";
 import type { SiteMessages } from "@/lib/i18n/messages/types";
-import { DEMO_COPY_ID } from "@/lib/copy/store";
 import { localizedPath } from "@/lib/i18n/paths";
 
 type Labels = SiteMessages["copyAdapt"];

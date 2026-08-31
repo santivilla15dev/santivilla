@@ -1,6 +1,8 @@
+import "server-only";
+
 import type { Json } from "@/lib/supabase/database.types";
 import { getSupabaseAdmin, isSupabaseConfigured } from "@/lib/supabase/admin";
-import type { CopyDraft } from "./types";
+import { DEMO_COPY_ID, type CopyDraft } from "./types";
 
 type GlobalCopyStore = {
   drafts: Map<string, CopyDraft>;
@@ -15,8 +17,6 @@ function memoryStore(): GlobalCopyStore {
   }
   return g.__santiCopyDrafts;
 }
-
-export const DEMO_COPY_ID = "demo-konzept";
 
 export const demoCopyDraft: CopyDraft = {
   id: DEMO_COPY_ID,

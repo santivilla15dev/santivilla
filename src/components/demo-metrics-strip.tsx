@@ -1,4 +1,4 @@
-import { formatMs } from "@/lib/audit/pagespeed";
+import { formatMs } from "@/lib/audit/vitals-format";
 import type { DemoBenchmark } from "@/lib/demos/benchmarks";
 
 type MetricsLabels = {

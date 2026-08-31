@@ -1,5 +1,7 @@
 import type { Locale } from "@/lib/i18n/locales";
 
+export const DEMO_MENU_ID = "demo-konzept";
+
 export type MenuItem = {
   name: string;
   price: string;
