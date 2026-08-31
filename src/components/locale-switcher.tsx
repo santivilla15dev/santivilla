@@ -26,7 +26,7 @@ export function LocaleSwitcher({ locale, labels }: Props) {
           onClick={() => onSwitch(loc)}
           title={labels[loc]}
           aria-label={labels[loc]}
-          className={`rounded-full px-2.5 py-1 uppercase transition ${
+          className={`rounded-full px-2.5 py-1 uppercase transition focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 ${
             loc === locale
               ? "bg-ink text-surface"
               : "text-muted hover:text-ink"

@@ -141,12 +141,13 @@ export async function konzeptFromMapsUrl(
     ],
   };
 
-  await saveConcept(await applySeoToConcept(concept));
+  const saved = await saveConcept(await applySeoToConcept(concept));
 
   const path = `/k/${slug}`;
   return {
     slug,
     conceptId: id,
+    editToken: saved.editToken,
     path,
     previewUrl: path,
     name: concept.name,

@@ -34,11 +34,39 @@ export function stripLocalePrefix(pathname: string): {
   return { locale: null, pathname: pathname || "/" };
 }
 
+/** Legal slugs in any locale → canonical path in target locale. */
+function legalPageForSlug(slug: string): LegalPage | null {
+  for (const [page, byLocale] of Object.entries(LEGAL_SLUGS)) {
+    if (Object.values(byLocale).includes(slug as never)) {
+      return page as LegalPage;
+    }
+  }
+  return null;
+}
+
+/** Tool pages with locale-specific slugs → canonical path in target locale. */
+function aliasedPathForSlug(slug: string, targetLocale: Locale): string | null {
+  const MENU_SLUGS = ["digitalizar-carta", "digitize-menu"];
+  const COPY_SLUGS = ["adaptar-copy", "copy-lokal", "local-copy"];
+  if (MENU_SLUGS.includes(slug)) return menuDigitizerPath(targetLocale);
+  if (COPY_SLUGS.includes(slug)) return copyAdaptPath(targetLocale);
+  return null;
+}
+
 export function switchLocalePath(
   currentPathname: string,
   targetLocale: Locale,
 ): string {
   const { pathname } = stripLocalePrefix(currentPathname);
+  const firstSegment = pathname.replace(/^\//, "").split("/")[0];
+
+  if (firstSegment) {
+    const legal = legalPageForSlug(firstSegment);
+    if (legal) return legalPath(targetLocale, legal);
+    const aliased = aliasedPathForSlug(firstSegment, targetLocale);
+    if (aliased) return aliased;
+  }
+
   return localizedPath(targetLocale, pathname);
 }
 

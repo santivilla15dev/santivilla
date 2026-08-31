@@ -42,22 +42,34 @@ export function makeBriefId(): string {
 }
 
 export async function saveBrief(record: BriefRecord): Promise<BriefRecord> {
+  const withToken: BriefRecord = record.editToken
+    ? record
+    : { ...record, editToken: crypto.randomUUID() };
+
   if (!isSupabaseConfigured()) {
-    memoryStore().briefs.set(record.id, record);
-    return record;
+    memoryStore().briefs.set(withToken.id, withToken);
+    return withToken;
   }
 
   const supabase = getSupabaseAdmin();
-  const { error } = await supabase.from("briefs").upsert({
-    id: record.id,
-    locale: record.locale,
-    input: record.input,
-    payload: record.payload as Json,
-    created_at: record.createdAt,
-  });
+  const row = {
+    id: withToken.id,
+    locale: withToken.locale,
+    input: withToken.input,
+    payload: withToken.payload as Json,
+    created_at: withToken.createdAt,
+    edit_token: withToken.editToken,
+  };
+
+  let { error } = await supabase.from("briefs").upsert(row);
+  // Pre-migration 010 remote DBs lack edit_token: degrade gracefully.
+  if (error?.code === "42703") {
+    const { edit_token: _omit, ...withoutToken } = row;
+    ({ error } = await supabase.from("briefs").upsert(withoutToken));
+  }
 
   if (error) throw new Error(error.message);
-  return record;
+  return withToken;
 }
 
 export async function getBrief(id: string): Promise<BriefRecord | null> {
@@ -86,5 +98,14 @@ export async function getBrief(id: string): Promise<BriefRecord | null> {
     input: data.input,
     payload: normalizeBriefPayload(data.payload),
     createdAt: data.created_at,
+    editToken: data.edit_token,
   };
+}
+
+export function briefEditTokenOk(
+  record: BriefRecord,
+  token: string | undefined,
+): boolean {
+  if (!record.editToken) return true;
+  return token === record.editToken;
 }

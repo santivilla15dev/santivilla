@@ -93,7 +93,12 @@ export async function POST(req: Request) {
       console.error("[brief] lead upsert failed", leadErr);
     }
 
-    return NextResponse.json({ id, path, payload: record.payload });
+    return NextResponse.json({
+      id,
+      path,
+      payload: record.payload,
+      editToken: record.editToken,
+    });
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Unknown error";
     if (msg === "ANTHROPIC_NOT_CONFIGURED") {

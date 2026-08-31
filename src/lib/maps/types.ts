@@ -22,6 +22,7 @@ export type PlaceFacts = {
 export type MapsKonzeptResult = {
   slug: string;
   conceptId: string;
+  editToken?: string;
   path: string;
   previewUrl: string;
   name: string;

@@ -7,6 +7,7 @@ import type { BriefPayload } from "@/lib/brief/schema";
 import type { Locale } from "@/lib/i18n/locales";
 import type { SiteMessages } from "@/lib/i18n/messages/types";
 import { localizedPath } from "@/lib/i18n/paths";
+import { saveEditToken } from "@/lib/design-system/edit-token";
 import { BriefPreview } from "./brief-preview";
 import { BriefRevisePanel } from "./brief-revise-panel";
 
@@ -47,6 +48,7 @@ export function BriefForm({
         id?: string;
         payload?: BriefPayload;
         path?: string;
+        editToken?: string;
         message?: string;
       };
 
@@ -56,6 +58,7 @@ export function BriefForm({
         return;
       }
 
+      if (data.editToken) saveEditToken("brief", data.id, data.editToken);
       setPayload(data.payload);
       setBriefId(data.id);
       setSharePath(data.path ?? localizedPath(locale, `/brief/${data.id}`));

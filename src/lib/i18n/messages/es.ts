@@ -147,16 +147,13 @@ export const esMessages: SiteMessages = {
   home: {
     heroLead:
       "Tus clientes deciden en segundos si se quedan. Yo construyo webs que ganan esos segundos — para restaurantes, locales y centros en Wien.",
-    heroSub: "Clara. Rápida. Mobile primero.",
     heroH1: "Webs para negocios locales en Wien",
     heroCost:
       "En móvil, el 53% de las visitas se abandona si la página tarda más de 3 s (Google, Need for Mobile Speed, 2016). Una web lenta no “se ve fea”: pierde clientes antes de que te lean.",
-    heroCardEyebrow: "Konzept · Wien 15",
-    heroCardTitle: "Stadtgalerie West en el móvil",
-    heroCardAlt: "Demo Stadtgalerie West en móvil",
+    heroCardEyebrow: "Konzept · mobile-first",
+    heroCardTitle: "Tu negocio en el móvil",
+    heroCardAlt: "Concepto mobile-first mostrado en un móvil",
     heroAuditCta: "Audita tu web gratis",
-    heroFreeNote:
-      "Auditoría y Konzept inicial sin costo y sin compromiso. Solo cotizas cuando quieras la web real.",
     heroGuarantee: "Ves el diseño antes de pagar un euro.",
     trustSignalsLabel: "Señales de confianza",
     trustSignals: [
@@ -192,8 +189,8 @@ export const esMessages: SiteMessages = {
         body: "WhatsApp, llamada o reserva visibles. Menos fricción = más clientes que te escriben.",
       },
       {
-        title: "Ves el diseño antes de pagar",
-        body: "Te muestro un redesign (Konzept) sin costo. Ves cómo quedaría antes de pagar un euro por la web real.",
+        title: "Hablas con quien construye",
+        body: "Sin gestores de proyecto ni tickets. Escribes por WhatsApp y te responde la persona que hace tu web.",
       },
       {
         title: "Precios y alcance claros",
@@ -265,6 +262,8 @@ export const esMessages: SiteMessages = {
     workLink: "Ver todos →",
     faqEyebrow: "FAQ",
     faqTitle: "Preguntas frecuentes",
+    finalCtaEyebrow: "Siguiente paso",
+    finalCtaTitle: "¿Empezamos con tu auditoría gratuita?",
     faqItems: [
       {
         id: "timeline",

@@ -21,6 +21,7 @@ export type Database = {
           source: "template" | "claude";
           created_at: string;
           payload: Json;
+          edit_token: string;
         };
         Insert: {
           id: string;
@@ -33,6 +34,7 @@ export type Database = {
           source: "template" | "claude";
           created_at?: string;
           payload?: Json;
+          edit_token?: string;
         };
         Update: {
           id?: string;
@@ -45,6 +47,7 @@ export type Database = {
           source?: "template" | "claude";
           created_at?: string;
           payload?: Json;
+          edit_token?: string;
         };
         Relationships: [];
       };
@@ -91,6 +94,7 @@ export type Database = {
           input: string;
           payload: Json;
           created_at: string;
+          edit_token: string;
         };
         Insert: {
           id: string;
@@ -98,6 +102,7 @@ export type Database = {
           input: string;
           payload?: Json;
           created_at?: string;
+          edit_token?: string;
         };
         Update: {
           id?: string;
@@ -105,6 +110,7 @@ export type Database = {
           input?: string;
           payload?: Json;
           created_at?: string;
+          edit_token?: string;
         };
         Relationships: [];
       };

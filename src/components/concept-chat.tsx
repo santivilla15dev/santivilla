@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { loadEditToken } from "@/lib/design-system/edit-token";
 
 export type ChatMessage = {
   role: "user" | "assistant";
@@ -85,7 +86,11 @@ export function ConceptChat({
       const res = await fetch(`/api/concepto/${conceptId}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message, lang }),
+        body: JSON.stringify({
+          message,
+          lang,
+          editToken: loadEditToken("concept", conceptId),
+        }),
       });
       const data = (await res.json()) as {
         reply?: string;

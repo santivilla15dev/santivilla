@@ -16,7 +16,7 @@ type Props = {
 };
 
 export function ConvertSiteForm({ conceptId, defaultSlug, defaultName, labels }: Props) {
-  const [ownerId, setOwnerId] = useState("");
+  const [ownerEmail, setOwnerEmail] = useState("");
   const [slug, setSlug] = useState(defaultSlug);
   const [whatsapp, setWhatsapp] = useState("");
   const [pending, setPending] = useState(false);
@@ -34,7 +34,7 @@ export function ConvertSiteForm({ conceptId, defaultSlug, defaultName, labels }:
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           conceptId,
-          ownerId: ownerId.trim(),
+          ownerEmail: ownerEmail.trim(),
           slug: slug.trim(),
           businessName: defaultName,
           whatsappE164: whatsapp.trim() || undefined,
@@ -54,8 +54,9 @@ export function ConvertSiteForm({ conceptId, defaultSlug, defaultName, labels }:
     <form onSubmit={onSubmit} className="mt-6 space-y-3 rounded-xl border border-line p-4">
       <p className="font-medium text-ink">{labels.convertSite}</p>
       <input
-        value={ownerId}
-        onChange={(e) => setOwnerId(e.target.value)}
+        type="email"
+        value={ownerEmail}
+        onChange={(e) => setOwnerEmail(e.target.value)}
         placeholder={labels.ownerEmail}
         required
         className="w-full rounded-lg border border-line px-3 py-2 text-sm"

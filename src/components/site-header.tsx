@@ -23,7 +23,7 @@ export function SiteHeader({ locale, messages }: Props) {
       <div className="site-shell flex items-center justify-between gap-4 py-4">
         <Link
           href={localizedPath(locale, "/")}
-          className="font-display text-xl text-ink transition hover:text-accent sm:text-2xl"
+          className="font-display rounded-sm text-xl text-ink transition hover:text-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 sm:text-2xl"
         >
           {site.name}
         </Link>
@@ -32,7 +32,7 @@ export function SiteHeader({ locale, messages }: Props) {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-1.5 text-muted transition hover:bg-accent-soft hover:text-ink"
+              className="rounded-full px-3 py-1.5 text-muted transition hover:bg-accent-soft hover:text-ink focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
             >
               {link.label}
             </Link>

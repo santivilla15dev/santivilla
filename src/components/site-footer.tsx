@@ -9,6 +9,9 @@ type Props = {
   messages: SiteMessages;
 };
 
+const FOCUS =
+  "rounded-sm focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2";
+
 export function SiteFooter({ locale, messages }: Props) {
   const f = messages.footer;
   const n = messages.nav;
@@ -28,24 +31,24 @@ export function SiteFooter({ locale, messages }: Props) {
           </p>
           <ul className="space-y-2 text-surface/80">
             <li>
-              <Link href={localizedPath(locale, "/trabajos")} className="hover:text-surface">
+              <Link href={localizedPath(locale, "/trabajos")} className={`hover:text-surface ${FOCUS}`}>
                 {n.work}
               </Link>
             </li>
             <li>
-              <Link href={localizedPath(locale, "/servicios")} className="hover:text-surface">
+              <Link href={localizedPath(locale, "/servicios")} className={`hover:text-surface ${FOCUS}`}>
                 {n.services}
               </Link>
             </li>
             <li>
-              <Link href={localizedPath(locale, "/contacto")} className="hover:text-surface">
+              <Link href={localizedPath(locale, "/contacto")} className={`hover:text-surface ${FOCUS}`}>
                 {n.contact}
               </Link>
             </li>
             <li>
               <Link
                 href={`${localizedPath(locale, "/")}#about`}
-                className="hover:text-surface"
+                className={`hover:text-surface ${FOCUS}`}
               >
                 {f.about}
               </Link>
@@ -58,27 +61,27 @@ export function SiteFooter({ locale, messages }: Props) {
           </p>
           <ul className="space-y-2 text-surface/80">
             <li>
-              <Link href={legalPath(locale, "impressum")} className="hover:text-surface">
+              <Link href={legalPath(locale, "impressum")} className={`hover:text-surface ${FOCUS}`}>
                 {f.impressum}
               </Link>
             </li>
             <li>
-              <Link href={legalPath(locale, "datenschutz")} className="hover:text-surface">
+              <Link href={legalPath(locale, "datenschutz")} className={`hover:text-surface ${FOCUS}`}>
                 {f.datenschutz}
               </Link>
             </li>
             <li>
-              <Link href={legalPath(locale, "agb")} className="hover:text-surface">
+              <Link href={legalPath(locale, "agb")} className={`hover:text-surface ${FOCUS}`}>
                 {f.agb}
               </Link>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="hover:text-surface">
+              <a href={`mailto:${site.email}`} className={`hover:text-surface ${FOCUS}`}>
                 {site.email}
               </a>
             </li>
             <li>
-              <a href={whatsappHref()} className="hover:text-surface">
+              <a href={whatsappHref()} className={`hover:text-surface ${FOCUS}`}>
                 WhatsApp
               </a>
             </li>
@@ -86,7 +89,7 @@ export function SiteFooter({ locale, messages }: Props) {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <p className="site-shell py-4 text-xs text-surface/45">
+        <p className="site-shell py-4 text-xs text-surface/70">
           © {new Date().getFullYear()} {site.name}. {f.copyright}
         </p>
       </div>

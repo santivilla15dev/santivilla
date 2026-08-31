@@ -147,16 +147,13 @@ export const enMessages: SiteMessages = {
   home: {
     heroLead:
       "Guests decide in seconds whether to stay. I build websites that win those seconds — for restaurants, shops and centers in Vienna.",
-    heroSub: "Clear. Fast. Mobile first.",
     heroH1: "Websites for local businesses in Vienna",
     heroCost:
       "On mobile, 53% of visits are abandoned if a page takes longer than 3 seconds (Google, Need for Mobile Speed, 2016). A slow site doesn’t just look bad — it loses customers before they read you.",
-    heroCardEyebrow: "Concept · Vienna 15",
-    heroCardTitle: "Stadtgalerie West on mobile",
-    heroCardAlt: "Stadtgalerie West demo on a phone",
+    heroCardEyebrow: "Konzept · mobile-first",
+    heroCardTitle: "Your business on mobile",
+    heroCardAlt: "Mobile-first concept shown on a phone",
     heroAuditCta: "Audit your site free",
-    heroFreeNote:
-      "Audit and first Konzept free, no commitment. You only quote when you want the real site.",
     heroGuarantee: "You see the design before you pay a euro.",
     trustSignalsLabel: "Trust signals",
     trustSignals: [
@@ -192,8 +189,8 @@ export const enMessages: SiteMessages = {
         body: "WhatsApp, call or booking visible. Less friction = more inquiries.",
       },
       {
-        title: "See the design before you pay",
-        body: "You get a redesign (Konzept) at no cost — you see how it looks before you pay a euro for the real site.",
+        title: "You talk to the one who builds",
+        body: "No project managers, no tickets. You write on WhatsApp — and the person building your site answers.",
       },
       {
         title: "Clear pricing and scope",
@@ -265,6 +262,8 @@ export const enMessages: SiteMessages = {
     workLink: "View all →",
     faqEyebrow: "FAQ",
     faqTitle: "Frequently asked questions",
+    finalCtaEyebrow: "Next step",
+    finalCtaTitle: "Shall we start with your free audit?",
     faqItems: [
       {
         id: "timeline",

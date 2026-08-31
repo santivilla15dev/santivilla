@@ -9,6 +9,8 @@ import {
 } from "@/lib/i18n/locales";
 import { stripLocalePrefix } from "@/lib/i18n/paths";
 import { updateSession } from "@/lib/supabase/middleware";
+import { safeNextPath } from "@/lib/auth/next-path";
+import { getSupabaseAdmin, isSupabaseConfigured } from "@/lib/supabase/admin";
 
 const LOCALE_HEADER = "x-locale";
 
@@ -32,6 +34,21 @@ function isProtected(pathname: string): boolean {
   return PROTECTED_PREFIXES.some((p) => pathname.startsWith(p));
 }
 
+async function hasAdminRole(userId: string): Promise<boolean> {
+  if (!isSupabaseConfigured()) return false;
+  try {
+    const admin = getSupabaseAdmin();
+    const { data } = await admin
+      .from("profiles")
+      .select("role")
+      .eq("id", userId)
+      .maybeSingle();
+    return data?.role === "admin";
+  } catch {
+    return false;
+  }
+}
+
 function resolveLocale(request: NextRequest): Locale {
   const cookie = request.cookies.get(LOCALE_COOKIE)?.value;
   if (cookie && isLocale(cookie)) return cookie;
@@ -49,6 +66,13 @@ export async function middleware(request: NextRequest) {
     process.env.NEXT_PUBLIC_SUPABASE_URL &&
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
+  if (isProtected(pathname) && !hasSupabase) {
+    const loginUrl = request.nextUrl.clone();
+    loginUrl.pathname = "/login";
+    loginUrl.search = "";
+    return NextResponse.redirect(loginUrl);
+  }
+
   if (hasSupabase && (isProtected(pathname) || pathname === "/login")) {
     const { supabaseResponse, user } = await updateSession(request);
 
@@ -59,10 +83,20 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(loginUrl);
     }
 
+    if (pathname.startsWith("/admin") && user) {
+      const isAdmin = await hasAdminRole(user.id);
+      if (!isAdmin) {
+        const portalUrl = request.nextUrl.clone();
+        portalUrl.pathname = "/portal";
+        portalUrl.search = "";
+        return NextResponse.redirect(portalUrl);
+      }
+    }
+
     if (pathname === "/login" && user) {
-      const next = request.nextUrl.searchParams.get("next") || "/admin";
+      const next = safeNextPath(request.nextUrl.searchParams.get("next"));
       const dest = request.nextUrl.clone();
-      dest.pathname = next.startsWith("/") ? next : "/admin";
+      dest.pathname = next;
       dest.search = "";
       return NextResponse.redirect(dest);
     }

@@ -167,6 +167,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       id: concept.id,
       path: `/concepto/${concept.id}`,
+      editToken: concept.editToken,
       source: concept.source,
       art,
       name: concept.name,

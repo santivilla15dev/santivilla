@@ -24,6 +24,13 @@ export default async function LocaleSiteLayout({
   const messages = getMessages(locale);
   const privacyHref = `${legalPath(locale, "datenschutz")}#cookies`;
 
+  const skipLabel =
+    locale === "de"
+      ? "Zum Inhalt springen"
+      : locale === "en"
+        ? "Skip to content"
+        : "Saltar al contenido";
+
   return (
     <ConsentProvider
       locale={locale}
@@ -31,8 +38,14 @@ export default async function LocaleSiteLayout({
       privacyHref={privacyHref}
     >
       <div className="flex min-h-full flex-col" lang={locale}>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-surface"
+        >
+          {skipLabel}
+        </a>
         <SiteHeader locale={locale} messages={messages} />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">{children}</main>
         <SiteFooter locale={locale} messages={messages} />
         <CookieBanner />
       </div>

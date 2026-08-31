@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { saveEditToken } from "@/lib/design-system/edit-token";
 import type { SiteMessages } from "@/lib/i18n/messages/types";
 
 type Labels = SiteMessages["mapsKonzept"];
@@ -9,6 +10,7 @@ type Labels = SiteMessages["mapsKonzept"];
 type Result = {
   slug: string;
   conceptId: string;
+  editToken?: string;
   path: string;
   previewUrl: string;
   name: string;
@@ -42,6 +44,7 @@ export function MapsKonzeptClient({ labels }: { labels: Labels }) {
         setPhase("error");
         return;
       }
+      if (data.editToken) saveEditToken("concept", data.conceptId, data.editToken);
       setResult(data);
       setPhase("done");
     } catch {

@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { BriefPayload } from "@/lib/brief/schema";
 import type { Locale } from "@/lib/i18n/locales";
 import type { SiteMessages } from "@/lib/i18n/messages/types";
+import { loadEditToken } from "@/lib/design-system/edit-token";
 
 type Labels = Pick<
   SiteMessages["briefAgent"],
@@ -42,7 +43,11 @@ export function BriefRevisePanel({
       const res = await fetch(`/api/brief/${encodeURIComponent(briefId)}/revise`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: trimmed, locale }),
+        body: JSON.stringify({
+          message: trimmed,
+          locale,
+          editToken: loadEditToken("brief", briefId),
+        }),
       });
       const data = (await res.json()) as {
         payload?: BriefPayload;

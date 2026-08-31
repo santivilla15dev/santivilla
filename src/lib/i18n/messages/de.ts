@@ -147,16 +147,13 @@ export const deMessages: SiteMessages = {
   home: {
     heroLead:
       "Deine Gäste entscheiden in Sekunden, ob sie bleiben. Ich baue Websites, die diese Sekunden gewinnen — für Restaurants, Shops und Center in Wien.",
-    heroSub: "Klar. Schnell. Mobile zuerst.",
     heroH1: "Websites für lokale Betriebe in Wien",
     heroCost:
       "Auf Mobilgeräten werden 53% der Besuche abgebrochen, wenn die Seite länger als 3 Sekunden braucht (Google, Need for Mobile Speed, 2016). Eine langsame Website wirkt nicht nur „hässlich“ — sie verliert Gäste, bevor sie dich lesen.",
-    heroCardEyebrow: "Konzept · Wien 15",
-    heroCardTitle: "Stadtgalerie West am Handy",
-    heroCardAlt: "Stadtgalerie West Demo auf dem Handy",
+    heroCardEyebrow: "Konzept · mobile-first",
+    heroCardTitle: "Dein Betrieb am Handy",
+    heroCardAlt: "Mobile-first Konzept auf dem Handy",
     heroAuditCta: "Website kostenlos prüfen",
-    heroFreeNote:
-      "Audit und erstes Konzept kostenlos und unverbindlich. Du zahlst erst, wenn du die echte Website willst.",
     heroGuarantee: "Du siehst das Design, bevor du einen Euro zahlst.",
     trustSignalsLabel: "Vertrauenssignale",
     trustSignals: [
@@ -192,8 +189,8 @@ export const deMessages: SiteMessages = {
         body: "WhatsApp, Anruf oder Reservierung sichtbar. Weniger Reibung = mehr Anfragen.",
       },
       {
-        title: "Design sehen, bevor du zahlst",
-        body: "Du siehst ein Redesign (Konzept) kostenlos — bevor du einen Euro für die echte Website zahlst.",
+        title: "Du sprichst mit dem, der baut",
+        body: "Keine Projektmanager, keine Tickets. Du schreibst per WhatsApp — und derjenige, der deine Site baut, antwortet.",
       },
       {
         title: "Klare Preise und Umfang",
@@ -265,6 +262,8 @@ export const deMessages: SiteMessages = {
     workLink: "Alle ansehen →",
     faqEyebrow: "FAQ",
     faqTitle: "Häufige Fragen",
+    finalCtaEyebrow: "Nächster Schritt",
+    finalCtaTitle: "Starten wir mit deinem kostenlosen Audit?",
     faqItems: [
       {
         id: "timeline",

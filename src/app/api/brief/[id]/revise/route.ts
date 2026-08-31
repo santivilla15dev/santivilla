@@ -1,7 +1,7 @@
 import { checkBriefReviseRateLimit } from "@/lib/audit/rate-limit";
 import { isBriefConfigured } from "@/lib/brief/generate-brief";
 import { reviseBriefPayload } from "@/lib/brief/revise-brief";
-import { getBrief, saveBrief } from "@/lib/brief/store";
+import { getBrief, saveBrief, briefEditTokenOk } from "@/lib/brief/store";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { NextResponse } from "next/server";
 
@@ -71,6 +71,17 @@ export async function POST(req: Request, ctx: Ctx) {
   const record = await getBrief(id);
   if (!record) {
     return NextResponse.json({ error: "NOT_FOUND" }, { status: 404 });
+  }
+  const editToken =
+    typeof body.editToken === "string" ? body.editToken : undefined;
+  if (!briefEditTokenOk(record, editToken)) {
+    return NextResponse.json(
+      {
+        error: "FORBIDDEN",
+        message: "Only the brief author can revise it.",
+      },
+      { status: 403 },
+    );
   }
 
   try {

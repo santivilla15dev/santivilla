@@ -12,6 +12,7 @@ import { formatMs } from "@/lib/audit/pagespeed";
 import { AuditAudioPlayer } from "@/components/audit-audio-player";
 import { LighthouseReport } from "@/components/lighthouse-report";
 import { localizedPath } from "@/lib/i18n/paths";
+import { saveEditToken } from "@/lib/design-system/edit-token";
 import type { Locale } from "@/lib/i18n/locales";
 import type { SiteMessages } from "@/lib/i18n/messages/types";
 import { whatsappHref } from "@/lib/site";
@@ -318,6 +319,7 @@ export function AuditClient({
       const data = (await res.json()) as {
         id?: string;
         path?: string;
+        editToken?: string;
         message?: string;
         kind?: string;
         specialty?: string;
@@ -343,6 +345,7 @@ export function AuditClient({
         return;
       }
       setConceptPath(localizedPath(locale, `/concepto/${data.id}`));
+      if (data.editToken) saveEditToken("concept", data.id, data.editToken);
       setConceptMeta({
         kind: data.kind,
         specialty: data.specialty,

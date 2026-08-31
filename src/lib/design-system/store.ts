@@ -20,6 +20,7 @@ export type StoredConcept = {
   score: number;
   source: "template" | "claude";
   createdAt: string;
+  editToken?: string;
   kind?: string;
   specialty?: string;
   summary?: string;
@@ -58,6 +59,7 @@ type ConceptPayload = Omit<
   | "score"
   | "source"
   | "createdAt"
+  | "editToken"
 >;
 
 type GlobalStore = {
@@ -83,6 +85,7 @@ function payloadFromConcept(concept: StoredConcept): ConceptPayload {
     score: _score,
     source: _source,
     createdAt: _createdAt,
+    editToken: _editToken,
     ...payload
   } = concept;
   return payload;
@@ -99,6 +102,7 @@ function rowToConcept(row: {
   source: "template" | "claude";
   created_at: string;
   payload: Json;
+  edit_token?: string;
 }): StoredConcept {
   const payload = (row.payload || {}) as ConceptPayload;
   return {
@@ -111,6 +115,7 @@ function rowToConcept(row: {
     score: row.score,
     source: row.source,
     createdAt: row.created_at,
+    editToken: row.edit_token,
     ...payload,
   };
 }
@@ -118,27 +123,39 @@ function rowToConcept(row: {
 export async function saveConcept(
   concept: StoredConcept,
 ): Promise<StoredConcept> {
+  const withToken: StoredConcept = concept.editToken
+    ? concept
+    : { ...concept, editToken: crypto.randomUUID() };
+
   if (!isSupabaseConfigured()) {
-    memoryStore().concepts.set(concept.id, concept);
-    return concept;
+    memoryStore().concepts.set(withToken.id, withToken);
+    return withToken;
   }
 
   const supabase = getSupabaseAdmin();
-  const { error } = await supabase.from("concepts").upsert({
-    id: concept.id,
-    html: concept.html,
-    name: concept.name,
-    hostname: concept.hostname,
-    url: concept.url,
-    template: concept.template,
-    score: concept.score,
-    source: concept.source,
-    created_at: concept.createdAt,
-    payload: payloadFromConcept(concept) as Json,
-  });
+  const row = {
+    id: withToken.id,
+    html: withToken.html,
+    name: withToken.name,
+    hostname: withToken.hostname,
+    url: withToken.url,
+    template: withToken.template,
+    score: withToken.score,
+    source: withToken.source,
+    created_at: withToken.createdAt,
+    edit_token: withToken.editToken,
+    payload: payloadFromConcept(withToken) as Json,
+  };
+
+  let { error } = await supabase.from("concepts").upsert(row);
+  // Pre-migration 010 remote DBs lack edit_token: degrade gracefully.
+  if (error?.code === "42703") {
+    const { edit_token: _omit, ...withoutToken } = row;
+    ({ error } = await supabase.from("concepts").upsert(withoutToken));
+  }
 
   if (error) throw new Error(error.message);
-  return concept;
+  return withToken;
 }
 
 export async function getConcept(id: string): Promise<StoredConcept | null> {
@@ -239,6 +256,18 @@ export async function appendConceptMessages(
   return updateConcept(id, {
     messages: [...prev, ...messages].slice(-40),
   });
+}
+
+/**
+ * A mutation is allowed when the record has no token (pre-migration rows)
+ * or when the presented token matches.
+ */
+export function conceptEditTokenOk(
+  concept: StoredConcept,
+  token: string | undefined,
+): boolean {
+  if (!concept.editToken) return true;
+  return token === concept.editToken;
 }
 
 export function makeConceptId(hostname: string) {

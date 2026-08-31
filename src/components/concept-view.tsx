@@ -16,6 +16,7 @@ import {
   stripEditorArtifacts,
 } from "@/lib/design-system/concept-live-edit";
 import { whatsappHref } from "@/lib/site";
+import { loadEditToken } from "@/lib/design-system/edit-token";
 import type { Locale } from "@/lib/i18n/locales";
 import type { SiteMessages } from "@/lib/i18n/messages/types";
 
@@ -267,7 +268,7 @@ export function ConceptView({
       const res = await fetch(`/api/concepto/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ html: clean }),
+        body: JSON.stringify({ html: clean, editToken: loadEditToken("concept", id) }),
       });
       const data = (await res.json()) as {
         message?: string;
@@ -313,6 +314,7 @@ export function ConceptView({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           menuDraftId: menuDraftId.trim() || null,
+          editToken: loadEditToken("concept", id),
         }),
       });
       const data = (await res.json()) as {

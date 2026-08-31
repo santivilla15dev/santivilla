@@ -1,16 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AboutSection } from "@/components/about-section";
-import { CaseResults } from "@/components/case-results";
 import { CtaButtons } from "@/components/cta-buttons";
 import { DemoMetricsStrip } from "@/components/demo-metrics-strip";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { TrustSignals } from "@/components/trust-signals";
 import { formatMs } from "@/lib/audit/pagespeed";
-import {
-  CASE_RESULT_IDS,
-  resolveCaseResults,
-} from "@/lib/cases/results";
 import {
   portfolioHomeBenchmark,
   stadtgalerieBenchmark,
@@ -24,7 +19,7 @@ import { notFound } from "next/navigation";
 
 export const revalidate = 3600;
 
-const HERO_PHOTO = "/demos/lugner-hero.jpg";
+const HERO_PHOTO = "/demos/lugner-hero.webp";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -45,12 +40,6 @@ export default async function HomePage({ params }: Props) {
   const projects = messages.projectsForHome;
   const viennaProjects = projects.filter((p) => p.group === "vienna");
   const templateProjects = projects.filter((p) => p.group === "template");
-  const resultItems = resolveCaseResults(c.resultsItems, {
-    [CASE_RESULT_IDS.stadtgalerie]: {
-      before: String(stadtgalerieBenchmark.before.performance),
-      after: String(stadtgalerieBenchmark.after.performance),
-    },
-  });
 
   return (
     <>
@@ -71,16 +60,10 @@ export default async function HomePage({ params }: Props) {
             <p className="animate-rise-delay-1 mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
               {c.heroLead}
             </p>
-            <p className="animate-rise-delay-1 mt-4 max-w-xl text-sm leading-relaxed text-muted">
-              {c.heroCost}
-            </p>
-            <p className="animate-rise-delay-1 mt-3 text-base font-medium tracking-wide text-ink sm:text-lg">
-              {c.heroSub}
-            </p>
             <div className="animate-rise-delay-2 mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
               <Link
                 href={localizedPath(locale, "/auditoria")}
-                className="cta-pulse inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 text-base font-medium text-white transition hover:brightness-110"
+                className="cta-pulse inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 text-base font-medium text-white transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
               >
                 {c.heroAuditCta}
               </Link>
@@ -88,15 +71,12 @@ export default async function HomePage({ params }: Props) {
                 href={whatsappHref(cta.defaultWhatsapp)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-muted underline-offset-4 transition hover:text-accent hover:underline"
+                className="rounded-sm text-sm font-medium text-muted underline-offset-4 transition hover:text-accent hover:underline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
               >
                 {cta.whatsapp}
               </a>
             </div>
-            <p className="animate-rise-delay-2 mt-3 max-w-xl text-sm text-muted">
-              {c.heroFreeNote}
-            </p>
-            <p className="animate-rise-delay-2 mt-2 max-w-xl text-sm font-medium text-ink">
+            <p className="animate-rise-delay-2 mt-4 max-w-xl text-sm font-medium text-ink">
               {c.heroGuarantee}
             </p>
           </div>
@@ -145,6 +125,20 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       <section className="border-t border-line/70 py-20">
+        <div className="site-shell max-w-3xl">
+          <p className="animate-fade text-xs font-medium uppercase tracking-[0.2em] text-accent">
+            {c.introEyebrow}
+          </p>
+          <h2 className="animate-rise font-display mt-3 text-4xl text-ink sm:text-5xl">
+            {c.introTitle}
+          </h2>
+          <p className="animate-rise-delay-1 mt-6 text-lg leading-relaxed text-muted">
+            {c.introBody}
+          </p>
+        </div>
+      </section>
+
+      <section className="border-t border-line/70 bg-surface/50 py-20">
         <div className="site-shell grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div>
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
@@ -178,7 +172,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="border-t border-line/70 bg-surface/50 py-20">
+      <section className="border-t border-line/70 py-20">
         <div className="site-shell max-w-3xl">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
             {c.proofEyebrow}
@@ -202,72 +196,28 @@ export default async function HomePage({ params }: Props) {
               {c.proofCtaWork}
             </Link>
           </div>
-        </div>
-      </section>
-
-      <section className="border-t border-line/70 py-16">
-        <div className="site-shell max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-            {c.selfScoreEyebrow}
+          <p className="mt-8 max-w-xl text-sm leading-relaxed text-muted">
+            {c.heroCost}
           </p>
-          <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
-            <span className="tabular-nums">{portfolioHomeBenchmark.performance}</span>
-            {c.selfScoreTitle}
-          </h2>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-            {c.selfScoreBody}
-          </p>
-          <p className="mt-3 text-sm text-muted">
-            {c.selfScoreMeta} · LCP{" "}
-            {formatMs(portfolioHomeBenchmark.lcpMs)} ·{" "}
+          <p className="mt-4 border-t border-ink/10 pt-4 text-sm text-muted">
+            {c.selfScoreEyebrow}:{" "}
+            <span className="font-display tabular-nums text-ink">
+              {portfolioHomeBenchmark.performance}
+              {c.selfScoreTitle}
+            </span>{" "}
+            · {c.selfScoreMeta} · LCP {formatMs(portfolioHomeBenchmark.lcpMs)} ·{" "}
             {new Date(portfolioHomeBenchmark.measuredAt).toLocaleDateString(
               locale === "en" ? "en-GB" : locale === "es" ? "es-ES" : "de-AT",
               { year: "numeric", month: "short", day: "numeric" },
-            )}
-          </p>
-          <p className="mt-6">
+            )}{" "}
             <a
               href={`https://pagespeed.web.dev/analysis?url=${encodeURIComponent(portfolioHomeBenchmark.url)}&form_factor=mobile`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-accent underline-offset-4 hover:underline"
+              className="font-medium text-accent underline-offset-4 hover:underline"
             >
               {c.selfScoreLink}
             </a>
-          </p>
-        </div>
-      </section>
-
-      <section className="border-t border-line/70 bg-surface/50 py-20">
-        <div className="site-shell">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-            {c.resultsEyebrow}
-          </p>
-          <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
-            {c.resultsTitle}
-          </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-            {c.resultsLead}
-          </p>
-          <CaseResults
-            items={resultItems}
-            placeholderBadge={c.resultsPlaceholderBadge}
-            beforeLabel={c.resultsBeforeLabel}
-            afterLabel={c.resultsAfterLabel}
-          />
-        </div>
-      </section>
-
-      <section className="border-t border-line/70 py-20">
-        <div className="site-shell max-w-3xl">
-          <p className="animate-fade text-xs font-medium uppercase tracking-[0.2em] text-accent">
-            {c.introEyebrow}
-          </p>
-          <h2 className="animate-rise font-display mt-3 text-4xl text-ink sm:text-5xl">
-            {c.introTitle}
-          </h2>
-          <p className="animate-rise-delay-1 mt-6 text-lg leading-relaxed text-muted">
-            {c.introBody}
           </p>
         </div>
       </section>
@@ -349,7 +299,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="border-t border-line/70 py-20">
+      <section className="border-t border-line/70 bg-surface/50 py-20">
         <div className="site-shell">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -461,12 +411,20 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       <section className="border-t border-line/70 bg-surface/60 py-20">
-        <div className="site-shell">
-          <CtaButtons
-            whatsappLabel={cta.whatsapp}
-            scheduleLabel={cta.schedule}
-            whatsappMessage={cta.defaultWhatsapp}
-          />
+        <div className="site-shell max-w-3xl">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+            {c.finalCtaEyebrow}
+          </p>
+          <h2 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
+            {c.finalCtaTitle}
+          </h2>
+          <div className="mt-8">
+            <CtaButtons
+              whatsappLabel={cta.whatsapp}
+              scheduleLabel={cta.schedule}
+              whatsappMessage={cta.defaultWhatsapp}
+            />
+          </div>
         </div>
       </section>
     </>

@@ -7,4 +7,5 @@ export type BriefRecord = {
   input: string;
   payload: BriefPayload;
   createdAt: string;
+  editToken?: string;
 };

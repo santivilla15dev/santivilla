@@ -63,14 +63,12 @@ export type SiteMessages = {
   };
   home: {
     heroLead: string;
-    heroSub: string;
     heroH1: string;
     heroCost: string;
     heroCardEyebrow: string;
     heroCardTitle: string;
     heroCardAlt: string;
     heroAuditCta: string;
-    heroFreeNote: string;
     heroGuarantee: string;
     trustSignalsLabel: string;
     trustSignals: {
@@ -115,6 +113,8 @@ export type SiteMessages = {
     faqEyebrow: string;
     faqTitle: string;
     faqItems: { id: string; question: string; answer: string }[];
+    finalCtaEyebrow: string;
+    finalCtaTitle: string;
     aboutEyebrow: string;
     aboutTitle: string;
     aboutBody: string;

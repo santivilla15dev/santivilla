@@ -30,7 +30,7 @@ export function FaqAccordion({ items }: Props) {
               type="button"
               aria-expanded={isOpen}
               aria-controls={panelId}
-              className="flex w-full items-start justify-between gap-4 py-5 text-left transition-colors hover:text-accent"
+              className="flex w-full items-start justify-between gap-4 rounded-sm py-5 text-left transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
               onClick={() => setOpenId(isOpen ? null : item.id)}
             >
               <span className="font-display text-xl text-ink sm:text-2xl">

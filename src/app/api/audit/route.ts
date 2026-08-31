@@ -120,34 +120,42 @@ export async function PATCH(req: Request) {
     );
   }
 
-  let body: AuditRequestBody & { baseResult?: AuditResult };
   try {
-    body = (await req.json()) as AuditRequestBody & { baseResult?: AuditResult };
-  } catch {
+    let body: AuditRequestBody & { baseResult?: AuditResult };
+    try {
+      body = (await req.json()) as AuditRequestBody & { baseResult?: AuditResult };
+    } catch {
+      return NextResponse.json(
+        { error: "BAD_JSON", message: "Cuerpo inválido." },
+        { status: 400 },
+      );
+    }
+
+    const lang: AuditLang = body.lang === "de" ? "de" : "es";
+    const parsed = parseBody(body, lang);
+    if ("error" in parsed) return parsed.error;
+    const { url } = parsed;
+
+    const lighthouse = await fetchPageSpeedInsights(url, "mobile");
+    if (!lighthouse) {
+      return NextResponse.json({ lighthouse: null, psiAvailable: true });
+    }
+
+    if (body.baseResult) {
+      const merged = appendLighthouseFindings(body.baseResult, lighthouse, lang);
+      return NextResponse.json({
+        lighthouse,
+        findings: merged.findings,
+        psiAvailable: true,
+      });
+    }
+
+    return NextResponse.json({ lighthouse, psiAvailable: true });
+  } catch (err) {
+    console.error("[audit PATCH]", err);
     return NextResponse.json(
-      { error: "BAD_JSON", message: "Cuerpo inválido." },
-      { status: 400 },
+      { error: "INTERNAL", message: "Lighthouse check failed." },
+      { status: 500 },
     );
   }
-
-  const lang: AuditLang = body.lang === "de" ? "de" : "es";
-  const parsed = parseBody(body, lang);
-  if ("error" in parsed) return parsed.error;
-  const { url } = parsed;
-
-  const lighthouse = await fetchPageSpeedInsights(url, "mobile");
-  if (!lighthouse) {
-    return NextResponse.json({ lighthouse: null, psiAvailable: true });
-  }
-
-  if (body.baseResult) {
-    const merged = appendLighthouseFindings(body.baseResult, lighthouse, lang);
-    return NextResponse.json({
-      lighthouse,
-      findings: merged.findings,
-      psiAvailable: true,
-    });
-  }
-
-  return NextResponse.json({ lighthouse, psiAvailable: true });
 }
