@@ -375,10 +375,21 @@ export function analyzeHtml(
     });
   }
 
+  // Señales legacy markup-aware: el patrón debe aparecer en etiquetas/atributos,
+  // no en el texto visible (una web moderna que *menciona* Typo3 en su copy no
+  // es legacy). paths tipo /typo3conf/ o /wp-content/ solo salen en src/href.
+  const generatorMeta =
+    html.match(/<meta[^>]+name=["']generator["'][^>]*>/i)?.[0] ?? "";
   const looksLegacy =
-    /typo3|jquery\.js|document\.write|spacer\.gif|font\s*=\s*["']?\d/i.test(
+    /typo3|wordpress|joomla|drupal/i.test(generatorMeta) ||
+    /\/typo3conf\/|\/typo3temp\/|\/fileadmin\/|\/wp-content\/|\/wp-includes\//i.test(
       html,
-    ) || tables >= 2;
+    ) ||
+    /<script[^>]+src=["'][^"']*jquery/i.test(html) ||
+    /document\.write\s*\(/i.test(html) ||
+    /spacer\.gif/i.test(html) ||
+    /<font\s/i.test(html) ||
+    tables >= 4;
   if (looksLegacy && viewport === false) {
     // already penalized viewport
   } else if (looksLegacy) {
