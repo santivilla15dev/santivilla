@@ -41,8 +41,25 @@ export default async function HomePage({ params }: Props) {
   const viennaProjects = projects.filter((p) => p.group === "vienna");
   const templateProjects = projects.filter((p) => p.group === "template");
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: site.name,
+    description: messages.meta.description,
+    url: `https://${site.domain}`,
+    email: site.email,
+    areaServed: { "@type": "City", name: "Wien" },
+    knowsLanguage: ["de", "en", "es"],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="grain relative overflow-hidden">
         <div className="site-shell grid min-h-[calc(100vh-4.5rem)] items-center gap-12 py-16 lg:grid-cols-[1.1fr_0.9fr]">
           <div>

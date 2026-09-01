@@ -54,7 +54,9 @@ export function pageMetadata(
   }
 
   return {
-    title,
+    // Home ("meta") ya incluye la marca en el título — absolute evita
+    // duplicarla con el template "%s · Santi Villa" del layout.
+    title: segment === "meta" ? { absolute: title } : title,
     description,
     alternates: siteAlternates(locale, path),
     openGraph: {
