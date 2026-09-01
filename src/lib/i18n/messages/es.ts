@@ -100,6 +100,11 @@ export const esMessages: SiteMessages = {
       "Webs modernas y responsive (móvil, tablet, desktop) para restaurantes, locales y centros comerciales. Wien / Remote.",
     ogLocale: "es_ES",
   },
+  notFound: {
+    title: "Página no encontrada",
+    body: "La página que buscas no existe o fue movida.",
+    cta: "Volver al inicio",
+  },
   nav: {
     work: "Trabajos",
     services: "Servicios",

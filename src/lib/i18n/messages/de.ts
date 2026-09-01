@@ -100,6 +100,11 @@ export const deMessages: SiteMessages = {
       "Moderne responsive Websites (Handy, Tablet, Desktop) für Restaurants, Shops und Center. Wien / Remote.",
     ogLocale: "de_AT",
   },
+  notFound: {
+    title: "Seite nicht gefunden",
+    body: "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    cta: "Zur Startseite",
+  },
   nav: {
     work: "Arbeiten",
     services: "Leistungen",

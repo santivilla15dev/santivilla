@@ -23,6 +23,11 @@ export type SiteMessages = {
     description: string;
     ogLocale: string;
   };
+  notFound: {
+    title: string;
+    body: string;
+    cta: string;
+  };
   nav: {
     work: string;
     services: string;

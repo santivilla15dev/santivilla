@@ -100,6 +100,11 @@ export const enMessages: SiteMessages = {
       "Modern responsive websites (mobile, tablet, desktop) for restaurants, shops and centers. Vienna / Remote.",
     ogLocale: "en_US",
   },
+  notFound: {
+    title: "Page not found",
+    body: "The page you're looking for doesn't exist or was moved.",
+    cta: "Back to home",
+  },
   nav: {
     work: "Work",
     services: "Services",
