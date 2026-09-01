@@ -9,12 +9,22 @@ type Props = {
   labels: Record<Locale, string>;
 };
 
+// Fuera del componente: el compilador de React no debe tratar las mutaciones
+// de document/window como parte del scope reactivo.
+function persistLocaleCookie(target: Locale) {
+  document.cookie = `${LOCALE_COOKIE}=${target}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
+}
+
+function hardNavigate(href: string) {
+  window.location.href = href;
+}
+
 export function LocaleSwitcher({ locale, labels }: Props) {
   const pathname = usePathname();
 
   function onSwitch(target: Locale) {
-    document.cookie = `${LOCALE_COOKIE}=${target}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
-    window.location.href = switchLocalePath(pathname, target);
+    persistLocaleCookie(target);
+    hardNavigate(switchLocalePath(pathname, target));
   }
 
   return (

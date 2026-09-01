@@ -67,9 +67,13 @@ export function ConceptChat({
   const chips = chipsForKind(kind, lang);
   const isCivic = kind === "civic";
 
-  useEffect(() => {
+  // Re-sincroniza si llegan nuevos mensajes iniciales — ajuste durante el
+  // render en lugar de setState en useEffect.
+  const [prevInitial, setPrevInitial] = useState(initialMessages);
+  if (prevInitial !== initialMessages) {
+    setPrevInitial(initialMessages);
     setMessages(initialMessages);
-  }, [initialMessages]);
+  }
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });

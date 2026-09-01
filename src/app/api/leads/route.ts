@@ -1,3 +1,4 @@
+import { checkLeadRateLimit } from "@/lib/audit/rate-limit";
 import { saveLead } from "@/lib/crm/store";
 import { NextResponse } from "next/server";
 
@@ -11,6 +12,18 @@ type Body = {
 };
 
 export async function POST(req: Request) {
+  const forwarded = req.headers.get("x-forwarded-for");
+  const key = forwarded
+    ? forwarded.split(",")[0]?.trim() || "unknown"
+    : req.headers.get("x-real-ip") || "unknown";
+  const limit = await checkLeadRateLimit(key);
+  if (!limit.ok) {
+    return NextResponse.json(
+      { error: "RATE_LIMIT", message: "Demasiados envíos. Prueba más tarde." },
+      { status: 429, headers: { "Retry-After": String(limit.retryAfterSec) } },
+    );
+  }
+
   let body: Body;
   try {
     body = (await req.json()) as Body;

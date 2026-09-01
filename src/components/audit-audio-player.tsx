@@ -1,6 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+
+const noopSubscribe = () => () => {};
 
 type Props = {
   script: string;
@@ -23,15 +25,13 @@ export function AuditAudioPlayer({
   stopLabel,
   unsupportedLabel,
 }: Props) {
-  const [supported, setSupported] = useState(true);
+  const supported = useSyncExternalStore(
+    noopSubscribe,
+    () => "speechSynthesis" in window,
+    () => true,
+  );
   const [playing, setPlaying] = useState(false);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
-
-  useEffect(() => {
-    setSupported(
-      typeof window !== "undefined" && "speechSynthesis" in window,
-    );
-  }, []);
 
   const stop = useCallback(() => {
     if (typeof window === "undefined" || !window.speechSynthesis) return;

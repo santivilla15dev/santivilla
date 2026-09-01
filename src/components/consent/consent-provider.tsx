@@ -4,9 +4,9 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import { readConsentFromDocument, writeConsent } from "@/lib/consent/storage";
@@ -51,6 +51,10 @@ type ConsentContextValue = {
 
 const ConsentContext = createContext<ConsentContextValue | null>(null);
 
+// La cookie solo se lee al montar; persist() actualiza vía `override`, así que
+// no hace falta suscripción real.
+const noopSubscribe = () => () => {};
+
 export function ConsentProvider({
   locale,
   labels,
@@ -62,24 +66,28 @@ export function ConsentProvider({
   privacyHref: string;
   children: ReactNode;
 }) {
-  const [ready, setReady] = useState(false);
-  const [decided, setDecided] = useState(false);
+  // Hidratación desde cookie sin setState en efectos: el snapshot de servidor
+  // (false / null) hace que el primer render cliente coincida con el HTML.
+  const ready = useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
+  const stored = useSyncExternalStore(
+    noopSubscribe,
+    readConsentFromDocument,
+    () => null,
+  );
+  const [override, setOverride] = useState<ConsentState | null>(null);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
-  const [consent, setConsent] = useState<ConsentState>(defaultConsentDenied);
+  const fallback = useMemo(() => defaultConsentDenied(), []);
 
-  useEffect(() => {
-    const existing = readConsentFromDocument();
-    if (existing) {
-      setConsent(existing);
-      setDecided(true);
-    }
-    setReady(true);
-  }, []);
+  const consent = override ?? stored ?? fallback;
+  const decided = override !== null || stored !== null;
 
   const persist = useCallback((next: ConsentState) => {
     writeConsent(next);
-    setConsent(next);
-    setDecided(true);
+    setOverride(next);
     setPreferencesOpen(false);
   }, []);
 

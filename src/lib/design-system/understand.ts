@@ -240,7 +240,7 @@ export async function understandBusiness(input: {
   const text = stripTags(input.html).slice(0, 4000);
   const blob = `${title} ${h1} ${text} ${input.url}`;
 
-  let base = heuristicUnderstand(input.html, input.url, input.lang);
+  const base = heuristicUnderstand(input.html, input.url, input.lang);
   if (input.fallbackName && input.fallbackName.length > 2) {
     const cleaned = cleanBusinessName(input.fallbackName);
     if (cleaned.name.length >= 3) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useConsent } from "@/components/consent/consent-provider";
 
 export function CookieBanner() {
@@ -18,13 +18,29 @@ export function CookieBanner() {
     closeSettings,
   } = useConsent();
 
-  const [analytics, setAnalytics] = useState(false);
-  const [marketing, setMarketing] = useState(false);
+  const [analytics, setAnalytics] = useState(consent.analytics);
+  const [marketing, setMarketing] = useState(consent.marketing);
 
-  useEffect(() => {
+  // Re-sincroniza los checkboxes cuando cambia el consentimiento o se abre el
+  // panel — ajuste durante el render en lugar de setState en useEffect.
+  const [prevSync, setPrevSync] = useState({
+    analytics: consent.analytics,
+    marketing: consent.marketing,
+    open: preferencesOpen,
+  });
+  if (
+    prevSync.analytics !== consent.analytics ||
+    prevSync.marketing !== consent.marketing ||
+    prevSync.open !== preferencesOpen
+  ) {
+    setPrevSync({
+      analytics: consent.analytics,
+      marketing: consent.marketing,
+      open: preferencesOpen,
+    });
     setAnalytics(consent.analytics);
     setMarketing(consent.marketing);
-  }, [consent.analytics, consent.marketing, preferencesOpen]);
+  }
 
   if (!ready) return null;
   if (decided && !preferencesOpen) return null;

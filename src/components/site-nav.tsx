@@ -25,10 +25,13 @@ export function SiteNav({ locale, messages }: Props) {
   const pathname = usePathname();
   const panelId = useId();
 
-  // Cierra el panel al navegar
-  useEffect(() => {
+  // Cierra el panel al navegar — ajuste durante el render en lugar de
+  // setState en useEffect.
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   // Cierra con Escape
   useEffect(() => {

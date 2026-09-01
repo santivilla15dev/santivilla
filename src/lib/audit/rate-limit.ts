@@ -18,6 +18,8 @@ const BRIEF_MAX = 8;
 const BRIEF_WINDOW_MS = 60 * 60_000;
 const BRIEF_REVISE_MAX = 20;
 const BRIEF_REVISE_WINDOW_MS = 60 * 60_000;
+const LEAD_MAX = 5;
+const LEAD_WINDOW_MS = 60 * 60_000;
 
 type Bucket = { count: number; resetAt: number };
 const memoryBuckets = new Map<string, Bucket>();
@@ -162,4 +164,11 @@ export async function checkBriefReviseRateLimit(key: string): Promise<{
   retryAfterSec: number;
 }> {
   return checkBucket(`brief-revise:${key}`, BRIEF_REVISE_MAX, BRIEF_REVISE_WINDOW_MS);
+}
+
+export async function checkLeadRateLimit(key: string): Promise<{
+  ok: boolean;
+  retryAfterSec: number;
+}> {
+  return checkBucket(`lead:${key}`, LEAD_MAX, LEAD_WINDOW_MS);
 }
