@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import type { BusinessKind } from "@/lib/design-system/art-direction";
 import { DEMO_COPY_ID, type CopyDraft, type CopyTarget } from "@/lib/copy/types";
 import type { Locale } from "@/lib/i18n/locales";
 import type { SiteMessages } from "@/lib/i18n/messages/types";

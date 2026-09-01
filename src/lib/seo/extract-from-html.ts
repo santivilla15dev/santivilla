@@ -4,7 +4,7 @@ import type { SiteFacts } from "@/lib/design-system/extract-site";
 import { generateText } from "ai";
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { z } from "zod";
-import type { ExtractedMenuSection, HtmlExtractResult } from "./types";
+import type { HtmlExtractResult } from "./types";
 
 const extractSchema = z.object({
   phones: z.array(z.string()).max(3),

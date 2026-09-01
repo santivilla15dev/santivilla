@@ -1,5 +1,4 @@
 import type { ArtDirection } from "./art-direction";
-import { getArtDirection } from "./art-direction";
 import { designTokens, type DesignBrief } from "./tokens";
 
 function escapeHtml(s: string) {

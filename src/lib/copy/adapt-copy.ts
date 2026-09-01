@@ -7,7 +7,6 @@ import {
   getArtDirection,
   type BusinessKind,
 } from "@/lib/design-system/art-direction";
-import type { Locale } from "@/lib/i18n/locales";
 import type { CopyAdaptInput, CopyTarget, CopyVariant } from "./types";
 
 const variantSchema = z.object({

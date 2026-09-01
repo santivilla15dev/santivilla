@@ -77,7 +77,7 @@ function buildMenuNode(
     "@type": "MenuSection",
     "@id": `${menuId}/section-${si}`,
     name: section.title,
-    hasMenuItem: section.items.slice(0, 20).map((item, ii) => {
+    hasMenuItem: section.items.slice(0, 20).map((item) => {
       const node: Record<string, unknown> = {
         "@type": "MenuItem",
         name: item.name,
