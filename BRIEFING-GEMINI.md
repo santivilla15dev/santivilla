@@ -27,7 +27,7 @@ Copia este archivo completo y pégaselo a Gemini. Al final tienes un prompt list
 
 **Un solo producto público: websites** para negocios locales.
 
-- Nav del portafolio: solo **Trabajos · Servicios · Contacto** (sin “Mobile Erst”, “Brief”, bots, etc. en el chrome).
+- Nav del portafolio: solo **Trabajos · Servicios · Contacto** (sin herramientas — auditoría, Brief, bots, etc. en el chrome).
 - Hero: marca + **promesa afilada** (segundos / quedarse) + Wien/rubros · **H1** = *Santi Villa* + línea keyword (*Webs para negocios locales en Wien* / DE·EN equivalentes) · **ancla de costo**: 53% de visitas móviles abandonadas si carga &gt;3s (Google, *Need for Mobile Speed*, 2016) · subtexto *Klar. Schnell. Mobile zuerst.* · **CTA primario** = “Probar gratis con tu URL” (`/auditoria`, sólido + pulse) + nota *sin costo / sin compromiso* · **CTA secundario** = WhatsApp (borde/discreto, sin pulse). Visual del hero = **mockup móvil** (asset propio) etiquetado **Stadtgalerie West**, no stock Unsplash. Botón “Ver demo” → `/demos/stadtgalerie` solo en el bloque de 4 pasos. Sin “Agendar” en el hero.
 - Brief Agent no va en el nav: vive en **Kontakt** como alternativa (“¿preferís escribir un brief…?”) y en Servicios; en home, “Así construimos tu web” es **un proceso numerado** (piezas del mismo proyecto), no un catálogo de 5 tools con CTAs.
 - Herramientas IA (auditoría responsive, Design Agent, Brief→landing, carta digital, Micro-Bot WhatsApp, copy local, Maps→Konzept) son **features / cómo demuestras valor** dentro del servicio — no líneas de producto competidoras en la primera impresión.
@@ -76,7 +76,7 @@ Flujo: Portafolio (`santivilla.com`) → Demo personalizada → Pitch antes/desp
 
 | Ruta | Rol |
 |------|-----|
-| `/auditoria` | Mobile Erst — score + Konzept desde URL (**CTA primario home**) |
+| `/auditoria` | Auditoría — score + Konzept desde URL (**CTA primario home**) |
 | `/brief` | Brief Agent — texto → landing conceptual |
 | `/digitalizar-carta` | OCR carta → preview |
 | `/micro-bot` | FAQ + handoff WhatsApp |

@@ -592,7 +592,7 @@ export const deMessages: SiteMessages = {
       "Österreichisches Deutsch für Locals, frisches Englisch für Touristen",
       "Gerichte, Angebote oder Services — ein Text, mehrere Zielgruppen",
       "Teilbarer Link zum Abstimmen mit dem Team",
-      "Integriert in Mobile-Erst-Konzepte",
+      "Integriert in Audit-Konzepte",
     ],
   },
   briefAgent: {
@@ -657,7 +657,7 @@ export const deMessages: SiteMessages = {
     bullets: [
       "Echte Google-Fotos wenn verfügbar — sonst KI-Bilder",
       "Slug-URL /k/name für WhatsApp-Pitch",
-      "Speichert in Supabase wie Mobile-Erst-Konzepte",
+      "Speichert in Supabase wie Audit-Konzepte",
       "Batch: npm run prospect:maps",
     ],
   },

@@ -6,7 +6,7 @@
 ## Briefing para Gemini
 Ideas de copy, diseño y pitch: abre [`BRIEFING-GEMINI.md`](./BRIEFING-GEMINI.md), copia todo y pégalo en Gemini con el prompt del final.
 
-## Mobile Erst + Santi Design Agent
+## Auditoría + Santi Design Agent
 1. `/de/auditoria` (o `/en/auditoria`) — pega URL → **UX score al instante** + **Lighthouse mobile** (Google PageSpeed)
 2. **Diagnóstico IA** — 3 puntos críticos de pérdida de clientes + audio ~30s (Web Speech) + reporte imprimible `/auditoria/report/[id]`
 3. **Concepto + imágenes** — entiende el negocio, genera fotos y HTML  
@@ -73,7 +73,7 @@ Cada concepto generado incluye **Schema.org JSON-LD** en el `<head>` del HTML:
 Validar: abre `/[locale]/concepto/[id]/raw` → [Google Rich Results Test](https://search.google.com/test/rich-results).
 
 Keys en `.env.local` / Vercel:
-- `PAGESPEED_API_KEY` → Lighthouse real (LCP, FCP, CLS) en Mobile Erst  
+- `PAGESPEED_API_KEY` → Lighthouse real (LCP, FCP, CLS) en la auditoría  
 - `GOOGLE_PLACES_API_KEY` → Maps → Konzept Live (Places API New)  
 - `ANTHROPIC_API_KEY` → mejor HTML + comprensión del negocio + **OCR carta**  
 - `HF_KEY=keyId:secret` → imágenes **Nano Banana Pro** (Higgsfield). Sin esto: Unsplash
@@ -107,7 +107,7 @@ Actualiza [`src/lib/demos/benchmarks.ts`](src/lib/demos/benchmarks.ts) con LCP/P
 ## Rutas
 - `/` → redirige a `/de` o `/en` según `Accept-Language` (español manual: `/es/...`)
 - `/de` · `/en` · `/es` — Home (ISR 1h)
-- `/[locale]/auditoria` — Mobile Erst
+- `/[locale]/auditoria` — Auditoría (score + concepto)
 - `/[locale]/digitalizar-carta` · `/en/digitize-menu` — Carta Digital (foto → preview)
 - `/[locale]/menu/[id]` — preview menú OCR (noindex)
 - `/[locale]/micro-bot` — Micro-Bot WhatsApp (FAQ + handoff)

@@ -125,7 +125,7 @@ export async function generateAiDiagnosis(input: {
       model: anthropic("claude-sonnet-4-5"),
       prompt: `You are a direct web consultant for local businesses (restaurants, shops) in ${lang === "de" ? "Austria/Germany" : "Spain/LATAM"}.
 
-Analyze this Mobile Erst audit and return ONLY valid JSON (no markdown):
+Analyze this web audit and return ONLY valid JSON (no markdown):
 {
   "headline": "one punchy sentence for the owner",
   "executiveSummary": "2 sentences max",

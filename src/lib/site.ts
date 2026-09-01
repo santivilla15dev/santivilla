@@ -81,8 +81,8 @@ export const packages = [
 
 export const projects = [
   {
-    slug: "mobile-erst",
-    title: "Mobile Erst — Auditoría responsive",
+    slug: "auditoria",
+    title: "Auditoría — score + concepto",
     type: "Producto",
     href: "/auditoria",
     blurb:
@@ -192,30 +192,4 @@ export const homeContent = {
     body: "Ejemplos en vivo que puedes abrir y mandar por WhatsApp. Las demos son propuestas conceptuales, no sitios oficiales de esos negocios.",
   },
 } as const;
-
-/** Actualizar blurbs de proyectos hacia beneficio */
-export const projectsForHome = projects.map((p) => {
-  if (p.slug === "mobile-erst") {
-    return {
-      ...p,
-      blurb:
-        "Descubre si tu web actual falla en móvil y genera un concepto nuevo en minutos.",
-    };
-  }
-  if (p.slug === "stadtgalerie") {
-    return {
-      ...p,
-      blurb:
-        "Cómo se vería un centro comercial de Wien con horarios, shops y contacto claros en el móvil.",
-    };
-  }
-  if (p.slug === "restaurant") {
-    return {
-      ...p,
-      blurb:
-        "Plantilla gastro lista: menú, horarios, mapa y reserva por WhatsApp en un flujo simple.",
-    };
-  }
-  return p;
-});
 

@@ -290,7 +290,7 @@ export function getDatenschutz(locale: Locale): LegalPageContent {
           title: "Personal data we collect",
           paragraphs: [
             "Contact form / CRM leads: name, business name, message, and related metadata you submit.",
-            "Audit (Mobile Erst): the URL you submit; we fetch publicly available HTML and may store audit reports and concepts.",
+            "Site audit: the URL you submit; we fetch publicly available HTML and may store audit reports and concepts.",
             "Optional tools you use: brief text, menu photos (OCR), Design Agent chat, copy drafts, Maps concept URLs — processed as described below.",
             "WhatsApp and Cal.com: if you contact or book via those links, data is processed under their policies (not stored by us beyond what you send us).",
             "Technical logs: IP and request metadata via hosting (Vercel) for security and rate limiting.",
@@ -369,7 +369,7 @@ export function getDatenschutz(locale: Locale): LegalPageContent {
           title: "Datos personales que se recogen",
           paragraphs: [
             "Formulario de contacto / leads CRM: nombre, negocio, mensaje y metadatos que envías.",
-            "Auditoría (Mobile Erst): la URL que envías; obtenemos HTML público y podemos guardar informes y conceptos.",
+            "Auditoría web: la URL que envías; obtenemos HTML público y podemos guardar informes y conceptos.",
             "Herramientas opcionales: brief, foto de carta (OCR), chat del Design Agent, borradores de copy, URL Maps→Konzept — según se describe abajo.",
             "WhatsApp y Cal.com: si escribes o reservas por esos enlaces, el tratamiento lo hacen esos proveedores (sus políticas).",
             "Logs técnicos: IP y metadatos de petición vía hosting (Vercel) por seguridad y rate limit.",
@@ -447,7 +447,7 @@ export function getDatenschutz(locale: Locale): LegalPageContent {
         title: "Welche personenbezogenen Daten wir erheben",
         paragraphs: [
           "Kontaktformular / CRM-Leads: Name, Betrieb, Nachricht und von Ihnen übermittelte Metadaten.",
-          "Audit (Mobile Erst): die eingegebene URL; öffentliches HTML wird geladen; Reports und Konzepte können gespeichert werden.",
+          "Web-Audit: die eingegebene URL; öffentliches HTML wird geladen; Reports und Konzepte können gespeichert werden.",
           "Optionale Tools: Brief-Text, Speisekartenfotos (OCR), Design-Agent-Chat, Copy-Entwürfe, Maps-Konzept-URLs — wie unten beschrieben.",
           "WhatsApp und Cal.com: bei Nutzung dieser Links gilt die Datenschutzpraxis der jeweiligen Anbieter.",
           "Technische Logs: IP und Request-Metadaten über Hosting (Vercel) zu Sicherheit und Rate-Limiting.",

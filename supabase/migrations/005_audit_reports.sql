@@ -1,4 +1,4 @@
--- Audit reports (Mobile Erst AI diagnosis + shareable report)
+-- Audit reports (AI diagnosis + shareable report)
 -- Apply after 001_concepts.sql
 
 create table if not exists public.audit_reports (

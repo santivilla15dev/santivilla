@@ -381,8 +381,8 @@ export function AuditClient({
         const firstPoint = diagnosis?.criticalPoints[0]?.title;
         const pointBit = firstPoint ? ` ${firstPoint}.` : "";
         return lang === "de"
-          ? `Hallo Santi — Mobile Erst UX ${result.uxScore}/100 für ${result.hostname}.${lh} ${headline}${pointBit}${conceptPath ? ` Konzept: ${origin}${conceptPath}` : ""}${reportPath ? ` Report: ${origin}${reportPath}` : ""} Kannst du mir den Relaunch machen?`
-          : `Hola Santi — Mobile Erst UX ${result.uxScore}/100 para ${result.hostname}.${lh} ${headline}${pointBit}${conceptPath ? ` Concepto: ${origin}${conceptPath}` : ""}${reportPath ? ` Informe: ${origin}${reportPath}` : ""} ¿Lo convertimos en web real?`;
+          ? `Hallo Santi — Audit UX ${result.uxScore}/100 für ${result.hostname}.${lh} ${headline}${pointBit}${conceptPath ? ` Konzept: ${origin}${conceptPath}` : ""}${reportPath ? ` Report: ${origin}${reportPath}` : ""} Kannst du mir den Relaunch machen?`
+          : `Hola Santi — Auditoría UX ${result.uxScore}/100 para ${result.hostname}.${lh} ${headline}${pointBit}${conceptPath ? ` Concepto: ${origin}${conceptPath}` : ""}${reportPath ? ` Informe: ${origin}${reportPath}` : ""} ¿Lo convertimos en web real?`;
       })()
     : undefined;
 
@@ -475,7 +475,7 @@ export function AuditClient({
           <div className="space-y-6">
             <div className="rounded-[var(--radius)] border border-line bg-ink p-7 text-surface">
               <p className="text-xs uppercase tracking-[0.2em] text-surface/50">
-                Mobile Erst · responsive · {result.hostname}
+                Audit · responsive · {result.hostname}
               </p>
               <p className="mt-2 text-[11px] uppercase tracking-[0.14em] text-surface/40">
                 {lang === "de"
