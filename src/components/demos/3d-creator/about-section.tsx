@@ -5,7 +5,7 @@
 import { AnimatedText } from "./animated-text";
 import { ContactButton } from "./contact-button";
 import { FadeIn } from "./fade-in";
-import { creator3dAssets, creator3dCopy } from "@/lib/demos/3d-creator";
+import { creator3dAssets, type Creator3dContent } from "@/lib/demos/3d-creator";
 
 const DECOR = [
   {
@@ -30,7 +30,7 @@ const DECOR = [
   },
 ] as const;
 
-export function AboutSection() {
+export function AboutSection({ content }: { content: Creator3dContent }) {
   return (
     <section
       id="about"
@@ -53,18 +53,18 @@ export function AboutSection() {
           className="font-black uppercase leading-none tracking-tight text-[#D7E2EA]"
           style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
         >
-          About me
+          {content.about.title}
         </h2>
       </FadeIn>
 
       <AnimatedText
-        text={creator3dCopy.about}
+        text={content.about.body}
         className="mx-auto mt-10 max-w-[900px] font-light leading-snug text-[#D7E2EA] md:mt-14"
         style={{ fontSize: "clamp(1.1rem, 2.4vw, 2.1rem)" }}
       />
 
       <FadeIn delay={0.2} className="mt-12 md:mt-16">
-        <ContactButton />
+        <ContactButton content={content} />
       </FadeIn>
     </section>
   );

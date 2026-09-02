@@ -6,16 +6,18 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { FadeIn } from "./fade-in";
 import { LiveProjectButton } from "./live-project-button";
-import { creator3dProjects, type Creator3dProject } from "@/lib/demos/3d-creator";
+import type { Creator3dContent, Creator3dProject } from "@/lib/demos/3d-creator";
 
 function ProjectCard({
   project,
   index,
   total,
+  openLabel,
 }: {
   project: Creator3dProject;
   index: number;
   total: number;
+  openLabel: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -28,7 +30,7 @@ function ProjectCard({
   return (
     <div ref={ref} className="h-[85vh]">
       <motion.article
-        className="sticky top-24 origin-top rounded-[28px] border border-white/10 bg-[#141414] p-5 shadow-2xl sm:p-7 md:top-32 md:p-10"
+        className="sticky origin-top rounded-[28px] border border-white/10 bg-[#141414] p-5 shadow-2xl sm:p-7 md:p-10"
         style={{ scale, top: `calc(6rem + ${index * 28}px)` }}
       >
         <header className="flex flex-wrap items-end justify-between gap-4">
@@ -51,44 +53,53 @@ function ProjectCard({
           </span>
         </header>
 
+        <p
+          className="mt-4 max-w-[70ch] font-light leading-relaxed text-[#D7E2EA]/70"
+          style={{ fontSize: "clamp(0.95rem, 1.3vw, 1.2rem)" }}
+        >
+          {project.blurb}
+        </p>
+
         <div className="mt-6 grid gap-3 md:mt-8 md:grid-cols-[2fr_3fr] md:gap-4">
           <div className="grid gap-3 md:gap-4">
             <img
               src={project.images.col1Top}
-              alt={`${project.name} — vista 1`}
+              alt={`${project.name} — móvil`}
               loading="lazy"
               decoding="async"
-              className="w-full rounded-2xl object-cover"
+              className="w-full rounded-2xl border border-white/10 object-cover object-top"
               style={{ height: "clamp(120px, 18vw, 240px)" }}
             />
             <img
               src={project.images.col1Bottom}
-              alt={`${project.name} — vista 2`}
+              alt={`${project.name} — detalle`}
               loading="lazy"
               decoding="async"
-              className="w-full rounded-2xl object-cover"
+              className="w-full rounded-2xl border border-white/10 object-cover object-top"
               style={{ height: "clamp(120px, 18vw, 240px)" }}
             />
           </div>
           <img
             src={project.images.col2}
-            alt={`${project.name} — vista principal`}
+            alt={`${project.name} — desktop`}
             loading="lazy"
             decoding="async"
-            className="w-full rounded-2xl object-cover"
+            className="w-full rounded-2xl border border-white/10 object-cover object-top"
             style={{ height: "clamp(260px, 37vw, 500px)" }}
           />
         </div>
 
         <footer className="mt-6 flex justify-end md:mt-8">
-          <LiveProjectButton href="#projects" />
+          <LiveProjectButton href={project.href} label={openLabel} />
         </footer>
       </motion.article>
     </div>
   );
 }
 
-export function ProjectsSection() {
+export function ProjectsSection({ content }: { content: Creator3dContent }) {
+  const items = content.projects.items;
+
   return (
     <section
       id="projects"
@@ -100,17 +111,18 @@ export function ProjectsSection() {
             className="font-black uppercase leading-none tracking-tight text-[#D7E2EA]"
             style={{ fontSize: "clamp(2.5rem, 9vw, 120px)" }}
           >
-            Projects
+            {content.projects.title}
           </h2>
         </FadeIn>
 
         <div className="mt-12 md:mt-20">
-          {creator3dProjects.map((project, i) => (
+          {items.map((project, i) => (
             <ProjectCard
-              key={project.number}
+              key={project.slug}
               project={project}
               index={i}
-              total={creator3dProjects.length}
+              total={items.length}
+              openLabel={content.projects.openLabel}
             />
           ))}
         </div>

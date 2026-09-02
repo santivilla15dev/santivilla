@@ -6,9 +6,6 @@ import { useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { creator3dMarquee } from "@/lib/demos/3d-creator";
 
-const ROW_1 = creator3dMarquee.slice(0, 11);
-const ROW_2 = creator3dMarquee.slice(11);
-
 function tripled<T>(items: readonly T[]): T[] {
   return [...items, ...items, ...items];
 }
@@ -16,17 +13,15 @@ function tripled<T>(items: readonly T[]): T[] {
 function Row({
   images,
   transform,
-  label,
 }: {
   images: readonly string[];
   transform: string;
-  label: string;
 }) {
   return (
     <div
       className="flex gap-3"
       style={{ transform, willChange: "transform" }}
-      aria-label={label}
+      aria-hidden
     >
       {tripled(images).map((src, i) => (
         <img
@@ -37,7 +32,7 @@ function Row({
           decoding="async"
           width={420}
           height={270}
-          className="h-[270px] w-[420px] shrink-0 rounded-2xl object-cover"
+          className="h-[270px] w-[420px] shrink-0 rounded-2xl border border-white/10 object-cover object-top"
         />
       ))}
     </div>
@@ -80,17 +75,15 @@ export function MarqueeSection() {
     <section
       ref={ref}
       className="flex flex-col gap-3 overflow-hidden bg-[#0C0C0C] pb-10 pt-24 sm:pt-32 md:pt-40"
-      aria-label="Selección de trabajos en movimiento"
+      aria-label="Capturas de las demos"
     >
       <Row
-        images={ROW_1}
+        images={creator3dMarquee.row1}
         transform={`translateX(${offset - 200}px)`}
-        label="Fila 1"
       />
       <Row
-        images={ROW_2}
+        images={creator3dMarquee.row2}
         transform={`translateX(${-(offset - 200)}px)`}
-        label="Fila 2"
       />
     </section>
   );

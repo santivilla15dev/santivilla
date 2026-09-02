@@ -144,8 +144,8 @@ export const projects = [
     type: "Portfolio creativo",
     href: "/demos/3d-creator",
     blurb:
-      "Landing oscura para creador 3D: hero con gradiente, marquee por scroll, texto animado y proyectos apilados.",
-    tags: ["Demo", "3D", "Motion"],
+      "Mi landing en estilo 3D creator: servicios y precios reales, mis demos como proyectos, en DE / EN / ES.",
+    tags: ["Landing", "3D", "Motion"],
   },
 ] as const;
 

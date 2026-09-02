@@ -5,60 +5,97 @@
 import { ContactButton } from "./contact-button";
 import { FadeIn } from "./fade-in";
 import { Magnet } from "./magnet";
-import {
-  creator3dAssets,
-  creator3dCopy,
-  creator3dNav,
-} from "@/lib/demos/3d-creator";
+import { creator3dAssets, type Creator3dContent } from "@/lib/demos/3d-creator";
+import { locales } from "@/lib/i18n/locales";
 import { whatsappHref } from "@/lib/site";
 
+// El heading llena el ancho: a más caracteres, menos vw (tope 17.5vw como la spec).
+function headingSize(text: string): string {
+  const vw = Math.min(17.5, 178 / text.length);
+  return `${vw.toFixed(2)}vw`;
+}
+
 export function HeroSection({
+  content,
   portraitSrc = creator3dAssets.portrait,
 }: {
+  content: Creator3dContent;
   portraitSrc?: string;
 }) {
+  const navItems = [
+    { label: content.nav.about, href: "#about" },
+    { label: content.nav.services, href: "#services" },
+    { label: content.nav.projects, href: "#projects" },
+  ];
+
   return (
     <section className="relative flex h-[calc(100svh-3.5rem)] flex-col [overflow-x:clip] sm:h-[calc(100svh-2.75rem)]">
-      <FadeIn as="nav" delay={0} y={-20} className="px-6 pt-6 md:px-10 md:pt-8">
-        <ul className="flex items-center justify-between text-sm font-medium uppercase tracking-wider text-[#D7E2EA] md:text-lg lg:text-[1.4rem]">
-          {creator3dNav.map((item) => (
+      <FadeIn as="nav" delay={0} y={-20} className="px-6 pt-5 md:px-10 md:pt-6">
+        <div
+          className="flex justify-end gap-3 text-[11px] font-medium uppercase tracking-widest text-[#D7E2EA]/60"
+          aria-label={content.langLabel}
+        >
+          {locales.map((code) => (
+            <a
+              key={code}
+              href={`?lang=${code}`}
+              aria-current={code === content.locale ? "true" : undefined}
+              className={`transition-colors hover:text-[#D7E2EA] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA] ${
+                code === content.locale
+                  ? "text-[#D7E2EA] underline decoration-[#B600A8] decoration-2 underline-offset-4"
+                  : ""
+              }`}
+            >
+              {code}
+            </a>
+          ))}
+        </div>
+        <ul className="mt-3 flex items-center justify-between text-sm font-medium uppercase tracking-wider text-[#D7E2EA] md:text-lg lg:text-[1.4rem]">
+          {navItems.map((item) => (
             <li key={item.href}>
               <a
-                href={
-                  item.href === "#contact"
-                    ? whatsappHref(creator3dCopy.contactWhatsapp)
-                    : item.href
-                }
-                target={item.href === "#contact" ? "_blank" : undefined}
-                rel={item.href === "#contact" ? "noopener noreferrer" : undefined}
+                href={item.href}
                 className="transition-opacity duration-200 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA]"
               >
                 {item.label}
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href={whatsappHref(content.contact.whatsapp)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-opacity duration-200 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA]"
+            >
+              {content.nav.contact}
+            </a>
+          </li>
         </ul>
       </FadeIn>
 
       <div className="overflow-hidden">
         <FadeIn delay={0.15} y={40}>
-          <h1 className="hero-heading mt-6 w-full text-[14vw] font-black uppercase leading-none tracking-tight whitespace-nowrap sm:mt-4 sm:text-[15vw] md:-mt-5 md:text-[16vw] lg:text-[17.5vw]">
-            Hi, i&apos;m Santi
+          <h1
+            className="hero-heading mt-6 w-full font-black uppercase leading-none tracking-tight whitespace-nowrap sm:mt-4 md:-mt-3"
+            style={{ fontSize: headingSize(content.hero.heading) }}
+          >
+            {content.hero.heading}
           </h1>
         </FadeIn>
       </div>
 
-      <div className="mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
-        <FadeIn delay={0.35} y={20} className="max-w-[160px] sm:max-w-[220px] md:max-w-[260px]">
+      <div className="mt-auto flex flex-col items-start gap-4 px-6 pb-7 sm:flex-row sm:items-end sm:justify-between sm:pb-8 md:px-10 md:pb-10">
+        <FadeIn delay={0.35} y={20} className="max-w-[260px] sm:max-w-[240px] md:max-w-[300px]">
           <p
             className="font-light uppercase leading-snug tracking-wide text-[#D7E2EA]"
-            style={{ fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
+            style={{ fontSize: "clamp(0.72rem, 1.3vw, 1.4rem)" }}
           >
-            {creator3dCopy.heroTagline}
+            {content.hero.tagline}
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
-          <ContactButton />
+          <ContactButton content={content} />
         </FadeIn>
       </div>
 
@@ -75,7 +112,7 @@ export function HeroSection({
         >
           <img
             src={portraitSrc}
-            alt="Retrato de Santi Villa"
+            alt="Santi Villa"
             className="block w-full select-none"
             draggable={false}
           />
