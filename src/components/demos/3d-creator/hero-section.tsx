@@ -12,7 +12,11 @@ import {
 } from "@/lib/demos/3d-creator";
 import { whatsappHref } from "@/lib/site";
 
-export function HeroSection() {
+export function HeroSection({
+  portraitSrc = creator3dAssets.portrait,
+}: {
+  portraitSrc?: string;
+}) {
   return (
     <section className="relative flex h-[calc(100svh-3.5rem)] flex-col [overflow-x:clip] sm:h-[calc(100svh-2.75rem)]">
       <FadeIn as="nav" delay={0} y={-20} className="px-6 pt-6 md:px-10 md:pt-8">
@@ -39,7 +43,7 @@ export function HeroSection() {
       <div className="overflow-hidden">
         <FadeIn delay={0.15} y={40}>
           <h1 className="hero-heading mt-6 w-full text-[14vw] font-black uppercase leading-none tracking-tight whitespace-nowrap sm:mt-4 sm:text-[15vw] md:-mt-5 md:text-[16vw] lg:text-[17.5vw]">
-            Hi, i&apos;m jack
+            Hi, i&apos;m Santi
           </h1>
         </FadeIn>
       </div>
@@ -70,8 +74,8 @@ export function HeroSection() {
           inactiveTransition="transform 0.6s ease-in-out"
         >
           <img
-            src={creator3dAssets.portrait}
-            alt="Retrato 3D del creador"
+            src={portraitSrc}
+            alt="Retrato de Santi Villa"
             className="block w-full select-none"
             draggable={false}
           />

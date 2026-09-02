@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import { AboutSection } from "@/components/demos/3d-creator/about-section";
@@ -20,12 +22,20 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+// Retrato propio opcional: si existe public/demos/3d-creator/portrait.png
+// (PNG con fondo transparente) sustituye al render 3D de la spec.
+const LOCAL_PORTRAIT = "/demos/3d-creator/portrait.png";
+
 export default function Creator3dDemoPage() {
+  const hasLocalPortrait = existsSync(
+    join(process.cwd(), "public", LOCAL_PORTRAIT),
+  );
+
   return (
     <main
       className={`demo-3d ${kanit.variable} min-h-screen bg-[#0C0C0C] text-[#D7E2EA] [overflow-x:clip]`}
     >
-      <HeroSection />
+      <HeroSection portraitSrc={hasLocalPortrait ? LOCAL_PORTRAIT : undefined} />
       <MarqueeSection />
       <AboutSection />
       <ServicesSection />
