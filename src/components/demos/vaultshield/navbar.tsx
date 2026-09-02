@@ -44,7 +44,7 @@ function LangSwitcher({
 function PrimaryButton({ children }: { children: React.ReactNode }) {
   return (
     <a
-      href="#"
+      href="#plans"
       className="whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-[filter] hover:brightness-110"
       style={{ background: vaultshieldTheme.accent }}
     >
@@ -56,7 +56,7 @@ function PrimaryButton({ children }: { children: React.ReactNode }) {
 function SecondaryButton({ children }: { children: React.ReactNode }) {
   return (
     <a
-      href="#"
+      href="#plans"
       className="whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold transition-[filter] hover:brightness-95"
       style={{ background: vaultshieldTheme.loginBg, color: vaultshieldTheme.text }}
     >
@@ -98,13 +98,13 @@ export function VaultshieldNavbar({
       </a>
 
       <nav className="hidden items-center gap-8 lg:flex" aria-label={content.brand}>
-        {content.nav.links.map((label) => (
+        {content.nav.links.map((item) => (
           <a
-            key={label}
-            href="#"
+            key={item.href}
+            href={item.href}
             className="text-sm font-medium opacity-80 transition-opacity hover:opacity-100"
           >
-            {label}
+            {item.label}
           </a>
         ))}
       </nav>
@@ -176,17 +176,17 @@ export function VaultshieldNavbar({
               <div className="mx-6 h-px" style={{ background: "rgba(25,40,55,0.15)" }} />
 
               <nav className="flex flex-1 flex-col gap-1 px-6 py-6" aria-label={content.brand}>
-                {content.nav.links.map((label, i) => (
+                {content.nav.links.map((item, i) => (
                   <motion.a
-                    key={label}
-                    href="#"
+                    key={item.href}
+                    href={item.href}
                     onClick={() => setOpen(false)}
                     className="py-3 text-2xl font-semibold tracking-tight"
                     initial={reduce ? false : { opacity: 0, x: 24 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.18 + i * 0.07, duration: 0.4, ease: EASE }}
                   >
-                    {label}
+                    {item.label}
                   </motion.a>
                 ))}
               </nav>
@@ -199,14 +199,16 @@ export function VaultshieldNavbar({
               >
                 <LangSwitcher content={content} langHrefs={langHrefs} className="mb-2" />
                 <a
-                  href="#"
+                  href="#plans"
+                  onClick={() => setOpen(false)}
                   className="rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
                   style={{ background: vaultshieldTheme.accent }}
                 >
                   {content.nav.start}
                 </a>
                 <a
-                  href="#"
+                  href="#plans"
+                  onClick={() => setOpen(false)}
                   className="rounded-full px-5 py-3 text-center text-sm font-semibold"
                   style={{ background: vaultshieldTheme.loginBg }}
                 >

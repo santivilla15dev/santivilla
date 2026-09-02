@@ -65,7 +65,7 @@ export function VaultshieldHero({ content }: { content: VaultshieldContent }) {
         </motion.p>
 
         <motion.a
-          href="#"
+          href="#plans"
           variants={fadeUp}
           custom={2}
           initial={initial}

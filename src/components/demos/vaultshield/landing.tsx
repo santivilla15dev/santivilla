@@ -1,6 +1,18 @@
 import { vsBody, vsHeading } from "./font";
+import { VsFaq } from "./faq";
+import { VsFeatures } from "./features";
+import { VsFinalCta } from "./final-cta";
+import { VsFooter } from "./footer";
 import { VaultshieldHero } from "./hero";
+import { VsHowItWorks } from "./how-it-works";
+import { VsInstall } from "./install";
 import { VaultshieldNavbar } from "./navbar";
+import { VsNews } from "./news";
+import { VsPlans } from "./plans";
+import { VsSecurity } from "./security";
+import { VsStrengthChecker } from "./strength-checker";
+import { VsTestimonials } from "./testimonials";
+import { VsTrustBar } from "./trust-bar";
 import {
   getVaultshieldContent,
   vaultshieldAssets,
@@ -19,39 +31,48 @@ export function VaultshieldLanding({
 
   return (
     <div
-      // flex-1: el layout de demos es una columna flex, así el hero ocupa
-      // exactamente el alto restante bajo el banner Konzept sin scroll sobrante.
-      className={`${vsHeading.variable} ${vsBody.variable} relative flex w-full flex-1 flex-col font-[family-name:var(--font-vs-body)] [overflow-x:clip]`}
+      className={`${vsHeading.variable} ${vsBody.variable} w-full font-[family-name:var(--font-vs-body)] [overflow-x:clip]`}
       style={
         {
           "--color-text": vaultshieldTheme.text,
           "--color-accent": vaultshieldTheme.accent,
           "--color-login-bg": vaultshieldTheme.loginBg,
           color: vaultshieldTheme.text,
-          background: "#dedbd6",
+          background: "#FFFFFF",
         } as React.CSSProperties
       }
     >
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src={vaultshieldAssets.video}
-        poster={vaultshieldAssets.poster}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-        tabIndex={-1}
-        disablePictureInPicture
-      />
+      <section className="relative flex min-h-[calc(100svh-3.25rem)] flex-col [overflow-x:clip]">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src={vaultshieldAssets.video}
+          poster={vaultshieldAssets.poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          tabIndex={-1}
+          disablePictureInPicture
+        />
+        <VaultshieldNavbar content={content} langHrefs={langHrefs} />
+        <VaultshieldHero content={content} />
+        <div className="mt-auto" />
+      </section>
 
-      <VaultshieldNavbar content={content} langHrefs={langHrefs} />
-      <VaultshieldHero content={content} />
-
-      <p className="relative mx-auto mt-auto w-full max-w-[1280px] px-5 pb-5 pt-16 text-xs opacity-60 sm:px-8">
-        {content.conceptNote}
-      </p>
+      <VsTrustBar content={content} />
+      <VsFeatures content={content} />
+      <VsHowItWorks content={content} />
+      <VsStrengthChecker content={content} />
+      <VsSecurity content={content} />
+      <VsPlans content={content} />
+      <VsTestimonials content={content} />
+      <VsInstall content={content} />
+      <VsNews content={content} />
+      <VsFaq content={content} />
+      <VsFinalCta content={content} />
+      <VsFooter content={content} />
     </div>
   );
 }
