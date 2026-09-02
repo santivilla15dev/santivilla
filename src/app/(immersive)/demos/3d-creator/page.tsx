@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Retrato propio opcional: si existe public/demos/3d-creator/portrait.png
-// (PNG con fondo transparente) sustituye al render 3D de la spec.
-const LOCAL_PORTRAIT = "/demos/3d-creator/portrait.png";
+// Retrato propio: si existe public/demos/3d-creator/portrait.webp
+// (fondo #0C0C0C, igual que el hero) sustituye al render 3D de la spec.
+const LOCAL_PORTRAIT = "/demos/3d-creator/portrait.webp";
 
 export default function Creator3dDemoPage() {
   const hasLocalPortrait = existsSync(
