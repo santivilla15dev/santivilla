@@ -8,9 +8,9 @@ export default function LoginPage() {
         <p className="text-xs uppercase tracking-[0.18em] text-muted">
           santivilla
         </p>
-        <h1 className="font-display mt-2 text-3xl text-ink">Sign in</h1>
+        <h1 className="font-display mt-2 text-3xl text-ink">Anmelden</h1>
         <p className="mt-2 text-sm text-muted">
-          Admin panel or client portal.
+          Admin-Bereich oder Kundenportal.
         </p>
         <div className="mt-8">
           <Suspense fallback={<p className="text-sm text-muted">Loading…</p>}>

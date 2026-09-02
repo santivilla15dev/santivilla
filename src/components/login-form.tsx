@@ -85,7 +85,7 @@ export function LoginForm() {
         disabled={pending}
         className="h-auto w-full rounded-full bg-ink px-5 py-3 text-sm text-surface hover:bg-accent"
       >
-        {pending ? "…" : "Sign in"}
+        {pending ? "…" : "Anmelden"}
       </Button>
     </form>
   );
