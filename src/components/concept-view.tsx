@@ -46,6 +46,10 @@ type ConceptMeta = {
 
 export type ConceptInitialData = ConceptMeta;
 
+function tr(locale: Locale, de: string, en: string, es: string): string {
+  return locale === "de" ? de : locale === "en" ? en : es;
+}
+
 function resolveInitialHtml(
   id: string,
   data: ConceptInitialData,
@@ -133,7 +137,15 @@ export function ConceptView({
             setError(null);
             return;
           }
-          if (!cancelled) setError("Concepto no encontrado o expirado.");
+          if (!cancelled)
+            setError(
+              tr(
+                uiLocale,
+                "Konzept nicht gefunden oder abgelaufen.",
+                "Concept not found or expired.",
+                "Concepto no encontrado o expirado.",
+              ),
+            );
           return;
         }
         const data = (await res.json()) as ConceptMeta;
@@ -167,13 +179,21 @@ export function ConceptView({
           });
           return;
         }
-        if (!cancelled) setError("No se pudo cargar el concepto.");
+        if (!cancelled)
+          setError(
+            tr(
+              uiLocale,
+              "Konzept konnte nicht geladen werden.",
+              "Could not load the concept.",
+              "No se pudo cargar el concepto.",
+            ),
+          );
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [id, initialData]);
+  }, [id, initialData, uiLocale]);
 
   const requestIframeHtml = useCallback(() => {
     return new Promise<string>((resolve, reject) => {
@@ -289,11 +309,24 @@ export function ConceptView({
           setEditing(false);
           setSaveOk(true);
           setSaveError(
-            "Guardado en este navegador (el servidor ya no tenía el concepto).",
+            tr(
+              uiLocale,
+              "Im Browser gespeichert (der Server hatte das Konzept nicht mehr).",
+              "Saved in this browser (the server no longer had the concept).",
+              "Guardado en este navegador (el servidor ya no tenía el concepto).",
+            ),
           );
           return;
         }
-        throw new Error(data.message || "No se pudo guardar.");
+        throw new Error(
+          data.message ||
+            tr(
+              uiLocale,
+              "Speichern fehlgeschlagen.",
+              "Could not save.",
+              "No se pudo guardar.",
+            ),
+        );
       }
       saveLocalConceptHtml(id, clean);
       setHtml(clean);
@@ -303,7 +336,16 @@ export function ConceptView({
       setSaveOk(true);
       if (Array.isArray(data.seoTypes)) setSeoTypes(data.seoTypes);
     } catch (e) {
-      setSaveError(e instanceof Error ? e.message : "Error al guardar.");
+      setSaveError(
+        e instanceof Error
+          ? e.message
+          : tr(
+              uiLocale,
+              "Fehler beim Speichern.",
+              "Error while saving.",
+              "Error al guardar.",
+            ),
+      );
     } finally {
       setSaving(false);
     }
@@ -345,14 +387,18 @@ export function ConceptView({
       <p className="rounded-[var(--radius-card)] border border-accent-hot/30 bg-surface p-6 text-accent-hot">
         {error}{" "}
         <a href={auditHref} className="underline">
-          Generar de nuevo
+          {tr(uiLocale, "Neu generieren", "Generate again", "Generar de nuevo")}
         </a>
       </p>
     );
   }
 
   if (!meta || !html) {
-    return <p className="text-muted">Cargando concepto…</p>;
+    return (
+      <p className="text-muted">
+        {tr(uiLocale, "Konzept wird geladen…", "Loading concept…", "Cargando concepto…")}
+      </p>
+    );
   }
 
   const lang = meta.lang === "de" ? "de" : "es";
@@ -384,13 +430,16 @@ export function ConceptView({
               variant="secondary"
               className="rounded-full bg-surface-2 px-3 py-1 text-xs font-normal text-muted"
             >
-              html: {meta.source === "claude" ? "Claude" : "plantilla"}
+              html:{" "}
+              {meta.source === "claude"
+                ? "Claude"
+                : tr(uiLocale, "Vorlage", "template", "plantilla")}
             </Badge>
             <Badge
               variant="secondary"
               className="rounded-full bg-surface-2 px-3 py-1 text-xs font-normal text-muted"
             >
-              fotos: {meta.imageSource || "—"}
+              {tr(uiLocale, "Fotos", "Photos", "Fotos")}: {meta.imageSource || "—"}
             </Badge>
             {seoTypes.length > 0 && conceptLabels ? (
               <Badge
@@ -414,7 +463,7 @@ export function ConceptView({
                 variant="secondary"
                 className="rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent"
               >
-                modo edición
+                {tr(uiLocale, "Bearbeitungsmodus", "Edit mode", "Modo edición")}
               </Badge>
             ) : null}
             {dirty ? (
@@ -422,7 +471,7 @@ export function ConceptView({
                 variant="secondary"
                 className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-900"
               >
-                Sin guardar
+                {tr(uiLocale, "Ungespeichert", "Unsaved", "Sin guardar")}
               </Badge>
             ) : null}
           </div>
@@ -470,7 +519,7 @@ export function ConceptView({
               onClick={() => void startEditing()}
               className="h-auto rounded-full border-ink/20 bg-surface px-5 py-3 text-sm text-ink hover:bg-accent-soft hover:text-ink"
             >
-              Editar textos
+              {tr(uiLocale, "Texte bearbeiten", "Edit texts", "Editar textos")}
             </Button>
           ) : (
             <>
@@ -481,7 +530,7 @@ export function ConceptView({
                 disabled={saving}
                 className="h-auto rounded-full border-ink/20 bg-surface px-5 py-3 text-sm text-ink hover:bg-accent-soft hover:text-ink"
               >
-                Cancelar
+                {tr(uiLocale, "Abbrechen", "Cancel", "Cancelar")}
               </Button>
               <Button
                 type="button"
@@ -489,7 +538,9 @@ export function ConceptView({
                 disabled={saving}
                 className="h-auto rounded-full bg-ink px-5 py-3 text-sm text-white hover:bg-ink/90"
               >
-                {saving ? "Guardando…" : "Guardar"}
+                {saving
+                  ? tr(uiLocale, "Speichern…", "Saving…", "Guardando…")
+                  : tr(uiLocale, "Speichern", "Save", "Guardar")}
               </Button>
             </>
           )}
@@ -498,7 +549,12 @@ export function ConceptView({
             className="h-auto rounded-full px-5 py-3 text-sm"
           >
             <a href={wa} target="_blank" rel="noopener noreferrer">
-              WhatsApp — quiero este concepto
+              {tr(
+                uiLocale,
+                "WhatsApp — ich will dieses Konzept",
+                "WhatsApp — I want this concept",
+                "WhatsApp — quiero este concepto",
+              )}
             </a>
           </Button>
         </div>
@@ -512,15 +568,21 @@ export function ConceptView({
 
       {editing ? (
         <p className="text-sm text-muted">
-          Haz clic en los textos del preview para editarlos. El banner Konzept no
-          se puede cambiar.
+          {tr(
+            uiLocale,
+            "Klicke auf die Texte im Preview, um sie zu bearbeiten. Das Konzept-Banner ist nicht änderbar.",
+            "Click the texts in the preview to edit them. The Konzept banner cannot be changed.",
+            "Haz clic en los textos del preview para editarlos. El banner Konzept no se puede cambiar.",
+          )}
         </p>
       ) : null}
       {saveError ? (
         <p className="text-sm text-accent-hot">{saveError}</p>
       ) : null}
       {saveOk && !saveError ? (
-        <p className="text-sm text-accent">Cambios aplicados.</p>
+        <p className="text-sm text-accent">
+          {tr(uiLocale, "Änderungen übernommen.", "Changes applied.", "Cambios aplicados.")}
+        </p>
       ) : null}
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.85fr)] lg:items-start">
@@ -528,7 +590,12 @@ export function ConceptView({
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line px-4 py-2 text-xs uppercase tracking-[0.14em] text-muted">
             <span>
               {editing
-                ? "Edición de textos · clic en textos"
+                ? tr(
+                    uiLocale,
+                    "Textbearbeitung · auf Texte klicken",
+                    "Text editing · click texts",
+                    "Edición de textos · clic en textos",
+                  )
                 : "Preview · responsive"}
             </span>
             <div className="flex flex-wrap items-center gap-3 normal-case tracking-normal">
@@ -544,7 +611,7 @@ export function ConceptView({
                     setDirty(false);
                   }}
                 >
-                  Restaurar
+                  {tr(uiLocale, "Wiederherstellen", "Restore", "Restaurar")}
                 </Button>
               ) : null}
               <Button

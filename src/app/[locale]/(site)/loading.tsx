@@ -4,7 +4,7 @@ export default function Loading() {
       <div
         className="size-10 animate-spin rounded-full border-2 border-line border-t-accent"
         role="status"
-        aria-label="Cargando"
+        aria-label="Loading"
       />
     </main>
   );
