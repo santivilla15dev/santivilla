@@ -62,6 +62,16 @@ export function HeroPortrait({
       />
       <video
         className="absolute inset-0 h-full w-full select-none object-cover"
+        // Red de seguridad: si el navegador ignora el alpha del códec, la silueta
+        // del WebP recorta igualmente el fondo (la cabeza apenas se desplaza).
+        style={{
+          WebkitMaskImage: `url(${src})`,
+          maskImage: `url(${src})`,
+          WebkitMaskSize: "100% 100%",
+          maskSize: "100% 100%",
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+        }}
         autoPlay
         muted
         loop
