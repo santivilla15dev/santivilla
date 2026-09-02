@@ -5,7 +5,8 @@
 import { useReducedMotion } from "framer-motion";
 import { useSyncExternalStore, useState } from "react";
 
-export type PortraitVideo = { webm: string; mp4: string };
+// Vídeo con canal alpha: VP9 en WebM (Chrome, Firefox, Edge) y HEVC en MOV (Safari).
+export type PortraitVideo = { webm: string; hevc: string };
 
 type NavigatorWithConnection = Navigator & {
   connection?: { saveData?: boolean };
@@ -20,11 +21,6 @@ function readSaveData() {
   return (navigator as NavigatorWithConnection).connection?.saveData === true;
 }
 
-// Los bordes del vídeo son fondo liso; al desvanecerlos, la diferencia de
-// 1-2 niveles entre el negro del códec y el #0C0C0C de la página no forma rectángulo.
-const EDGE_MASK =
-  "linear-gradient(to right, transparent, #000 8%, #000 92%, transparent), linear-gradient(to bottom, transparent, #000 8%)";
-
 export function HeroPortrait({
   src,
   video,
@@ -37,6 +33,7 @@ export function HeroPortrait({
   const reduce = useReducedMotion();
   const saveData = useSyncExternalStore(subscribeNoop, readSaveData, () => false);
   const [failed, setFailed] = useState(false);
+  const [playing, setPlaying] = useState(false);
 
   const showVideo = Boolean(video) && !reduce && !saveData && !failed;
 
@@ -53,29 +50,36 @@ export function HeroPortrait({
 
   return (
     <div className="relative w-full">
-      {/* El <img> queda como fallback accesible; el vídeo es decorativo. */}
-      <img src={src} alt={alt} className="block w-full select-none" draggable={false} />
+      {/* El <img> reserva el hueco y es el fallback accesible; se oculta cuando el
+          vídeo transparente ya se reproduce para que no asome una segunda silueta. */}
+      <img
+        src={src}
+        alt={alt}
+        className={`block w-full select-none transition-opacity duration-300 ${
+          playing ? "opacity-0" : "opacity-100"
+        }`}
+        draggable={false}
+      />
       <video
         className="absolute inset-0 h-full w-full select-none object-cover"
-        style={{
-          WebkitMaskImage: EDGE_MASK,
-          maskImage: EDGE_MASK,
-          WebkitMaskComposite: "source-in",
-          maskComposite: "intersect",
-        }}
         autoPlay
         muted
         loop
         playsInline
         preload="metadata"
-        poster={src}
         aria-hidden="true"
         tabIndex={-1}
         disablePictureInPicture
+        onPlaying={() => setPlaying(true)}
+        // El autoplay puede arrancar antes de la hidratación y perderse "playing";
+        // timeupdate sigue llegando mientras reproduce.
+        onTimeUpdate={(e) => {
+          if (!playing && e.currentTarget.currentTime > 0) setPlaying(true);
+        }}
         onError={() => setFailed(true)}
       >
-        <source src={video.webm} type="video/webm" />
-        <source src={video.mp4} type="video/mp4" />
+        <source src={video.hevc} type='video/quicktime; codecs="hvc1"' />
+        <source src={video.webm} type='video/webm; codecs="vp9"' />
       </video>
     </div>
   );
