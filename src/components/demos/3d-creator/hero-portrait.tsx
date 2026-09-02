@@ -20,6 +20,11 @@ function readSaveData() {
   return (navigator as NavigatorWithConnection).connection?.saveData === true;
 }
 
+// Los bordes del vídeo son fondo liso; al desvanecerlos, la diferencia de
+// 1-2 niveles entre el negro del códec y el #0C0C0C de la página no forma rectángulo.
+const EDGE_MASK =
+  "linear-gradient(to right, transparent, #000 8%, #000 92%, transparent), linear-gradient(to bottom, transparent, #000 8%)";
+
 export function HeroPortrait({
   src,
   video,
@@ -52,6 +57,12 @@ export function HeroPortrait({
       <img src={src} alt={alt} className="block w-full select-none" draggable={false} />
       <video
         className="absolute inset-0 h-full w-full select-none object-cover"
+        style={{
+          WebkitMaskImage: EDGE_MASK,
+          maskImage: EDGE_MASK,
+          WebkitMaskComposite: "source-in",
+          maskComposite: "intersect",
+        }}
         autoPlay
         muted
         loop
