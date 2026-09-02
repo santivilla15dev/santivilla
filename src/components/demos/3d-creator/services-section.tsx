@@ -49,6 +49,11 @@ export function ServicesSection({ content }: { content: Creator3dContent }) {
                 >
                   {service.price}
                 </p>
+                {service.note ? (
+                  <p className="mt-1 text-sm font-medium uppercase tracking-wide opacity-50">
+                    {service.note}
+                  </p>
+                ) : null}
               </div>
               <p
                 className="col-span-2 font-light leading-relaxed md:col-span-1"

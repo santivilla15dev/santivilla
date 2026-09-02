@@ -39,6 +39,8 @@ export type Creator3dService = {
   name: string;
   price: string;
   description: string;
+  /** Nota corta bajo el precio (ej. «Opcional»). */
+  note?: string;
 };
 
 export type Creator3dProject = {
@@ -158,6 +160,7 @@ const CONTENT: Record<Locale, Creator3dContent> = {
         {
           name: "Mantenimiento",
           price: "€50–150/mes",
+          note: "Opcional",
           description:
             "Cambios de texto y fotos, monitoreo básico, soporte por WhatsApp y prioridad en nuevas funciones.",
         },
@@ -260,6 +263,7 @@ const CONTENT: Record<Locale, Creator3dContent> = {
         {
           name: "Wartung",
           price: "€50–150/Monat",
+          note: "Optional",
           description:
             "Text- und Fotoänderungen, Basis-Monitoring, Support per WhatsApp und Priorität bei neuen Funktionen.",
         },
@@ -362,6 +366,7 @@ const CONTENT: Record<Locale, Creator3dContent> = {
         {
           name: "Maintenance",
           price: "€50–150/month",
+          note: "Optional",
           description:
             "Text and photo changes, basic monitoring, WhatsApp support and priority on new features.",
         },
