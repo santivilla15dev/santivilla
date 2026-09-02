@@ -11,7 +11,7 @@ const cspReportOnly = [
   "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
-  "img-src 'self' data: blob: https://images.unsplash.com https://places.googleapis.com",
+  "img-src 'self' data: blob: https://images.unsplash.com https://places.googleapis.com https://shrug-person-78902957.figma.site https://motionsites.ai https://images.higgs.ai",
   "connect-src 'self' https://*.supabase.co wss://*.supabase.co",
   "frame-src 'self' https://maps.google.com https://www.google.com",
   "object-src 'none'",

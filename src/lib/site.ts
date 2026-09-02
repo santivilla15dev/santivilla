@@ -138,6 +138,15 @@ export const projects = [
       "Demo Santa Rosa de Osos: shoes, club shirts, two stores and WhatsApp — mobile-first.",
     tags: ["Demo", "Retail", "CO"],
   },
+  {
+    slug: "3d-creator",
+    title: "Santi Villa — 3D Creator",
+    type: "Portfolio creativo",
+    href: "/demos/3d-creator",
+    blurb:
+      "Landing oscura para creador 3D: hero con gradiente, marquee por scroll, texto animado y proyectos apilados.",
+    tags: ["Demo", "3D", "Motion"],
+  },
 ] as const;
 
 export const viennaMallCase = projects.find((p) => p.slug === "stadtgalerie")!;
