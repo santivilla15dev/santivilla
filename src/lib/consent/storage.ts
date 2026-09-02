@@ -34,22 +34,34 @@ export function parseConsent(raw: string | null | undefined): ConsentState | nul
   }
 }
 
+// useSyncExternalStore exige un snapshot referencialmente estable: memoizamos
+// por la cadena cruda para no devolver un objeto nuevo en cada lectura.
+let cachedRaw: string | null = null;
+let cachedParsed: ConsentState | null = null;
+
 export function readConsentFromDocument(): ConsentState | null {
   if (typeof document === "undefined") return null;
 
+  let raw: string | null = null;
   try {
-    const fromLs = window.localStorage.getItem(CONSENT_STORAGE_KEY);
-    const parsedLs = parseConsent(fromLs);
-    if (parsedLs) return parsedLs;
+    raw = window.localStorage.getItem(CONSENT_STORAGE_KEY);
   } catch {
     /* private mode */
   }
+  if (!raw) {
+    const match = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith(`${CONSENT_COOKIE}=`));
+    raw = match ? match.slice(CONSENT_COOKIE.length + 1) : null;
+  }
 
-  const match = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith(`${CONSENT_COOKIE}=`));
-  if (!match) return null;
-  return parseConsent(match.slice(CONSENT_COOKIE.length + 1));
+  if (raw === cachedRaw) return cachedParsed;
+  const parsed = parseConsent(raw);
+  if (parsed) {
+    cachedRaw = raw;
+    cachedParsed = parsed;
+  }
+  return parsed;
 }
 
 export function writeConsent(state: ConsentState): void {
