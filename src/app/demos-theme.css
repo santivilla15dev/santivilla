@@ -255,3 +255,8 @@
 .demo-novaai ::selection {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* Banner Konzept (~3.25rem) + nav fija (~3.75rem) */
+.demo-novaai [id] {
+  scroll-margin-top: 8rem;
+}

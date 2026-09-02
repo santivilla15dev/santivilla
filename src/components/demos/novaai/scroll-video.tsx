@@ -22,14 +22,66 @@ function drawCover(
 }
 
 function waitSeek(video: HTMLVideoElement, time: number) {
-  return new Promise<void>((resolve) => {
-    const done = () => {
-      video.removeEventListener("seeked", done);
+  return new Promise<void>((resolve, reject) => {
+    const onSeeked = () => {
+      cleanup();
       resolve();
     };
-    video.addEventListener("seeked", done);
-    video.currentTime = time;
+    const onError = () => {
+      cleanup();
+      reject(new Error("seek failed"));
+    };
+    function cleanup() {
+      video.removeEventListener("seeked", onSeeked);
+      video.removeEventListener("error", onError);
+    }
+    video.addEventListener("seeked", onSeeked);
+    video.addEventListener("error", onError);
+    try {
+      video.currentTime = time;
+    } catch (err) {
+      cleanup();
+      reject(err);
+    }
   });
+}
+
+async function loadVideo(url: string, crossOrigin?: string) {
+  const el = document.createElement("video");
+  el.muted = true;
+  el.playsInline = true;
+  el.preload = "auto";
+  if (crossOrigin) el.crossOrigin = crossOrigin;
+  el.src = url;
+  await new Promise<void>((resolve, reject) => {
+    el.onloadeddata = () => resolve();
+    el.onerror = () => reject(new Error(`load failed: ${url}`));
+  });
+  return el;
+}
+
+async function extractFrames(url: string, crossOrigin?: string) {
+  const off = await loadVideo(url, crossOrigin);
+  const duration = off.duration || 10;
+  const count = Math.min(90, Math.max(24, Math.floor(duration * 12)));
+  const bitmaps: ImageBitmap[] = [];
+  for (let i = 0; i < count; i++) {
+    const t = (i / (count - 1)) * Math.max(0, duration - 0.05);
+    await waitSeek(off, t);
+    const scale = Math.min(1, 960 / (off.videoWidth || 960));
+    const w = Math.round((off.videoWidth || 960) * scale);
+    const h = Math.round((off.videoHeight || 540) * scale);
+    const tmp = document.createElement("canvas");
+    tmp.width = w;
+    tmp.height = h;
+    const ctx = tmp.getContext("2d");
+    if (!ctx) continue;
+    ctx.drawImage(off, 0, 0, w, h);
+    bitmaps.push(await createImageBitmap(tmp));
+  }
+  off.removeAttribute("src");
+  off.load();
+  return bitmaps;
 }
 
 export function NovaScrollVideo() {
@@ -39,9 +91,11 @@ export function NovaScrollVideo() {
   const targetRef = useRef(0);
   const smoothedRef = useRef(0);
   const lastSeekRef = useRef(-1);
+  const seekingRef = useRef(false);
   const [posterGone, setPosterGone] = useState(false);
   const [videoHasFrame, setVideoHasFrame] = useState(false);
   const [cacheReady, setCacheReady] = useState(false);
+  // Preferimos CloudFront; si falla, espejo local same-origin (caché de frames fiable).
   const [src, setSrc] = useState<string>(novaaiAssets.video);
 
   useEffect(() => {
@@ -80,34 +134,41 @@ export function NovaScrollVideo() {
     window.addEventListener("resize", sizeCanvas);
 
     function paint() {
+      const frames = framesRef.current;
+      if (frames.length === 0) return;
       const ctx = c.getContext("2d");
       if (!ctx) return;
-      const frames = framesRef.current;
       const w = c.width;
       const h = c.height;
-      if (frames.length > 0) {
-        const i = Math.min(
-          frames.length - 1,
-          Math.round(smoothedRef.current * (frames.length - 1)),
-        );
-        const bmp = frames[i];
-        drawCover(ctx, bmp, bmp.width, bmp.height, w, h);
-        return;
-      }
-      if (v.readyState >= 2 && v.videoWidth) {
-        drawCover(ctx, v, v.videoWidth, v.videoHeight, w, h);
-      }
+      const i = Math.min(
+        frames.length - 1,
+        Math.round(smoothedRef.current * (frames.length - 1)),
+      );
+      const bmp = frames[i];
+      drawCover(ctx, bmp, bmp.width, bmp.height, w, h);
     }
 
     function tick() {
       if (!alive) return;
+      // Spec: smoothed += (target - smoothed) * 0.12
       smoothedRef.current += (targetRef.current - smoothedRef.current) * 0.12;
       const frames = framesRef.current;
-      if (frames.length === 0 && v.duration) {
+      // Reserva: seek del <video> visible mientras el caché no está listo.
+      if (frames.length === 0 && v.duration && !seekingRef.current) {
         const t = smoothedRef.current * Math.max(0, v.duration - 0.05);
         if (Math.abs(t - lastSeekRef.current) > 0.04) {
           lastSeekRef.current = t;
-          v.currentTime = t;
+          seekingRef.current = true;
+          const onSeeked = () => {
+            seekingRef.current = false;
+            v.removeEventListener("seeked", onSeeked);
+          };
+          v.addEventListener("seeked", onSeeked);
+          try {
+            v.currentTime = t;
+          } catch {
+            seekingRef.current = false;
+          }
         }
       }
       paint();
@@ -127,58 +188,48 @@ export function NovaScrollVideo() {
     if (!visible) return;
     let cancelled = false;
 
-    async function extract() {
+    async function buildCache() {
       await new Promise((r) => setTimeout(r, 300));
       if (cancelled) return;
-      const off = document.createElement("video");
-      off.muted = true;
-      off.playsInline = true;
-      off.preload = "auto";
-      off.src = src;
-      off.crossOrigin = "anonymous";
-      try {
-        await new Promise<void>((resolve, reject) => {
-          off.onloadeddata = () => resolve();
-          off.onerror = () => reject(new Error("offscreen load"));
-        });
-        const duration = off.duration || 10;
-        const count = Math.min(90, Math.max(24, Math.floor(duration * 12)));
-        const bitmaps: ImageBitmap[] = [];
-        for (let i = 0; i < count; i++) {
-          if (cancelled) return;
-          const t = (i / (count - 1)) * Math.max(0, duration - 0.05);
-          await waitSeek(off, t);
-          const scale = Math.min(1, 960 / (off.videoWidth || 960));
-          const w = Math.round((off.videoWidth || 960) * scale);
-          const h = Math.round((off.videoHeight || 540) * scale);
-          const tmp = document.createElement("canvas");
-          tmp.width = w;
-          tmp.height = h;
-          const ctx = tmp.getContext("2d");
-          if (!ctx) continue;
-          ctx.drawImage(off, 0, 0, w, h);
-          bitmaps.push(await createImageBitmap(tmp));
+
+      // Caché desde el espejo local (same-origin): CloudFront suele contaminar
+      // el canvas por CORS y el scrub se vuelve a seek janky. El <video> visible
+      // sigue preferiendo CloudFront; el contenido es el mismo archivo.
+      const attempts: { url: string; crossOrigin?: string }[] = [
+        { url: novaaiAssets.videoLocal },
+        { url: novaaiAssets.video, crossOrigin: "anonymous" },
+      ];
+
+      for (const attempt of attempts) {
+        if (cancelled) return;
+        try {
+          const bitmaps = await extractFrames(attempt.url, attempt.crossOrigin);
+          if (!cancelled && bitmaps.length) {
+            // Libera bitmaps anteriores si los hubiera.
+            for (const prev of framesRef.current) prev.close();
+            framesRef.current = bitmaps;
+            setCacheReady(true);
+            setPosterGone(true);
+            return;
+          }
+        } catch {
+          // siguiente intento
         }
-        if (!cancelled && bitmaps.length) {
-          framesRef.current = bitmaps;
-          setCacheReady(true);
-          setPosterGone(true);
-        }
-      } catch {
-        // El vídeo visible sigue haciendo seek como reserva.
       }
     }
 
     function onLoaded() {
       setVideoHasFrame(true);
       setPosterGone(true);
-      void extract();
+      void buildCache();
     }
     if (visible.readyState >= 2) onLoaded();
     else visible.addEventListener("loadeddata", onLoaded, { once: true });
     return () => {
       cancelled = true;
       visible.removeEventListener("loadeddata", onLoaded);
+      for (const bmp of framesRef.current) bmp.close();
+      framesRef.current = [];
     };
   }, [src]);
 

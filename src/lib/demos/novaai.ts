@@ -19,6 +19,8 @@ export const novaaiCopy = {
     { label: "Contact", href: "#contact" },
   ],
   navCta: "Get Free Consultation",
+  menuOpen: "Open menu",
+  menuClose: "Close menu",
   services: ["/ AI AUTOMATION", "/ AI INTEGRATION", "/ AI AGENT DEVELOPMENT"],
   intro:
     "We design automation that brings clarity, precision, and efficiency to the way your company operates.",
