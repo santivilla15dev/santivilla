@@ -56,9 +56,9 @@ export function HeroSection({
             </a>
           ))}
         </div>
-        <ul className="mt-3 flex items-center justify-between text-sm font-medium uppercase tracking-wider text-[#D7E2EA] md:text-lg lg:text-[1.4rem]">
+        <ul className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-[11px] font-medium uppercase tracking-wide text-[#D7E2EA] sm:text-sm sm:tracking-wider md:text-lg lg:text-[1.4rem]">
           {navItems.map((item) => (
-            <li key={item.href}>
+            <li key={item.href} className="whitespace-nowrap">
               <a
                 href={item.href}
                 className="transition-opacity duration-200 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA]"
@@ -67,7 +67,7 @@ export function HeroSection({
               </a>
             </li>
           ))}
-          <li>
+          <li className="whitespace-nowrap">
             <a
               href={whatsappHref(content.contact.whatsapp)}
               target="_blank"
@@ -81,7 +81,9 @@ export function HeroSection({
       </FadeIn>
 
       <div className="overflow-hidden">
-        <FadeIn delay={0.15} y={40}>
+        {/* y < altura mínima del h1 (38 px a 320 px): si el desplazamiento inicial
+            lo saca por completo de la caja recortada, whileInView nunca dispara. */}
+        <FadeIn delay={0.15} y={20}>
           <h1
             className="hero-heading mt-6 w-full font-black uppercase leading-none tracking-tight whitespace-nowrap sm:mt-4 md:-mt-3"
             style={{ fontSize: headingSize(content.hero.heading) }}
@@ -108,7 +110,10 @@ export function HeroSection({
       <FadeIn
         delay={0.6}
         y={30}
-        className="absolute left-1/2 top-1/2 z-10 w-[280px] -translate-x-1/2 -translate-y-1/2 sm:top-auto sm:bottom-0 sm:w-[360px] sm:translate-y-0 md:w-[440px] lg:w-[520px]"
+        // Tamaño ligado a ancho Y alto: en móvil vertical centrado y limitado por
+        // la altura (no tapa el titular); en el resto anclado abajo, sin pasar del
+        // 52 % de la altura para no cubrir el titular en pantallas apaisadas.
+        className="absolute left-1/2 top-[48%] z-10 w-[min(72vw,40svh)] -translate-x-1/2 -translate-y-1/2 sm:top-auto sm:bottom-0 sm:w-[min(60vw,56svh,560px)] sm:translate-y-0"
       >
         <Magnet
           padding={150}

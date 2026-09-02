@@ -3,10 +3,28 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useSyncExternalStore } from "react";
 import { FadeIn } from "./fade-in";
 import { LiveProjectButton } from "./live-project-button";
 import type { Creator3dContent, Creator3dProject } from "@/lib/demos/3d-creator";
+
+// El apilado sticky solo tiene sentido si la tarjeta cabe en pantalla; en móvil
+// (< md) las tarjetas fluyen normalmente y no se escalan.
+const STACK_QUERY = "(min-width: 768px)";
+
+function subscribeStack(onChange: () => void) {
+  const mq = window.matchMedia(STACK_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+function useStackEnabled(): boolean {
+  return useSyncExternalStore(
+    subscribeStack,
+    () => window.matchMedia(STACK_QUERY).matches,
+    () => false,
+  );
+}
 
 function ProjectCard({
   project,
@@ -24,14 +42,19 @@ function ProjectCard({
     target: ref,
     offset: ["start end", "start start"],
   });
+  const stack = useStackEnabled();
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
 
   return (
-    <div ref={ref} className="h-[85vh]">
+    <div ref={ref} className="mb-6 md:mb-0 md:h-[85vh]">
       <motion.article
-        className="sticky origin-top rounded-[28px] border border-white/10 bg-[#141414] p-5 shadow-2xl sm:p-7 md:p-10"
-        style={{ scale, top: `calc(6rem + ${index * 28}px)` }}
+        className="origin-top rounded-[28px] border border-white/10 bg-[#141414] p-5 shadow-2xl sm:p-7 md:sticky md:p-10"
+        style={
+          stack
+            ? { scale, top: `calc(6rem + ${index * 28}px)` }
+            : undefined
+        }
       >
         <header className="flex flex-wrap items-end justify-between gap-4">
           <div className="flex items-baseline gap-4">
@@ -61,7 +84,7 @@ function ProjectCard({
         </p>
 
         <div className="mt-6 grid gap-3 md:mt-8 md:grid-cols-[2fr_3fr] md:gap-4">
-          <div className="grid gap-3 md:gap-4">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-1 md:gap-4">
             <img
               src={project.images.col1Top}
               alt={`${project.name} — móvil`}
