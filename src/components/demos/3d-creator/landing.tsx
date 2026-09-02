@@ -14,6 +14,15 @@ import type { Locale } from "@/lib/i18n/locales";
 // Retrato propio: si existe public/demos/3d-creator/portrait.webp
 // (recorte con fondo transparente) sustituye al render 3D de la spec.
 const LOCAL_PORTRAIT = "/demos/3d-creator/portrait.webp";
+// Bucle de vídeo del retrato (parpadeo, micro-movimiento); opcional.
+const LOCAL_PORTRAIT_VIDEO = {
+  webm: "/demos/3d-creator/portrait.webm",
+  mp4: "/demos/3d-creator/portrait.mp4",
+};
+
+function inPublic(path: string): boolean {
+  return existsSync(join(process.cwd(), "public", path));
+}
 
 export function Creator3dLanding({
   locale,
@@ -24,9 +33,11 @@ export function Creator3dLanding({
 }) {
   const content = getCreator3dContent(locale);
   const { home, cta } = getMessages(locale);
-  const hasLocalPortrait = existsSync(
-    join(process.cwd(), "public", LOCAL_PORTRAIT),
-  );
+  const hasLocalPortrait = inPublic(LOCAL_PORTRAIT);
+  const hasPortraitVideo =
+    hasLocalPortrait &&
+    inPublic(LOCAL_PORTRAIT_VIDEO.webm) &&
+    inPublic(LOCAL_PORTRAIT_VIDEO.mp4);
 
   return (
     <div
@@ -36,6 +47,7 @@ export function Creator3dLanding({
         content={content}
         langHrefs={langHrefs}
         portraitSrc={hasLocalPortrait ? LOCAL_PORTRAIT : undefined}
+        portraitVideo={hasPortraitVideo ? LOCAL_PORTRAIT_VIDEO : undefined}
       />
       <MarqueeSection />
       <AboutSection content={content} />

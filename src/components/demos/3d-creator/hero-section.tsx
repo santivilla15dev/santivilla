@@ -1,10 +1,10 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
-
 import { ContactButton } from "./contact-button";
 import { FadeIn } from "./fade-in";
+import { HeroPortrait, type PortraitVideo } from "./hero-portrait";
 import { Magnet } from "./magnet";
+import { PortraitMotion } from "./portrait-motion";
 import { creator3dAssets, type Creator3dContent } from "@/lib/demos/3d-creator";
 import { locales, type Locale } from "@/lib/i18n/locales";
 import { whatsappHref } from "@/lib/site";
@@ -19,11 +19,14 @@ export function HeroSection({
   content,
   langHrefs,
   portraitSrc = creator3dAssets.portrait,
+  portraitVideo,
 }: {
   content: Creator3dContent;
   /** Destino de cada idioma en el switcher (ruta por locale o ?lang=). */
   langHrefs: Record<Locale, string>;
   portraitSrc?: string;
+  /** Bucle de vídeo del retrato; si falta, se muestra la imagen estática. */
+  portraitVideo?: PortraitVideo;
 }) {
   const navItems = [
     { label: content.nav.about, href: "#about" },
@@ -113,12 +116,9 @@ export function HeroSection({
           activeTransition="transform 0.3s ease-out"
           inactiveTransition="transform 0.6s ease-in-out"
         >
-          <img
-            src={portraitSrc}
-            alt="Santi Villa"
-            className="block w-full select-none"
-            draggable={false}
-          />
+          <PortraitMotion delay={0.6} padding={150}>
+            <HeroPortrait src={portraitSrc} video={portraitVideo} alt="Santi Villa" />
+          </PortraitMotion>
         </Magnet>
       </FadeIn>
     </section>
