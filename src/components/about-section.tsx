@@ -13,10 +13,8 @@ type Props = {
   copy: AboutSectionCopy;
 };
 
-/**
- * TODO: reemplazar public/about/santi.jpg con foto real de Santi Villa.
- */
-const PHOTO_SRC = "/about/santi.jpg";
+// Retrato 3D estilizado de Santi (mismo asset que la demo 3D Creator), 4:5 a 2x.
+const PHOTO_SRC = "/about/santi.webp";
 
 export function AboutSection({ copy }: Props) {
   return (

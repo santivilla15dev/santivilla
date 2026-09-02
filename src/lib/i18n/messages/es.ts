@@ -316,7 +316,7 @@ export const esMessages: SiteMessages = {
     aboutStackLabel: "Stack",
     aboutStack:
       "Next.js + Vercel — sitios rápidos, HTTPS y deploys limpios (la misma base que medimos en esta página).",
-    aboutPhotoAlt: "Santi Villa — foto pendiente (placeholder)",
+    aboutPhotoAlt: "Santi Villa — retrato 3D estilizado",
     resultsEyebrow: "Resultados",
     resultsTitle: "Antes / después en números",
     resultsLead:

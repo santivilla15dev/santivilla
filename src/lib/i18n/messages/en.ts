@@ -316,7 +316,7 @@ export const enMessages: SiteMessages = {
     aboutStackLabel: "Stack",
     aboutStack:
       "Next.js + Vercel — fast sites, HTTPS, and clean deploys (the same stack we measure on this page).",
-    aboutPhotoAlt: "Santi Villa — photo pending (placeholder)",
+    aboutPhotoAlt: "Santi Villa — stylised 3D portrait",
     resultsEyebrow: "Results",
     resultsTitle: "Before / after in numbers",
     resultsLead:
