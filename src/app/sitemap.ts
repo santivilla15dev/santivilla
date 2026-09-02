@@ -47,6 +47,7 @@ const DEMO_PATHS = [
   "/demos/villa-italia",
   "/demos/solo-modas",
   "/demos/universo-del-calzado",
+  "/demos/vaultshield",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

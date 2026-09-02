@@ -21,6 +21,7 @@ const SOLO_MODAS_THUMB =
   "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80";
 const UNIVERSO_THUMB =
   "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=800&q=80";
+const VAULTSHIELD_THUMB = "/demos/vaultshield/hero-poster.webp";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -34,6 +35,8 @@ function projectThumb(slug: string) {
       return SOLO_MODAS_THUMB;
     case "universo-del-calzado":
       return UNIVERSO_THUMB;
+    case "vaultshield":
+      return VAULTSHIELD_THUMB;
     default:
       return null;
   }
@@ -116,6 +119,7 @@ export default async function TrabajosPage({ params }: Props) {
   const w = m.work;
   const cta = m.cta;
   const templates = m.projects.filter((p) => p.group === "template");
+  const saas = m.projects.filter((p) => p.group === "saas");
 
   return (
     <div className="pb-24">
@@ -243,6 +247,18 @@ export default async function TrabajosPage({ params }: Props) {
         <p className="mt-2 text-sm text-accent">{w.templatesNote}</p>
         <ProjectList projects={templates} locale={locale} openLabel={w.open} />
       </section>
+
+      {saas.length > 0 ? (
+        <section className="site-shell mt-16 border-t border-line pt-14 sm:mt-20 sm:pt-16">
+          <h2 className="font-display text-[clamp(1.75rem,3vw,2.25rem)] tracking-tight text-ink">
+            {w.saasTitle}
+          </h2>
+          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted">
+            {w.saasLead}
+          </p>
+          <ProjectList projects={saas} locale={locale} openLabel={w.open} />
+        </section>
+      ) : null}
 
       <section className="site-shell mt-16 border-t border-line pt-14 sm:mt-20 sm:pt-16">
         <h2 className="font-display text-[clamp(1.75rem,3vw,2.25rem)] tracking-tight text-ink">

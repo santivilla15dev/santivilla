@@ -82,6 +82,7 @@ const PROJECT_BASE = [
     href: "/demos/universo-del-calzado",
     shots: shots("universo-del-calzado", "desktop-2"),
   },
+  { slug: "vaultshield", href: "/demos/vaultshield", shots: shots("vaultshield", "desktop-2") },
 ] as const;
 
 type ProjectCopy = { name: string; category: string; blurb: string };
@@ -100,7 +101,7 @@ function buildProjects(copy: ProjectCopy[]): Creator3dProject[] {
   }));
 }
 
-const NUMBERS = ["01", "02", "03", "04", "05"];
+const NUMBERS = ["01", "02", "03", "04", "05", "06"];
 
 function buildServices(
   items: Omit<Creator3dService, "number">[],
@@ -195,6 +196,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
           category: "Deportes · Retail",
           blurb:
             "Zapatos, camisetas de club y dos tiendas en Santa Rosa de Osos, con WhatsApp a un toque.",
+        },
+        {
+          name: "VaultShield",
+          category: "SaaS · Concepto",
+          blurb:
+            "Hero de gestor de contraseñas: vídeo a pantalla completa, menú lateral en móvil y animaciones de entrada.",
         },
       ]),
     },
@@ -292,6 +299,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
           blurb:
             "Schuhe, Vereinstrikots und zwei Filialen in Santa Rosa de Osos, mit WhatsApp per Tipp.",
         },
+        {
+          name: "VaultShield",
+          category: "SaaS · Konzept",
+          blurb:
+            "Hero für einen Passwort-Manager: Vollbild-Video, seitliches Menü am Handy und Einblend-Animationen.",
+        },
       ]),
     },
     contact: {
@@ -387,6 +400,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
           category: "Sports · Retail",
           blurb:
             "Shoes, club shirts and two stores in Santa Rosa de Osos, with WhatsApp in one tap.",
+        },
+        {
+          name: "VaultShield",
+          category: "SaaS · Concept",
+          blurb:
+            "Password-manager hero: fullscreen video, mobile slide-in menu and entrance animations.",
         },
       ]),
     },

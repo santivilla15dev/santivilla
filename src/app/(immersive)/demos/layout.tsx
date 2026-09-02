@@ -11,7 +11,7 @@ export default function DemosLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="demo-immersive min-h-screen">
+    <div className="demo-immersive flex min-h-screen flex-col">
       {/* Una sola franja: legal + escape al portfolio */}
       <div className="sticky top-0 z-[60] border-b border-white/10 bg-[#0a0c0b]/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5 text-[11px] sm:px-6 sm:text-xs">

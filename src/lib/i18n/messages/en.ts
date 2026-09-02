@@ -91,6 +91,15 @@ const projects: SiteMessages["projects"] = [
     blurb:
       "Sports retail template: catalog, two stores and WhatsApp — mobile-first.",
   },
+  {
+    slug: "vaultshield",
+    title: "VaultShield — Password manager",
+    type: "SaaS · Landing",
+    href: "/demos/vaultshield",
+    group: "saas",
+    blurb:
+      "Product hero: fullscreen video, mobile slide-in menu and entrance animations.",
+  },
 ];
 
 export const enMessages: SiteMessages = {
@@ -396,6 +405,9 @@ export const enMessages: SiteMessages = {
     templatesLead:
       "Reusable structures: gastro, pizzeria, fashion and sports.",
     templatesNote: "Also tested internationally.",
+    saasTitle: "SaaS concepts",
+    saasLead:
+      "Landing pages for digital products: video, motion and one clear message.",
     open: "Open",
     pricingTitle: "Guide prices",
     pricingLead:

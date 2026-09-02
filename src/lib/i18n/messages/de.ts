@@ -91,6 +91,15 @@ const projects: SiteMessages["projects"] = [
     blurb:
       "Sport-Retail-Vorlage: Sortiment, zwei Filialen und WhatsApp — mobile-first.",
   },
+  {
+    slug: "vaultshield",
+    title: "VaultShield — Passwort-Manager",
+    type: "SaaS · Landing",
+    href: "/demos/vaultshield",
+    group: "saas",
+    blurb:
+      "Produkt-Hero: Vollbild-Video, seitliches Menü am Handy und Einblend-Animationen.",
+  },
 ];
 
 export const deMessages: SiteMessages = {
@@ -396,6 +405,9 @@ export const deMessages: SiteMessages = {
     templatesLead:
       "Wiederverwendbare Strukturen: Gastro, Pizzeria, Mode und Sport.",
     templatesNote: "Auch international getestet.",
+    saasTitle: "SaaS-Konzepte",
+    saasLead:
+      "Landingpages für digitale Produkte: Video, Animation und eine klare Botschaft.",
     open: "Öffnen",
     pricingTitle: "Orientierungspreise",
     pricingLead:

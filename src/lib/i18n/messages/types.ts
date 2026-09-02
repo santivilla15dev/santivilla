@@ -12,7 +12,7 @@ export type ProjectMessages = {
   type: string;
   href: string;
   blurb: string;
-  group: "vienna" | "template";
+  group: "vienna" | "template" | "saas";
   beforeNote?: string;
   afterNote?: string;
 };
@@ -176,6 +176,8 @@ export type SiteMessages = {
     templatesTitle: string;
     templatesLead: string;
     templatesNote: string;
+    saasTitle: string;
+    saasLead: string;
     open: string;
     pricingTitle: string;
     pricingLead: string;

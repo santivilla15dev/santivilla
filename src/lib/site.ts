@@ -138,6 +138,15 @@ export const projects = [
       "Demo Santa Rosa de Osos: shoes, club shirts, two stores and WhatsApp — mobile-first.",
     tags: ["Demo", "Retail", "CO"],
   },
+  {
+    slug: "vaultshield",
+    title: "VaultShield — SaaS",
+    type: "Landing de producto",
+    href: "/demos/vaultshield",
+    blurb:
+      "Concepto de gestor de contraseñas: hero con vídeo a pantalla completa, menú lateral en móvil y animaciones.",
+    tags: ["Concepto", "SaaS", "EN/DE/ES"],
+  },
 ] as const;
 
 export const viennaMallCase = projects.find((p) => p.slug === "stadtgalerie")!;
