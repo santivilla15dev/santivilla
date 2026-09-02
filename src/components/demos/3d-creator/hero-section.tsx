@@ -116,7 +116,7 @@ export function HeroSection({
           activeTransition="transform 0.3s ease-out"
           inactiveTransition="transform 0.6s ease-in-out"
         >
-          <PortraitMotion delay={0.6} padding={150}>
+          <PortraitMotion delay={0.6}>
             <HeroPortrait src={portraitSrc} video={portraitVideo} alt="Santi Villa" />
           </PortraitMotion>
         </Magnet>
