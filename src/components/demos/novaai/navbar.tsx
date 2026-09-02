@@ -133,6 +133,13 @@ export function NovaNavbar() {
           </div>
 
           <nav className="flex flex-1 flex-col gap-1 px-5 py-6" aria-label="NovaAI">
+            <a
+              href="#services"
+              onClick={() => setOpen(false)}
+              className="py-3 text-2xl font-medium tracking-tight text-white/85 transition-colors duration-300 hover:text-white"
+            >
+              Services
+            </a>
             {novaaiCopy.nav.map((item) => (
               <NavLink
                 key={item.label}

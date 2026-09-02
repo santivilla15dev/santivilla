@@ -100,8 +100,14 @@ export function NovaScrollVideo() {
 
   useEffect(() => {
     function onScroll() {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      targetRef.current = max > 0 ? clamp01(window.scrollY / max) : 0;
+      // Scrub solo en el tramo cinematográfico (hasta fin de Section Two).
+      const endEl = document.getElementById("nova-scrub-end");
+      const end =
+        endEl != null
+          ? endEl.offsetTop + endEl.offsetHeight - window.innerHeight
+          : document.documentElement.scrollHeight - window.innerHeight;
+      const range = Math.max(1, end);
+      targetRef.current = clamp01(window.scrollY / range);
     }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

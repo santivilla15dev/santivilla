@@ -15,7 +15,7 @@ export function NovaSectionOne() {
     >
       <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
         <ul className="flex flex-col gap-2">
-          {novaaiCopy.services.map((line, i) => (
+          {novaaiCopy.serviceLines.map((line, i) => (
             <Reveal key={line} delay={150 + i * 120}>
               <li className="font-mono text-xs uppercase tracking-[0.15em] text-white/90 drop-shadow-md">
                 {line}
