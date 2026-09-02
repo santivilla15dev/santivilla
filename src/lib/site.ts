@@ -147,6 +147,15 @@ export const projects = [
       "Concepto de gestor de contraseñas: hero con vídeo a pantalla completa, menú lateral en móvil y animaciones.",
     tags: ["Concepto", "SaaS", "EN/DE/ES"],
   },
+  {
+    slug: "novaai",
+    title: "NovaAI — SaaS",
+    type: "Landing cinematográfica",
+    href: "/demos/novaai",
+    blurb:
+      "Landing de IA: vídeo ligado al scroll, cristal esmerilado y tipografía editorial.",
+    tags: ["Concepto", "SaaS", "EN"],
+  },
 ] as const;
 
 export const viennaMallCase = projects.find((p) => p.slug === "stadtgalerie")!;

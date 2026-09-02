@@ -100,6 +100,15 @@ const projects: SiteMessages["projects"] = [
     blurb:
       "Hero de producto: vídeo a pantalla completa, menú lateral en móvil y animaciones de entrada.",
   },
+  {
+    slug: "novaai",
+    title: "NovaAI — Landing cinematográfica",
+    type: "SaaS · Landing",
+    href: "/demos/novaai",
+    group: "saas",
+    blurb:
+      "Sustituye el pitch de Lugner City: vídeo ligado al scroll, cristal esmerilado y tipografía editorial.",
+  },
 ];
 
 export const esMessages: SiteMessages = {

@@ -238,3 +238,20 @@
 .demo-3d [id] {
   scroll-margin-top: 3.5rem;
 }
+
+.demo-novaai {
+  font-family: var(--font-nova-inter), Inter, system-ui, sans-serif;
+  --font-sans: var(--font-nova-inter), Inter, system-ui, sans-serif;
+  --font-mono: var(--font-nova-inter), Inter, system-ui, sans-serif;
+  --nova-banner: 3.25rem;
+}
+
+.demo-novaai,
+.demo-novaai .font-sans,
+.demo-novaai .font-mono {
+  font-family: var(--font-nova-inter), Inter, system-ui, sans-serif;
+}
+
+.demo-novaai ::selection {
+  background: rgba(255, 255, 255, 0.2);
+}

@@ -100,6 +100,15 @@ const projects: SiteMessages["projects"] = [
     blurb:
       "Product hero: fullscreen video, mobile slide-in menu and entrance animations.",
   },
+  {
+    slug: "novaai",
+    title: "NovaAI — Cinematic landing",
+    type: "SaaS · Landing",
+    href: "/demos/novaai",
+    group: "saas",
+    blurb:
+      "Replaces the Lugner City pitch: scroll-scrubbed video, frosted glass and editorial type.",
+  },
 ];
 
 export const enMessages: SiteMessages = {

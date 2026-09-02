@@ -22,6 +22,7 @@ const SOLO_MODAS_THUMB =
 const UNIVERSO_THUMB =
   "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=800&q=80";
 const VAULTSHIELD_THUMB = "/demos/vaultshield/hero-poster.webp";
+const NOVAAI_THUMB = "/demos/novaai/hero-poster.jpg";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -37,6 +38,8 @@ function projectThumb(slug: string) {
       return UNIVERSO_THUMB;
     case "vaultshield":
       return VAULTSHIELD_THUMB;
+    case "novaai":
+      return NOVAAI_THUMB;
     default:
       return null;
   }
