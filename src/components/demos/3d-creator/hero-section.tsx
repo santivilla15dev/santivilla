@@ -6,7 +6,7 @@ import { ContactButton } from "./contact-button";
 import { FadeIn } from "./fade-in";
 import { Magnet } from "./magnet";
 import { creator3dAssets, type Creator3dContent } from "@/lib/demos/3d-creator";
-import { locales } from "@/lib/i18n/locales";
+import { locales, type Locale } from "@/lib/i18n/locales";
 import { whatsappHref } from "@/lib/site";
 
 // El heading llena el ancho: a más caracteres, menos vw (tope 17.5vw como la spec).
@@ -17,9 +17,12 @@ function headingSize(text: string): string {
 
 export function HeroSection({
   content,
+  langHrefs,
   portraitSrc = creator3dAssets.portrait,
 }: {
   content: Creator3dContent;
+  /** Destino de cada idioma en el switcher (ruta por locale o ?lang=). */
+  langHrefs: Record<Locale, string>;
   portraitSrc?: string;
 }) {
   const navItems = [
@@ -29,7 +32,7 @@ export function HeroSection({
   ];
 
   return (
-    <section className="relative flex h-[calc(100svh-3.5rem)] flex-col [overflow-x:clip] sm:h-[calc(100svh-2.75rem)]">
+    <section className="relative flex h-svh flex-col [overflow-x:clip]">
       <FadeIn as="nav" delay={0} y={-20} className="px-6 pt-5 md:px-10 md:pt-6">
         <div
           className="flex justify-end gap-3 text-[11px] font-medium uppercase tracking-widest text-[#D7E2EA]/60"
@@ -38,7 +41,7 @@ export function HeroSection({
           {locales.map((code) => (
             <a
               key={code}
-              href={`?lang=${code}`}
+              href={langHrefs[code]}
               aria-current={code === content.locale ? "true" : undefined}
               className={`transition-colors hover:text-[#D7E2EA] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA] ${
                 code === content.locale
