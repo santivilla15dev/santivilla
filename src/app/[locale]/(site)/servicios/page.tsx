@@ -37,7 +37,7 @@ export default async function ServiciosPage({ params }: Props) {
         {m.packages.map((pkg, index) => (
           <article
             key={pkg.id}
-            className={`animate-rise flex flex-col rounded-[var(--radius)] border border-line bg-surface p-7 shadow-[var(--shadow)] ${index === 1 ? "lg:-translate-y-2 lg:border-accent" : ""}`}
+            className={`animate-rise flex flex-col rounded-[var(--radius-card)] border border-line bg-surface p-7 shadow-[var(--shadow)] ${index === 1 ? "lg:-translate-y-2 lg:border-accent" : ""}`}
             style={{ animationDelay: `${index * 0.08}s` }}
           >
             <p className="text-xs uppercase tracking-[0.18em] text-muted">

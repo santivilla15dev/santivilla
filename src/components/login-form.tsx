@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { createBrowserSupabase } from "@/lib/supabase/browser";
 import { safeNextPath } from "@/lib/auth/next-path";
 
@@ -43,40 +47,46 @@ export function LoginForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
-      <label className="block text-sm">
-        <span className="text-muted">Email</span>
-        <input
+      <div>
+        <Label htmlFor="login-email" className="text-muted">
+          Email
+        </Label>
+        <Input
+          id="login-email"
           type="email"
           required
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1 w-full rounded-xl border border-line bg-background px-4 py-3 text-ink outline-none ring-accent focus:ring-2"
+          className="mt-1 h-auto rounded-xl border-line bg-background px-4 py-3 text-ink"
         />
-      </label>
-      <label className="block text-sm">
-        <span className="text-muted">Password</span>
-        <input
+      </div>
+      <div>
+        <Label htmlFor="login-password" className="text-muted">
+          Password
+        </Label>
+        <Input
+          id="login-password"
           type="password"
           required
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="mt-1 w-full rounded-xl border border-line bg-background px-4 py-3 text-ink outline-none ring-accent focus:ring-2"
+          className="mt-1 h-auto rounded-xl border-line bg-background px-4 py-3 text-ink"
         />
-      </label>
+      </div>
       {error ? (
-        <p className="text-sm text-red-600" role="alert">
-          {error}
-        </p>
+        <Alert variant="destructive">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       ) : null}
-      <button
+      <Button
         type="submit"
         disabled={pending}
-        className="w-full rounded-full bg-ink px-5 py-3 text-sm font-medium text-surface transition hover:bg-accent disabled:opacity-60"
+        className="h-auto w-full rounded-full bg-ink px-5 py-3 text-sm text-surface hover:bg-accent"
       >
         {pending ? "…" : "Sign in"}
-      </button>
+      </Button>
     </form>
   );
 }

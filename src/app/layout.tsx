@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { Fraunces, Manrope } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
 import { defaultLocale, isLocale } from "@/lib/i18n/locales";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { site } from "@/lib/site";
@@ -62,7 +63,10 @@ export default async function RootLayout({
       lang={lang}
       className={`${display.variable} ${body.variable} h-full antialiased`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        {children}
+        <Toaster position="bottom-right" richColors closeButton />
+      </body>
     </html>
   );
 }

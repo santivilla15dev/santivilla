@@ -118,7 +118,7 @@ export default async function ContactoPage({ params }: Props) {
           />
         </div>
 
-        <aside className="animate-rise-delay-2 rounded-[var(--radius)] bg-ink p-8 text-surface">
+        <aside className="animate-rise-delay-2 rounded-[var(--radius-card)] bg-ink p-8 text-surface">
           <p className="text-xs uppercase tracking-[0.18em] text-surface/50">
             {c.pitchLabel}
           </p>

@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 import { DEMO_MENU_ID, type MenuDraft } from "@/lib/menu/types";
 import { menuDigitizerPath, localizedPath } from "@/lib/i18n/paths";
 import type { Locale } from "@/lib/i18n/locales";
@@ -95,7 +97,7 @@ export function MenuDigitizerClient({
 
   return (
     <div className="space-y-8">
-      <div className="rounded-[var(--radius)] border border-line bg-surface p-6 shadow-[var(--shadow)] sm:p-8">
+      <div className="rounded-[var(--radius-card)] border border-line bg-surface p-6 shadow-[var(--shadow)] sm:p-8">
         <input
           ref={inputRef}
           type="file"
@@ -109,46 +111,47 @@ export function MenuDigitizerClient({
           }}
         />
 
-        <button
+        <Button
           type="button"
           disabled={busy}
           onClick={() => inputRef.current?.click()}
-          className="cta-pulse w-full rounded-full bg-accent px-6 py-4 text-sm font-semibold text-white transition hover:brightness-110 disabled:opacity-60 sm:w-auto"
+          className="cta-pulse h-auto w-full rounded-full px-6 py-4 text-sm font-semibold hover:brightness-110 sm:w-auto"
         >
           {busy
             ? phase === "compressing"
               ? labels.processing
               : labels.extracting
             : labels.uploadLabel}
-        </button>
+        </Button>
         <p className="mt-3 text-sm text-muted">{labels.uploadHint}</p>
 
         {error ? (
-          <p className="mt-4 text-sm text-accent-hot" role="alert">
-            {error}
-          </p>
+          <Alert variant="destructive" className="mt-4">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
         ) : null}
 
         {phase === "done" && previewPath ? (
           <div className="mt-8 border-t border-line pt-6">
             <p className="font-display text-2xl text-ink">{labels.successTitle}</p>
             <div className="mt-4 flex flex-wrap gap-3">
-              <Link
-                href={previewPath}
-                className="rounded-full bg-ink px-5 py-3 text-sm font-medium text-surface"
+              <Button
+                asChild
+                className="h-auto rounded-full bg-ink px-5 py-3 text-sm text-surface hover:bg-accent"
               >
-                {labels.openPreview}
-              </Link>
-              <button
+                <Link href={previewPath}>{labels.openPreview}</Link>
+              </Button>
+              <Button
                 type="button"
+                variant="outline"
                 onClick={() => {
                   setPhase("idle");
                   setPreviewPath(null);
                 }}
-                className="rounded-full border border-line px-5 py-3 text-sm font-medium text-ink"
+                className="h-auto rounded-full border-line bg-transparent px-5 py-3 text-sm text-ink hover:bg-accent-soft hover:text-ink"
               >
                 {labels.tryAgain}
-              </button>
+              </Button>
             </div>
           </div>
         ) : null}

@@ -2,6 +2,11 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { briefSalesWhatsAppMessage } from "@/lib/brief/whatsapp-message";
 import type { BriefPayload } from "@/lib/brief/schema";
 import type { Locale } from "@/lib/i18n/locales";
@@ -28,7 +33,6 @@ export function BriefForm({
   const [payload, setPayload] = useState<BriefPayload | null>(null);
   const [briefId, setBriefId] = useState<string | null>(null);
   const [sharePath, setSharePath] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -77,10 +81,9 @@ export function BriefForm({
         : sharePath;
     try {
       await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      toast.success(labels.copied);
     } catch {
-      /* ignore */
+      /* portapapeles no disponible */
     }
   }
 
@@ -105,9 +108,12 @@ export function BriefForm({
   return (
     <div className="space-y-12">
       <form onSubmit={onSubmit} className="space-y-6">
-        <label className="block">
-          <span className="text-sm font-medium text-ink">{labels.textareaLabel}</span>
-          <textarea
+        <div>
+          <Label htmlFor="brief-text" className="text-sm font-medium text-ink">
+            {labels.textareaLabel}
+          </Label>
+          <Textarea
+            id="brief-text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             rows={8}
@@ -115,49 +121,53 @@ export function BriefForm({
             required
             minLength={20}
             placeholder={labels.textareaPlaceholder}
-            className="mt-2 w-full resize-y rounded-sm border border-line bg-surface px-4 py-3 text-base leading-relaxed text-ink placeholder:text-muted/60 focus:border-accent focus:outline-none"
+            className="mt-2 resize-y rounded-sm border-line bg-surface px-4 py-3 text-base leading-relaxed text-ink placeholder:text-muted/60"
             disabled={phase === "loading"}
           />
           <span className="mt-1 block text-xs text-muted">
             {text.length}/2000 · {labels.textareaHint}
           </span>
-        </label>
+        </div>
 
         {error ? (
-          <p className="text-sm text-red-700" role="alert">
-            {error}
-          </p>
+          <Alert variant="destructive">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
         ) : null}
 
-        <button
+        <Button
           type="submit"
           disabled={phase === "loading" || text.trim().length < 20}
-          className="inline-flex rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+          className="h-auto rounded-full px-6 py-3 text-sm hover:brightness-110"
         >
           {phase === "loading" ? labels.generating : labels.generate}
-        </button>
+        </Button>
         <p className="text-sm text-muted">{labels.disclaimer}</p>
       </form>
 
       {payload && briefId ? (
         <div className="space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="font-display text-2xl text-ink">{labels.resultTitle}</h2>
+            <h2 className="font-display text-2xl text-ink">
+              {labels.resultTitle}
+            </h2>
             {sharePath ? (
               <div className="flex flex-wrap items-center gap-3 text-sm">
-                <Link
-                  href={sharePath}
-                  className="font-medium text-accent underline-offset-4 hover:underline"
+                <Button
+                  asChild
+                  variant="link"
+                  className="h-auto p-0 font-medium text-accent"
                 >
-                  {labels.openShare}
-                </Link>
-                <button
+                  <Link href={sharePath}>{labels.openShare}</Link>
+                </Button>
+                <Button
                   type="button"
+                  variant="link"
                   onClick={copyShare}
-                  className="text-muted underline-offset-4 hover:underline"
+                  className="h-auto p-0 text-muted"
                 >
-                  {copied ? labels.copied : labels.copyLink}
-                </button>
+                  {labels.copyLink}
+                </Button>
               </div>
             ) : null}
           </div>

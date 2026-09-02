@@ -2,6 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { saveEditToken } from "@/lib/design-system/edit-token";
 import type { SiteMessages } from "@/lib/i18n/messages/types";
 
@@ -44,7 +48,8 @@ export function MapsKonzeptClient({ labels }: { labels: Labels }) {
         setPhase("error");
         return;
       }
-      if (data.editToken) saveEditToken("concept", data.conceptId, data.editToken);
+      if (data.editToken)
+        saveEditToken("concept", data.conceptId, data.editToken);
       setResult(data);
       setPhase("done");
     } catch {
@@ -56,36 +61,37 @@ export function MapsKonzeptClient({ labels }: { labels: Labels }) {
   return (
     <div className="max-w-2xl space-y-6">
       <div>
-        <label
-          htmlFor="maps-url"
-          className="block text-sm font-medium text-ink"
-        >
+        <Label htmlFor="maps-url" className="text-sm font-medium text-ink">
           {labels.urlLabel}
-        </label>
-        <input
+        </Label>
+        <Input
           id="maps-url"
           type="url"
           value={mapsUrl}
           onChange={(e) => setMapsUrl(e.target.value)}
           placeholder={labels.urlPlaceholder}
-          className="mt-2 w-full rounded-[var(--radius)] border border-line bg-surface px-4 py-3 text-ink outline-none ring-accent/30 focus:ring-2"
+          className="mt-2 h-auto rounded-xl border-line bg-surface px-4 py-3 text-ink"
         />
         <p className="mt-2 text-xs text-muted">{labels.urlHint}</p>
       </div>
 
-      <button
+      <Button
         type="button"
         onClick={() => void generate()}
         disabled={phase === "generating" || !mapsUrl.trim()}
-        className="rounded-full bg-ink px-6 py-3 text-sm font-medium text-white transition hover:bg-ink/90 disabled:opacity-50"
+        className="h-auto rounded-full bg-ink px-6 py-3 text-sm text-white hover:bg-ink/90"
       >
         {phase === "generating" ? labels.generating : labels.generate}
-      </button>
+      </Button>
 
-      {error ? <p className="text-sm text-accent-hot">{error}</p> : null}
+      {error ? (
+        <Alert variant="destructive">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      ) : null}
 
       {result ? (
-        <div className="rounded-[var(--radius)] border border-line bg-surface-2 p-5">
+        <div className="rounded-[var(--radius-card)] border border-line bg-surface-2 p-5">
           <p className="text-sm font-medium text-ink">{result.name}</p>
           <p className="mt-1 text-xs text-muted">{labels.shareLabel}</p>
           <div className="mt-3 flex flex-wrap gap-3">

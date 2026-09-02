@@ -1,6 +1,15 @@
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { listSites } from "@/lib/crm/store";
 import { getCrmMessages } from "@/lib/crm/messages";
-import Link from "next/link";
 
 export default async function AdminSitesPage() {
   const m = getCrmMessages("de");
@@ -10,37 +19,41 @@ export default async function AdminSitesPage() {
     <div>
       <h1 className="font-display text-3xl">{m.sites}</h1>
       <div className="mt-8 overflow-x-auto rounded-xl border border-line">
-        <table className="w-full text-left text-sm">
-          <thead className="border-b border-line bg-surface/50">
-            <tr>
-              <th className="px-4 py-3">Slug</th>
-              <th className="px-4 py-3">Business</th>
-              <th className="px-4 py-3">Status</th>
-              <th className="px-4 py-3">Preview</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table className="text-left text-sm">
+          <TableHeader>
+            <TableRow className="border-line bg-surface/50 hover:bg-surface/50">
+              <TableHead className="px-4 py-3">Slug</TableHead>
+              <TableHead className="px-4 py-3">Business</TableHead>
+              <TableHead className="px-4 py-3">Status</TableHead>
+              <TableHead className="px-4 py-3">Preview</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {sites.map((site) => (
-              <tr key={site.id} className="border-b border-line/60">
-                <td className="px-4 py-3">{site.slug}</td>
-                <td className="px-4 py-3">{site.businessName}</td>
-                <td className="px-4 py-3">{site.status}</td>
-                <td className="px-4 py-3">
-                  <Link href={`/k/${site.slug}`} className="text-accent">
+              <TableRow key={site.id} className="border-line/60 hover:bg-surface/30">
+                <TableCell className="px-4 py-3">{site.slug}</TableCell>
+                <TableCell className="px-4 py-3">{site.businessName}</TableCell>
+                <TableCell className="px-4 py-3">
+                  <Badge variant="outline" className="border-line text-muted">
+                    {site.status}
+                  </Badge>
+                </TableCell>
+                <TableCell className="px-4 py-3">
+                  <Link href={`/k/${site.slug}`} className="text-accent hover:underline">
                     /k/{site.slug}
                   </Link>
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ))}
             {!sites.length ? (
-              <tr>
-                <td colSpan={4} className="px-4 py-8 text-center text-muted">
+              <TableRow className="hover:bg-transparent">
+                <TableCell colSpan={4} className="px-4 py-8 text-center text-muted">
                   No sites yet.
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ) : null}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
     </div>
   );

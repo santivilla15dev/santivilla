@@ -1,6 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import type { DailyMenuEntry, HoursOverride, MenuItem } from "@/lib/crm/types";
 
 type Props = {
@@ -34,7 +40,6 @@ export function PortalEditor({
   const [hoursOverrides, setHoursOverrides] = useState(initialHoursOverrides);
   const [announcements, setAnnouncements] = useState(initialAnnouncements);
   const [pending, setPending] = useState(false);
-  const [saved, setSaved] = useState(false);
 
   function addItem() {
     setItems((prev) => [...prev, { name: "", price: "" }]);
@@ -43,7 +48,6 @@ export function PortalEditor({
   async function onSave(e: React.FormEvent) {
     e.preventDefault();
     setPending(true);
-    setSaved(false);
 
     const dailyMenu = [...initialDailyMenu.filter((m) => m.date !== menuDate), { date: menuDate, items }];
     try {
@@ -53,7 +57,7 @@ export function PortalEditor({
         body: JSON.stringify({ dailyMenu, hoursOverrides, announcements }),
       });
       if (!res.ok) throw new Error("fail");
-      setSaved(true);
+      toast.success("OK");
     } finally {
       setPending(false);
     }
@@ -63,19 +67,22 @@ export function PortalEditor({
     <form onSubmit={onSave} className="space-y-8">
       <section className="rounded-xl border border-line p-6">
         <h2 className="font-display text-xl">{labels.dailyMenu}</h2>
-        <label className="mt-4 block text-sm">
-          <span className="text-muted">{labels.date}</span>
-          <input
+        <div className="mt-4">
+          <Label htmlFor="portal-menu-date" className="text-sm text-muted">
+            {labels.date}
+          </Label>
+          <Input
+            id="portal-menu-date"
             type="date"
             value={menuDate}
             onChange={(e) => setMenuDate(e.target.value)}
-            className="mt-1 rounded-lg border border-line px-3 py-2"
+            className="mt-1 h-auto w-auto rounded-lg border-line px-3 py-2"
           />
-        </label>
+        </div>
         <div className="mt-4 space-y-3">
           {items.map((item, i) => (
             <div key={i} className="flex gap-2">
-              <input
+              <Input
                 value={item.name}
                 onChange={(e) => {
                   const next = [...items];
@@ -83,9 +90,10 @@ export function PortalEditor({
                   setItems(next);
                 }}
                 placeholder="Plato"
-                className="flex-1 rounded-lg border border-line px-3 py-2 text-sm"
+                aria-label={`${labels.dailyMenu} ${i + 1}`}
+                className="h-auto flex-1 rounded-lg border-line px-3 py-2 text-sm"
               />
-              <input
+              <Input
                 value={item.price ?? ""}
                 onChange={(e) => {
                   const next = [...items];
@@ -93,91 +101,103 @@ export function PortalEditor({
                   setItems(next);
                 }}
                 placeholder="€"
-                className="w-24 rounded-lg border border-line px-3 py-2 text-sm"
+                aria-label={`Precio ${i + 1}`}
+                className="h-auto w-24 rounded-lg border-line px-3 py-2 text-sm"
               />
             </div>
           ))}
         </div>
-        <button type="button" onClick={addItem} className="mt-3 text-sm text-accent">
+        <Button
+          type="button"
+          variant="link"
+          onClick={addItem}
+          className="mt-3 h-auto p-0 text-sm text-accent"
+        >
           + {labels.addItem}
-        </button>
+        </Button>
       </section>
 
       <section className="rounded-xl border border-line p-6">
         <h2 className="font-display text-xl">{labels.hoursOverride}</h2>
         {hoursOverrides.map((o, i) => (
-          <div key={i} className="mt-3 flex flex-wrap gap-2 text-sm">
-            <input
+          <div key={i} className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+            <Input
               type="date"
               value={o.date}
+              aria-label={`${labels.date} ${i + 1}`}
               onChange={(e) => {
                 const next = [...hoursOverrides];
                 next[i] = { ...next[i], date: e.target.value };
                 setHoursOverrides(next);
               }}
-              className="rounded-lg border border-line px-2 py-1"
+              className="h-auto w-auto rounded-lg border-line px-2 py-1"
             />
-            <label className="flex items-center gap-1">
-              <input
-                type="checkbox"
+            <div className="flex items-center gap-1.5">
+              <Checkbox
+                id={`closed-${i}`}
                 checked={Boolean(o.closed)}
-                onChange={(e) => {
+                onCheckedChange={(checked) => {
                   const next = [...hoursOverrides];
-                  next[i] = { ...next[i], closed: e.target.checked };
+                  next[i] = { ...next[i], closed: checked === true };
                   setHoursOverrides(next);
                 }}
               />
-              {labels.closed}
-            </label>
-            <input
+              <Label htmlFor={`closed-${i}`} className="text-sm font-normal">
+                {labels.closed}
+              </Label>
+            </div>
+            <Input
               value={o.open ?? ""}
               placeholder="09:00"
+              aria-label={`Abre ${i + 1}`}
               onChange={(e) => {
                 const next = [...hoursOverrides];
                 next[i] = { ...next[i], open: e.target.value };
                 setHoursOverrides(next);
               }}
-              className="w-20 rounded-lg border border-line px-2 py-1"
+              className="h-auto w-20 rounded-lg border-line px-2 py-1"
             />
-            <input
+            <Input
               value={o.close ?? ""}
               placeholder="22:00"
+              aria-label={`Cierra ${i + 1}`}
               onChange={(e) => {
                 const next = [...hoursOverrides];
                 next[i] = { ...next[i], close: e.target.value };
                 setHoursOverrides(next);
               }}
-              className="w-20 rounded-lg border border-line px-2 py-1"
+              className="h-auto w-20 rounded-lg border-line px-2 py-1"
             />
           </div>
         ))}
-        <button
+        <Button
           type="button"
+          variant="link"
           onClick={() => setHoursOverrides((p) => [...p, { date: today, closed: false }])}
-          className="mt-3 text-sm text-accent"
+          className="mt-3 h-auto p-0 text-sm text-accent"
         >
           + Override
-        </button>
+        </Button>
       </section>
 
       <section className="rounded-xl border border-line p-6">
         <h2 className="font-display text-xl">{labels.announcements}</h2>
-        <textarea
+        <Textarea
           value={announcements}
           onChange={(e) => setAnnouncements(e.target.value)}
           rows={3}
-          className="mt-3 w-full rounded-lg border border-line px-3 py-2 text-sm"
+          aria-label={labels.announcements}
+          className="mt-3 rounded-lg border-line px-3 py-2 text-sm"
         />
       </section>
 
-      <button
+      <Button
         type="submit"
         disabled={pending}
-        className="rounded-full bg-ink px-6 py-3 text-sm text-surface disabled:opacity-60"
+        className="h-auto rounded-full bg-ink px-6 py-3 text-sm text-surface hover:bg-accent"
       >
         {pending ? "…" : labels.save}
-      </button>
-      {saved ? <p className="text-sm text-accent">OK</p> : null}
+      </Button>
     </form>
   );
 }

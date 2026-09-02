@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { loadEditToken } from "@/lib/design-system/edit-token";
 
 export type ChatMessage = {
@@ -124,7 +128,7 @@ export function ConceptChat({
   }
 
   return (
-    <div className="flex h-full min-h-[420px] flex-col overflow-hidden rounded-[var(--radius)] border border-line bg-surface shadow-[var(--shadow)]">
+    <div className="flex h-full min-h-[420px] flex-col overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface shadow-[var(--shadow)]">
       <div className="border-b border-line px-4 py-3">
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-accent">
           Santi Design Agent
@@ -138,49 +142,55 @@ export function ConceptChat({
 
       <div className="flex flex-wrap gap-2 border-b border-line px-3 py-3">
         {chips.map((chip) => (
-          <button
+          <Button
             key={chip}
             type="button"
+            variant="outline"
+            size="sm"
             disabled={pending}
             onClick={() => void send(chip)}
-            className="rounded-full border border-ink/15 bg-surface-2 px-3 py-1.5 text-xs text-ink disabled:opacity-50"
+            className="h-auto rounded-full border-ink/15 bg-surface-2 px-3 py-1.5 text-xs font-normal text-ink hover:border-ink/30 hover:bg-surface-2 hover:text-ink"
           >
             {chip}
-          </button>
+          </Button>
         ))}
       </div>
 
-      <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
-        {messages.length === 0 ? (
-          <p className="text-sm text-muted">
-            {lang === "de"
-              ? "Noch keine Nachrichten."
-              : "Aún no hay mensajes."}
-          </p>
-        ) : (
-          messages.map((m, i) => (
-            <div
-              key={`${m.role}-${i}-${m.content.slice(0, 12)}`}
-              className={`max-w-[95%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
-                m.role === "user"
-                  ? "ml-auto bg-accent text-white"
-                  : "mr-auto bg-surface-2 text-ink"
-              }`}
-            >
-              {m.content}
-            </div>
-          ))
-        )}
-        {pending ? (
-          <p className="text-sm text-muted">
-            {lang === "de" ? "Agent arbeitet…" : "El agente está trabajando…"}
-          </p>
-        ) : null}
-        <div ref={bottomRef} />
-      </div>
+      <ScrollArea className="min-h-0 flex-1">
+        <div className="space-y-3 px-4 py-4">
+          {messages.length === 0 ? (
+            <p className="text-sm text-muted">
+              {lang === "de"
+                ? "Noch keine Nachrichten."
+                : "Aún no hay mensajes."}
+            </p>
+          ) : (
+            messages.map((m, i) => (
+              <div
+                key={`${m.role}-${i}-${m.content.slice(0, 12)}`}
+                className={`max-w-[95%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
+                  m.role === "user"
+                    ? "ml-auto bg-accent text-white"
+                    : "mr-auto bg-surface-2 text-ink"
+                }`}
+              >
+                {m.content}
+              </div>
+            ))
+          )}
+          {pending ? (
+            <p className="text-sm text-muted">
+              {lang === "de" ? "Agent arbeitet…" : "El agente está trabajando…"}
+            </p>
+          ) : null}
+          <div ref={bottomRef} />
+        </div>
+      </ScrollArea>
 
       {error ? (
-        <p className="px-4 pb-2 text-sm text-accent-hot">{error}</p>
+        <Alert variant="destructive" className="mx-3 mb-2 w-auto">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       ) : null}
 
       <form
@@ -190,7 +200,7 @@ export function ConceptChat({
           void send(input);
         }}
       >
-        <input
+        <Input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           disabled={pending}
@@ -203,15 +213,15 @@ export function ConceptChat({
                 ? "z. B. Speisekarte mit 4 Gerichten…"
                 : "Ej. pon el menú con 4 platos…"
           }
-          className="min-w-0 flex-1 rounded-full border border-line bg-white px-4 py-2.5 text-sm text-ink outline-none ring-accent focus:ring-2 disabled:opacity-50"
+          className="h-auto min-w-0 flex-1 rounded-full border-line bg-white px-4 py-2.5 text-sm text-ink"
         />
-        <button
+        <Button
           type="submit"
           disabled={pending || input.trim().length < 2}
-          className="rounded-full bg-ink px-4 py-2.5 text-sm font-medium text-white disabled:opacity-50"
+          className="h-auto rounded-full bg-ink px-4 py-2.5 text-sm text-white hover:bg-ink/90"
         >
           {lang === "de" ? "Senden" : "Enviar"}
-        </button>
+        </Button>
       </form>
     </div>
   );

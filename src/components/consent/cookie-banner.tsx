@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 import { useConsent } from "@/components/consent/consent-provider";
 
 export function CookieBanner() {
@@ -56,7 +59,7 @@ export function CookieBanner() {
       aria-labelledby="cookie-consent-title"
       aria-modal="false"
     >
-      <div className="mx-auto max-w-3xl rounded-[var(--radius)] border border-line bg-surface p-5 shadow-[var(--shadow)] sm:p-6">
+      <div className="mx-auto max-w-3xl rounded-[var(--radius-card)] border border-line bg-surface p-5 shadow-[var(--shadow)] sm:p-6">
         {!preferencesOpen ? (
           <>
             <h2
@@ -75,27 +78,29 @@ export function CookieBanner() {
               </a>
             </p>
             <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
-              <button
+              <Button
                 type="button"
                 onClick={acceptAll}
-                className="inline-flex items-center justify-center rounded-full bg-[var(--accent-hot)] px-5 py-2.5 text-sm font-medium text-white transition hover:brightness-110"
+                className="h-auto rounded-full bg-[var(--accent-hot)] px-5 py-2.5 text-sm text-white hover:brightness-110"
               >
                 {labels.acceptAll}
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
+                variant="outline"
                 onClick={rejectNonEssential}
-                className="inline-flex items-center justify-center rounded-full border border-ink/20 bg-surface px-5 py-2.5 text-sm font-medium text-ink transition hover:border-accent hover:bg-accent-soft"
+                className="h-auto rounded-full border-ink/20 bg-surface px-5 py-2.5 text-sm text-ink hover:border-accent hover:bg-accent-soft hover:text-ink"
               >
                 {labels.rejectNonEssential}
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
+                variant="ghost"
                 onClick={openSettings}
-                className="inline-flex items-center justify-center px-3 py-2.5 text-sm font-medium text-muted underline-offset-4 hover:text-ink hover:underline"
+                className="h-auto px-3 py-2.5 text-sm text-muted underline-offset-4 hover:bg-transparent hover:text-ink hover:underline"
               >
                 {labels.customize}
-              </button>
+              </Button>
             </div>
           </>
         ) : (
@@ -108,20 +113,21 @@ export function CookieBanner() {
                 {labels.customize}
               </h2>
               {decided ? (
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
+                  size="sm"
                   onClick={closeSettings}
-                  className="text-sm text-muted hover:text-ink"
+                  className="h-auto px-2 py-1 text-sm text-muted hover:bg-transparent hover:text-ink"
                 >
                   {labels.closeCustomize}
-                </button>
+                </Button>
               ) : null}
             </div>
             <ul className="mt-5 space-y-4">
               <li className="rounded-xl border border-line bg-surface-2/60 p-4">
-                <label className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
+                <div className="flex items-start gap-3">
+                  <Checkbox
                     checked
                     disabled
                     className="mt-1"
@@ -135,61 +141,68 @@ export function CookieBanner() {
                       {labels.necessaryHint}
                     </span>
                   </span>
-                </label>
+                </div>
               </li>
               <li className="rounded-xl border border-line p-4">
-                <label className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
+                <div className="flex items-start gap-3">
+                  <Checkbox
+                    id="consent-analytics"
                     checked={analytics}
-                    onChange={(e) => setAnalytics(e.target.checked)}
+                    onCheckedChange={(checked) => setAnalytics(checked === true)}
                     className="mt-1"
                   />
                   <span>
-                    <span className="block text-sm font-medium text-ink">
+                    <Label
+                      htmlFor="consent-analytics"
+                      className="block text-sm font-medium text-ink"
+                    >
                       {labels.analyticsLabel}
-                    </span>
+                    </Label>
                     <span className="mt-1 block text-xs leading-relaxed text-muted">
                       {labels.analyticsHint}
                     </span>
                   </span>
-                </label>
+                </div>
               </li>
               <li className="rounded-xl border border-line p-4">
-                <label className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
+                <div className="flex items-start gap-3">
+                  <Checkbox
+                    id="consent-marketing"
                     checked={marketing}
-                    onChange={(e) => setMarketing(e.target.checked)}
+                    onCheckedChange={(checked) => setMarketing(checked === true)}
                     className="mt-1"
                   />
                   <span>
-                    <span className="block text-sm font-medium text-ink">
+                    <Label
+                      htmlFor="consent-marketing"
+                      className="block text-sm font-medium text-ink"
+                    >
                       {labels.marketingLabel}
-                    </span>
+                    </Label>
                     <span className="mt-1 block text-xs leading-relaxed text-muted">
                       {labels.marketingHint}
                     </span>
                   </span>
-                </label>
+                </div>
               </li>
             </ul>
             <div className="mt-5 flex flex-wrap gap-2">
-              <button
+              <Button
                 type="button"
                 onClick={() => saveCustom({ analytics, marketing })}
-                className="inline-flex items-center justify-center rounded-full bg-[var(--accent-hot)] px-5 py-2.5 text-sm font-medium text-white transition hover:brightness-110"
+                className="h-auto rounded-full bg-[var(--accent-hot)] px-5 py-2.5 text-sm text-white hover:brightness-110"
               >
                 {labels.save}
-              </button>
+              </Button>
               {!decided ? (
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
                   onClick={closeSettings}
-                  className="inline-flex items-center justify-center px-3 py-2.5 text-sm font-medium text-muted underline-offset-4 hover:text-ink hover:underline"
+                  className="h-auto px-3 py-2.5 text-sm text-muted underline-offset-4 hover:bg-transparent hover:text-ink hover:underline"
                 >
                   {labels.closeCustomize}
-                </button>
+                </Button>
               ) : null}
             </div>
           </>

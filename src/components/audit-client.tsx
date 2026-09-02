@@ -2,6 +2,12 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import type {
   AiDiagnosis,
   AuditHtmlSnippets,
@@ -389,7 +395,7 @@ export function AuditClient({
   return (
     <div className="space-y-10">
       <form
-        className="rounded-[var(--radius)] border border-line bg-surface p-6 shadow-[var(--shadow)] sm:p-8"
+        className="rounded-[var(--radius-card)] border border-line bg-surface p-6 shadow-[var(--shadow)] sm:p-8"
         onSubmit={(e) => {
           e.preventDefault();
           runAudit();
@@ -399,41 +405,52 @@ export function AuditClient({
           <span className="text-muted">
             {lang === "de" ? "Sprache" : "Idioma"}
           </span>
-          <button
-            type="button"
-            onClick={() => setLang("es")}
-            className={`rounded-full px-3 py-1 ${lang === "es" ? "bg-accent text-white" : "bg-surface-2 text-ink"}`}
+          <ToggleGroup
+            type="single"
+            value={lang}
+            onValueChange={(value) => {
+              if (value === "es" || value === "de") setLang(value);
+            }}
+            spacing={1}
+            className="rounded-full bg-surface-2 p-0.5"
           >
-            ES
-          </button>
-          <button
-            type="button"
-            onClick={() => setLang("de")}
-            className={`rounded-full px-3 py-1 ${lang === "de" ? "bg-accent text-white" : "bg-surface-2 text-ink"}`}
-          >
-            DE
-          </button>
+            <ToggleGroupItem
+              value="es"
+              aria-label="Español"
+              className="h-auto rounded-full px-3 py-1 text-sm hover:bg-accent-soft data-[state=on]:bg-accent data-[state=on]:text-white"
+            >
+              ES
+            </ToggleGroupItem>
+            <ToggleGroupItem
+              value="de"
+              aria-label="Deutsch"
+              className="h-auto rounded-full px-3 py-1 text-sm hover:bg-accent-soft data-[state=on]:bg-accent data-[state=on]:text-white"
+            >
+              DE
+            </ToggleGroupItem>
+          </ToggleGroup>
         </div>
 
-        <label className="mt-6 block">
-          <span className="text-sm text-muted">
+        <div className="mt-6">
+          <Label htmlFor="audit-url" className="text-sm text-muted">
             {lang === "de"
               ? "Website deines Geschäfts"
               : "Web de tu negocio"}
-          </span>
+          </Label>
           <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-            <input
+            <Input
+              id="audit-url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="https://tu-negocio.at"
-              className="w-full flex-1 rounded-full border border-line bg-background px-5 py-3 text-ink outline-none ring-accent focus:ring-2"
+              className="h-auto w-full flex-1 rounded-full border-line bg-background px-5 py-3 text-ink"
               inputMode="url"
               autoComplete="url"
             />
-            <button
+            <Button
               type="submit"
               disabled={pending}
-              className="cta-pulse rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition hover:brightness-110 disabled:opacity-60"
+              className="cta-pulse h-auto rounded-full px-6 py-3 text-sm hover:brightness-110"
             >
               {pending
                 ? lang === "de"
@@ -442,38 +459,40 @@ export function AuditClient({
                 : lang === "de"
                   ? "Alle Geräte prüfen"
                   : "Probar en todos"}
-            </button>
+            </Button>
           </div>
-        </label>
+        </div>
 
-        <div className="mt-4 flex flex-wrap gap-2 text-xs text-muted">
+        <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-muted">
           <span>{lang === "de" ? "Beispiel:" : "Ejemplo:"}</span>
           {examples.map((ex) => (
-            <button
+            <Button
               key={ex}
               type="button"
-              className="rounded-full border border-line px-3 py-1 hover:border-accent hover:text-ink"
+              variant="outline"
+              size="sm"
+              className="h-auto rounded-full border-line bg-transparent px-3 py-1 text-xs text-muted hover:border-accent hover:bg-transparent hover:text-ink"
               onClick={() => {
                 setUrl(ex);
                 runAudit(ex);
               }}
             >
               {ex}
-            </button>
+            </Button>
           ))}
         </div>
 
         {error ? (
-          <p className="mt-4 text-sm text-accent-hot" role="alert">
-            {error}
-          </p>
+          <Alert variant="destructive" className="mt-4">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
         ) : null}
       </form>
 
       {result ? (
         <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
-            <div className="rounded-[var(--radius)] border border-line bg-ink p-7 text-surface">
+            <div className="rounded-[var(--radius-card)] border border-line bg-ink p-7 text-surface">
               <p className="text-xs uppercase tracking-[0.2em] text-surface/50">
                 Audit · responsive · {result.hostname}
               </p>
@@ -575,13 +594,15 @@ export function AuditClient({
                     </div>
                     {reportPath ? (
                       <div className="flex flex-wrap gap-2 pt-2">
-                        <Link
-                          href={reportPath}
-                          target="_blank"
-                          className="rounded-full bg-[#c9a227] px-4 py-2 text-xs font-medium text-[#1a1408]"
+                        <Button
+                          asChild
+                          size="sm"
+                          className="h-auto rounded-full bg-[#c9a227] px-4 py-2 text-xs text-[#1a1408] hover:brightness-110"
                         >
-                          {labels.downloadReport}
-                        </Link>
+                          <Link href={reportPath} target="_blank">
+                            {labels.downloadReport}
+                          </Link>
+                        </Button>
                       </div>
                     ) : null}
                   </>
@@ -614,7 +635,7 @@ export function AuditClient({
               ))}
             </ul>
 
-            <div className="rounded-[var(--radius)] border border-accent/30 bg-accent-soft/60 p-6">
+            <div className="rounded-[var(--radius-card)] border border-accent/30 bg-accent-soft/60 p-6">
               <p className="text-xs uppercase tracking-[0.16em] text-accent">
                 Santi Design Agent
               </p>
@@ -633,11 +654,11 @@ export function AuditClient({
                 <strong className="text-ink">{result.packageLabel}</strong>
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
-                <button
+                <Button
                   type="button"
                   onClick={runDesign}
                   disabled={designPending}
-                  className="rounded-full bg-accent px-5 py-3 text-sm font-medium text-white disabled:opacity-60"
+                  className="h-auto rounded-full px-5 py-3 text-sm"
                 >
                   {designPending
                     ? designStage ||
@@ -645,26 +666,36 @@ export function AuditClient({
                     : lang === "de"
                       ? "Konzept + Bilder"
                       : "Concepto + imágenes"}
-                </button>
+                </Button>
                 {conceptPath ? (
-                  <Link
-                    href={conceptPath}
-                    className="rounded-full border border-ink/20 bg-surface px-5 py-3 text-sm font-medium text-ink"
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="h-auto rounded-full border-ink/20 bg-surface px-5 py-3 text-sm text-ink hover:bg-accent-soft hover:text-ink"
                   >
-                    {lang === "de" ? "Konzept öffnen" : "Abrir concepto"}
-                  </Link>
+                    <Link href={conceptPath}>
+                      {lang === "de" ? "Konzept öffnen" : "Abrir concepto"}
+                    </Link>
+                  </Button>
                 ) : null}
-                <a
-                  href={whatsappHref(waMessage)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full border border-ink/20 bg-surface px-5 py-3 text-sm font-medium text-ink"
+                <Button
+                  asChild
+                  variant="outline"
+                  className="h-auto rounded-full border-ink/20 bg-surface px-5 py-3 text-sm text-ink hover:bg-accent-soft hover:text-ink"
                 >
-                  WhatsApp
-                </a>
+                  <a
+                    href={whatsappHref(waMessage)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WhatsApp
+                  </a>
+                </Button>
               </div>
               {designError ? (
-                <p className="mt-3 text-sm text-accent-hot">{designError}</p>
+                <Alert variant="destructive" className="mt-3">
+                  <AlertDescription>{designError}</AlertDescription>
+                </Alert>
               ) : null}
               {conceptPath ? (
                 <p className="mt-3 text-sm text-accent">
@@ -673,9 +704,12 @@ export function AuditClient({
                     {conceptPath}
                   </Link>
                   {conceptMeta?.specialty ? (
-                    <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 text-xs text-accent">
+                    <Badge
+                      variant="secondary"
+                      className="ml-2 rounded-full bg-accent-soft text-xs text-accent"
+                    >
                       {conceptMeta.specialty}
-                    </span>
+                    </Badge>
                   ) : null}
                   {conceptMeta?.imageSource ? (
                     <span className="ml-2 text-xs text-muted">

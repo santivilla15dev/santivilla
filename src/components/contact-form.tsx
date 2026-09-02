@@ -1,6 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 type Props = {
   labels: {
@@ -14,6 +19,9 @@ type Props = {
     error: string;
   };
 };
+
+const fieldClass =
+  "mt-1 h-auto rounded-xl border-line bg-background px-4 py-3 text-ink";
 
 export function ContactForm({ labels }: Props) {
   const [pending, setPending] = useState(false);
@@ -51,7 +59,7 @@ export function ContactForm({ labels }: Props) {
 
   if (done) {
     return (
-      <p className="rounded-[var(--radius)] border border-line bg-surface p-6 text-sm text-ink">
+      <p className="rounded-[var(--radius-card)] border border-line bg-surface p-6 text-sm text-ink">
         {labels.success}
       </p>
     );
@@ -60,55 +68,67 @@ export function ContactForm({ labels }: Props) {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-[var(--radius)] border border-line bg-surface p-6 shadow-[var(--shadow)]"
+      className="rounded-[var(--radius-card)] border border-line bg-surface p-6 shadow-[var(--shadow)]"
     >
       <p className="font-display text-2xl text-ink">{labels.formTitle}</p>
       <p className="mt-2 text-sm text-muted">{labels.formLead}</p>
-      <label className="mt-5 block text-sm">
-        <span className="text-muted">{labels.formName}</span>
-        <input
+      <div className="mt-5">
+        <Label htmlFor="contact-name" className="text-muted">
+          {labels.formName}
+        </Label>
+        <Input
+          id="contact-name"
           name="name"
           type="text"
           required
-          className="mt-1 w-full rounded-xl border border-line bg-background px-4 py-3 text-ink outline-none ring-accent focus:ring-2"
+          className={fieldClass}
         />
-      </label>
-      <label className="mt-4 block text-sm">
-        <span className="text-muted">Email</span>
-        <input
+      </div>
+      <div className="mt-4">
+        <Label htmlFor="contact-email" className="text-muted">
+          Email
+        </Label>
+        <Input
+          id="contact-email"
           name="email"
           type="email"
-          className="mt-1 w-full rounded-xl border border-line bg-background px-4 py-3 text-ink outline-none ring-accent focus:ring-2"
+          className={fieldClass}
         />
-      </label>
-      <label className="mt-4 block text-sm">
-        <span className="text-muted">{labels.formBusiness}</span>
-        <input
+      </div>
+      <div className="mt-4">
+        <Label htmlFor="contact-business" className="text-muted">
+          {labels.formBusiness}
+        </Label>
+        <Input
+          id="contact-business"
           name="business"
           type="text"
-          className="mt-1 w-full rounded-xl border border-line bg-background px-4 py-3 text-ink outline-none ring-accent focus:ring-2"
+          className={fieldClass}
         />
-      </label>
-      <label className="mt-4 block text-sm">
-        <span className="text-muted">{labels.formMessage}</span>
-        <textarea
+      </div>
+      <div className="mt-4">
+        <Label htmlFor="contact-message" className="text-muted">
+          {labels.formMessage}
+        </Label>
+        <Textarea
+          id="contact-message"
           name="message"
           rows={4}
-          className="mt-1 w-full resize-y rounded-xl border border-line bg-background px-4 py-3 text-ink outline-none ring-accent focus:ring-2"
+          className={`${fieldClass} resize-y`}
         />
-      </label>
+      </div>
       {error ? (
-        <p className="mt-3 text-sm text-red-600" role="alert">
-          {error}
-        </p>
+        <Alert variant="destructive" className="mt-3">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       ) : null}
-      <button
+      <Button
         type="submit"
         disabled={pending}
-        className="mt-5 inline-flex rounded-full bg-ink px-5 py-3 text-sm font-medium text-surface transition hover:bg-accent disabled:opacity-60"
+        className="mt-5 h-auto rounded-full bg-ink px-5 py-3 text-sm text-surface hover:bg-accent"
       >
         {pending ? "…" : labels.formSubmit}
-      </button>
+      </Button>
     </form>
   );
 }

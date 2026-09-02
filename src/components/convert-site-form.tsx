@@ -1,6 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 type Props = {
   conceptId: string;
@@ -53,36 +57,62 @@ export function ConvertSiteForm({ conceptId, defaultSlug, defaultName, labels }:
   return (
     <form onSubmit={onSubmit} className="mt-6 space-y-3 rounded-xl border border-line p-4">
       <p className="font-medium text-ink">{labels.convertSite}</p>
-      <input
-        type="email"
-        value={ownerEmail}
-        onChange={(e) => setOwnerEmail(e.target.value)}
-        placeholder={labels.ownerEmail}
-        required
-        className="w-full rounded-lg border border-line px-3 py-2 text-sm"
-      />
-      <input
-        value={slug}
-        onChange={(e) => setSlug(e.target.value)}
-        placeholder={labels.slug}
-        required
-        className="w-full rounded-lg border border-line px-3 py-2 text-sm"
-      />
-      <input
-        value={whatsapp}
-        onChange={(e) => setWhatsapp(e.target.value)}
-        placeholder={labels.whatsapp}
-        className="w-full rounded-lg border border-line px-3 py-2 text-sm"
-      />
-      <button
+      <div>
+        <Label htmlFor="convert-owner-email" className="sr-only">
+          {labels.ownerEmail}
+        </Label>
+        <Input
+          id="convert-owner-email"
+          type="email"
+          value={ownerEmail}
+          onChange={(e) => setOwnerEmail(e.target.value)}
+          placeholder={labels.ownerEmail}
+          required
+          className="h-auto rounded-lg border-line px-3 py-2 text-sm"
+        />
+      </div>
+      <div>
+        <Label htmlFor="convert-slug" className="sr-only">
+          {labels.slug}
+        </Label>
+        <Input
+          id="convert-slug"
+          value={slug}
+          onChange={(e) => setSlug(e.target.value)}
+          placeholder={labels.slug}
+          required
+          className="h-auto rounded-lg border-line px-3 py-2 text-sm"
+        />
+      </div>
+      <div>
+        <Label htmlFor="convert-whatsapp" className="sr-only">
+          {labels.whatsapp}
+        </Label>
+        <Input
+          id="convert-whatsapp"
+          value={whatsapp}
+          onChange={(e) => setWhatsapp(e.target.value)}
+          placeholder={labels.whatsapp}
+          className="h-auto rounded-lg border-line px-3 py-2 text-sm"
+        />
+      </div>
+      <Button
         type="submit"
         disabled={pending}
-        className="rounded-full bg-ink px-4 py-2 text-sm text-surface disabled:opacity-60"
+        className="h-auto rounded-full bg-ink px-4 py-2 text-sm text-surface hover:bg-accent"
       >
         {pending ? "…" : labels.save}
-      </button>
-      {result ? <p className="text-sm text-accent">Site: /k/{result}</p> : null}
-      {error ? <p className="text-sm text-red-600">{error}</p> : null}
+      </Button>
+      {result ? (
+        <Alert className="border-accent/30 text-accent">
+          <AlertDescription>Site: /k/{result}</AlertDescription>
+        </Alert>
+      ) : null}
+      {error ? (
+        <Alert variant="destructive">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      ) : null}
     </form>
   );
 }

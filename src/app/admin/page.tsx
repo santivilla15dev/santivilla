@@ -1,4 +1,15 @@
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { listLeads } from "@/lib/crm/store";
 import { getCrmMessages } from "@/lib/crm/messages";
 
@@ -21,13 +32,17 @@ export default async function AdminPage({ searchParams }: Props) {
       <h1 className="font-display text-3xl">{m.leads}</h1>
 
       <form className="mt-6 flex flex-wrap gap-3">
-        <input
+        <Input
           name="q"
           defaultValue={sp.q}
           placeholder={m.search}
-          className="rounded-lg border border-line px-3 py-2 text-sm"
+          className="h-auto w-auto rounded-lg border-line px-3 py-2 text-sm"
         />
-        <select name="status" defaultValue={sp.status ?? ""} className="rounded-lg border border-line px-3 py-2 text-sm">
+        <select
+          name="status"
+          defaultValue={sp.status ?? ""}
+          className="rounded-lg border border-line bg-surface px-3 py-2 text-sm"
+        >
           <option value="">{m.all}</option>
           <option value="new">{m.new}</option>
           <option value="contacted">{m.contacted}</option>
@@ -35,47 +50,55 @@ export default async function AdminPage({ searchParams }: Props) {
           <option value="won">{m.won}</option>
           <option value="lost">{m.lost}</option>
         </select>
-        <button type="submit" className="rounded-full bg-ink px-4 py-2 text-sm text-surface">
+        <Button
+          type="submit"
+          className="h-auto rounded-full bg-ink px-4 py-2 text-sm text-surface hover:bg-accent"
+        >
           Filter
-        </button>
+        </Button>
       </form>
 
       <div className="mt-8 overflow-x-auto rounded-xl border border-line">
-        <table className="w-full text-left text-sm">
-          <thead className="border-b border-line bg-surface/50">
-            <tr>
-              <th className="px-4 py-3">{m.status}</th>
-              <th className="px-4 py-3">{m.source}</th>
-              <th className="px-4 py-3">Business</th>
-              <th className="px-4 py-3">Hostname</th>
-              <th className="px-4 py-3">Date</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table className="text-left text-sm">
+          <TableHeader>
+            <TableRow className="border-line bg-surface/50 hover:bg-surface/50">
+              <TableHead className="px-4 py-3">{m.status}</TableHead>
+              <TableHead className="px-4 py-3">{m.source}</TableHead>
+              <TableHead className="px-4 py-3">Business</TableHead>
+              <TableHead className="px-4 py-3">Hostname</TableHead>
+              <TableHead className="px-4 py-3">Date</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {leads.map((lead) => (
-              <tr key={lead.id} className="border-b border-line/60 hover:bg-surface/30">
-                <td className="px-4 py-3">
-                  <Link href={`/admin/leads/${lead.id}`} className="text-accent hover:underline">
-                    {lead.status}
+              <TableRow key={lead.id} className="border-line/60 hover:bg-surface/30">
+                <TableCell className="px-4 py-3">
+                  <Link href={`/admin/leads/${lead.id}`}>
+                    <Badge
+                      variant="outline"
+                      className="border-accent/40 text-accent hover:bg-accent-soft"
+                    >
+                      {lead.status}
+                    </Badge>
                   </Link>
-                </td>
-                <td className="px-4 py-3">{lead.source}</td>
-                <td className="px-4 py-3">{lead.businessName ?? "—"}</td>
-                <td className="px-4 py-3">{lead.hostname ?? "—"}</td>
-                <td className="px-4 py-3 text-muted">
+                </TableCell>
+                <TableCell className="px-4 py-3">{lead.source}</TableCell>
+                <TableCell className="px-4 py-3">{lead.businessName ?? "—"}</TableCell>
+                <TableCell className="px-4 py-3">{lead.hostname ?? "—"}</TableCell>
+                <TableCell className="px-4 py-3 text-muted">
                   {new Date(lead.createdAt).toLocaleDateString("de-AT")}
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ))}
             {!leads.length ? (
-              <tr>
-                <td colSpan={5} className="px-4 py-8 text-center text-muted">
+              <TableRow className="hover:bg-transparent">
+                <TableCell colSpan={5} className="px-4 py-8 text-center text-muted">
                   No leads yet.
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ) : null}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
     </div>
   );

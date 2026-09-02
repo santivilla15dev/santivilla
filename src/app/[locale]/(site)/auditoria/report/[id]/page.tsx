@@ -52,7 +52,7 @@ export default async function AuditReportPage({ params }: Props) {
       </header>
 
       <section className="mt-8 grid gap-6 sm:grid-cols-2">
-        <div className="rounded-[var(--radius)] border border-line bg-surface p-6">
+        <div className="rounded-[var(--radius-card)] border border-line bg-surface p-6">
           <p className="text-xs uppercase tracking-[0.16em] text-muted">
             {labels.uxScoreLabel}
           </p>
@@ -62,7 +62,7 @@ export default async function AuditReportPage({ params }: Props) {
           </p>
         </div>
         {report.lighthouse ? (
-          <div className="rounded-[var(--radius)] border border-line bg-surface p-6">
+          <div className="rounded-[var(--radius-card)] border border-line bg-surface p-6">
             <p className="text-xs uppercase tracking-[0.16em] text-muted">
               {labels.lighthouseLabel}
             </p>
@@ -86,7 +86,7 @@ export default async function AuditReportPage({ params }: Props) {
             {diagnosis.criticalPoints.map((point) => (
               <li
                 key={point.title}
-                className="rounded-[var(--radius)] border border-line bg-surface-2 p-4"
+                className="rounded-[var(--radius-card)] border border-line bg-surface-2 p-4"
               >
                 <p className="font-medium text-ink">{point.title}</p>
                 <p className="mt-1 text-sm text-muted">{point.impact}</p>
@@ -101,7 +101,7 @@ export default async function AuditReportPage({ params }: Props) {
       ) : null}
 
       {report.lighthouse ? (
-        <section className="mt-10 rounded-[var(--radius)] border border-line bg-ink p-6 text-surface">
+        <section className="mt-10 rounded-[var(--radius-card)] border border-line bg-ink p-6 text-surface">
           <LighthouseReport
             lighthouse={report.lighthouse}
             labels={labels}

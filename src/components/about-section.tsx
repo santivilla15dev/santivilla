@@ -25,7 +25,7 @@ export function AboutSection({ copy }: Props) {
       className="scroll-mt-24 border-t border-line/70 py-16 sm:py-20"
     >
       <div className="site-shell grid items-start gap-10 md:grid-cols-[200px_1fr] md:gap-14">
-        <div className="relative mx-auto aspect-[4/5] w-full max-w-[200px] overflow-hidden rounded-[var(--radius)] border border-line bg-surface-2">
+        <div className="relative mx-auto aspect-[4/5] w-full max-w-[200px] overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface-2">
           <Image
             src={PHOTO_SRC}
             alt={copy.photoAlt}

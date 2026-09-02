@@ -6,6 +6,11 @@ import {
   type ChatMessage,
 } from "@/components/concept-chat";
 import { CopyAdaptClient } from "@/components/copy-adapt-client";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   clearLocalConceptHtml,
   injectLiveEditRuntime,
@@ -337,7 +342,7 @@ export function ConceptView({
 
   if (error && !meta) {
     return (
-      <p className="rounded-[var(--radius)] border border-accent-hot/30 bg-surface p-6 text-accent-hot">
+      <p className="rounded-[var(--radius-card)] border border-accent-hot/30 bg-surface p-6 text-accent-hot">
         {error}{" "}
         <a href={auditHref} className="underline">
           Generar de nuevo
@@ -363,45 +368,62 @@ export function ConceptView({
         <div>
           <div className="mb-2 flex flex-wrap gap-2">
             {meta.kind ? (
-              <span className="rounded-full bg-ink px-3 py-1 text-xs font-medium text-white">
+              <Badge className="rounded-full bg-ink px-3 py-1 text-xs font-medium text-white hover:bg-ink">
                 {meta.kind}
                 {meta.specialty ? ` · ${meta.specialty}` : ""}
-              </span>
+              </Badge>
             ) : meta.specialty ? (
-              <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
+              <Badge
+                variant="secondary"
+                className="rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent"
+              >
                 {meta.specialty}
-              </span>
+              </Badge>
             ) : null}
-            <span className="rounded-full bg-surface-2 px-3 py-1 text-xs text-muted">
+            <Badge
+              variant="secondary"
+              className="rounded-full bg-surface-2 px-3 py-1 text-xs font-normal text-muted"
+            >
               html: {meta.source === "claude" ? "Claude" : "plantilla"}
-            </span>
-            <span className="rounded-full bg-surface-2 px-3 py-1 text-xs text-muted">
+            </Badge>
+            <Badge
+              variant="secondary"
+              className="rounded-full bg-surface-2 px-3 py-1 text-xs font-normal text-muted"
+            >
               fotos: {meta.imageSource || "—"}
-            </span>
+            </Badge>
             {seoTypes.length > 0 && conceptLabels ? (
-              <span
+              <Badge
+                variant="secondary"
                 className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-900"
                 title={conceptLabels.seoTooltip}
               >
                 {conceptLabels.seoBadge}: {seoTypes.slice(0, 3).join(", ")}
-              </span>
+              </Badge>
             ) : conceptLabels ? (
-              <span
-                className="rounded-full bg-surface-2 px-3 py-1 text-xs text-muted"
+              <Badge
+                variant="secondary"
+                className="rounded-full bg-surface-2 px-3 py-1 text-xs font-normal text-muted"
                 title={conceptLabels.seoTooltip}
               >
                 {conceptLabels.seoBadge}
-              </span>
+              </Badge>
             ) : null}
             {editing ? (
-              <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
+              <Badge
+                variant="secondary"
+                className="rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent"
+              >
                 modo edición
-              </span>
+              </Badge>
             ) : null}
             {dirty ? (
-              <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-900">
+              <Badge
+                variant="secondary"
+                className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-900"
+              >
                 Sin guardar
-              </span>
+              </Badge>
             ) : null}
           </div>
           <p className="font-display text-2xl text-ink">{meta.name}</p>
@@ -411,24 +433,29 @@ export function ConceptView({
           </p>
           {conceptLabels ? (
             <div className="mt-3 flex max-w-md flex-wrap items-end gap-2">
-              <label className="flex-1 min-w-[12rem]">
-                <span className="text-xs text-muted">{conceptLabels.menuLinkLabel}</span>
-                <input
+              <div className="min-w-[12rem] flex-1">
+                <Label htmlFor="menu-draft-id" className="text-xs text-muted">
+                  {conceptLabels.menuLinkLabel}
+                </Label>
+                <Input
+                  id="menu-draft-id"
                   type="text"
                   value={menuDraftId}
                   onChange={(e) => setMenuDraftId(e.target.value)}
                   placeholder={conceptLabels.menuLinkPlaceholder}
-                  className="mt-1 w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-ink"
+                  className="mt-1 h-auto rounded-lg border-line bg-surface px-3 py-2 text-sm text-ink"
                 />
-              </label>
-              <button
+              </div>
+              <Button
                 type="button"
+                variant="outline"
+                size="sm"
                 onClick={() => void linkMenuDraft()}
                 disabled={menuLinking}
-                className="rounded-full border border-ink/15 px-4 py-2 text-xs font-medium text-ink disabled:opacity-50"
+                className="h-auto rounded-full border-ink/15 bg-transparent px-4 py-2 text-xs font-medium text-ink hover:bg-accent-soft hover:text-ink"
               >
                 {menuLinking ? "…" : conceptLabels.menuLinkButton}
-              </button>
+              </Button>
             </div>
           ) : null}
           {menuLinkMsg ? (
@@ -437,41 +464,43 @@ export function ConceptView({
         </div>
         <div className="flex flex-wrap gap-2">
           {!editing ? (
-            <button
+            <Button
               type="button"
+              variant="outline"
               onClick={() => void startEditing()}
-              className="rounded-full border border-ink/20 bg-surface px-5 py-3 text-sm font-medium text-ink"
+              className="h-auto rounded-full border-ink/20 bg-surface px-5 py-3 text-sm text-ink hover:bg-accent-soft hover:text-ink"
             >
               Editar textos
-            </button>
+            </Button>
           ) : (
             <>
-              <button
+              <Button
                 type="button"
+                variant="outline"
                 onClick={() => void cancelEditing()}
                 disabled={saving}
-                className="rounded-full border border-ink/20 bg-surface px-5 py-3 text-sm font-medium text-ink disabled:opacity-50"
+                className="h-auto rounded-full border-ink/20 bg-surface px-5 py-3 text-sm text-ink hover:bg-accent-soft hover:text-ink"
               >
                 Cancelar
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 onClick={() => void saveEditing()}
                 disabled={saving}
-                className="rounded-full bg-ink px-5 py-3 text-sm font-medium text-white disabled:opacity-50"
+                className="h-auto rounded-full bg-ink px-5 py-3 text-sm text-white hover:bg-ink/90"
               >
                 {saving ? "Guardando…" : "Guardar"}
-              </button>
+              </Button>
             </>
           )}
-          <a
-            href={wa}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-accent px-5 py-3 text-sm font-medium text-white"
+          <Button
+            asChild
+            className="h-auto rounded-full px-5 py-3 text-sm"
           >
-            WhatsApp — quiero este concepto
-          </a>
+            <a href={wa} target="_blank" rel="noopener noreferrer">
+              WhatsApp — quiero este concepto
+            </a>
+          </Button>
         </div>
       </div>
 
@@ -495,7 +524,7 @@ export function ConceptView({
       ) : null}
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.85fr)] lg:items-start">
-        <div className="overflow-hidden rounded-[var(--radius)] border border-line bg-surface shadow-[var(--shadow)]">
+        <div className="overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface shadow-[var(--shadow)]">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line px-4 py-2 text-xs uppercase tracking-[0.14em] text-muted">
             <span>
               {editing
@@ -504,9 +533,11 @@ export function ConceptView({
             </span>
             <div className="flex flex-wrap items-center gap-3 normal-case tracking-normal">
               {baselineHtml && html !== baselineHtml && !editing ? (
-                <button
+                <Button
                   type="button"
-                  className="text-accent underline"
+                  variant="link"
+                  size="sm"
+                  className="h-auto p-0 text-xs text-accent"
                   onClick={() => {
                     clearLocalConceptHtml(id);
                     setHtml(baselineHtml);
@@ -514,15 +545,17 @@ export function ConceptView({
                   }}
                 >
                   Restaurar
-                </button>
+                </Button>
               ) : null}
-              <button
+              <Button
                 type="button"
+                variant="outline"
+                size="sm"
                 onClick={() => void openFullscreenTab()}
-                className="rounded-full border border-ink/15 bg-surface-2 px-3 py-1 text-xs font-medium text-ink hover:border-ink/30"
+                className="h-auto rounded-full border-ink/15 bg-surface-2 px-3 py-1 text-xs font-medium text-ink hover:border-ink/30 hover:bg-surface-2 hover:text-ink"
               >
                 {lang === "de" ? "In neuem Tab" : "Abrir en pestaña"}
-              </button>
+              </Button>
             </div>
           </div>
           <iframe
@@ -541,30 +574,28 @@ export function ConceptView({
 
         <div className="lg:sticky lg:top-24 lg:max-h-[75vh] lg:overflow-y-auto">
           {copyLabels ? (
-            <div className="mb-3 flex gap-2">
-              <button
-                type="button"
-                onClick={() => setSideTab("agent")}
-                className={`rounded-full px-4 py-2 text-xs font-medium ${
-                  sideTab === "agent"
-                    ? "bg-ink text-white"
-                    : "border border-ink/15 text-muted"
-                }`}
+            <ToggleGroup
+              type="single"
+              value={sideTab}
+              onValueChange={(value) => {
+                if (value === "agent" || value === "copy") setSideTab(value);
+              }}
+              spacing={1}
+              className="mb-3"
+            >
+              <ToggleGroupItem
+                value="agent"
+                className="h-auto rounded-full px-4 py-2 text-xs font-medium text-muted data-[state=on]:bg-ink data-[state=on]:text-white"
               >
                 {copyLabels.tabAgent}
-              </button>
-              <button
-                type="button"
-                onClick={() => setSideTab("copy")}
-                className={`rounded-full px-4 py-2 text-xs font-medium ${
-                  sideTab === "copy"
-                    ? "bg-ink text-white"
-                    : "border border-ink/15 text-muted"
-                }`}
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                value="copy"
+                className="h-auto rounded-full px-4 py-2 text-xs font-medium text-muted data-[state=on]:bg-ink data-[state=on]:text-white"
               >
                 {copyLabels.tabCopy}
-              </button>
-            </div>
+              </ToggleGroupItem>
+            </ToggleGroup>
           ) : null}
 
           {sideTab === "copy" && copyLabels ? (
