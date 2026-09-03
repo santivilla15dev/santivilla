@@ -3,8 +3,12 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { ContactButton } from "./contact-button";
-import { portfolioCafeAssets } from "@/lib/demos/portfolio-cafe";
 import type { Creator3dContent } from "@/lib/demos/3d-creator";
+import { portfolioCafeAssets } from "@/lib/demos/portfolio-cafe";
+import {
+  onFirstUserGesture,
+  primeVideoForScrub,
+} from "@/lib/demos/scrub-video";
 import { locales, type Locale } from "@/lib/i18n/locales";
 import { whatsappHref } from "@/lib/site";
 import { useEffect, useRef, useState } from "react";
@@ -40,7 +44,8 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
   function syncFromTrack() {
     const track = trackRef.current;
     if (!track) return;
-    const total = Math.max(1, track.offsetHeight - window.innerHeight);
+    const vh = window.visualViewport?.height ?? window.innerHeight;
+    const total = Math.max(1, track.offsetHeight - vh);
     const scrolled = -track.getBoundingClientRect().top;
     targetRef.current = clamp01(scrolled / total);
     if (targetRef.current > 0.04) setHintGone(true);
@@ -73,25 +78,44 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
   useEffect(() => {
     const video = videoRef.current;
     if (!video || reduceMotion) return;
+    let cancelled = false;
+    let unsubGesture: (() => void) | undefined;
 
-    function markReady() {
-      setReady(true);
+    async function runPrime() {
+      try {
+        const ok = await primeVideoForScrub(video!);
+        if (cancelled) return;
+        if (ok) {
+          setReady(true);
+          setFailed(false);
+          return;
+        }
+        unsubGesture = onFirstUserGesture(() => {
+          void (async () => {
+            const retryOk = await primeVideoForScrub(video!);
+            if (cancelled) return;
+            if (retryOk) {
+              setReady(true);
+              setFailed(false);
+            } else {
+              setFailed(true);
+              setReady(false);
+            }
+          })();
+        });
+      } catch {
+        if (!cancelled) {
+          setFailed(true);
+          setReady(false);
+        }
+      }
     }
 
-    if (video.readyState >= 2) markReady();
-    else video.addEventListener("loadeddata", markReady, { once: true });
-
-    video.addEventListener(
-      "error",
-      () => {
-        setFailed(true);
-        setReady(false);
-      },
-      { once: true },
-    );
+    void runPrime();
 
     return () => {
-      video.removeEventListener("loadeddata", markReady);
+      cancelled = true;
+      unsubGesture?.();
     };
   }, [reduceMotion]);
 
@@ -126,7 +150,7 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
           const safety = window.setTimeout(() => {
             seekingRef.current = false;
             video.removeEventListener("seeked", onSeeked);
-          }, 220);
+          }, 320);
           video.addEventListener("seeked", onSeeked);
           try {
             video.currentTime = t;
@@ -155,7 +179,7 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
   ];
 
   const mediaClass =
-    "absolute inset-0 h-full w-full object-cover object-[72%_center] sm:object-[62%_center] md:object-[58%_center]";
+    "absolute inset-0 h-full w-full min-h-full min-w-full object-cover object-[72%_center] sm:object-[62%_center] md:object-[58%_center]";
 
   return (
     <div
@@ -163,7 +187,7 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
       className="relative h-[min(170vh,1100px)] w-full md:h-[min(220vh,1600px)]"
       id="home-cafe-hero"
     >
-      <div className="sticky top-0 isolate h-[100svh] min-h-[28rem] w-full overflow-hidden bg-[#0C0C0C]">
+      <div className="sticky top-0 isolate h-[100dvh] min-h-[100svh] w-full overflow-hidden bg-[#0C0C0C] supports-[height:100dvh]:h-dvh">
         <img
           src={portfolioCafeAssets.poster}
           alt={
@@ -195,7 +219,7 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/45 via-transparent to-black/80 sm:to-black/65"
+          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/45 via-transparent to-black/55 sm:to-black/65"
           aria-hidden
         />
 
@@ -261,7 +285,7 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
           </div>
 
           {!hintGone && !reduceMotion ? (
-            <p className="pointer-events-none absolute bottom-14 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.18em] text-[#D7E2EA]/45 sm:bottom-4">
+            <p className="pointer-events-none absolute bottom-14 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.18em] text-[#D7E2EA]/60 sm:bottom-4 sm:text-[#D7E2EA]/45">
               {content.hero.scrollHint}
             </p>
           ) : null}

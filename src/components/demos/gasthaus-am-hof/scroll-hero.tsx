@@ -1,6 +1,10 @@
 "use client";
 
 import { gasthausAssets, gasthausCopy } from "@/lib/demos/gasthaus-am-hof";
+import {
+  onFirstUserGesture,
+  primeVideoForScrub,
+} from "@/lib/demos/scrub-video";
 import { useEffect, useRef, useState } from "react";
 
 function clamp01(n: number) {
@@ -49,7 +53,8 @@ export function GasthausScrollHero({ preview = false }: Props) {
   function syncTargetFromTrack() {
     const track = trackRef.current;
     if (!track) return;
-    const total = Math.max(1, track.offsetHeight - window.innerHeight);
+    const vh = window.visualViewport?.height ?? window.innerHeight;
+    const total = Math.max(1, track.offsetHeight - vh);
     const scrolled = -track.getBoundingClientRect().top;
     targetRef.current = clamp01(scrolled / total);
     if (targetRef.current > 0.04) setHintGone(true);
@@ -169,29 +174,44 @@ export function GasthausScrollHero({ preview = false }: Props) {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    if (reduceMotion && !preview) return;
 
-    function markReady() {
-      setReady(true);
-      signalPreviewReady();
+    let cancelled = false;
+    let unsubGesture: (() => void) | undefined;
+
+    async function runPrime() {
+      try {
+        const ok = await primeVideoForScrub(video!);
+        if (cancelled) return;
+        if (ok) {
+          setReady(true);
+          signalPreviewReady();
+          return;
+        }
+        unsubGesture = onFirstUserGesture(() => {
+          void (async () => {
+            const retryOk = await primeVideoForScrub(video!);
+            if (cancelled) return;
+            if (retryOk) setReady(true);
+            signalPreviewReady();
+          })();
+        });
+      } catch {
+        if (!cancelled) {
+          setReady(false);
+          signalPreviewReady();
+        }
+      }
     }
 
-    if (video.readyState >= 2) markReady();
-    else video.addEventListener("loadeddata", markReady, { once: true });
-
-    video.addEventListener(
-      "error",
-      () => {
-        setReady(false);
-        signalPreviewReady();
-      },
-      { once: true },
-    );
+    void runPrime();
 
     return () => {
-      video.removeEventListener("loadeddata", markReady);
+      cancelled = true;
+      unsubGesture?.();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [preview]);
+  }, [preview, reduceMotion]);
 
   useEffect(() => {
     if (reduceMotion && !preview) return;
@@ -219,12 +239,18 @@ export function GasthausScrollHero({ preview = false }: Props) {
           const onSeeked = () => {
             seekingRef.current = false;
             video.removeEventListener("seeked", onSeeked);
+            window.clearTimeout(safety);
           };
+          const safety = window.setTimeout(() => {
+            seekingRef.current = false;
+            video.removeEventListener("seeked", onSeeked);
+          }, 320);
           video.addEventListener("seeked", onSeeked);
           try {
             video.currentTime = t;
           } catch {
             seekingRef.current = false;
+            window.clearTimeout(safety);
           }
         }
       }
@@ -245,7 +271,7 @@ export function GasthausScrollHero({ preview = false }: Props) {
       <img
         src={gasthausAssets.poster}
         alt=""
-        className={`absolute inset-0 z-0 h-full w-full object-cover object-[60%_center] md:object-center transition-opacity duration-700 ${
+        className={`absolute inset-0 z-0 h-full w-full min-h-full min-w-full object-cover object-[60%_center] md:object-center transition-opacity duration-700 ${
           ready && !(reduceMotion && !preview) ? "opacity-0" : "opacity-100"
         }`}
         ref={(el) => {
@@ -260,7 +286,7 @@ export function GasthausScrollHero({ preview = false }: Props) {
       {!(reduceMotion && !preview) ? (
         <video
           ref={videoRef}
-          className={`absolute inset-0 z-[1] h-full w-full object-cover object-[60%_center] md:object-center transition-opacity duration-700 ${
+          className={`absolute inset-0 z-[1] h-full w-full min-h-full min-w-full object-cover object-[60%_center] md:object-center transition-opacity duration-700 ${
             ready ? "opacity-100" : "opacity-0"
           }`}
           src={gasthausAssets.video}
@@ -322,7 +348,7 @@ export function GasthausScrollHero({ preview = false }: Props) {
       </header>
 
       {!preview && !hintGone && !reduceMotion ? (
-        <p className="absolute bottom-14 left-1/2 z-[4] -translate-x-1/2 font-[family-name:var(--font-gasthaus-mono)] text-[0.68rem] tracking-[0.16em] text-[rgba(243,235,224,0.65)] uppercase md:bottom-6">
+        <p className="absolute bottom-14 left-1/2 z-[4] -translate-x-1/2 font-[family-name:var(--font-gasthaus-mono)] text-[0.68rem] tracking-[0.16em] text-[rgba(243,235,224,0.72)] uppercase md:bottom-6 md:text-[rgba(243,235,224,0.65)]">
           Scrollen
         </p>
       ) : null}
@@ -379,7 +405,7 @@ export function GasthausScrollHero({ preview = false }: Props) {
         className={
           preview
             ? "sticky top-0 isolate w-full overflow-hidden bg-[#1a120e]"
-            : "sticky top-0 isolate h-[100svh] min-h-[28rem] w-full overflow-hidden bg-[#1a120e]"
+            : "sticky top-0 isolate h-[100dvh] min-h-[100svh] w-full overflow-hidden bg-[#1a120e] supports-[height:100dvh]:h-dvh"
         }
         style={
           preview && viewportH > 0
