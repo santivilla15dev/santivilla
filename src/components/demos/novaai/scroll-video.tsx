@@ -109,6 +109,26 @@ export function NovaScrollVideo() {
       const range = Math.max(1, end);
       targetRef.current = clamp01(window.scrollY / range);
     }
+
+    // En iframe de la home (?preview=1) el vídeo se anima solo (ida/vuelta).
+    const preview =
+      typeof window !== "undefined" &&
+      new URLSearchParams(window.location.search).get("preview") === "1";
+
+    if (preview) {
+      let raf = 0;
+      const start = performance.now();
+      const duration = 18000;
+      function wave(now: number) {
+        const t = ((now - start) % duration) / duration;
+        const w = t < 0.5 ? t * 2 : (1 - t) * 2;
+        targetRef.current = w;
+        raf = requestAnimationFrame(wave);
+      }
+      raf = requestAnimationFrame(wave);
+      return () => cancelAnimationFrame(raf);
+    }
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);

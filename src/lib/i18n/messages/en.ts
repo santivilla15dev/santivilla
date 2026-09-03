@@ -57,12 +57,12 @@ const projects: SiteMessages["projects"] = [
   },
   {
     slug: "restaurant",
-    title: "Gasthaus Am Hof — Gastro template",
+    title: "Gasthaus Am Hof — Cinematic landing",
     type: "Restaurant",
     href: "/demos/restaurant",
     group: "template",
     blurb:
-      "Gastro template: menu, hours, map and WhatsApp reservation.",
+      "Cinematic landing: scroll video, menu, hours and WhatsApp booking.",
   },
   {
     slug: "villa-italia",

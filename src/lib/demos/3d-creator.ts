@@ -56,10 +56,20 @@ export type Creator3dProject = {
 export type Creator3dContent = {
   locale: Locale;
   nav: { about: string; services: string; projects: string; contact: string };
-  hero: { heading: string; tagline: string };
+  hero: {
+    heading: string;
+    tagline: string;
+    scrollHint: string;
+    bands: { from: number; to: number; line: string }[];
+  };
   about: { title: string; body: string };
   services: { title: string; items: Creator3dService[] };
-  projects: { title: string; openLabel: string; items: Creator3dProject[] };
+  projects: { title: string; openLabel: string; scrollHint: string; items: Creator3dProject[] };
+  wienScroll: {
+    eyebrow: string;
+    scrollHint: string;
+    bands: { from: number; to: number; line: string }[];
+  };
   contact: { label: string; whatsapp: string };
   langLabel: string;
 };
@@ -74,9 +84,21 @@ function shots(slug: string, secondary: "mobile-2" | "desktop-2"): Shots {
   };
 }
 
-const PROJECT_BASE = [
+const PROJECT_BASE: {
+  slug: string;
+  href: string;
+  shots: Shots;
+}[] = [
   { slug: "stadtgalerie", href: "/demos/stadtgalerie", shots: shots("stadtgalerie", "mobile-2") },
-  { slug: "restaurant", href: "/demos/restaurant", shots: shots("restaurant", "mobile-2") },
+  {
+    slug: "restaurant",
+    href: "/demos/restaurant",
+    shots: {
+      desktop: "/demos/restaurant/hero-poster.jpg",
+      mobile: "/demos/restaurant/still-schnitzel.jpg",
+      secondary: "/demos/restaurant/still-dining.jpg",
+    },
+  },
   { slug: "villa-italia", href: "/demos/villa-italia", shots: shots("villa-italia", "mobile-2") },
   { slug: "solo-modas", href: "/demos/solo-modas", shots: shots("solo-modas", "desktop-2") },
   {
@@ -85,7 +107,16 @@ const PROJECT_BASE = [
     shots: shots("universo-del-calzado", "desktop-2"),
   },
   { slug: "vaultshield", href: "/demos/vaultshield", shots: shots("vaultshield", "desktop-2") },
-] as const;
+  {
+    slug: "novaai",
+    href: "/demos/novaai",
+    shots: {
+      desktop: "/demos/novaai/hero-poster.jpg",
+      mobile: "/demos/novaai/mitha.webp",
+      secondary: "/demos/novaai/hero-poster.jpg",
+    },
+  },
+];
 
 type ProjectCopy = { name: string; category: string; blurb: string };
 
@@ -125,6 +156,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
       heading: "Hola, soy Santi",
       tagline:
         "Webs para negocios locales en Wien — claras en el móvil, con WhatsApp a un toque",
+      scrollHint: "Scroll",
+      bands: [
+        { from: 0, to: 0.34, line: "Diseño webs que se entienden en el móvil" },
+        { from: 0.34, to: 0.67, line: "WhatsApp a un toque" },
+        { from: 0.67, to: 1.01, line: "Para negocios locales en Wien" },
+      ],
     },
     about: {
       title: "Sobre mí",
@@ -166,9 +203,19 @@ const CONTENT: Record<Locale, Creator3dContent> = {
         },
       ]),
     },
+    wienScroll: {
+      eyebrow: "Wien",
+      scrollHint: "Scroll",
+      bands: [
+        { from: 0, to: 0.34, line: "Estoy en Wien" },
+        { from: 0.34, to: 0.67, line: "Webs para negocios locales" },
+        { from: 0.67, to: 1.01, line: "Hablemos por WhatsApp" },
+      ],
+    },
     projects: {
       title: "Proyectos",
       openLabel: "Abrir demo",
+      scrollHint: "Scroll dentro de la preview",
       items: buildProjects([
         {
           name: "Stadtgalerie West",
@@ -180,7 +227,7 @@ const CONTENT: Record<Locale, Creator3dContent> = {
           name: "Gasthaus Am Hof",
           category: "Restaurante · Plantilla",
           blurb:
-            "Plantilla reutilizable para gastronomía: carta, horarios, mapa y reserva por WhatsApp.",
+            "Landing cinematográfica: vídeo con scroll, Speisekarte, horarios y reserva por WhatsApp.",
         },
         {
           name: "Villa Italia",
@@ -206,6 +253,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
           blurb:
             "Hero de gestor de contraseñas: vídeo a pantalla completa, menú lateral en móvil y animaciones de entrada.",
         },
+        {
+          name: "NovaAI",
+          category: "SaaS · AI",
+          blurb:
+            "Landing cinematográfica de automatización con IA: vídeo ligado al scroll, servicios, proceso y FAQ de concepto.",
+        },
       ]),
     },
     contact: {
@@ -228,6 +281,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
       heading: "Hi, ich bin Santi",
       tagline:
         "Websites für lokale Betriebe in Wien — klar am Handy, WhatsApp mit einem Tipp",
+      scrollHint: "Scrollen",
+      bands: [
+        { from: 0, to: 0.34, line: "Websites, die man am Handy versteht" },
+        { from: 0.34, to: 0.67, line: "WhatsApp mit einem Tipp" },
+        { from: 0.67, to: 1.01, line: "Für lokale Betriebe in Wien" },
+      ],
     },
     about: {
       title: "Über mich",
@@ -269,9 +328,19 @@ const CONTENT: Record<Locale, Creator3dContent> = {
         },
       ]),
     },
+    wienScroll: {
+      eyebrow: "Wien",
+      scrollHint: "Scrollen",
+      bands: [
+        { from: 0, to: 0.34, line: "Ich bin in Wien" },
+        { from: 0.34, to: 0.67, line: "Websites für lokale Betriebe" },
+        { from: 0.67, to: 1.01, line: "Schreib mir auf WhatsApp" },
+      ],
+    },
     projects: {
       title: "Projekte",
       openLabel: "Demo öffnen",
+      scrollHint: "In der Vorschau scrollen",
       items: buildProjects([
         {
           name: "Stadtgalerie West",
@@ -283,7 +352,7 @@ const CONTENT: Record<Locale, Creator3dContent> = {
           name: "Gasthaus Am Hof",
           category: "Restaurant · Vorlage",
           blurb:
-            "Wiederverwendbare Vorlage für Gastronomie: Speisekarte, Öffnungszeiten, Karte und Reservierung per WhatsApp.",
+            "Cinematic Landing: Scroll-Video, Speisekarte, Öffnungszeiten und Reservierung per WhatsApp.",
         },
         {
           name: "Villa Italia",
@@ -309,6 +378,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
           blurb:
             "Hero für einen Passwort-Manager: Vollbild-Video, seitliches Menü am Handy und Einblend-Animationen.",
         },
+        {
+          name: "NovaAI",
+          category: "SaaS · AI",
+          blurb:
+            "Kinematische KI-Automatisierungs-Landing: Scroll-Video, Leistungen, Prozess und FAQ als Konzept.",
+        },
       ]),
     },
     contact: {
@@ -331,6 +406,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
       heading: "Hi, i'm Santi",
       tagline:
         "Websites for local businesses in Vienna — clear on mobile, WhatsApp in one tap",
+      scrollHint: "Scroll",
+      bands: [
+        { from: 0, to: 0.34, line: "Websites that make sense on mobile" },
+        { from: 0.34, to: 0.67, line: "WhatsApp in one tap" },
+        { from: 0.67, to: 1.01, line: "For local businesses in Vienna" },
+      ],
     },
     about: {
       title: "About me",
@@ -372,9 +453,19 @@ const CONTENT: Record<Locale, Creator3dContent> = {
         },
       ]),
     },
+    wienScroll: {
+      eyebrow: "Vienna",
+      scrollHint: "Scroll",
+      bands: [
+        { from: 0, to: 0.34, line: "Based in Vienna" },
+        { from: 0.34, to: 0.67, line: "Sites for local businesses" },
+        { from: 0.67, to: 1.01, line: "Message me on WhatsApp" },
+      ],
+    },
     projects: {
       title: "Projects",
       openLabel: "Open demo",
+      scrollHint: "Scroll inside to explore",
       items: buildProjects([
         {
           name: "Stadtgalerie West",
@@ -386,7 +477,7 @@ const CONTENT: Record<Locale, Creator3dContent> = {
           name: "Gasthaus Am Hof",
           category: "Restaurant · Template",
           blurb:
-            "Reusable template for restaurants: menu, hours, map and WhatsApp reservations.",
+            "Cinematic landing: scroll video, menu, hours and WhatsApp reservations.",
         },
         {
           name: "Villa Italia",
@@ -411,6 +502,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
           category: "SaaS · Concept",
           blurb:
             "Password-manager hero: fullscreen video, mobile slide-in menu and entrance animations.",
+        },
+        {
+          name: "NovaAI",
+          category: "SaaS · AI",
+          blurb:
+            "Cinematic AI automation landing: scroll-scrubbed video, services, process and concept FAQ.",
         },
       ]),
     },

@@ -57,12 +57,12 @@ const projects: SiteMessages["projects"] = [
   },
   {
     slug: "restaurant",
-    title: "Gasthaus Am Hof — Gastro-Vorlage",
+    title: "Gasthaus Am Hof — Cinematic Landing",
     type: "Restaurant",
     href: "/demos/restaurant",
     group: "template",
     blurb:
-      "Gastro-Vorlage: Speisekarte, Öffnungszeiten, Karte und WhatsApp-Reservierung.",
+      "Cinematic Landing: Scroll-Video, Speisekarte, Zeiten und WhatsApp.",
   },
   {
     slug: "villa-italia",

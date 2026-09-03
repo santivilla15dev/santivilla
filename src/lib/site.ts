@@ -104,12 +104,12 @@ export const projects = [
   },
   {
     slug: "restaurant",
-    title: "Gasthaus Am Hof — Plantilla",
+    title: "Gasthaus Am Hof — Cinemática",
     type: "Restaurante",
     href: "/demos/restaurant",
     blurb:
-      "Plantilla reutilizable: menú, horarios, mapa y reserva por WhatsApp.",
-    tags: ["Plantilla", "Gastro", "DE"],
+      "Landing con vídeo scroll: Speisekarte, horarios y reserva WhatsApp.",
+    tags: ["Demo", "Gastro", "DE"],
   },
   {
     slug: "villa-italia",

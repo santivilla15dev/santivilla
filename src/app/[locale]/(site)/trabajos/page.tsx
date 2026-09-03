@@ -13,8 +13,7 @@ import { notFound } from "next/navigation";
 export const revalidate = 3600;
 
 const AFTER_HERO = "/demos/lugner-hero.jpg";
-const GASTHAUS_THUMB =
-  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80";
+const GASTHAUS_THUMB = "/demos/restaurant/hero-poster.jpg";
 const VILLA_THUMB =
   "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80";
 const SOLO_MODAS_THUMB =

@@ -1,15 +1,12 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
-
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 import { FadeIn } from "./fade-in";
 import { LiveProjectButton } from "./live-project-button";
+import { ProjectLivePreview } from "./project-live-preview";
 import type { Creator3dContent, Creator3dProject } from "@/lib/demos/3d-creator";
 
-// El apilado sticky solo tiene sentido si la tarjeta cabe en pantalla; en móvil
-// (< md) las tarjetas fluyen normalmente y no se escalan.
+// Sticky apilado solo en desktop (sin transform/scale: rompe iframes en Safari).
 const STACK_QUERY = "(min-width: 768px)";
 
 function subscribeStack(onChange: () => void) {
@@ -29,30 +26,23 @@ function useStackEnabled(): boolean {
 function ProjectCard({
   project,
   index,
-  total,
   openLabel,
+  scrollHint,
 }: {
   project: Creator3dProject;
   index: number;
-  total: number;
   openLabel: string;
+  scrollHint: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "start start"],
-  });
   const stack = useStackEnabled();
-  const targetScale = 1 - (total - 1 - index) * 0.03;
-  const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
 
   return (
-    <div ref={ref} className="mb-6 md:mb-0 md:h-[85vh]">
-      <motion.article
-        className="origin-top rounded-[28px] border border-white/10 bg-[#141414] p-5 shadow-2xl sm:p-7 md:sticky md:p-10"
+    <div className="mb-6 md:mb-8 md:min-h-[70vh]">
+      <article
+        className="rounded-[28px] border border-white/10 bg-[#141414] p-5 shadow-2xl sm:p-7 md:p-10"
         style={
           stack
-            ? { scale, top: `calc(6rem + ${index * 28}px)` }
+            ? { position: "sticky", top: `calc(6rem + ${index * 20}px)` }
             : undefined
         }
       >
@@ -83,39 +73,19 @@ function ProjectCard({
           {project.blurb}
         </p>
 
-        <div className="mt-6 grid gap-3 md:mt-8 md:grid-cols-[2fr_3fr] md:gap-4">
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-1 md:gap-4">
-            <img
-              src={project.images.col1Top}
-              alt={`${project.name} — móvil`}
-              loading="lazy"
-              decoding="async"
-              className="w-full rounded-2xl border border-white/10 object-cover object-top"
-              style={{ height: "clamp(120px, 18vw, 240px)" }}
-            />
-            <img
-              src={project.images.col1Bottom}
-              alt={`${project.name} — detalle`}
-              loading="lazy"
-              decoding="async"
-              className="w-full rounded-2xl border border-white/10 object-cover object-top"
-              style={{ height: "clamp(120px, 18vw, 240px)" }}
-            />
-          </div>
-          <img
-            src={project.images.col2}
-            alt={`${project.name} — desktop`}
-            loading="lazy"
-            decoding="async"
-            className="w-full rounded-2xl border border-white/10 object-cover object-top"
-            style={{ height: "clamp(260px, 37vw, 500px)" }}
+        <div className="mt-6 md:mt-8">
+          <ProjectLivePreview
+            href={project.href}
+            fallbackSrc={project.images.col2}
+            alt={`${project.name} — preview`}
+            scrollHint={scrollHint}
           />
         </div>
 
         <footer className="mt-6 flex justify-end md:mt-8">
           <LiveProjectButton href={project.href} label={openLabel} />
         </footer>
-      </motion.article>
+      </article>
     </div>
   );
 }
@@ -144,8 +114,8 @@ export function ProjectsSection({ content }: { content: Creator3dContent }) {
               key={project.slug}
               project={project}
               index={i}
-              total={items.length}
               openLabel={content.projects.openLabel}
+              scrollHint={content.projects.scrollHint}
             />
           ))}
         </div>
