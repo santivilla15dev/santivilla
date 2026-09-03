@@ -155,12 +155,12 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
   ];
 
   const mediaClass =
-    "absolute inset-0 h-full w-full object-cover object-[62%_center] sm:object-[58%_center]";
+    "absolute inset-0 h-full w-full object-cover object-[72%_center] sm:object-[62%_center] md:object-[58%_center]";
 
   return (
     <div
       ref={trackRef}
-      className="relative h-[min(220vh,1600px)] w-full"
+      className="relative h-[min(170vh,1100px)] w-full md:h-[min(220vh,1600px)]"
       id="home-cafe-hero"
     >
       <div className="sticky top-0 isolate h-[100svh] min-h-[28rem] w-full overflow-hidden bg-[#0C0C0C]">
@@ -195,7 +195,7 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/45 via-transparent to-black/65"
+          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/45 via-transparent to-black/80 sm:to-black/65"
           aria-hidden
         />
 
@@ -219,7 +219,7 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
               </a>
             ))}
           </div>
-          <ul className="mt-3 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-[10px] font-medium uppercase tracking-wide text-[#D7E2EA] sm:gap-x-4 sm:text-sm sm:tracking-wider md:text-lg lg:text-[1.4rem]">
+          <ul className="mt-3 flex flex-wrap items-center justify-between gap-x-2 gap-y-1 text-[9px] font-medium uppercase tracking-wide text-[#D7E2EA] sm:gap-x-4 sm:text-sm sm:tracking-wider md:text-lg lg:text-[1.4rem]">
             {navItems.map((item) => (
               <li key={item.href} className="whitespace-nowrap">
                 <a
@@ -244,7 +244,7 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
         </nav>
 
         {/* Primer viewport: marca + una línea + CTA (sin tagline duplicada). */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-end px-5 pb-10 pt-24 sm:px-8 sm:pb-12 md:px-10 md:pb-14">
+        <div className="absolute inset-0 z-10 flex flex-col justify-end px-5 pt-24 pb-[max(2.5rem,env(safe-area-inset-bottom))] sm:px-8 sm:pb-12 md:px-10 md:pb-14">
           <h1 className="max-w-[12ch] font-black uppercase leading-[0.95] tracking-tight text-[#D7E2EA] [text-shadow:0_12px_40px_rgba(0,0,0,0.55)] text-[clamp(2.2rem,8.5vw,5.2rem)]">
             {content.hero.heading}
           </h1>
@@ -261,7 +261,7 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
           </div>
 
           {!hintGone && !reduceMotion ? (
-            <p className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.18em] text-[#D7E2EA]/45 sm:bottom-4">
+            <p className="pointer-events-none absolute bottom-14 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.18em] text-[#D7E2EA]/45 sm:bottom-4">
               {content.hero.scrollHint}
             </p>
           ) : null}

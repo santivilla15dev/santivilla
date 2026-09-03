@@ -4,9 +4,10 @@ import { useSyncExternalStore } from "react";
 import { FadeIn } from "./fade-in";
 import { LiveProjectButton } from "./live-project-button";
 import { ProjectLivePreview } from "./project-live-preview";
+import { ProjectThumb } from "./project-thumb";
 import type { Creator3dContent, Creator3dProject } from "@/lib/demos/3d-creator";
 
-// Sticky apilado solo en desktop (sin transform/scale: rompe iframes en Safari).
+// Sticky apilado + preview live solo en desktop (iframe pesado en móvil).
 const STACK_QUERY = "(min-width: 768px)";
 
 function subscribeStack(onChange: () => void) {
@@ -74,12 +75,21 @@ function ProjectCard({
         </p>
 
         <div className="mt-6 md:mt-8">
-          <ProjectLivePreview
-            href={project.href}
-            fallbackSrc={project.images.col2}
-            alt={`${project.name} — preview`}
-            scrollHint={scrollHint}
-          />
+          {stack ? (
+            <ProjectLivePreview
+              href={project.href}
+              fallbackSrc={project.images.col2}
+              alt={`${project.name} — preview`}
+              scrollHint={scrollHint}
+            />
+          ) : (
+            <ProjectThumb
+              src={project.images.col2}
+              alt={`${project.name} — preview`}
+              index={0}
+              className="aspect-[16/10] min-h-[14rem] w-full"
+            />
+          )}
         </div>
 
         <footer className="mt-6 flex justify-end md:mt-8">

@@ -245,7 +245,7 @@ export function GasthausScrollHero({ preview = false }: Props) {
       <img
         src={gasthausAssets.poster}
         alt=""
-        className={`absolute inset-0 z-0 h-full w-full object-cover transition-opacity duration-700 ${
+        className={`absolute inset-0 z-0 h-full w-full object-cover object-[60%_center] md:object-center transition-opacity duration-700 ${
           ready && !(reduceMotion && !preview) ? "opacity-0" : "opacity-100"
         }`}
         ref={(el) => {
@@ -260,7 +260,7 @@ export function GasthausScrollHero({ preview = false }: Props) {
       {!(reduceMotion && !preview) ? (
         <video
           ref={videoRef}
-          className={`absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-700 ${
+          className={`absolute inset-0 z-[1] h-full w-full object-cover object-[60%_center] md:object-center transition-opacity duration-700 ${
             ready ? "opacity-100" : "opacity-0"
           }`}
           src={gasthausAssets.video}
@@ -276,7 +276,7 @@ export function GasthausScrollHero({ preview = false }: Props) {
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-[rgba(26,18,14,0.4)] via-transparent to-[rgba(26,18,14,0.55)]"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-[rgba(26,18,14,0.4)] via-transparent to-[rgba(26,18,14,0.7)] md:to-[rgba(26,18,14,0.55)]"
         aria-hidden
       />
 
@@ -322,14 +322,16 @@ export function GasthausScrollHero({ preview = false }: Props) {
       </header>
 
       {!preview && !hintGone && !reduceMotion ? (
-        <p className="absolute bottom-6 left-1/2 z-[4] -translate-x-1/2 font-[family-name:var(--font-gasthaus-mono)] text-[0.68rem] tracking-[0.16em] text-[rgba(243,235,224,0.65)] uppercase">
+        <p className="absolute bottom-14 left-1/2 z-[4] -translate-x-1/2 font-[family-name:var(--font-gasthaus-mono)] text-[0.68rem] tracking-[0.16em] text-[rgba(243,235,224,0.65)] uppercase md:bottom-6">
           Scrollen
         </p>
       ) : null}
 
       <div
         className={`absolute inset-0 z-[3] flex flex-col justify-end px-[clamp(1.25rem,5vw,4rem)] text-[#f3ebe0] ${
-          preview ? "pb-6 pt-14" : "pt-24 pb-[16vh]"
+          preview
+            ? "pb-6 pt-14"
+            : "pt-24 pb-[max(3rem,env(safe-area-inset-bottom),12vh)] md:pb-[16vh]"
         }`}
       >
         <div key={bandIndex} className="max-w-[20ch]">
@@ -366,7 +368,11 @@ export function GasthausScrollHero({ preview = false }: Props) {
   return (
     <div
       ref={trackRef}
-      className="relative h-[min(320vh,2400px)] w-full"
+      className={
+        preview
+          ? "relative h-[min(320vh,2400px)] w-full"
+          : "relative h-[min(180vh,1400px)] w-full md:h-[min(320vh,2400px)]"
+      }
       id="gasthaus-hero"
     >
       <div

@@ -146,12 +146,12 @@ export function WienScrollSection({ content }: Props) {
   const showVideo = !reduceMotion && !failed;
 
   const mediaClass =
-    "absolute inset-0 h-full w-full object-cover object-[58%_center] sm:object-[54%_center]";
+    "absolute inset-0 h-full w-full object-cover object-[68%_center] sm:object-[58%_center] md:object-[54%_center]";
 
   return (
     <section
       ref={trackRef}
-      className="relative h-[min(220vh,1600px)] w-full"
+      className="relative h-[min(170vh,1100px)] w-full md:h-[min(220vh,1600px)]"
       id="wien-scrub"
       aria-label={eyebrow}
     >
@@ -187,11 +187,11 @@ export function WienScrollSection({ content }: Props) {
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/35 via-transparent to-black/70"
+          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/35 via-transparent to-black/80 sm:to-black/70"
           aria-hidden
         />
 
-        <div className="absolute inset-0 z-10 flex flex-col justify-end px-5 pb-10 pt-24 sm:px-8 sm:pb-12 md:px-10 md:pb-14">
+        <div className="absolute inset-0 z-10 flex flex-col justify-end px-5 pt-24 pb-[max(2.5rem,env(safe-area-inset-bottom))] sm:px-8 sm:pb-12 md:px-10 md:pb-14">
           <p className="mb-2 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-[#D7E2EA]/70">
             {eyebrow}
           </p>
@@ -207,7 +207,7 @@ export function WienScrollSection({ content }: Props) {
           </div>
 
           {!hintGone && !reduceMotion ? (
-            <p className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.18em] text-[#D7E2EA]/45 sm:bottom-4">
+            <p className="pointer-events-none absolute bottom-14 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.18em] text-[#D7E2EA]/45 sm:bottom-4">
               {scrollHint}
             </p>
           ) : null}
