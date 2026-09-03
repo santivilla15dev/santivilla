@@ -183,13 +183,13 @@ const CONTENT: Record<Locale, VaultshieldContent> = {
     conceptNote:
       "Concept demo for the Santi Villa portfolio — VaultShield is not a real product.",
     trust: {
-      rating: "4.9 / 5",
-      ratingLabel: "from 12,400 reviews",
+      rating: "Concept",
+      ratingLabel: "demo · not live metrics",
       metrics: [
-        { value: "2.1M+", label: "vaults created" },
-        { value: "99.99%", label: "uptime last year" },
-        { value: "0", label: "known breaches" },
-        { value: "< 80 ms", label: "median unlock" },
+        { value: "AES-256", label: "encryption at rest" },
+        { value: "ZK", label: "zero-knowledge vault" },
+        { value: "Offline", label: "unlock without cloud" },
+        { value: "Alerts", label: "breach watch on logins" },
       ],
     },
     features: {
@@ -522,13 +522,13 @@ const CONTENT: Record<Locale, VaultshieldContent> = {
     conceptNote:
       "Konzept-Demo für das Portfolio von Santi Villa — VaultShield ist kein echtes Produkt.",
     trust: {
-      rating: "4,9 / 5",
-      ratingLabel: "aus 12.400 Bewertungen",
+      rating: "Konzept",
+      ratingLabel: "Demo · keine Live-Kennzahlen",
       metrics: [
-        { value: "2,1 Mio.+", label: "Tresore angelegt" },
-        { value: "99,99 %", label: "Verfügbarkeit letztes Jahr" },
-        { value: "0", label: "bekannte Leaks" },
-        { value: "< 80 ms", label: "Median-Entsperrung" },
+        { value: "AES-256", label: "Verschlüsselung at rest" },
+        { value: "ZK", label: "Zero-Knowledge-Tresor" },
+        { value: "Offline", label: "Entsperren ohne Cloud" },
+        { value: "Alerts", label: "Leak-Watch für Logins" },
       ],
     },
     features: {
@@ -861,13 +861,13 @@ const CONTENT: Record<Locale, VaultshieldContent> = {
     conceptNote:
       "Demo conceptual para el portfolio de Santi Villa — VaultShield no es un producto real.",
     trust: {
-      rating: "4,9 / 5",
-      ratingLabel: "en 12.400 reseñas",
+      rating: "Konzept",
+      ratingLabel: "demo · sin métricas reales",
       metrics: [
-        { value: "2,1 M+", label: "bóvedas creadas" },
-        { value: "99,99 %", label: "disponibilidad el último año" },
-        { value: "0", label: "filtraciones conocidas" },
-        { value: "< 80 ms", label: "desbloqueo mediano" },
+        { value: "AES-256", label: "cifrado en reposo" },
+        { value: "ZK", label: "bóveda zero-knowledge" },
+        { value: "Offline", label: "desbloqueo sin nube" },
+        { value: "Alertas", label: "aviso de filtraciones" },
       ],
     },
     features: {

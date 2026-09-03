@@ -71,7 +71,7 @@ export const novaaiCopy = {
   ],
   intro:
     "We design automation that brings clarity, precision, and efficiency to the way your company operates.",
-  badge: "We Automate 100+ Businesses",
+  badge: "Concept · AI for operations",
   h1: ["Clear. Precise.", "Automated."],
   talkTitle: "Talk with Mitha",
   talkRole: "Co-founder of NovaAI",

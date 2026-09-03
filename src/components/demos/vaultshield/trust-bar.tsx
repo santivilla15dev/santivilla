@@ -3,7 +3,7 @@ import type { VaultshieldContent } from "@/lib/demos/vaultshield";
 import { Star } from "lucide-react";
 
 export function VsTrustBar({ content }: { content: VaultshieldContent }) {
-  const { trust } = content;
+  const { trust, conceptNote } = content;
 
   return (
     <section className="border-y border-[#192837]/8 bg-white px-5 py-8 sm:px-8">
@@ -30,6 +30,7 @@ export function VsTrustBar({ content }: { content: VaultshieldContent }) {
           ))}
         </ul>
       </FadeIn>
+      <p className="mx-auto mt-6 max-w-[1280px] text-xs opacity-50">{conceptNote}</p>
     </section>
   );
 }
