@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { AdminSiteStatus } from "@/components/admin-site-status";
 import { listSites } from "@/lib/crm/store";
 import { getCrmMessages } from "@/lib/crm/messages";
 
@@ -26,6 +27,7 @@ export default async function AdminSitesPage() {
               <TableHead className="px-4 py-3">Business</TableHead>
               <TableHead className="px-4 py-3">Status</TableHead>
               <TableHead className="px-4 py-3">Preview</TableHead>
+              <TableHead className="px-4 py-3" />
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -43,11 +45,19 @@ export default async function AdminSitesPage() {
                     /k/{site.slug}
                   </Link>
                 </TableCell>
+                <TableCell className="px-4 py-3">
+                  <AdminSiteStatus
+                    id={site.id}
+                    status={site.status}
+                    pauseLabel={m.pause}
+                    activateLabel={m.activate}
+                  />
+                </TableCell>
               </TableRow>
             ))}
             {!sites.length ? (
               <TableRow className="hover:bg-transparent">
-                <TableCell colSpan={4} className="px-4 py-8 text-center text-muted">
+                <TableCell colSpan={5} className="px-4 py-8 text-center text-muted">
                   No sites yet.
                 </TableCell>
               </TableRow>

@@ -21,7 +21,7 @@ import { localizedPath } from "@/lib/i18n/paths";
 import { saveEditToken } from "@/lib/design-system/edit-token";
 import type { Locale } from "@/lib/i18n/locales";
 import type { SiteMessages } from "@/lib/i18n/messages/types";
-import { whatsappHref } from "@/lib/site";
+import { hasWhatsApp, whatsappHref } from "@/lib/site";
 
 const examples = ["lugner.at", "www.wien.gv.at"];
 
@@ -678,19 +678,21 @@ export function AuditClient({
                     </Link>
                   </Button>
                 ) : null}
-                <Button
-                  asChild
-                  variant="outline"
-                  className="h-auto rounded-full border-ink/20 bg-surface px-5 py-3 text-sm text-ink hover:bg-accent-soft hover:text-ink"
-                >
-                  <a
-                    href={whatsappHref(waMessage)}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {hasWhatsApp() ? (
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="h-auto rounded-full border-ink/20 bg-surface px-5 py-3 text-sm text-ink hover:bg-accent-soft hover:text-ink"
                   >
-                    WhatsApp
-                  </a>
-                </Button>
+                    <a
+                      href={whatsappHref(waMessage)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      WhatsApp
+                    </a>
+                  </Button>
+                ) : null}
               </div>
               {designError ? (
                 <Alert variant="destructive" className="mt-3">

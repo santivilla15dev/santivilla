@@ -17,7 +17,7 @@ export default async function PortalPage() {
     return (
       <div>
         <h1 className="font-display text-3xl">{m.portal}</h1>
-        <p className="mt-4 text-muted">No site assigned yet. Contact Santi Villa.</p>
+        <p className="mt-4 text-muted">{m.noSite}</p>
       </div>
     );
   }
@@ -58,10 +58,16 @@ export default async function PortalPage() {
         <PortalEditor
           siteId={site.id}
           initialDailyMenu={content?.dailyMenu ?? []}
+          initialHoursRegular={
+            Array.isArray(content?.hoursRegular)
+              ? (content.hoursRegular as string[]).join("\n")
+              : ""
+          }
           initialHoursOverrides={content?.hoursOverrides ?? []}
           initialAnnouncements={content?.announcements ?? ""}
           labels={{
             dailyMenu: m.dailyMenu,
+            hoursRegular: m.hoursRegular,
             hoursOverride: m.hoursOverride,
             announcements: m.announcements,
             save: m.save,

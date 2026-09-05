@@ -408,6 +408,7 @@ export const enMessages: SiteMessages = {
     after: "After · Demo",
     beforeNote: "Dense layout · small type · hard on mobile.",
     afterNote: "Clear home: hours, shops, directions, contact in one flow.",
+    afterCaption: "Hours · Shops · Directions - clear on a phone.",
     beforeHost: "Typo3 · Zentrum",
     caseBrand: "Stadtgalerie West",
     viewCurrent: "View current site →",
@@ -566,6 +567,8 @@ export const enMessages: SiteMessages = {
       "Hi! I help with tables, opening hours and parking. Pick a question or type yours.",
     thinking: "One moment…",
     errorGeneric: "Can't reply right now. Try WhatsApp.",
+    noAiFallback:
+      "Quick questions (tables, hours, parking) work here. Anything else: email or WhatsApp Santi.",
     openLabel: "Open help",
     closeLabel: "Close",
     demoLink: "/demos/restaurant",

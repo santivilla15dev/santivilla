@@ -99,7 +99,9 @@ export function answerFaq(
 }
 
 export function whatsappHref(number: string, message?: string): string {
-  const base = `https://wa.me/${number.replace(/\D/g, "")}`;
+  const digits = number.replace(/\D/g, "");
+  if (!digits) return "";
+  const base = `https://wa.me/${digits}`;
   if (!message) return base;
   return `${base}?text=${encodeURIComponent(message)}`;
 }

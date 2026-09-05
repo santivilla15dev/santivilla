@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 
 type Body = {
   dailyMenu?: DailyMenuEntry[];
+  hoursRegular?: string[];
   hoursOverrides?: HoursOverride[];
   announcements?: string;
 };
@@ -49,6 +50,7 @@ export async function PATCH(
     const next = await saveSiteContent({
       ...current,
       dailyMenu: body.dailyMenu ?? current.dailyMenu,
+      hoursRegular: body.hoursRegular ?? current.hoursRegular,
       hoursOverrides: body.hoursOverrides ?? current.hoursOverrides,
       announcements: body.announcements ?? current.announcements,
     });

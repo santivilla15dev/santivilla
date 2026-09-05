@@ -5,7 +5,7 @@ import { getMessages } from "@/lib/i18n/get-messages";
 import { pageMetadata } from "@/lib/i18n/metadata";
 import { briefAgentPath, localizedPath } from "@/lib/i18n/paths";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
-import { site, whatsappHref } from "@/lib/site";
+import { hasCal, hasWhatsApp, site, whatsappHref } from "@/lib/site";
 import { notFound } from "next/navigation";
 
 export const revalidate = 3600;
@@ -65,32 +65,36 @@ export default async function ContactoPage({ params }: Props) {
                 {site.email}
               </a>
             </p>
-            <p>
-              <span className="block text-xs uppercase tracking-[0.16em] text-muted">
-                {c.whatsapp}
-              </span>
-              <a
-                href={whatsappHref()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-1 inline-block text-lg text-ink"
-              >
-                {c.openChat}
-              </a>
-            </p>
-            <p>
-              <span className="block text-xs uppercase tracking-[0.16em] text-muted">
-                {c.schedule}
-              </span>
-              <a
-                href={site.calUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-1 inline-block text-lg text-ink underline-offset-4 hover:underline"
-              >
-                {site.calUrl.replace(/^https?:\/\//, "")}
-              </a>
-            </p>
+            {hasWhatsApp() ? (
+              <p>
+                <span className="block text-xs uppercase tracking-[0.16em] text-muted">
+                  {c.whatsapp}
+                </span>
+                <a
+                  href={whatsappHref(c.whatsappMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-block text-lg text-ink"
+                >
+                  {c.openChat}
+                </a>
+              </p>
+            ) : null}
+            {hasCal() ? (
+              <p>
+                <span className="block text-xs uppercase tracking-[0.16em] text-muted">
+                  {c.schedule}
+                </span>
+                <a
+                  href={site.calUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-block text-lg text-ink underline-offset-4 hover:underline"
+                >
+                  {site.calUrl.replace(/^https?:\/\//, "")}
+                </a>
+              </p>
+            ) : null}
             <p className="text-muted">{site.location}</p>
           </div>
 
@@ -126,13 +130,15 @@ export default async function ContactoPage({ params }: Props) {
           <p className="mt-6 text-sm leading-relaxed text-surface/65">
             {c.pitchBody}
           </p>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-white/10">
-            <iframe
-              title={c.schedule}
-              src={site.calUrl}
-              className="h-[420px] w-full bg-white"
-            />
-          </div>
+          {hasCal() ? (
+            <div className="mt-8 overflow-hidden rounded-2xl border border-white/10">
+              <iframe
+                title={c.schedule}
+                src={site.calUrl}
+                className="h-[420px] w-full bg-white"
+              />
+            </div>
+          ) : null}
         </aside>
       </div>
     </div>

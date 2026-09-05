@@ -1,4 +1,5 @@
-/** Datos demo Villa Italia — sustituir con info real de la tía antes del pitch. */
+/** Plantilla Konzept. CTA WhatsApp va a Santi, no a un número inventado. */
+import { whatsappHref } from "@/lib/site";
 
 export type DemoMenuItem = {
   name: string;
@@ -24,7 +25,7 @@ export const villaItaliaDemo = {
   tagline: "Pizza al horno de leña y pasta casera — como en casa.",
   konzeptNote:
     "Konzept / demo — no es el sitio oficial de Villa Italia. Datos de ejemplo.",
-  whatsapp: "573001234567",
+  whatsapp: "",
   phone: "+57 300 123 4567",
   address: "Cra 48 # 10-45, El Poblado",
   mapsQuery: "Medellín+Colombia+pizzería",
@@ -105,11 +106,10 @@ export const villaItaliaDemo = {
 } as const;
 
 export function villaItaliaWhatsAppHref(message?: string) {
-  const text = encodeURIComponent(
+  return whatsappHref(
     message ??
-      "Hola Villa Italia, quiero hacer un pedido / reservar mesa. Gracias.",
+      "Hola Santi, vi la demo Villa Italia y me interesa una web así.",
   );
-  return `https://wa.me/${villaItaliaDemo.whatsapp}?text=${text}`;
 }
 
 export function villaItaliaMapsEmbedUrl() {

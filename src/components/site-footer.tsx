@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { SiteMessages } from "@/lib/i18n/get-messages";
 import { legalPath, localizedPath } from "@/lib/i18n/paths";
 import type { Locale } from "@/lib/i18n/locales";
-import { site, whatsappHref } from "@/lib/site";
+import { hasWhatsApp, site, whatsappHref } from "@/lib/site";
 
 type Props = {
   locale: Locale;
@@ -80,11 +80,16 @@ export function SiteFooter({ locale, messages }: Props) {
                 {site.email}
               </a>
             </li>
-            <li>
-              <a href={whatsappHref()} className={`hover:text-surface ${FOCUS}`}>
-                WhatsApp
-              </a>
-            </li>
+            {hasWhatsApp() ? (
+              <li>
+                <a
+                  href={whatsappHref()}
+                  className={`hover:text-surface ${FOCUS}`}
+                >
+                  WhatsApp
+                </a>
+              </li>
+            ) : null}
           </ul>
         </div>
       </div>

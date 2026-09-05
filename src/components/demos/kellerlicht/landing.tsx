@@ -3,7 +3,7 @@
 import {
   kellerlichtAssets,
   kellerlichtCopy,
-  kellerlichtWa,
+  kellerlichtReserveHref,
 } from "@/lib/demos/kellerlicht";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, type FormEvent } from "react";
@@ -126,8 +126,23 @@ export function KellerlichtLanding() {
   const [openWine, setOpenWine] = useState<string | null>(null);
   const [done, setDone] = useState(false);
 
-  function onSubmit(e: FormEvent) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: String(fd.get("name") ?? ""),
+          businessName: "Kellerlicht (Konzept)",
+          message: `Gäste: ${String(fd.get("guests") ?? "")}. Termin: ${String(fd.get("when") ?? "")}. ${String(fd.get("note") ?? "")}`,
+          source: "demo",
+        }),
+      });
+    } catch {
+      /* Konzept: still acknowledge the request */
+    }
     setDone(true);
   }
 
@@ -388,18 +403,20 @@ export function KellerlichtLanding() {
               >
                 {kellerlichtCopy.reserve.submit}
               </button>
-              <p className="m-0 text-sm text-[rgba(242,232,220,0.7)]">
-                Oder{" "}
-                <a
-                  href={kellerlichtWa}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#d4a05a]"
-                >
-                  {kellerlichtCopy.reserve.waLabel}
-                </a>
-                .
-              </p>
+              {kellerlichtReserveHref() ? (
+                <p className="m-0 text-sm text-[rgba(242,232,220,0.7)]">
+                  Oder{" "}
+                  <a
+                    href={kellerlichtReserveHref()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#d4a05a]"
+                  >
+                    {kellerlichtCopy.reserve.waLabel}
+                  </a>
+                  .
+                </p>
+              ) : null}
             </>
           ) : (
             <div role="status">
@@ -409,16 +426,18 @@ export function KellerlichtLanding() {
               <p className="mt-2 text-[rgba(242,232,220,0.85)]">
                 {kellerlichtCopy.reserve.successBody}
               </p>
-              <p className="mt-4 text-sm">
-                <a
-                  href={kellerlichtWa}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#d4a05a]"
-                >
-                  WhatsApp öffnen
-                </a>
-              </p>
+              {kellerlichtReserveHref() ? (
+                <p className="mt-4 text-sm">
+                  <a
+                    href={kellerlichtReserveHref()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#d4a05a]"
+                  >
+                    WhatsApp öffnen
+                  </a>
+                </p>
+              ) : null}
             </div>
           )}
         </form>

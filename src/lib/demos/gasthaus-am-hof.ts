@@ -7,11 +7,13 @@ export const gasthausAssets = {
   schnitzel: "/demos/restaurant/still-schnitzel.jpg",
 } as const;
 
-export const gasthausWa =
-  "https://wa.me/436600000000?text=" +
-  encodeURIComponent(
+import { whatsappHref } from "@/lib/site";
+
+export function gasthausReserveHref(): string {
+  return whatsappHref(
     "Hallo! Ich möchte einen Tisch im Gasthaus Am Hof reservieren.",
   );
+}
 
 export const gasthausCopy = {
   title: "Gasthaus Am Hof — Demo",

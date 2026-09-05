@@ -1,4 +1,4 @@
-export type LeadSource = "contact" | "audit" | "concept" | "maps" | "manual" | "brief";
+export type LeadSource = "contact" | "audit" | "concept" | "maps" | "manual" | "brief" | "demo";
 
 export type LeadStatus = "new" | "contacted" | "proposal" | "won" | "lost";
 

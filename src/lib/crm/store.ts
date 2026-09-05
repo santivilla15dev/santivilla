@@ -449,6 +449,23 @@ export async function getSite(id: string): Promise<Site | null> {
   return data ? rowToSite(data) : null;
 }
 
+export async function updateSiteStatus(
+  id: string,
+  status: Site["status"],
+): Promise<Site | null> {
+  const current = await getSite(id);
+  if (!current) return null;
+  const next = { ...current, status };
+  if (!isSupabaseConfigured()) {
+    memoryStore().sites.set(id, next);
+    return next;
+  }
+  const supabase = getSupabaseAdmin();
+  const { error } = await supabase.from("sites").update({ status }).eq("id", id);
+  if (error) throw new Error(error.message);
+  return next;
+}
+
 export async function listSites(): Promise<Site[]> {
   if (!isSupabaseConfigured()) {
     return [...memoryStore().sites.values()].sort((a, b) => b.createdAt.localeCompare(a.createdAt));

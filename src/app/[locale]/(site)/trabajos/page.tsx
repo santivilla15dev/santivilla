@@ -15,14 +15,10 @@ export const revalidate = 3600;
 const AFTER_HERO = "/demos/lugner-hero.jpg";
 const GASTHAUS_THUMB = "/demos/restaurant/hero-poster.jpg";
 const KELLERLICHT_THUMB = "/demos/kellerlicht/hero-poster.jpg";
-const VILLA_THUMB =
-  "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80";
-const SOLO_MODAS_THUMB =
-  "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80";
-const UNIVERSO_THUMB =
-  "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=800&q=80";
+const STADTGALERIE_THUMB = "/demos/lugner-hero.jpg";
 const VAULTSHIELD_THUMB = "/demos/vaultshield/hero-poster.webp";
 const NOVAAI_THUMB = "/demos/novaai/hero-poster.jpg";
+const PUBLIC_TEMPLATES = new Set(["restaurant", "kellerlicht"]);
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -32,12 +28,8 @@ function projectThumb(slug: string) {
       return GASTHAUS_THUMB;
     case "kellerlicht":
       return KELLERLICHT_THUMB;
-    case "villa-italia":
-      return VILLA_THUMB;
-    case "solo-modas":
-      return SOLO_MODAS_THUMB;
-    case "universo-del-calzado":
-      return UNIVERSO_THUMB;
+    case "stadtgalerie":
+      return STADTGALERIE_THUMB;
     case "vaultshield":
       return VAULTSHIELD_THUMB;
     case "novaai":
@@ -123,7 +115,9 @@ export default async function TrabajosPage({ params }: Props) {
   const m = getMessages(locale);
   const w = m.work;
   const cta = m.cta;
-  const templates = m.projects.filter((p) => p.group === "template");
+  const templates = m.projects.filter(
+    (p) => p.group === "template" && PUBLIC_TEMPLATES.has(p.slug),
+  );
   const saas = m.projects.filter((p) => p.group === "saas");
 
   return (
@@ -192,7 +186,7 @@ export default async function TrabajosPage({ params }: Props) {
                 <span className="size-1.5 rounded-full bg-white/35" aria-hidden />
                 <span className="size-1.5 rounded-full bg-white/35" aria-hidden />
                 <span className="ml-2 truncate text-[10px] text-white/55">
-                  demo · Konzept
+                  {w.stadtgalerieEyebrow}
                 </span>
               </div>
               <div className="relative aspect-[4/5] overflow-hidden bg-[#0b1016]">
@@ -209,13 +203,13 @@ export default async function TrabajosPage({ params }: Props) {
                 />
                 <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
                   <p className="text-[10px] uppercase tracking-[0.28em] text-[#d4b45a]">
-                    Wien 15
+                    {w.viennaTitle}
                   </p>
                   <p className="font-display mt-2 text-[clamp(1.75rem,4vw,2.35rem)] leading-[0.9] tracking-tight text-[#f5f1e8]">
                     {w.caseBrand}
                   </p>
                   <p className="mt-3 max-w-[22ch] text-xs leading-relaxed text-[#e8e4dc]/90 sm:text-sm">
-                    Öffnungszeiten · Shops · Anfahrt — klar auf dem Handy.
+                    {w.afterCaption}
                   </p>
                   <span className="mt-5 inline-flex bg-[#d4b45a] px-3.5 py-2 text-[11px] font-semibold text-[#1a1408]">
                     {w.openDemo}

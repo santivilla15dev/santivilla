@@ -3,7 +3,7 @@
 import {
   gasthausAssets,
   gasthausCopy,
-  gasthausWa,
+  gasthausReserveHref,
 } from "@/lib/demos/gasthaus-am-hof";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, type FormEvent } from "react";
@@ -127,8 +127,23 @@ export function GasthausLanding() {
   const [openDish, setOpenDish] = useState<string | null>(null);
   const [done, setDone] = useState(false);
 
-  function onSubmit(e: FormEvent) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: String(fd.get("name") ?? ""),
+          businessName: "Gasthaus Am Hof (Konzept)",
+          message: `Gäste: ${String(fd.get("guests") ?? "")}. Termin: ${String(fd.get("when") ?? "")}. ${String(fd.get("note") ?? "")}`,
+          source: "demo",
+        }),
+      });
+    } catch {
+      /* Konzept: still acknowledge the request */
+    }
     setDone(true);
   }
 
@@ -390,18 +405,20 @@ export function GasthausLanding() {
               >
                 {gasthausCopy.reserve.submit}
               </button>
-              <p className="m-0 text-sm text-[rgba(243,235,224,0.7)]">
-                Oder{" "}
-                <a
-                  href={gasthausWa}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#c4893a]"
-                >
-                  {gasthausCopy.reserve.waLabel}
-                </a>
-                .
-              </p>
+              {gasthausReserveHref() ? (
+                <p className="m-0 text-sm text-[rgba(243,235,224,0.7)]">
+                  Oder{" "}
+                  <a
+                    href={gasthausReserveHref()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#c4893a]"
+                  >
+                    {gasthausCopy.reserve.waLabel}
+                  </a>
+                  .
+                </p>
+              ) : null}
             </>
           ) : (
             <div role="status">
@@ -411,16 +428,18 @@ export function GasthausLanding() {
               <p className="mt-2 text-[rgba(243,235,224,0.85)]">
                 {gasthausCopy.reserve.successBody}
               </p>
-              <p className="mt-4 text-sm">
-                <a
-                  href={gasthausWa}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#c4893a]"
-                >
-                  WhatsApp öffnen
-                </a>
-              </p>
+              {gasthausReserveHref() ? (
+                <p className="mt-4 text-sm">
+                  <a
+                    href={gasthausReserveHref()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#c4893a]"
+                  >
+                    WhatsApp öffnen
+                  </a>
+                </p>
+              ) : null}
             </div>
           )}
         </form>

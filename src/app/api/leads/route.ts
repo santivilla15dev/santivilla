@@ -1,4 +1,5 @@
 import { checkLeadRateLimit } from "@/lib/audit/rate-limit";
+import { notifyNewLead } from "@/lib/crm/notify-lead";
 import { saveLead } from "@/lib/crm/store";
 import { NextResponse } from "next/server";
 
@@ -8,6 +9,7 @@ type Body = {
   phone?: string;
   businessName?: string;
   message?: string;
+  source?: "contact" | "demo";
   utm?: Record<string, string>;
 };
 
@@ -41,7 +43,7 @@ export async function POST(req: Request) {
 
   try {
     const lead = await saveLead({
-      source: "contact",
+      source: body.source === "demo" ? "demo" : "contact",
       name: name || undefined,
       email: email || undefined,
       phone: body.phone?.trim() || undefined,
@@ -50,6 +52,7 @@ export async function POST(req: Request) {
       utm: body.utm,
     });
 
+    void notifyNewLead(lead);
     return NextResponse.json({ id: lead.id, ok: true });
   } catch {
     return NextResponse.json({ error: "SAVE_FAILED" }, { status: 500 });

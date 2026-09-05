@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import type { FaqItem } from "@/components/faq-accordion";
-import { site, whatsappHref } from "@/lib/site";
+import { emailHref, hasCal, hasWhatsApp, site, whatsappHref } from "@/lib/site";
 
 export type FaqContactCopy = {
   faqEyebrow: string;
@@ -32,7 +32,7 @@ export function FaqContactSection({ copy }: { copy: FaqContactCopy }) {
     >
       <div className="mx-auto grid max-w-[1400px] gap-16 md:grid-cols-[1fr_1.4fr] md:gap-20">
         <FadeIn>
-          <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#B600A8]">
+          <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#d4b45a]">
             {copy.faqEyebrow}
           </p>
           <h2
@@ -54,7 +54,7 @@ export function FaqContactSection({ copy }: { copy: FaqContactCopy }) {
                 <AccordionTrigger className="py-6 text-left text-lg font-medium text-[#D7E2EA] hover:text-white hover:no-underline sm:text-2xl [&>svg]:text-[#D7E2EA]/60">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="pb-6 text-base font-light leading-relaxed text-[#D7E2EA]/70 sm:text-lg">
+                <AccordionContent className="pb-6 text-base font-light leading-relaxed text-[#D7E2EA]/90 sm:text-lg">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -64,7 +64,7 @@ export function FaqContactSection({ copy }: { copy: FaqContactCopy }) {
       </div>
 
       <FadeIn className="mx-auto mt-28 max-w-[1400px] border-t border-white/15 pt-20 md:mt-40 md:pt-28">
-        <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#B600A8]">
+        <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#d4b45a]">
           {copy.ctaEyebrow}
         </p>
         <h2
@@ -74,33 +74,44 @@ export function FaqContactSection({ copy }: { copy: FaqContactCopy }) {
           {copy.ctaTitle}
         </h2>
         <div className="mt-10 flex flex-wrap items-center gap-4 md:mt-14">
+          {hasWhatsApp() ? (
+            <a
+              href={whatsappHref(copy.whatsappMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${PILL} text-[#1a1408] hover:brightness-110`}
+              style={{
+                background: "#d4b45a",
+                boxShadow: "0 8px 24px rgba(212, 180, 90, 0.28)",
+              }}
+            >
+              {copy.whatsappLabel}
+            </a>
+          ) : (
+            <a
+              href={emailHref()}
+              className={`${PILL} text-[#1a1408] hover:brightness-110`}
+              style={{
+                background: "#d4b45a",
+                boxShadow: "0 8px 24px rgba(212, 180, 90, 0.28)",
+              }}
+            >
+              {site.email}
+            </a>
+          )}
+          {hasCal() ? (
+            <a
+              href={site.calUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${PILL} border-2 border-[#D7E2EA] text-[#D7E2EA] hover:bg-[#D7E2EA]/10`}
+            >
+              {copy.scheduleLabel}
+            </a>
+          ) : null}
           <a
-            href={whatsappHref(copy.whatsappMessage)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${PILL} text-white hover:brightness-110`}
-            style={{
-              background:
-                "linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)",
-              boxShadow:
-                "0px 4px 4px rgba(181, 1, 167, 0.25), 4px 4px 12px #7721B1 inset",
-              outline: "2px solid #ffffff",
-              outlineOffset: "-3px",
-            }}
-          >
-            {copy.whatsappLabel}
-          </a>
-          <a
-            href={site.calUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${PILL} border-2 border-[#D7E2EA] text-[#D7E2EA] hover:bg-[#D7E2EA]/10`}
-          >
-            {copy.scheduleLabel}
-          </a>
-          <a
-            href={`mailto:${site.email}`}
-            className="ml-2 text-sm font-light text-[#D7E2EA]/70 underline-offset-4 transition hover:text-[#D7E2EA] hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA]"
+            href={emailHref()}
+            className="ml-2 text-sm font-light text-[#D7E2EA] underline-offset-4 transition hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA]"
           >
             {site.email}
           </a>

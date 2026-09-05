@@ -1,4 +1,5 @@
-/** Datos demo Universo del Calzado — sustituir con info real antes del pitch. */
+/** Plantilla Konzept. CTA WhatsApp va a Santi. */
+import { whatsappHref } from "@/lib/site";
 
 export type StoreLocation = {
   name: string;
@@ -23,7 +24,7 @@ export const universoDelCalzadoDemo = {
     "Zapatos, camisetas de club y balones — dos tiendas, un WhatsApp.",
   konzeptNote:
     "Konzept / demo — no es el sitio oficial de Universo del Calzado. Datos de ejemplo.",
-  whatsapp: "573001234567",
+  whatsapp: "",
   phone: "+57 300 123 4567",
   categories: [
     {
@@ -71,11 +72,10 @@ export const universoDelCalzadoDemo = {
 } as const;
 
 export function universoWhatsAppHref(message?: string) {
-  const text = encodeURIComponent(
+  return whatsappHref(
     message ??
-      "Hola Universo del Calzado, ¿tienen talla 42 / camiseta de club? Gracias.",
+      "Hola Santi, vi la demo Universo del Calzado y me interesa una web así.",
   );
-  return `https://wa.me/${universoDelCalzadoDemo.whatsapp}?text=${text}`;
 }
 
 export function universoMapsEmbedUrl(query: string) {

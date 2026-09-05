@@ -408,6 +408,7 @@ export const deMessages: SiteMessages = {
     after: "Nachher · Demo",
     beforeNote: "Dichtes Layout · kleine Schrift · schwer am Handy.",
     afterNote: "Klare Home: Zeiten, Shops, Anfahrt, Kontakt in einem Flow.",
+    afterCaption: "Öffnungszeiten · Shops · Anfahrt - klar auf dem Handy.",
     beforeHost: "Typo3 · Zentrum",
     caseBrand: "Stadtgalerie West",
     viewCurrent: "Aktuelle Site ansehen →",
@@ -566,6 +567,8 @@ export const deMessages: SiteMessages = {
       "Hallo! Ich helfe bei Platz, Öffnungszeiten und Parken. Wähle eine Frage oder schreib uns.",
     thinking: "Einen Moment…",
     errorGeneric: "Antwort gerade nicht möglich. Probier WhatsApp.",
+    noAiFallback:
+      "Die schnellen Fragen (Platz, Zeiten, Parken) funktionieren hier. Alles andere: E-Mail oder WhatsApp an Santi.",
     openLabel: "Hilfe öffnen",
     closeLabel: "Schließen",
     demoLink: "/demos/restaurant",

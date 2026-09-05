@@ -17,8 +17,22 @@ const KEYS = [
   { name: "ANTHROPIC_API_KEY", sensitive: true },
   { name: "HF_API_KEY_ID", sensitive: true },
   { name: "HF_API_KEY_SECRET", sensitive: true },
+  { name: "PAGESPEED_API_KEY", sensitive: true },
+  { name: "GOOGLE_PLACES_API_KEY", sensitive: true },
+  { name: "NEXT_PUBLIC_SUPABASE_URL", sensitive: false },
+  { name: "NEXT_PUBLIC_SUPABASE_ANON_KEY", sensitive: true },
+  { name: "SUPABASE_SERVICE_ROLE_KEY", sensitive: true },
   { name: "NEXT_PUBLIC_WHATSAPP", sensitive: false },
   { name: "NEXT_PUBLIC_CAL_URL", sensitive: false },
+  { name: "NEXT_PUBLIC_SITE_URL", sensitive: false },
+  { name: "NEXT_PUBLIC_LEGAL_NAME", sensitive: false },
+  { name: "NEXT_PUBLIC_LEGAL_ADDRESS", sensitive: false },
+  { name: "NEXT_PUBLIC_LEGAL_EMAIL", sensitive: false },
+  { name: "NEXT_PUBLIC_LEGAL_GISA", sensitive: false },
+  { name: "NEXT_PUBLIC_LEGAL_FIRMENBUCH", sensitive: false },
+  { name: "NEXT_PUBLIC_LEGAL_UID", sensitive: false },
+  { name: "NEXT_PUBLIC_LEGAL_GEWERBEBEHOERDE", sensitive: false },
+  { name: "NEXT_PUBLIC_LEGAL_WKO", sensitive: false },
 ];
 
 function parseEnv(text) {
@@ -67,7 +81,13 @@ let skip = 0;
 
 for (const { name, sensitive } of KEYS) {
   const value = vars[name];
-  if (!value || value.includes("tu-usuario") || value === "436601234567") {
+  if (
+    !value ||
+    value.includes("tu-usuario") ||
+    value === "436601234567" ||
+    value === "436600000000" ||
+    value === "573001234567"
+  ) {
     console.log(`○ ${name} — omitido (placeholder o vacío)`);
     skip++;
     continue;

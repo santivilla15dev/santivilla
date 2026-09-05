@@ -12,10 +12,12 @@ import type { DailyMenuEntry, HoursOverride, MenuItem } from "@/lib/crm/types";
 type Props = {
   siteId: string;
   initialDailyMenu: DailyMenuEntry[];
+  initialHoursRegular?: string;
   initialHoursOverrides: HoursOverride[];
   initialAnnouncements: string;
   labels: {
     dailyMenu: string;
+    hoursRegular: string;
     hoursOverride: string;
     announcements: string;
     save: string;
@@ -28,6 +30,7 @@ type Props = {
 export function PortalEditor({
   siteId,
   initialDailyMenu,
+  initialHoursRegular = "",
   initialHoursOverrides,
   initialAnnouncements,
   labels,
@@ -37,6 +40,7 @@ export function PortalEditor({
   const [items, setItems] = useState<MenuItem[]>(
     initialDailyMenu.find((m) => m.date === today)?.items ?? [{ name: "", price: "" }],
   );
+  const [hoursRegular, setHoursRegular] = useState(initialHoursRegular);
   const [hoursOverrides, setHoursOverrides] = useState(initialHoursOverrides);
   const [announcements, setAnnouncements] = useState(initialAnnouncements);
   const [pending, setPending] = useState(false);
@@ -54,7 +58,15 @@ export function PortalEditor({
       const res = await fetch(`/api/portal/sites/${siteId}/content`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ dailyMenu, hoursOverrides, announcements }),
+        body: JSON.stringify({
+          dailyMenu,
+          hoursRegular: hoursRegular
+            .split("\n")
+            .map((l) => l.trim())
+            .filter(Boolean),
+          hoursOverrides,
+          announcements,
+        }),
       });
       if (!res.ok) throw new Error("fail");
       toast.success("OK");
@@ -115,6 +127,18 @@ export function PortalEditor({
         >
           + {labels.addItem}
         </Button>
+      </section>
+
+      <section className="rounded-xl border border-line p-6">
+        <h2 className="font-display text-xl">{labels.hoursRegular}</h2>
+        <Textarea
+          value={hoursRegular}
+          onChange={(e) => setHoursRegular(e.target.value)}
+          rows={5}
+          placeholder="Di–Fr 11.30–22.00"
+          aria-label={labels.hoursRegular}
+          className="mt-3 rounded-lg border-line px-3 py-2 text-sm"
+        />
       </section>
 
       <section className="rounded-xl border border-line p-6">

@@ -6,7 +6,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { createBrowserSupabase } from "@/lib/supabase/browser";
+import {
+  createBrowserSupabase,
+  isSupabaseBrowserConfigured,
+} from "@/lib/supabase/browser";
 import { safeNextPath } from "@/lib/auth/next-path";
 
 export function LoginForm() {
@@ -43,6 +46,16 @@ export function LoginForm() {
     } finally {
       setPending(false);
     }
+  }
+
+  if (!isSupabaseBrowserConfigured()) {
+    return (
+      <Alert>
+        <AlertDescription>
+          Auth no está configurado (faltan las keys públicas de Supabase).
+        </AlertDescription>
+      </Alert>
+    );
   }
 
   return (

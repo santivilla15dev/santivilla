@@ -164,6 +164,7 @@ export type SiteMessages = {
     after: string;
     beforeNote: string;
     afterNote: string;
+    afterCaption: string;
     beforeHost: string;
     caseBrand: string;
     viewCurrent: string;
@@ -303,6 +304,7 @@ export type SiteMessages = {
     greeting: string;
     thinking: string;
     errorGeneric: string;
+    noAiFallback: string;
     openLabel: string;
     closeLabel: string;
     demoLink: string;

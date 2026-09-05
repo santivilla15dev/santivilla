@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { defaultLocale, type Locale } from "@/lib/i18n/locales";
 
 type Props = {
   title: string;
@@ -52,11 +53,11 @@ export function DemoCtaBand({
   );
 }
 
-export function DemoCtaFooterSanti() {
+export function DemoCtaFooterSanti({ locale = defaultLocale }: { locale?: Locale }) {
   return (
     <>
       Demo de{" "}
-      <Link href="/" className="underline underline-offset-2">
+      <Link href={`/${locale}`} className="underline underline-offset-2">
         Santi Villa
       </Link>
     </>

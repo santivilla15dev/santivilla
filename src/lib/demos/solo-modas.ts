@@ -1,4 +1,5 @@
-/** Datos demo Solo Modas — sustituir con info real antes del pitch. */
+/** Plantilla Konzept. CTA WhatsApp va a Santi. */
+import { whatsappHref } from "@/lib/site";
 
 export type StoreLocation = {
   name: string;
@@ -20,7 +21,7 @@ export const soloModasDemo = {
   tagline: "Moda para toda la familia — tendencia, calidad y precio justo.",
   konzeptNote:
     "Konzept / demo — no es el sitio oficial de Solo Modas. Datos de ejemplo.",
-  whatsapp: "573001234567",
+  whatsapp: "",
   phone: "+57 300 123 4567",
   categories: [
     {
@@ -71,11 +72,10 @@ export const soloModasDemo = {
 } as const;
 
 export function soloModasWhatsAppHref(message?: string) {
-  const text = encodeURIComponent(
+  return whatsappHref(
     message ??
-      "Hola Solo Modas, quiero consultar disponibilidad / horarios de la tienda. Gracias.",
+      "Hola Santi, vi la demo Solo Modas y me interesa una web así.",
   );
-  return `https://wa.me/${soloModasDemo.whatsapp}?text=${text}`;
 }
 
 export function soloModasMapsEmbedUrl(query: string) {

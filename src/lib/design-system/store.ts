@@ -26,7 +26,7 @@ export type StoredConcept = {
   kind?: string;
   specialty?: string;
   summary?: string;
-  imageSource?: "openai" | "unsplash" | "nano-banana" | "places";
+  imageSource?: "openai" | "unsplash" | "nano-banana" | "places" | "local";
   heroImageUrl?: string;
   secondaryImageUrl?: string;
   detailImageUrl?: string;

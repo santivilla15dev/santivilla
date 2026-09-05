@@ -217,24 +217,43 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
         />
 
         <nav className="absolute inset-x-0 top-0 z-20 px-5 pt-5 sm:px-8 sm:pt-6 md:px-12 md:pt-8">
-          <div
-            className="flex justify-end gap-3 text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/75 sm:gap-4 sm:text-sm"
-            aria-label={content.langLabel}
-          >
-            {locales.map((code) => (
-              <a
-                key={code}
-                href={langHrefs[code]}
-                aria-current={code === content.locale ? "true" : undefined}
-                className={`transition-colors hover:text-[#D7E2EA] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA] ${
-                  code === content.locale
-                    ? "text-[#D7E2EA] underline decoration-[#B600A8] decoration-2 underline-offset-4"
-                    : ""
-                }`}
-              >
-                {code}
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap gap-4 text-[11px] font-medium uppercase tracking-[0.16em] text-[#D7E2EA] sm:gap-5 sm:text-xs">
+              <a href="#about" className="transition-colors hover:text-[#d4b45a]">
+                {content.nav.about}
               </a>
-            ))}
+              <a href="#services" className="transition-colors hover:text-[#d4b45a]">
+                {content.nav.services}
+              </a>
+              <a href="#projects" className="transition-colors hover:text-[#d4b45a]">
+                {content.nav.projects}
+              </a>
+              <a
+                href={`/${content.locale}/contacto`}
+                className="transition-colors hover:text-[#d4b45a]"
+              >
+                {content.nav.contact}
+              </a>
+            </div>
+            <div
+              className="flex justify-end gap-3 text-xs font-medium uppercase tracking-widest text-[#D7E2EA] sm:gap-4 sm:text-sm"
+              aria-label={content.langLabel}
+            >
+              {locales.map((code) => (
+                <a
+                  key={code}
+                  href={langHrefs[code]}
+                  aria-current={code === content.locale ? "true" : undefined}
+                  className={`transition-colors hover:text-[#d4b45a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d4b45a] ${
+                    code === content.locale
+                      ? "text-[#D7E2EA] underline decoration-[#d4b45a] decoration-2 underline-offset-4"
+                      : ""
+                  }`}
+                >
+                  {code}
+                </a>
+              ))}
+            </div>
           </div>
         </nav>
 
@@ -261,7 +280,7 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
           </div>
 
           {!hintGone && !reduceMotion ? (
-            <p className="pointer-events-none absolute bottom-14 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.18em] text-[#D7E2EA]/60 sm:bottom-5 sm:text-[#D7E2EA]/50">
+            <p className="pointer-events-none absolute bottom-14 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.18em] text-[#D7E2EA] sm:bottom-5">
               {content.hero.scrollHint}
             </p>
           ) : null}

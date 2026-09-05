@@ -44,21 +44,20 @@ export function ServicesSection({ content }: { content: Creator3dContent }) {
                   {service.name}
                 </h3>
                 <p
-                  className="mt-2 font-medium tabular-nums text-[#7621B0]"
+                  className="mt-2 font-medium tabular-nums text-[#8a6a1a]"
                   style={{ fontSize: "clamp(1rem, 1.6vw, 1.5rem)" }}
                 >
                   {service.price}
                 </p>
                 {service.note ? (
-                  <p className="mt-1 text-sm font-medium uppercase tracking-wide opacity-50">
+                  <p className="mt-1 text-sm font-medium uppercase tracking-wide text-[#0C0C0C]/80">
                     {service.note}
                   </p>
                 ) : null}
               </div>
               <p
-                className="col-span-2 font-light leading-relaxed md:col-span-1"
+                className="col-span-2 font-light leading-relaxed text-[#0C0C0C] md:col-span-1"
                 style={{
-                  opacity: 0.6,
                   fontSize: "clamp(1rem, 1.4vw, 1.25rem)",
                 }}
               >

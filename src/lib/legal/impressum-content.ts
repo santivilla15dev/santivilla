@@ -51,127 +51,66 @@ function legalWko() {
   return envPublic("NEXT_PUBLIC_LEGAL_WKO");
 }
 
-function ph(
-  locale: Locale,
-  de: string,
-  en: string,
-  es: string,
-): string {
-  if (locale === "en") return `[To complete: ${en}]`;
-  if (locale === "es") return `[Por completar: ${es}]`;
-  return `[Zu ergänzen: ${de}]`;
-}
-
-function line(label: string, value: string, missing: string): string {
-  return `${label}: ${value || missing}`;
+function optionalLine(label: string, value: string): string | null {
+  const v = value.trim();
+  return v ? `${label}: ${v}` : null;
 }
 
 function impressumIdentity(locale: Locale): string[] {
   const name = legalName();
   const address = legalAddress();
   const email = legalEmail();
-  const gisa = legalGisa();
-  const firmenbuch = legalFirmenbuch();
-  const uid = legalUid();
-  const behoerde = legalGewerbebehoerde();
-  const wko = legalWko();
+  const extras = [
+    optionalLine(
+      locale === "en"
+        ? "Trade licence / GISA"
+        : locale === "es"
+          ? "Gewerbeschein / GISA"
+          : "Gewerbe / GISA-Nummer",
+      legalGisa(),
+    ),
+    optionalLine("Firmenbuchnummer", legalFirmenbuch()),
+    optionalLine(
+      locale === "en" ? "VAT ID (UID)" : "UID-Nummer",
+      legalUid(),
+    ),
+    optionalLine("Gewerbebehörde", legalGewerbebehoerde()),
+    optionalLine(
+      locale === "en" ? "Chamber / trade (WKO)" : locale === "es" ? "WKO / oficio" : "WKO / Gewerbe",
+      legalWko(),
+    ),
+  ].filter((line): line is string => Boolean(line));
 
-  if (locale === "en") {
-    return [
-      line("Full / trade name", name, ph(locale, "", "full / trade name", "")),
-      line("Postal address", address, ph(locale, "", "postal address", "")),
-      line("Email", email, ph(locale, "", "contact email", "")),
-      line(
-        "Trade licence / GISA no.",
-        gisa,
-        ph(locale, "", "GISA / Gewerbeschein number (if applicable)", ""),
-      ),
-      line(
-        "Company register (Firmenbuch)",
-        firmenbuch,
-        ph(locale, "", "Firmenbuchnummer if applicable — otherwise N/A", ""),
-      ),
-      line(
-        "VAT ID (UID)",
-        uid,
-        ph(locale, "", "UID if charging VAT — otherwise N/A", ""),
-      ),
-      line(
-        "Supervisory authority (Gewerbebehörde)",
-        behoerde,
-        ph(locale, "", "Gewerbebehörde if applicable", ""),
-      ),
-      line(
-        "Chamber / trade (WKO)",
-        wko,
-        ph(locale, "", "WKO membership / trade (optional)", ""),
-      ),
-    ];
-  }
+  const honest =
+    locale === "en"
+      ? "Sole trader / Kleinunternehmer. Company register, GISA and UID will be listed here when applicable."
+      : locale === "es"
+        ? "Autónomo / Kleinunternehmer. Firmenbuch, GISA y UID se indican aquí cuando existan."
+        : "Einzelunternehmen / Kleinunternehmer. Firmenbuch, GISA und UID werden hier ergänzt, sobald vorhanden.";
 
-  if (locale === "es") {
-    return [
-      line("Nombre completo / comercial", name, ph(locale, "", "", "nombre completo / comercial")),
-      line("Dirección postal", address, ph(locale, "", "", "dirección postal")),
-      line("Email", email, ph(locale, "", "", "email de contacto")),
-      line(
-        "Gewerbeschein / GISA",
-        gisa,
-        ph(locale, "", "", "nº GISA / Gewerbeschein (si aplica)"),
-      ),
-      line(
-        "Firmenbuchnummer",
-        firmenbuch,
-        ph(locale, "", "", "Firmenbuchnummer si aplica — si no, N/A"),
-      ),
-      line(
-        "UID-Nummer",
-        uid,
-        ph(locale, "", "", "UID si facturas con IVA — si no, N/A"),
-      ),
-      line(
-        "Gewerbebehörde",
-        behoerde,
-        ph(locale, "", "", "autoridad reguladora (Gewerbebehörde) si aplica"),
-      ),
-      line(
-        "WKO / oficio",
-        wko,
-        ph(locale, "", "", "afiliación WKO / oficio (opcional)"),
-      ),
-    ];
-  }
-
-  return [
-    line("Vollständiger / Firmenname", name, ph(locale, "Vollständiger / Firmenname", "", "")),
-    line("Anschrift", address, ph(locale, "postalische Anschrift", "", "")),
-    line("E-Mail", email, ph(locale, "Kontakt-E-Mail", "", "")),
-    line(
-      "Gewerbe / GISA-Nummer",
-      gisa,
-      ph(locale, "GISA- / Gewerbeschein-Nummer (falls zutreffend)", "", ""),
-    ),
-    line(
-      "Firmenbuchnummer",
-      firmenbuch,
-      ph(locale, "Firmenbuchnummer falls zutreffend — sonst N/A", "", ""),
-    ),
-    line(
-      "UID-Nummer",
-      uid,
-      ph(locale, "UID bei USt-Ausweis — sonst N/A", "", ""),
-    ),
-    line(
-      "Gewerbebehörde",
-      behoerde,
-      ph(locale, "Gewerbebehörde falls zutreffend", "", ""),
-    ),
-    line(
-      "WKO / Gewerbe",
-      wko,
-      ph(locale, "WKO-Mitgliedschaft / Gewerbe (optional)", "", ""),
-    ),
+  const lines = [
+    locale === "en"
+      ? `Full / trade name: ${name}`
+      : locale === "es"
+        ? `Nombre comercial: ${name}`
+        : `Name: ${name}`,
+    address
+      ? locale === "en"
+        ? `Postal address: ${address}`
+        : locale === "es"
+          ? `Dirección postal: ${address}`
+          : `Anschrift: ${address}`
+      : locale === "en"
+        ? `Location: ${site.location}`
+        : locale === "es"
+          ? `Ubicación: ${site.location}`
+          : `Standort: ${site.location}`,
+    `Email: ${email}`,
+    ...extras,
   ];
+
+  if (extras.length === 0) lines.push(honest);
+  return lines;
 }
 
 export function getImpressum(locale: Locale): LegalPageContent {
@@ -200,7 +139,7 @@ export function getImpressum(locale: Locale): LegalPageContent {
         {
           title: "Note",
           paragraphs: [
-            "Fields marked “[To complete: …]” must be filled via NEXT_PUBLIC_LEGAL_* env vars before relying on this page. Not a substitute for legal advice.",
+            "Informational only. Not a substitute for legal advice.",
           ],
         },
       ],
@@ -232,7 +171,7 @@ export function getImpressum(locale: Locale): LegalPageContent {
         {
           title: "Nota",
           paragraphs: [
-            "Los campos “[Por completar: …]” se rellenan con variables NEXT_PUBLIC_LEGAL_* en el entorno. No sustituye asesoría legal.",
+            "Informativo. No sustituye asesoría legal.",
           ],
         },
       ],
@@ -260,21 +199,19 @@ export function getImpressum(locale: Locale): LegalPageContent {
           "Inhalte dieser Website wurden mit Sorgfalt erstellt. Keine Gewähr für Vollständigkeit oder Aktualität. Für externe Links übernehmen wir keine Haftung.",
         ],
       },
-      {
-        title: "Hinweis",
-        paragraphs: [
-          "Mit „[Zu ergänzen: …]“ markierte Angaben über NEXT_PUBLIC_LEGAL_*-Umgebungsvariablen pflegen. Kein Ersatz für Rechtsberatung.",
-        ],
-      },
+        {
+          title: "Hinweis",
+          paragraphs: [
+            "Kein Ersatz für Rechtsberatung.",
+          ],
+        },
     ],
   };
 }
 
 export function getDatenschutz(locale: Locale): LegalPageContent {
   const name = legalName();
-  const address =
-    legalAddress() ||
-    ph(locale, "postalische Anschrift", "postal address", "dirección postal");
+  const address = legalAddress() || site.location;
   const email = legalEmail();
 
   if (locale === "en") {

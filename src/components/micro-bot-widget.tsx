@@ -83,6 +83,18 @@ export function MicroBotWidget({ profileId, locale, labels }: Props) {
       };
 
       if (!res.ok || !data.answer) {
+        if (res.status === 503) {
+          setMessages((prev) => [
+            ...prev,
+            {
+              role: "assistant",
+              content: labels.noAiFallback,
+            },
+          ]);
+          applyHandoff(profile!.reservePrompt, Boolean(profile!.whatsapp));
+          setPending(false);
+          return;
+        }
         setError(data.message ?? labels.errorGeneric);
         setPending(false);
         return;
@@ -202,7 +214,7 @@ export function MicroBotWidget({ profileId, locale, labels }: Props) {
             <div ref={bottomRef} />
           </div>
 
-          {showWa && (
+          {showWa && waLink ? (
             <div className="border-t border-white/10 px-4 py-2">
               <Button
                 asChild
@@ -213,7 +225,7 @@ export function MicroBotWidget({ profileId, locale, labels }: Props) {
                 </a>
               </Button>
             </div>
-          )}
+          ) : null}
 
           <form
             className="border-t border-white/10 p-3"

@@ -1,9 +1,10 @@
+import { site } from "@/lib/site";
 import type { BotProfile } from "../types";
 
 export const gasthausAmHofProfile: BotProfile = {
   id: "gasthaus-am-hof",
   businessName: "Gasthaus Am Hof",
-  whatsapp: "436600000000",
+  whatsapp: site.whatsapp,
   address: "Am Hof 1, 1010 Wien",
   transit: "U1 / U3 Stephansplatz",
   hours: [

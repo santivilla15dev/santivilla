@@ -1,5 +1,5 @@
 import { requireAdmin } from "@/lib/auth/require-role";
-import { createSite } from "@/lib/crm/store";
+import { createSite, updateSiteStatus } from "@/lib/crm/store";
 import { getConcept } from "@/lib/design-system/store";
 import { getSupabaseAdmin } from "@/lib/supabase/admin";
 import { NextResponse } from "next/server";
@@ -25,7 +25,38 @@ async function resolveOwnerId(body: Body): Promise<string | null> {
   const { data, error } = await admin.auth.admin.listUsers({ perPage: 1000 });
   if (error) throw error;
   const match = data.users.find((u) => u.email?.toLowerCase() === email);
-  return match?.id ?? null;
+  if (match?.id) return match.id;
+
+  const invited = await admin.auth.admin.inviteUserByEmail(email, {
+    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://santivilla-rxxn.vercel.app"}/portal`,
+  });
+  if (invited.error || !invited.data.user?.id) return null;
+  return invited.data.user.id;
+}
+
+export async function PATCH(req: Request) {
+  const adminUser = await requireAdmin();
+  if (!adminUser) return NextResponse.json({ error: "UNAUTHORIZED" }, { status: 401 });
+
+  let body: { id?: string; status?: "active" | "paused" | "draft" };
+  try {
+    body = (await req.json()) as { id?: string; status?: "active" | "paused" | "draft" };
+  } catch {
+    return NextResponse.json({ error: "BAD_JSON" }, { status: 400 });
+  }
+
+  if (!body.id || !body.status) {
+    return NextResponse.json({ error: "MISSING_FIELDS" }, { status: 400 });
+  }
+
+  try {
+    const site = await updateSiteStatus(body.id, body.status);
+    if (!site) return NextResponse.json({ error: "NOT_FOUND" }, { status: 404 });
+    return NextResponse.json({ site });
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : "UPDATE_FAILED";
+    return NextResponse.json({ error: "UPDATE_FAILED", message: msg }, { status: 500 });
+  }
 }
 
 export async function POST(req: Request) {

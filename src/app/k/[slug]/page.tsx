@@ -1,6 +1,6 @@
 import { CtaButtons } from "@/components/cta-buttons";
 import { getConceptBySlug } from "@/lib/design-system/store";
-import { whatsappHref } from "@/lib/site";
+import { emailHref, hasWhatsApp, whatsappHref } from "@/lib/site";
 import { notFound } from "next/navigation";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -66,10 +66,10 @@ export default async function KonzeptLivePage({ params }: Props) {
       <p className="mt-4 text-center text-[11px] text-[#e8e4dc]/50">
         Daten aus Google Maps · vor Pitch prüfen ·{" "}
         <a
-          href={whatsappHref(whatsappMessage)}
+          href={hasWhatsApp() ? whatsappHref(whatsappMessage) : emailHref()}
           className="text-[#d4b45a] hover:underline"
         >
-          Feedback per WhatsApp
+          {hasWhatsApp() ? "Feedback per WhatsApp" : "Feedback per E-Mail"}
         </a>
       </p>
     </div>

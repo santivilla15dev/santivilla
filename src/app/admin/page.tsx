@@ -29,7 +29,15 @@ export default async function AdminPage({ searchParams }: Props) {
 
   return (
     <div>
-      <h1 className="font-display text-3xl">{m.leads}</h1>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h1 className="font-display text-3xl">{m.leads}</h1>
+        <a
+          href="/api/admin/leads/export"
+          className="text-sm font-medium text-accent underline-offset-4 hover:underline"
+        >
+          {m.exportCsv}
+        </a>
+      </div>
 
       <form className="mt-6 flex flex-wrap gap-3">
         <Input

@@ -1,36 +1,24 @@
 import type { Locale } from "@/lib/i18n/locales";
 
-const FIGMA =
-  "https://shrug-person-78902957.figma.site/_components/v2";
-
-/** Assets decorativos (render 3D de la spec como fallback del retrato). */
-export const creator3dAssets = {
-  portrait: `${FIGMA}/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png`,
-  moon: `${FIGMA}/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png`,
-  object: `${FIGMA}/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png`,
-  lego: `${FIGMA}/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png`,
-  group: `${FIGMA}/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png`,
-} as const;
-
 const SHOTS = "/demos/3d-creator/shots";
 
-/** Marquee: capturas reales de las demos (fila 1 heroes, fila 2 scroll). */
+/** Marquee: solo piezas que se enseñan en público. */
 export const creator3dMarquee = {
   row1: [
     `${SHOTS}/stadtgalerie-desktop.webp`,
     `${SHOTS}/restaurant-desktop.webp`,
-    `${SHOTS}/villa-italia-desktop.webp`,
-    `${SHOTS}/solo-modas-desktop.webp`,
-    `${SHOTS}/universo-del-calzado-desktop.webp`,
+    "/demos/kellerlicht/hero-poster.jpg",
     `${SHOTS}/auditoria-desktop.webp`,
+    "/demos/novaai/hero-poster.jpg",
+    "/demos/vaultshield/hero-poster.webp",
   ],
   row2: [
-    `${SHOTS}/auditoria-desktop-2.webp`,
-    `${SHOTS}/universo-del-calzado-desktop-2.webp`,
-    `${SHOTS}/solo-modas-desktop-2.webp`,
-    `${SHOTS}/villa-italia-desktop-2.webp`,
+    "/demos/kellerlicht/still-bar.jpg",
     `${SHOTS}/restaurant-desktop-2.webp`,
     `${SHOTS}/stadtgalerie-desktop-2.webp`,
+    "/demos/kellerlicht/still-board.jpg",
+    `${SHOTS}/auditoria-desktop-2.webp`,
+    "/demos/novaai/mitha.webp",
   ],
 } as const;
 
@@ -107,13 +95,6 @@ const PROJECT_BASE: {
       mobile: "/demos/kellerlicht/still-board.jpg",
       secondary: "/demos/kellerlicht/still-bar.jpg",
     },
-  },
-  { slug: "villa-italia", href: "/demos/villa-italia", shots: shots("villa-italia", "mobile-2") },
-  { slug: "solo-modas", href: "/demos/solo-modas", shots: shots("solo-modas", "desktop-2") },
-  {
-    slug: "universo-del-calzado",
-    href: "/demos/universo-del-calzado",
-    shots: shots("universo-del-calzado", "desktop-2"),
   },
   { slug: "vaultshield", href: "/demos/vaultshield", shots: shots("vaultshield", "desktop-2") },
   {
@@ -245,24 +226,6 @@ const CONTENT: Record<Locale, Creator3dContent> = {
             "Landing cinematográfica: vídeo con scroll, Am Glas, horarios y reserva por WhatsApp.",
         },
         {
-          name: "Villa Italia",
-          category: "Pizzería · Colombia",
-          blurb:
-            "Carta, horarios, domicilios y WhatsApp para una pizzería — pensado primero para el móvil.",
-        },
-        {
-          name: "Solo Modas",
-          category: "Moda · Retail",
-          blurb:
-            "Tienda de ropa con categorías, varias sedes, horarios y contacto directo.",
-        },
-        {
-          name: "Universo del Calzado",
-          category: "Deportes · Retail",
-          blurb:
-            "Zapatos, camisetas de club y dos tiendas en Santa Rosa de Osos, con WhatsApp a un toque.",
-        },
-        {
           name: "VaultShield",
           category: "SaaS · Concepto",
           blurb:
@@ -376,24 +339,6 @@ const CONTENT: Record<Locale, Creator3dContent> = {
             "Cinematic Landing: Scroll-Video, Weine am Glas, Öffnungszeiten und Reservierung per WhatsApp.",
         },
         {
-          name: "Villa Italia",
-          category: "Pizzeria · Kolumbien",
-          blurb:
-            "Speisekarte, Öffnungszeiten, Lieferung und WhatsApp für eine Pizzeria — zuerst fürs Handy gedacht.",
-        },
-        {
-          name: "Solo Modas",
-          category: "Mode · Retail",
-          blurb:
-            "Bekleidungsgeschäft mit Kategorien, mehreren Standorten, Öffnungszeiten und Direktkontakt.",
-        },
-        {
-          name: "Universo del Calzado",
-          category: "Sport · Retail",
-          blurb:
-            "Schuhe, Vereinstrikots und zwei Filialen in Santa Rosa de Osos, mit WhatsApp per Tipp.",
-        },
-        {
           name: "VaultShield",
           category: "SaaS · Konzept",
           blurb:
@@ -505,24 +450,6 @@ const CONTENT: Record<Locale, Creator3dContent> = {
           category: "Wine bar · Template",
           blurb:
             "Cinematic landing: scroll video, wines by the glass, hours and WhatsApp reservations.",
-        },
-        {
-          name: "Villa Italia",
-          category: "Pizzeria · Colombia",
-          blurb:
-            "Menu, hours, delivery and WhatsApp for a pizzeria — designed for the phone first.",
-        },
-        {
-          name: "Solo Modas",
-          category: "Fashion · Retail",
-          blurb:
-            "Clothing store with categories, several locations, hours and direct contact.",
-        },
-        {
-          name: "Universo del Calzado",
-          category: "Sports · Retail",
-          blurb:
-            "Shoes, club shirts and two stores in Santa Rosa de Osos, with WhatsApp in one tap.",
         },
         {
           name: "VaultShield",

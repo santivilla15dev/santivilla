@@ -53,7 +53,7 @@ export type BriefImages = {
   heroUrl: string;
   secondaryUrl: string;
   detailUrl: string;
-  source: "nano-banana" | "unsplash";
+  source: "nano-banana" | "unsplash" | "local";
 };
 
 /** Public/persisted brief: LLM fields without imagePrompts, plus resolved image URLs. */
@@ -69,7 +69,7 @@ export const briefPayloadStoredSchema = briefSchema
       heroUrl: z.string(),
       secondaryUrl: z.string(),
       detailUrl: z.string(),
-      source: z.enum(["nano-banana", "unsplash"]),
+      source: z.enum(["nano-banana", "unsplash", "local"]),
     }),
   });
 

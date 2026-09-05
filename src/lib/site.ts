@@ -1,4 +1,20 @@
-/** Datos centrales del sitio - cámbialos cuando tengas WhatsApp / Cal reales */
+const FAKE_WHATSAPP = new Set([
+  "436600000000",
+  "436601234567",
+  "573001234567",
+]);
+
+function readPublicEnv(key: string): string {
+  return process.env[key]?.trim() ?? "";
+}
+
+function cleanWhatsApp(raw: string): string {
+  const digits = raw.replace(/\D/g, "");
+  if (!digits || FAKE_WHATSAPP.has(digits)) return "";
+  return digits;
+}
+
+/** Datos centrales del sitio. WhatsApp y Cal solo existen si hay env real. */
 export const site = {
   name: "Santi Villa",
   shortName: "SantiVilla",
@@ -9,14 +25,30 @@ export const site = {
   },
   email: "hola@santivilla.com",
   location: "Wien / Remote",
-  /** Número internacional sin + ni espacios, ej: 436601234567 */
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "436600000000",
-  /** Enlace público de Cal.com o Calendly */
-  calUrl:
-    process.env.NEXT_PUBLIC_CAL_URL ?? "https://cal.com/santivilla/15min",
+  /** E.164 sin +. Vacío si falta env o es un placeholder. */
+  whatsapp: cleanWhatsApp(readPublicEnv("NEXT_PUBLIC_WHATSAPP")),
+  /** Vacío si no hay calendario real configurado. */
+  calUrl: readPublicEnv("NEXT_PUBLIC_CAL_URL"),
 } as const;
 
-export function whatsappHref(message?: string) {
+export function hasWhatsApp(): boolean {
+  return site.whatsapp.length > 0;
+}
+
+export function hasCal(): boolean {
+  return site.calUrl.length > 0;
+}
+
+export function emailHref(subject?: string, body?: string): string {
+  const q = new URLSearchParams();
+  if (subject) q.set("subject", subject);
+  if (body) q.set("body", body);
+  const qs = q.toString();
+  return qs ? `mailto:${site.email}?${qs}` : `mailto:${site.email}`;
+}
+
+export function whatsappHref(message?: string): string {
+  if (!hasWhatsApp()) return "";
   const text = encodeURIComponent(
     message ??
       "Hola Santi, vi tu portafolio y me interesa una web para mi negocio.",
@@ -24,13 +56,16 @@ export function whatsappHref(message?: string) {
   return `https://wa.me/${site.whatsapp}?text=${text}`;
 }
 
-/** Origen público del sitio (WhatsApp / enlaces absolutos). */
+/**
+ * Origen público. santivilla.com está en otra cuenta Vercel (402) —
+ * no lo usamos como fallback hasta que el dominio viva en santivilla-rxxn.
+ */
 export function siteOrigin(): string {
   const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (fromEnv) return fromEnv.replace(/\/$/, "");
   const vercel = process.env.VERCEL_URL?.trim();
   if (vercel) return `https://${vercel.replace(/\/$/, "")}`;
-  return `https://${site.domain}`;
+  return "https://santivilla-rxxn.vercel.app";
 }
 
 export function absoluteUrl(path: string): string {
@@ -80,15 +115,6 @@ export const packages = [
 ] as const;
 
 export const projects = [
-  {
-    slug: "auditoria",
-    title: "Auditoría - score + concepto",
-    type: "Producto",
-    href: "/auditoria",
-    blurb:
-      "Pega una URL: score + concepto HTML automático (Santi Design Agent) para todos los dispositivos.",
-    tags: ["Lead magnet", "Agente", "Responsive"],
-  },
   {
     slug: "stadtgalerie",
     title: "Stadtgalerie West - Konzept centro",
@@ -168,55 +194,4 @@ export const projects = [
 ] as const;
 
 export const viennaMallCase = projects.find((p) => p.slug === "stadtgalerie")!;
-
-/** Copy de la home - narrativa para clientes locales */
-export const homeContent = {
-  heroLead:
-    "Tus clientes deciden en segundos si se quedan. Yo construyo webs que ganan esos segundos - para restaurantes, locales y centros en Wien.",
-  intro: {
-    eyebrow: "De qué se trata",
-    title: "Una web que tus clientes entienden en segundos",
-    body: "Soy Santi Villa. Ayudo a negocios locales (Wien y remote) a tener una presencia online limpia: horarios, menú o servicios, mapa y WhatsApp a un toque. Sin líos técnicos, sin sitios que solo se ven bien en un monitor grande.",
-  },
-  advantages: [
-    {
-      title: "Se ve bien en cualquier pantalla",
-      body: "Móvil, tablet y desktop. Tus clientes no pelean con el zoom ni con menús imposibles.",
-    },
-    {
-      title: "Contacto en un toque",
-      body: "WhatsApp, llamada o reserva visibles. Menos fricción = más clientes que te escriben.",
-    },
-    {
-      title: "Ves el concepto antes de decidir",
-      body: "Te muestro un redesign de ejemplo (Konzept). Si te gusta, lo convertimos en web real.",
-    },
-    {
-      title: "Precios y alcance claros",
-      body: "Landing, sitio de negocio o mantenimiento. Sabes qué incluye cada paquete desde el día uno.",
-    },
-  ],
-  clientDesign: {
-    eyebrow: "Diseño para clientes",
-    title: "Así trabajamos el diseño juntos",
-    body: "Primero creo un Konzept: una propuesta visual de cómo podría verse tu negocio online. No es el sitio oficial - es una demo honesta para que veas el salto. Puedes pedir cambios (menú, horarios, idioma) y, cuando encaje, lanzo la web real con dominio, hosting y WhatsApp listo.",
-    steps: [
-      "Audit o demo: vemos tu web actual o una plantilla cercana a tu rubro.",
-      "Konzept: diseño responsive con tu info (o datos que me pases).",
-      "Feedback: WhatsApp o el chat del agente - afinamos hasta que digas sí.",
-      "Web real: publicamos, conectamos dominio y dejas de depender de sitios antiguos.",
-    ],
-    ctaDemo: "Ver demo Stadtgalerie",
-    ctaAudit: "Probar con tu URL",
-  },
-  mobileErst: {
-    eyebrow: "Producto",
-    title: "Auditoría con tu URL",
-    body: "Pega la URL de tu negocio: recibes un score responsive (0-100) y un concepto HTML automático con el Santi Design Agent. Ideal para enseñar el “antes / después” al dueño o a ti mismo.",
-  },
-  work: {
-    title: "Trabajos y demos",
-    body: "Ejemplos en vivo que puedes abrir y mandar por WhatsApp. Las demos son propuestas conceptuales, no sitios oficiales de esos negocios.",
-  },
-} as const;
 

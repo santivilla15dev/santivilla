@@ -408,6 +408,7 @@ export const esMessages: SiteMessages = {
     after: "Después · Demo",
     beforeNote: "Layout denso · tipografía pequeña · difícil en móvil.",
     afterNote: "Home clara: horarios, tiendas, cómo llegar y contacto en un solo flujo.",
+    afterCaption: "Horarios · Tiendas · Cómo llegar - claro en el móvil.",
     beforeHost: "Typo3 · Zentrum",
     caseBrand: "Stadtgalerie West",
     viewCurrent: "Ver sitio actual →",
@@ -566,6 +567,8 @@ export const esMessages: SiteMessages = {
       "¡Hola! Te ayudo con sitio, horarios y aparcamiento. Elige una pregunta o escríbenos.",
     thinking: "Un momento…",
     errorGeneric: "No puedo responder ahora. Prueba WhatsApp.",
+    noAiFallback:
+      "Las preguntas rápidas (sitio, horarios, aparcar) funcionan aquí. Para lo demás, escribe a Santi por email o WhatsApp.",
     openLabel: "Abrir ayuda",
     closeLabel: "Cerrar",
     demoLink: "/demos/restaurant",

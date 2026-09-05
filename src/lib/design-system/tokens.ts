@@ -48,5 +48,5 @@ export type DesignBrief = {
   heroImageUrl?: string;
   secondaryImageUrl?: string;
   detailImageUrl?: string;
-  imageSource?: "openai" | "unsplash" | "nano-banana" | "places";
+  imageSource?: "openai" | "unsplash" | "nano-banana" | "places" | "local";
 };

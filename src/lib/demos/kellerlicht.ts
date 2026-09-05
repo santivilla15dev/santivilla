@@ -7,11 +7,13 @@ export const kellerlichtAssets = {
   vault: "/demos/kellerlicht/still-vault.jpg",
 } as const;
 
-export const kellerlichtWa =
-  "https://wa.me/436600000000?text=" +
-  encodeURIComponent(
+import { whatsappHref } from "@/lib/site";
+
+export function kellerlichtReserveHref(): string {
+  return whatsappHref(
     "Hallo! Ich möchte einen Tisch im Kellerlicht reservieren.",
   );
+}
 
 export const kellerlichtCopy = {
   title: "Kellerlicht - Demo",

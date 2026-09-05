@@ -1,4 +1,4 @@
-import { whatsappHref } from "@/lib/site";
+import { emailHref, hasWhatsApp, site, whatsappHref } from "@/lib/site";
 
 export function BriefContact({
   title,
@@ -40,29 +40,31 @@ export function BriefContact({
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
           <a
-            href={whatsappHref(whatsappMessage)}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={hasWhatsApp() ? whatsappHref(whatsappMessage) : emailHref()}
+            target={hasWhatsApp() ? "_blank" : undefined}
+            rel={hasWhatsApp() ? "noopener noreferrer" : undefined}
             className="inline-flex rounded-full px-6 py-3 text-sm font-medium transition hover:brightness-110"
             style={{
               backgroundColor: "var(--brief-primary)",
               color: "var(--brief-bg)",
             }}
           >
-            {ctaLabel}
+            {hasWhatsApp() ? ctaLabel : site.email}
           </a>
-          <a
-            href={whatsappHref(whatsappMessage)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex rounded-full border px-6 py-3 text-sm font-medium transition hover:opacity-80"
-            style={{
-              borderColor: "color-mix(in srgb, var(--brief-ink) 25%, transparent)",
-              color: "var(--brief-ink)",
-            }}
-          >
-            {whatsappLabel}
-          </a>
+          {hasWhatsApp() ? (
+            <a
+              href={whatsappHref(whatsappMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex rounded-full border px-6 py-3 text-sm font-medium transition hover:opacity-80"
+              style={{
+                borderColor: "color-mix(in srgb, var(--brief-ink) 25%, transparent)",
+                color: "var(--brief-ink)",
+              }}
+            >
+              {whatsappLabel}
+            </a>
+          ) : null}
         </div>
       </div>
     </section>

@@ -6,8 +6,14 @@ export type ConceptImages = {
   heroUrl: string;
   secondaryUrl: string;
   detailUrl: string;
-  source: "nano-banana" | "unsplash";
+  source: "nano-banana" | "unsplash" | "local";
 };
+
+const LOCAL_STUDIO: [string, string, string] = [
+  "/demos/restaurant/hero-poster.jpg",
+  "/demos/restaurant/still-dining.jpg",
+  "/demos/kellerlicht/still-bar.jpg",
+];
 
 const UNSPLASH: Record<BusinessKind, [string, string, string]> = {
   pizzeria: [
@@ -245,6 +251,14 @@ export async function generateConceptImages(input: {
 
   // Civic portals: curated Unsplash only — HF can drift into retail imagery.
   if (input.kind === "civic") {
+    if (process.env.NODE_ENV === "production") {
+      return {
+        heroUrl: LOCAL_STUDIO[0],
+        secondaryUrl: LOCAL_STUDIO[1],
+        detailUrl: LOCAL_STUDIO[2],
+        source: "local",
+      };
+    }
     return {
       heroUrl: fallback[0],
       secondaryUrl: fallback[1],
@@ -254,6 +268,14 @@ export async function generateConceptImages(input: {
   }
 
   if (!hasHiggsfieldCredentials()) {
+    if (process.env.NODE_ENV === "production") {
+      return {
+        heroUrl: LOCAL_STUDIO[0],
+        secondaryUrl: LOCAL_STUDIO[1],
+        detailUrl: LOCAL_STUDIO[2],
+        source: "local",
+      };
+    }
     return {
       heroUrl: fallback[0],
       secondaryUrl: fallback[1],

@@ -20,7 +20,7 @@ import {
   saveLocalConceptHtml,
   stripEditorArtifacts,
 } from "@/lib/design-system/concept-live-edit";
-import { whatsappHref } from "@/lib/site";
+import { emailHref, hasWhatsApp, site, whatsappHref } from "@/lib/site";
 import { loadEditToken } from "@/lib/design-system/edit-token";
 import type { Locale } from "@/lib/i18n/locales";
 import type { SiteMessages } from "@/lib/i18n/messages/types";
@@ -36,7 +36,7 @@ type ConceptMeta = {
   specialty?: string;
   summary?: string;
   tagline?: string;
-  imageSource?: "openai" | "unsplash" | "nano-banana" | "places";
+  imageSource?: "openai" | "unsplash" | "nano-banana" | "places" | "local";
   html?: string;
   lang?: "es" | "de";
   messages?: ChatMessage[];
@@ -548,13 +548,19 @@ export function ConceptView({
             asChild
             className="h-auto rounded-full px-5 py-3 text-sm"
           >
-            <a href={wa} target="_blank" rel="noopener noreferrer">
-              {tr(
-                uiLocale,
-                "WhatsApp — ich will dieses Konzept",
-                "WhatsApp — I want this concept",
-                "WhatsApp — quiero este concepto",
-              )}
+            <a
+              href={hasWhatsApp() ? wa : emailHref()}
+              target={hasWhatsApp() ? "_blank" : undefined}
+              rel={hasWhatsApp() ? "noopener noreferrer" : undefined}
+            >
+              {hasWhatsApp()
+                ? tr(
+                    uiLocale,
+                    "WhatsApp - ich will dieses Konzept",
+                    "WhatsApp - I want this concept",
+                    "WhatsApp - quiero este concepto",
+                  )
+                : site.email}
             </a>
           </Button>
         </div>

@@ -3,7 +3,7 @@ import { getMessages } from "@/lib/i18n/get-messages";
 import { pageMetadata } from "@/lib/i18n/metadata";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import type { AuditLang } from "@/lib/audit/types";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -22,6 +22,7 @@ export default async function AuditoriaPage({ params }: Props) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
+  if (locale === "en") redirect("/de/auditoria");
   const a = getMessages(locale).audit;
 
   return (

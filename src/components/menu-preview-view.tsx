@@ -3,7 +3,7 @@ import type { MenuDraft } from "@/lib/menu/types";
 import type { SiteMessages } from "@/lib/i18n/messages/types";
 import { menuDigitizerPath } from "@/lib/i18n/paths";
 import type { Locale } from "@/lib/i18n/locales";
-import { whatsappHref } from "@/lib/site";
+import { emailHref, hasWhatsApp, site, whatsappHref } from "@/lib/site";
 
 type Labels = SiteMessages["menuDigitizer"];
 
@@ -99,12 +99,12 @@ export function MenuPreviewView({
 
         <div className="mt-12 space-y-4 border-t border-white/15 pt-8">
           <a
-            href={wa}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={hasWhatsApp() ? wa : emailHref()}
+            target={hasWhatsApp() ? "_blank" : undefined}
+            rel={hasWhatsApp() ? "noopener noreferrer" : undefined}
             className="inline-flex w-full justify-center rounded-full bg-[#d4b45a] px-6 py-3.5 text-sm font-semibold text-[#1a1408]"
           >
-            WhatsApp
+            {hasWhatsApp() ? "WhatsApp" : site.email}
           </a>
           <Link
             href={menuDigitizerPath(locale)}

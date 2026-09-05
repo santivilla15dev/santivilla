@@ -24,7 +24,7 @@ Ideas de copy, diseño y pitch: abre [`BRIEFING-GEMINI.md`](./BRIEFING-GEMINI.md
 - `/go/wa?site=slug` — tracking clics WhatsApp (redirect, sin cookies)
 - Admin: convertir concepto → site (`/admin/leads/[id]`)
 
-Migraciones: `006_auth_profiles.sql` … `009_cta_events.sql`
+Migraciones: `001`–`014` en `supabase/migrations/` (README viejo se quedó en 009). En prod hay que aplicarlas todas.
 
 **Primer admin:** crea usuario en Supabase Auth → SQL:
 ```sql
@@ -140,6 +140,6 @@ vercel --prod
 **Antes del pitch público:**
 1. Vercel → Project Settings → **Deployment Protection** → desactiva **Vercel Authentication** en **Production** (el portfolio debe ser público)
 2. Añade todas las env vars de `.env.example` en Vercel → Settings → Environment Variables
-3. Dominio `santivilla.com` → apuntar al proyecto `santivilla-rxxn` (si aún no está activo)
+3. Dominio `santivilla.com`: hoy está en **otra cuenta Vercel** (CNAME `5f3c78265ffa52df.vercel-dns-017.com`, HTTP 402 `DEPLOYMENT_DISABLED`). Esta cuenta no puede añadirlo (403). Entra a esa cuenta, quita el dominio o paga la factura, y añádelo a `santivilla-rxxn`. Hasta entonces usa `NEXT_PUBLIC_SITE_URL=https://santivilla-rxxn.vercel.app`.
 
 Reglas IA del repo: [`.cursorrules`](./.cursorrules)

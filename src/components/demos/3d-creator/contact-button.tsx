@@ -1,5 +1,5 @@
 import type { Creator3dContent } from "@/lib/demos/3d-creator";
-import { whatsappHref } from "@/lib/site";
+import { emailHref, hasWhatsApp, site, whatsappHref } from "@/lib/site";
 
 export function ContactButton({
   content,
@@ -8,22 +8,22 @@ export function ContactButton({
   content: Creator3dContent;
   className?: string;
 }) {
+  const href = hasWhatsApp()
+    ? whatsappHref(content.contact.whatsapp)
+    : emailHref();
+
   return (
     <a
-      href={whatsappHref(content.contact.whatsapp)}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 py-3 text-xs font-medium uppercase tracking-widest text-white transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA] sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base ${className}`}
+      href={href}
+      target={hasWhatsApp() ? "_blank" : undefined}
+      rel={hasWhatsApp() ? "noopener noreferrer" : undefined}
+      className={`inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 py-3 text-xs font-medium uppercase tracking-widest text-[#1a1408] transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d4b45a] sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base ${className}`}
       style={{
-        background:
-          "linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)",
-        boxShadow:
-          "0px 4px 4px rgba(181, 1, 167, 0.25), 4px 4px 12px #7721B1 inset",
-        outline: "2px solid #ffffff",
-        outlineOffset: "-3px",
+        background: "#d4b45a",
+        boxShadow: "0 8px 24px rgba(212, 180, 90, 0.28)",
       }}
     >
-      {content.contact.label}
+      {hasWhatsApp() ? content.contact.label : site.email}
     </a>
   );
 }

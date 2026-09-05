@@ -38,9 +38,7 @@ function resolveLocale(request: NextRequest): Locale {
   if (cookie && isLocale(cookie)) return cookie;
 
   const accept = request.headers.get("accept-language");
-  const negotiated = negotiateLocale(accept);
-  if (negotiated === "es") return defaultLocale;
-  return negotiated;
+  return negotiateLocale(accept);
 }
 
 export async function middleware(request: NextRequest) {
