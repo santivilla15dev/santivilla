@@ -99,6 +99,15 @@ const PROJECT_BASE: {
       secondary: "/demos/restaurant/still-dining.jpg",
     },
   },
+  {
+    slug: "kellerlicht",
+    href: "/demos/kellerlicht",
+    shots: {
+      desktop: "/demos/kellerlicht/hero-poster.jpg",
+      mobile: "/demos/kellerlicht/still-board.jpg",
+      secondary: "/demos/kellerlicht/still-bar.jpg",
+    },
+  },
   { slug: "villa-italia", href: "/demos/villa-italia", shots: shots("villa-italia", "mobile-2") },
   { slug: "solo-modas", href: "/demos/solo-modas", shots: shots("solo-modas", "desktop-2") },
   {
@@ -230,6 +239,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
             "Landing cinematográfica: vídeo con scroll, Speisekarte, horarios y reserva por WhatsApp.",
         },
         {
+          name: "Kellerlicht",
+          category: "Weinbar · Plantilla",
+          blurb:
+            "Landing cinematográfica: vídeo con scroll, Am Glas, horarios y reserva por WhatsApp.",
+        },
+        {
           name: "Villa Italia",
           category: "Pizzería · Colombia",
           blurb:
@@ -355,6 +370,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
             "Cinematic Landing: Scroll-Video, Speisekarte, Öffnungszeiten und Reservierung per WhatsApp.",
         },
         {
+          name: "Kellerlicht",
+          category: "Weinbar · Vorlage",
+          blurb:
+            "Cinematic Landing: Scroll-Video, Weine am Glas, Öffnungszeiten und Reservierung per WhatsApp.",
+        },
+        {
           name: "Villa Italia",
           category: "Pizzeria · Kolumbien",
           blurb:
@@ -478,6 +499,12 @@ const CONTENT: Record<Locale, Creator3dContent> = {
           category: "Restaurant · Template",
           blurb:
             "Cinematic landing: scroll video, menu, hours and WhatsApp reservations.",
+        },
+        {
+          name: "Kellerlicht",
+          category: "Wine bar · Template",
+          blurb:
+            "Cinematic landing: scroll video, wines by the glass, hours and WhatsApp reservations.",
         },
         {
           name: "Villa Italia",

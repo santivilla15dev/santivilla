@@ -1,0 +1,51 @@
+.kl-display {
+  font-family: var(--font-kellerlicht-display), "Times New Roman", serif;
+}
+
+.kl-mono {
+  font-family: var(--font-kellerlicht-mono), ui-monospace, monospace;
+}
+
+.kl-hero-copy,
+.kl-cream {
+  color: #f2e8dc;
+}
+
+.kl-hero-copy a {
+  color: inherit;
+}
+
+.kl-btn-amber {
+  display: inline-flex;
+  align-items: center;
+  background: #d4a05a;
+  color: #1c1412;
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.kl-btn-wine {
+  display: inline-flex;
+  align-items: center;
+  background: #7a2e3a;
+  color: #f2e8dc;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.kl-scrim-bottom {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(28, 20, 18, 0.88) 0%,
+    rgba(28, 20, 18, 0.55) 28%,
+    rgba(28, 20, 18, 0.12) 55%,
+    transparent 72%
+  );
+}

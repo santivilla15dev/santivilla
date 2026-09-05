@@ -10,7 +10,6 @@ import {
   primeVideoForScrub,
 } from "@/lib/demos/scrub-video";
 import { locales, type Locale } from "@/lib/i18n/locales";
-import { whatsappHref } from "@/lib/site";
 import { useEffect, useRef, useState } from "react";
 
 function clamp01(n: number) {
@@ -172,19 +171,13 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
   const band = bands[bandIndex] ?? bands[0];
   const showVideo = !reduceMotion && !failed;
 
-  const navItems = [
-    { label: content.nav.about, href: "#about" },
-    { label: content.nav.services, href: "#services" },
-    { label: content.nav.projects, href: "#projects" },
-  ];
-
   const mediaClass =
     "absolute inset-0 h-full w-full min-h-full min-w-full object-cover object-[72%_center] sm:object-[62%_center] md:object-[58%_center]";
 
   return (
     <div
       ref={trackRef}
-      className="relative h-[min(170vh,1100px)] w-full md:h-[min(220vh,1600px)]"
+      className="relative h-[min(260vh,2000px)] w-full md:h-[min(300vh,2400px)]"
       id="home-cafe-hero"
     >
       <div className="sticky top-0 isolate h-[100dvh] min-h-[100svh] w-full overflow-hidden bg-[#0C0C0C] supports-[height:100dvh]:h-dvh">
@@ -215,17 +208,17 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
         ) : null}
 
         <div
-          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-black/70 via-black/25 to-transparent"
+          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-black/80 via-black/40 to-transparent"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/45 via-transparent to-black/55 sm:to-black/65"
+          className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/35 via-transparent to-black/50 sm:to-black/55"
           aria-hidden
         />
 
-        <nav className="absolute inset-x-0 top-0 z-20 px-5 pt-4 sm:px-8 sm:pt-5 md:px-10 md:pt-6">
+        <nav className="absolute inset-x-0 top-0 z-20 px-5 pt-5 sm:px-8 sm:pt-6 md:px-12 md:pt-8">
           <div
-            className="flex justify-end gap-3 text-[11px] font-medium uppercase tracking-widest text-[#D7E2EA]/60"
+            className="flex justify-end gap-3 text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/75 sm:gap-4 sm:text-sm"
             aria-label={content.langLabel}
           >
             {locales.map((code) => (
@@ -243,49 +236,32 @@ export function CafeScrollHero({ content, langHrefs }: Props) {
               </a>
             ))}
           </div>
-          <ul className="mt-3 flex flex-wrap items-center justify-between gap-x-2 gap-y-1 text-[9px] font-medium uppercase tracking-wide text-[#D7E2EA] sm:gap-x-4 sm:text-sm sm:tracking-wider md:text-lg lg:text-[1.4rem]">
-            {navItems.map((item) => (
-              <li key={item.href} className="whitespace-nowrap">
-                <a
-                  href={item.href}
-                  className="transition-opacity duration-200 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA]"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-            <li className="whitespace-nowrap">
-              <a
-                href={whatsappHref(content.contact.whatsapp)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-opacity duration-200 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA]"
-              >
-                {content.nav.contact}
-              </a>
-            </li>
-          </ul>
         </nav>
 
         {/* Primer viewport: marca + una línea + CTA (sin tagline duplicada). */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-end px-5 pt-24 pb-[max(2.5rem,env(safe-area-inset-bottom))] sm:px-8 sm:pb-12 md:px-10 md:pb-14">
-          <h1 className="max-w-[12ch] font-black uppercase leading-[0.95] tracking-tight text-[#D7E2EA] [text-shadow:0_12px_40px_rgba(0,0,0,0.55)] text-[clamp(2.2rem,8.5vw,5.2rem)]">
-            {content.hero.heading}
-          </h1>
+        <div className="absolute inset-0 z-10 flex flex-col justify-end px-5 pt-24 pb-[max(2.5rem,env(safe-area-inset-bottom))] sm:px-8 sm:pb-12 md:px-12 md:pb-16 lg:px-14">
+          <div className="max-w-[22ch] sm:max-w-[28ch] md:max-w-[32ch]">
+            <h1 className="font-black uppercase leading-[0.92] tracking-[-0.03em] text-[#D7E2EA] [text-shadow:0_12px_40px_rgba(0,0,0,0.6)] text-[clamp(2.8rem,11vw,6.5rem)]">
+              {content.hero.heading}
+            </h1>
 
-          <p
-            key={bandIndex}
-            className="mt-3 max-w-[20ch] text-[clamp(0.95rem,2.4vw,1.35rem)] font-light leading-snug text-[#D7E2EA] [text-shadow:0_8px_24px_rgba(0,0,0,0.55)] sm:mt-4 sm:max-w-[26ch]"
-          >
-            {band.line}
-          </p>
+            <p
+              key={bandIndex}
+              className="mt-4 max-w-[26ch] text-[clamp(1.05rem,2.6vw,1.5rem)] font-light leading-snug text-[#D7E2EA]/90 [text-shadow:0_8px_28px_rgba(0,0,0,0.65)] sm:mt-5"
+            >
+              {band.line}
+            </p>
 
-          <div className="mt-6 sm:mt-8">
-            <ContactButton content={content} />
+            <div className="mt-8 sm:mt-10">
+              <ContactButton
+                content={content}
+                className="md:!px-14 md:!py-4 md:!text-lg"
+              />
+            </div>
           </div>
 
           {!hintGone && !reduceMotion ? (
-            <p className="pointer-events-none absolute bottom-14 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.18em] text-[#D7E2EA]/60 sm:bottom-4 sm:text-[#D7E2EA]/45">
+            <p className="pointer-events-none absolute bottom-14 left-1/2 -translate-x-1/2 text-[0.65rem] uppercase tracking-[0.18em] text-[#D7E2EA]/60 sm:bottom-5 sm:text-[#D7E2EA]/50">
               {content.hero.scrollHint}
             </p>
           ) : null}

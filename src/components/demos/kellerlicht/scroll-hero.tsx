@@ -1,6 +1,6 @@
 "use client";
 
-import { gasthausAssets, gasthausCopy } from "@/lib/demos/gasthaus-am-hof";
+import { kellerlichtAssets, kellerlichtCopy } from "@/lib/demos/kellerlicht";
 import {
   onFirstUserGesture,
   primeVideoForScrub,
@@ -22,9 +22,9 @@ type Props = {
  * Hero cinematográfico.
  * Preview (iframe): misma página + wave/scrub; tipografía compacta + postMessage.
  * Demo completa: track sticky largo + scrub por scroll.
- * Nav vive dentro del sticky (no se pinta sobre Speisekarte).
+ * Nav vive dentro del sticky (no se pinta sobre Am Glas).
  */
-export function GasthausScrollHero({ preview = false }: Props) {
+export function KellerlichtScrollHero({ preview = false }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const targetRef = useRef(0);
@@ -92,7 +92,7 @@ export function GasthausScrollHero({ preview = false }: Props) {
 
   useEffect(() => {
     if (reduceMotion && !preview) {
-      setBandIndex(gasthausCopy.bands.length - 1);
+      setBandIndex(kellerlichtCopy.bands.length - 1);
       return;
     }
 
@@ -225,8 +225,8 @@ export function GasthausScrollHero({ preview = false }: Props) {
       const p = displayRef.current;
 
       let idx = 0;
-      for (let i = 0; i < gasthausCopy.bands.length; i++) {
-        const b = gasthausCopy.bands[i];
+      for (let i = 0; i < kellerlichtCopy.bands.length; i++) {
+        const b = kellerlichtCopy.bands[i];
         if (p >= b.from && p < b.to) idx = i;
       }
       setBandIndex((prev) => (prev === idx ? prev : idx));
@@ -263,13 +263,13 @@ export function GasthausScrollHero({ preview = false }: Props) {
     };
   }, [ready, reduceMotion, preview]);
 
-  const band = gasthausCopy.bands[bandIndex];
+  const band = kellerlichtCopy.bands[bandIndex];
 
   const media = (
     <>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={gasthausAssets.poster}
+        src={kellerlichtAssets.poster}
         alt=""
         className={`absolute inset-0 z-0 h-full w-full min-h-full min-w-full object-cover object-[60%_center] md:object-center transition-opacity duration-700 ${
           ready && !(reduceMotion && !preview) ? "opacity-0" : "opacity-100"
@@ -289,19 +289,19 @@ export function GasthausScrollHero({ preview = false }: Props) {
           className={`absolute inset-0 z-[1] h-full w-full min-h-full min-w-full object-cover object-[60%_center] md:object-center transition-opacity duration-700 ${
             ready ? "opacity-100" : "opacity-0"
           }`}
-          src={gasthausAssets.video}
+          src={kellerlichtAssets.video}
           muted
           playsInline
           preload="auto"
-          poster={gasthausAssets.poster}
+          poster={kellerlichtAssets.poster}
         />
       ) : null}
 
       <div
-        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-[rgba(26,18,14,0.75)] via-[rgba(26,18,14,0.25)] to-transparent"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-[rgba(28,20,18,0.75)] via-[rgba(28,20,18,0.25)] to-transparent"
         aria-hidden
       />
-      <div className="gh-scrim-bottom" aria-hidden />
+      <div className="kl-scrim-bottom" aria-hidden />
 
       <header
         className={`pointer-events-none absolute inset-x-0 top-0 z-[5] flex items-center justify-between ${
@@ -312,22 +312,22 @@ export function GasthausScrollHero({ preview = false }: Props) {
       >
         <a
           href="#"
-          className={`gh-display gh-hero-copy pointer-events-auto font-semibold tracking-wide no-underline [text-shadow:0_2px_12px_rgba(0,0,0,0.45)] ${
+          className={`kl-display kl-hero-copy pointer-events-auto font-semibold tracking-wide no-underline [text-shadow:0_2px_12px_rgba(0,0,0,0.45)] ${
             preview ? "text-[0.95rem]" : "text-[1.35rem]"
           }`}
         >
-          {gasthausCopy.brand}
+          {kellerlichtCopy.brand}
         </a>
         <ul
           className={`pointer-events-auto hidden gap-6 md:flex ${
             preview ? "text-[0.75rem]" : "text-[0.92rem]"
           }`}
         >
-          {gasthausCopy.nav.map((item) => (
+          {kellerlichtCopy.nav.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className="gh-hero-copy no-underline opacity-80 hover:opacity-100"
+                className="kl-hero-copy no-underline opacity-80 hover:opacity-100"
               >
                 {item.label}
               </a>
@@ -336,33 +336,33 @@ export function GasthausScrollHero({ preview = false }: Props) {
         </ul>
         <a
           href="#reservieren"
-          className={`gh-btn-wine pointer-events-auto shadow-[0_8px_24px_rgba(107,44,44,0.28)] transition hover:-translate-y-px ${
+          className={`kl-btn-wine pointer-events-auto shadow-[0_8px_24px_rgba(122,46,58,0.28)] transition hover:-translate-y-px ${
             preview ? "px-3 py-1.5 text-[0.72rem]" : "px-4 py-2 text-[0.88rem]"
           }`}
         >
-          {gasthausCopy.navCta}
+          {kellerlichtCopy.navCta}
         </a>
       </header>
 
       {!preview && !hintGone && !reduceMotion ? (
-        <p className="gh-mono gh-hero-copy absolute bottom-14 left-1/2 z-[4] -translate-x-1/2 text-[0.68rem] tracking-[0.16em] uppercase opacity-70 md:bottom-6">
+        <p className="kl-mono kl-hero-copy absolute bottom-14 left-1/2 z-[4] -translate-x-1/2 text-[0.68rem] tracking-[0.16em] uppercase opacity-70 md:bottom-6">
           Scrollen
         </p>
       ) : null}
 
       <div
-        className={`gh-hero-copy absolute inset-0 z-[3] flex flex-col justify-end px-5 sm:px-8 lg:px-16 ${
+        className={`kl-hero-copy absolute inset-0 z-[3] flex flex-col justify-end px-5 sm:px-8 lg:px-16 ${
           preview
             ? "pb-6 pt-14"
             : "pt-24 pb-[max(3rem,env(safe-area-inset-bottom),12vh)] md:pb-[16vh]"
         }`}
       >
         <div key={bandIndex} className="max-w-[20ch]">
-          <p className="gh-mono mb-2 text-[0.7rem] tracking-[0.16em] uppercase opacity-80">
+          <p className="kl-mono mb-2 text-[0.7rem] tracking-[0.16em] uppercase opacity-80">
             {band.kicker}
           </p>
           <p
-            className={`gh-display m-0 leading-[1.05] font-semibold [text-shadow:0_12px_40px_rgba(0,0,0,0.5)] ${
+            className={`kl-display m-0 leading-[1.05] font-semibold [text-shadow:0_12px_40px_rgba(0,0,0,0.5)] ${
               preview
                 ? "text-2xl sm:text-3xl lg:text-4xl"
                 : "text-4xl sm:text-5xl lg:text-6xl"
@@ -376,8 +376,8 @@ export function GasthausScrollHero({ preview = false }: Props) {
             </p>
           ) : null}
           {band.cta && !preview ? (
-            <a href="#reservieren" className="gh-btn-gold mt-5">
-              Reservieren
+            <a href="#reservieren" className="kl-btn-amber mt-5">
+              Tisch sichern
             </a>
           ) : null}
         </div>
@@ -393,13 +393,13 @@ export function GasthausScrollHero({ preview = false }: Props) {
           ? "relative h-[min(320vh,2400px)] w-full"
           : "relative h-[min(180vh,1400px)] w-full md:h-[min(320vh,2400px)]"
       }
-      id="gasthaus-hero"
+      id="kellerlicht-hero"
     >
       <div
         className={
           preview
-            ? "sticky top-0 isolate w-full overflow-hidden bg-[#1a120e]"
-            : "sticky top-0 isolate h-[100dvh] min-h-[100svh] w-full overflow-hidden bg-[#1a120e] supports-[height:100dvh]:h-dvh"
+            ? "sticky top-0 isolate w-full overflow-hidden bg-[#1c1412]"
+            : "sticky top-0 isolate h-[100dvh] min-h-[100svh] w-full overflow-hidden bg-[#1c1412] supports-[height:100dvh]:h-dvh"
         }
         style={
           preview && viewportH > 0
@@ -415,4 +415,4 @@ export function GasthausScrollHero({ preview = false }: Props) {
   );
 }
 
-export { PREVIEW_READY as GASTHAUS_PREVIEW_READY_MSG };
+export { PREVIEW_READY as KELLERLICHT_PREVIEW_READY_MSG };

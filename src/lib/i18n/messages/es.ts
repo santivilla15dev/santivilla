@@ -4,7 +4,7 @@ const packages: SiteMessages["packages"] = [
   {
     id: "landing",
     name: "Landing",
-    price: "€400–800",
+    price: "€400-800",
     description:
       "Una página clara en móvil, tablet y desktop, con WhatsApp y dominio/hosting.",
     includes: [
@@ -17,9 +17,9 @@ const packages: SiteMessages["packages"] = [
   {
     id: "negocio",
     name: "Sitio negocio",
-    price: "€900–2.000",
+    price: "€900-2.000",
     description:
-      "Sitio completo (4–6 páginas) para restaurante, tienda o local.",
+      "Sitio completo (4-6 páginas) para restaurante, tienda o local.",
     includes: [
       "Menú / servicios / horarios",
       "Mapa y contacto",
@@ -30,7 +30,7 @@ const packages: SiteMessages["packages"] = [
   {
     id: "mensual",
     name: "Mantenimiento",
-    price: "€50–150/mes",
+    price: "€50-150/mes",
     description: "Cambios de texto/fotos, uptime y peques mejoras cada mes.",
     includes: [
       "Cambios de contenido",
@@ -44,7 +44,7 @@ const packages: SiteMessages["packages"] = [
 const projects: SiteMessages["projects"] = [
   {
     slug: "stadtgalerie",
-    title: "Stadtgalerie West — Konzept centro",
+    title: "Stadtgalerie West - Konzept centro",
     type: "Centro comercial",
     href: "/demos/stadtgalerie",
     group: "vienna",
@@ -57,7 +57,7 @@ const projects: SiteMessages["projects"] = [
   },
   {
     slug: "restaurant",
-    title: "Gasthaus Am Hof — Landing cinematográfica",
+    title: "Gasthaus Am Hof - Landing cinematográfica",
     type: "Restaurante",
     href: "/demos/restaurant",
     group: "template",
@@ -65,17 +65,26 @@ const projects: SiteMessages["projects"] = [
       "Landing cinematográfica: vídeo scroll, Speisekarte, horarios y WhatsApp.",
   },
   {
+    slug: "kellerlicht",
+    title: "Kellerlicht - Weinbar cinematográfica",
+    type: "Weinbar",
+    href: "/demos/kellerlicht",
+    group: "template",
+    blurb:
+      "Landing cinematográfica: vídeo scroll, Am Glas, horarios y WhatsApp.",
+  },
+  {
     slug: "villa-italia",
-    title: "Villa Italia — Pizzería",
+    title: "Villa Italia - Pizzería",
     type: "Pizzería",
     href: "/demos/villa-italia",
     group: "template",
     blurb:
-      "Plantilla pizzería: carta, horarios, delivery y WhatsApp — mobile-first.",
+      "Plantilla pizzería: carta, horarios, delivery y WhatsApp - mobile-first.",
   },
   {
     slug: "solo-modas",
-    title: "Solo Modas — Tienda de ropa",
+    title: "Solo Modas - Tienda de ropa",
     type: "Moda",
     href: "/demos/solo-modas",
     group: "template",
@@ -84,16 +93,16 @@ const projects: SiteMessages["projects"] = [
   },
   {
     slug: "universo-del-calzado",
-    title: "Universo del Calzado — Deportes",
+    title: "Universo del Calzado - Deportes",
     type: "Retail deportivo",
     href: "/demos/universo-del-calzado",
     group: "template",
     blurb:
-      "Plantilla retail deportivo: catálogo, dos sedes y WhatsApp — mobile-first.",
+      "Plantilla retail deportivo: catálogo, dos sedes y WhatsApp - mobile-first.",
   },
   {
     slug: "vaultshield",
-    title: "VaultShield — Gestor de contraseñas",
+    title: "VaultShield - Gestor de contraseñas",
     type: "SaaS · Landing",
     href: "/demos/vaultshield",
     group: "saas",
@@ -102,7 +111,7 @@ const projects: SiteMessages["projects"] = [
   },
   {
     slug: "novaai",
-    title: "NovaAI — Landing cinematográfica",
+    title: "NovaAI - Landing cinematográfica",
     type: "SaaS · Landing",
     href: "/demos/novaai",
     group: "saas",
@@ -113,7 +122,7 @@ const projects: SiteMessages["projects"] = [
 
 export const esMessages: SiteMessages = {
   meta: {
-    title: "Santi Villa — Webs para negocios locales en Wien",
+    title: "Santi Villa - Webs para negocios locales en Wien",
     description:
       "Webs modernas y responsive (móvil, tablet, desktop) para restaurantes, locales y centros comerciales. Wien / Remote.",
     ogLocale: "es_ES",
@@ -131,9 +140,9 @@ export const esMessages: SiteMessages = {
     menuOpen: "Abrir menú",
     menuClose: "Cerrar menú",
     localeLabels: {
-      de: "Deutsch — clientes en Wien",
-      en: "English — portfolio / partners",
-      es: "Español — portafolio",
+      de: "Deutsch - clientes en Wien",
+      en: "English - portfolio / partners",
+      es: "Español - portafolio",
     },
   },
   footer: {
@@ -171,7 +180,7 @@ export const esMessages: SiteMessages = {
   },
   home: {
     heroLead:
-      "Tus clientes deciden en segundos si se quedan. Yo construyo webs que ganan esos segundos — para restaurantes, locales y centros en Wien.",
+      "Tus clientes deciden en segundos si se quedan. Yo construyo webs que ganan esos segundos - para restaurantes, locales y centros en Wien.",
     heroH1: "Webs para negocios locales en Wien",
     heroCost:
       "En móvil, el 53% de las visitas se abandona si la página tarda más de 3 s (Google, Need for Mobile Speed, 2016). Una web lenta no “se ve fea”: pierde clientes antes de que te lean.",
@@ -184,7 +193,7 @@ export const esMessages: SiteMessages = {
     trustSignals: [
       {
         id: "hosting",
-        label: "HTTPS · hosting Vercel — velocidad real",
+        label: "HTTPS · hosting Vercel - velocidad real",
       },
       {
         id: "payment",
@@ -225,18 +234,18 @@ export const esMessages: SiteMessages = {
     clientDesignEyebrow: "Cómo trabajamos",
     clientDesignTitle: "Ves el diseño antes de pagar",
     clientDesignBody:
-      "Ves el diseño antes de pagar un euro: primero un Konzept gratis — propuesta visual de cómo podría verse tu negocio online. No es el sitio oficial; es una demo honesta, sin costo y sin compromiso. Puedes pedir cambios (menú, horarios, idioma) y, cuando encaje, lanzo la web real con dominio, hosting y WhatsApp listo.",
+      "Ves el diseño antes de pagar un euro: primero un Konzept gratis - propuesta visual de cómo podría verse tu negocio online. No es el sitio oficial; es una demo honesta, sin costo y sin compromiso. Puedes pedir cambios (menú, horarios, idioma) y, cuando encaje, lanzo la web real con dominio, hosting y WhatsApp listo.",
     clientDesignSteps: [
       "Audit o demo (gratis): URL de tu web o una plantilla cercana a tu rubro.",
       "Konzept (gratis): diseño responsive con tu info (o datos que me pases).",
-      "Feedback: WhatsApp — afinamos hasta que digas sí.",
+      "Feedback: WhatsApp - afinamos hasta que digas sí.",
       "Web real (presupuesto cerrado): publicamos, conectamos dominio y dejas de depender de sitios antiguos.",
     ],
     clientDesignCtaDemo: "Ver demo Stadtgalerie →",
     proofEyebrow: "Caso medido · Wien",
-    proofTitle: "Centro comercial — móvil antes / después",
+    proofTitle: "Centro comercial - móvil antes / después",
     proofBody:
-      "Typo3 típico de un Zentrum frente al Konzept Stadtgalerie West. Cifras de Google PageSpeed Insights (móvil). Demo pública ficticia — no un sitio oficial.",
+      "Typo3 típico de un Zentrum frente al Konzept Stadtgalerie West. Cifras de Google PageSpeed Insights (móvil). Demo pública ficticia - no un sitio oficial.",
     proofCtaDemo: "Ver demo Stadtgalerie →",
     proofCtaWork: "Ver trabajos →",
     selfScoreEyebrow: "Esta página",
@@ -248,11 +257,11 @@ export const esMessages: SiteMessages = {
     includesEyebrow: "Un solo servicio",
     includesTitle: "Así construimos tu web",
     includesLead:
-      "Paso a paso, dentro del mismo proyecto. Estas piezas entran cuando tu negocio las necesita — no son productos aparte.",
+      "Paso a paso, dentro del mismo proyecto. Estas piezas entran cuando tu negocio las necesita - no son productos aparte.",
     includes: [
       {
         title: "Empezamos con tu URL",
-        body: "Score 0–100 y concepto automático a partir de tu web — para ver el salto antes/después.",
+        body: "Score 0-100 y concepto automático a partir de tu web - para ver el salto antes/después.",
         tool: "audit",
       },
       {
@@ -272,14 +281,14 @@ export const esMessages: SiteMessages = {
       },
       {
         title: "Si prefieres escribir",
-        body: "Un brief corto se convierte en borrador de landing — mismo proyecto, otro punto de partida.",
+        body: "Un brief corto se convierte en borrador de landing - mismo proyecto, otro punto de partida.",
         tool: "brief",
       },
     ],
     pricingEyebrow: "Precios",
     pricingFrom: "Desde €400",
     pricingBody:
-      "Landing clara en móvil con WhatsApp y setup de dominio. Sitios de negocio y mantenimiento con alcance cerrado — sin sorpresas.",
+      "Landing clara en móvil con WhatsApp y setup de dominio. Sitios de negocio y mantenimiento con alcance cerrado - sin sorpresas.",
     pricingLink: "Ver paquetes →",
     workTitle: "Trabajos y demos",
     workBody:
@@ -294,13 +303,13 @@ export const esMessages: SiteMessages = {
         id: "timeline",
         question: "¿Cuánto tarda en estar lista mi web?",
         answer:
-          "Tras el depósito y un brief cerrado: landing ~1–2 semanas; sitio de negocio ~2–4 semanas; proyectos tipo centro comercial ~4–8+ semanas. Los plazos dependen de que me envíes feedback y contenidos a tiempo.",
+          "Tras el depósito y un brief cerrado: landing ~1-2 semanas; sitio de negocio ~2-4 semanas; proyectos tipo centro comercial ~4-8+ semanas. Los plazos dependen de que me envíes feedback y contenidos a tiempo.",
       },
       {
         id: "design",
         question: "¿Qué pasa si no me gusta el diseño?",
         answer:
-          "Primero afinamos el Konzept gratis por WhatsApp hasta que digas sí — ves el diseño antes de pagar un euro por la web real. En el build de pago van incluidas 2 rondas de revisión antes del saldo.",
+          "Primero afinamos el Konzept gratis por WhatsApp hasta que digas sí - ves el diseño antes de pagar un euro por la web real. En el build de pago van incluidas 2 rondas de revisión antes del saldo.",
       },
       {
         id: "assets",
@@ -312,13 +321,13 @@ export const esMessages: SiteMessages = {
         id: "deposit",
         question: "¿Cómo funciona el pago del depósito?",
         answer:
-          "Reservas la fecha con un depósito del 30–50% del precio acordado (transferencia SEPA / factura en Austria). El resto se factura a la entrega del código o al go-live. El depósito no se reembolsa si cancelas después de reservar; el saldo no se cobra si no entrego.",
+          "Reservas la fecha con un depósito del 30-50% del precio acordado (transferencia SEPA / factura en Austria). El resto se factura a la entrega del código o al go-live. El depósito no se reembolsa si cancelas después de reservar; el saldo no se cobra si no entrego.",
       },
       {
         id: "hosting",
         question: "¿Incluye mantenimiento o hosting?",
         answer:
-          "Los paquetes de sitio incluyen el setup de dominio + hosting en Vercel. El mantenimiento mensual (€50–150) es opcional: cambios de contenido, monitoreo básico y soporte por WhatsApp.",
+          "Los paquetes de sitio incluyen el setup de dominio + hosting en Vercel. El mantenimiento mensual (€50-150) es opcional: cambios de contenido, monitoreo básico y soporte por WhatsApp.",
       },
       {
         id: "location",
@@ -330,16 +339,16 @@ export const esMessages: SiteMessages = {
     aboutEyebrow: "Sobre mí",
     aboutTitle: "Santi Villa",
     aboutBody:
-      "Trabajo solo: hablas con quien diseña, programa y publica. Sin capas de cuenta ni markup de agencia — plazos y precio claros desde el día uno. Estoy en Wien y también remoto, para negocios locales que quieren una web que se entiende en el móvil.",
+      "Trabajo solo: hablas con quien diseña, programa y publica. Sin capas de cuenta ni markup de agencia - plazos y precio claros desde el día uno. Estoy en Wien y también remoto, para negocios locales que quieren una web que se entiende en el móvil.",
     aboutStackLabel: "Stack",
     aboutStack:
-      "Next.js + Vercel — sitios rápidos, HTTPS y deploys limpios (la misma base que medimos en esta página).",
-    aboutPhotoAlt: "Santi Villa — retrato 3D estilizado",
+      "Next.js + Vercel - sitios rápidos, HTTPS y deploys limpios (la misma base que medimos en esta página).",
+    aboutPhotoAlt: "Santi Villa - retrato 3D estilizado",
     resultsEyebrow: "Resultados",
     resultsTitle: "Antes / después en números",
     resultsLead:
       "Una métrica clara por proyecto. El primero es un Konzept público medido; los otros dos son placeholders hasta tener permiso de clientes reales.",
-    resultsPlaceholderBadge: "Placeholder — TODO",
+    resultsPlaceholderBadge: "Placeholder - TODO",
     resultsBeforeLabel: "Antes",
     resultsAfterLabel: "Después",
     resultsItems: [
@@ -377,13 +386,13 @@ export const esMessages: SiteMessages = {
   },
   services: {
     title: "Servicios",
-    lead: "Un producto claro: tu web. Primero ves el concepto; luego construimos el sitio real. Tres paquetes simples — claros en móvil, tablet y desktop.",
+    lead: "Un producto claro: tu web. Primero ves el concepto; luego construimos el sitio real. Tres paquetes simples - claros en móvil, tablet y desktop.",
     packageLabel: "Paquete",
     alsoTitle: "Incluido o disponible en tu proyecto",
     alsoItems: [
-      "Centro comercial / multi-tienda — desde ~€3.000–8.000+ según shops, idiomas y CMS.",
-      "Demo de pitch — te preparo una vista previa conceptual (como Stadtgalerie) para enseñar al dueño.",
-      "Dominio + hosting — setup en Vercel incluido en los paquetes de sitio.",
+      "Centro comercial / multi-tienda - desde ~€3.000-8.000+ según shops, idiomas y CMS.",
+      "Demo de pitch - te preparo una vista previa conceptual (como Stadtgalerie) para enseñar al dueño.",
+      "Dominio + hosting - setup en Vercel incluido en los paquetes de sitio.",
     ],
     agbLink: "Proceso, depósito y garantía (ves el diseño antes de pagar) → Términos",
     whatsappMessage: "Hola Santi, quiero cotizar un paquete de web.",
@@ -394,7 +403,7 @@ export const esMessages: SiteMessages = {
     stadtgalerieEyebrow: "Plantilla · Wien",
     stadtgalerieTitle: "Stadtgalerie West: antes vs después",
     stadtgalerieBody:
-      "Muchos centros comerciales aún pelean con Typo3 en el móvil. La demo pública es un Konzept ficticio mobile-first — no un sitio oficial de ningún centro real.",
+      "Muchos centros comerciales aún pelean con Typo3 en el móvil. La demo pública es un Konzept ficticio mobile-first - no un sitio oficial de ningún centro real.",
     before: "Antes",
     after: "Después · Demo",
     beforeNote: "Layout denso · tipografía pequeña · difícil en móvil.",
@@ -405,7 +414,7 @@ export const esMessages: SiteMessages = {
     openDemo: "Abrir demo →",
     openDemoCta: "Abrir demo Stadtgalerie",
     konzeptNote:
-      "Konzept ficticio — no es el sitio oficial de ningún centro comercial.",
+      "Konzept ficticio - no es el sitio oficial de ningún centro comercial.",
     viennaTitle: "Wien",
     viennaLead:
       "Plantilla pública de centro comercial en Viena (Stadtgalerie West).",
@@ -420,7 +429,7 @@ export const esMessages: SiteMessages = {
     open: "Abrir",
     pricingTitle: "Precios orientativos",
     pricingLead:
-      "Orientativos en euros (Austria / EU). El depósito (30–50%) reserva la fecha; la entrega del código es al pagar.",
+      "Orientativos en euros (Austria / EU). El depósito (30-50%) reserva la fecha; la entrega del código es al pagar.",
     centerNote: "Centro comercial (multi-sección + shops): desde ~€3.000 según alcance.",
     whatsappMessage:
       "Hola Santi, vi tus trabajos (Stadtgalerie / restaurante) y quiero hablar de un proyecto.",
@@ -432,7 +441,7 @@ export const esMessages: SiteMessages = {
     metricsLcp: "LCP",
     metricsFcp: "FCP",
     metricsUxNote:
-      "WhatsApp 1 tap en hero vs. sitios Typo3 sin enlace claro — hecho UX, no promesa de analytics.",
+      "WhatsApp 1 tap en hero vs. sitios Typo3 sin enlace claro - hecho UX, no promesa de analytics.",
   },
   contact: {
     title: "Contacto",
@@ -447,19 +456,19 @@ export const esMessages: SiteMessages = {
     schedule: "Agenda",
     formTitle: "Mensaje rápido",
     formLead:
-      "El mensaje se guarda — Santi responde por email o WhatsApp.",
+      "El mensaje se guarda - Santi responde por email o WhatsApp.",
     formName: "Tu nombre",
     formBusiness: "Negocio",
     formMessage: "¿Qué necesitas?",
     formSubmit: "Enviar",
-    formSuccess: "Gracias — mensaje guardado. Te contactamos pronto.",
+    formSuccess: "Gracias - mensaje guardado. Te contactamos pronto.",
     formError: "Error al enviar. Usa email o WhatsApp.",
     pitchLabel: "Pitch listo",
     pitchQuote:
-      "“Hola, soy Santi — rediseñé cómo se vería tu sitio en el móvil. ¿Tenemos 15 min?”",
+      "“Hola, soy Santi - rediseñé cómo se vería tu sitio en el móvil. ¿Tenemos 15 min?”",
     pitchBody:
       "Usa ese mensaje con el link de /demos/stadtgalerie o tu demo personalizada. Transparencia: es un concepto, no el sitio oficial.",
-    mailSubject: "Consulta web — santivilla.com",
+    mailSubject: "Consulta web - santivilla.com",
     mailBody: "Hola Santi,\n\nMe gustaría hablar de una web para...\n",
     whatsappMessage:
       "Hola Santi, quiero hablar de una web para mi negocio.",
@@ -473,7 +482,7 @@ export const esMessages: SiteMessages = {
     uxScoreLabel: "UX Score",
     lighthouseLabel: "Lighthouse mobile",
     lighthouseLoading: "Cargando Lighthouse… (Google PageSpeed)",
-    lighthouseFailed: "Lighthouse no disponible — el score UX sigue válido.",
+    lighthouseFailed: "Lighthouse no disponible - el score UX sigue válido.",
     lighthouseUnavailable: "API Lighthouse no configurada.",
     performance: "Performance",
     accessibility: "Accesibilidad",
@@ -504,27 +513,27 @@ export const esMessages: SiteMessages = {
     backLink: "← Volver a la auditoría",
     seoBadge: "SEO · JSON-LD",
     seoTooltip:
-      "Datos Schema.org legibles por Google — generados automáticamente desde datos del negocio.",
+      "Datos Schema.org legibles por Google - generados automáticamente desde datos del negocio.",
     seoOpeningHours: "Horarios",
     seoMenu: "Carta",
     menuLinkLabel: "Vincular carta digitalizada (ID menú)",
     menuLinkPlaceholder: "ej. menu-abc123 o demo-konzept",
     menuLinkButton: "Vincular",
-    menuLinkSuccess: "Carta vinculada — JSON-LD actualizado.",
-    menuLinkError: "Error al vincular — revisa el ID.",
+    menuLinkSuccess: "Carta vinculada - JSON-LD actualizado.",
+    menuLinkError: "Error al vincular - revisa el ID.",
   },
   menuDigitizer: {
     title: "Digitalizar tu carta",
-    lead: "Sube una foto de tu carta — en segundos ves cómo quedaría como web móvil. Concepto, sin contrato.",
+    lead: "Sube una foto de tu carta - en segundos ves cómo quedaría como web móvil. Concepto, sin contrato.",
     uploadLabel: "Fotografiar carta",
     uploadHint: "JPEG, PNG o WebP · máx. 4 MB · buena luz, recta",
     processing: "Preparando imagen…",
     extracting: "La IA lee tu carta…",
     disclaimer:
-      "El OCR puede equivocarse — revisa precios y alérgenos antes de publicar.",
-    ocrNote: "Solo se extrae texto legible — nada inventado.",
+      "El OCR puede equivocarse - revisa precios y alérgenos antes de publicar.",
+    ocrNote: "Solo se extrae texto legible - nada inventado.",
     allergenNote:
-      "Alérgenos solo si aparecen en la carta — no sustituye asesoría HACCP.",
+      "Alérgenos solo si aparecen en la carta - no sustituye asesoría HACCP.",
     demoLinkLabel: "Ver carta demo (ejemplo)",
     demoLink: "/es/menu/demo-konzept",
     successTitle: "Tu carta digital está lista",
@@ -533,17 +542,17 @@ export const esMessages: SiteMessages = {
     whatsappMessage:
       "Hola Santi, digitalicé mi carta y quiero convertirla en web real.",
     previewBanner:
-      "Concepto / preview OCR — no es la web oficial del local",
+      "Concepto / preview OCR - no es la web oficial del local",
     previewTitleFallback: "Tu carta",
     previewBack: "← Subir otra carta",
-    previewEmpty: "No se detectaron platos — prueba una foto más nítida.",
+    previewEmpty: "No se detectaron platos - prueba una foto más nítida.",
     homeCta: "Fotografiar tu carta →",
     servicesBullet:
-      "Disponible en el proyecto: digitalización de carta — foto → preview móvil (gastro).",
+      "Disponible en el proyecto: digitalización de carta - foto → preview móvil (gastro).",
   },
   microBot: {
     title: "Micro-Bot WhatsApp",
-    lead: "Tres preguntas que te llaman cada día — sitio, horarios, aparcar. Respuesta al instante, reserva por WhatsApp. No es un chatbot molesto.",
+    lead: "Tres preguntas que te llaman cada día - sitio, horarios, aparcar. Respuesta al instante, reserva por WhatsApp. No es un chatbot molesto.",
     eyebrow: "Incluido en tu web · Gastro",
     chipAvailability: "¿Hay sitio hoy?",
     chipHours: "Horarios",
@@ -552,7 +561,7 @@ export const esMessages: SiteMessages = {
     send: "Enviar",
     openWhatsapp: "Abrir WhatsApp",
     disclaimer:
-      "Concepto — no es reserva oficial. El texto libre usa IA (Anthropic).",
+      "Concepto - no es reserva oficial. El texto libre usa IA (Anthropic).",
     greeting:
       "¡Hola! Te ayudo con sitio, horarios y aparcamiento. Elige una pregunta o escríbenos.",
     thinking: "Un momento…",
@@ -565,17 +574,17 @@ export const esMessages: SiteMessages = {
       "Hola Santi, quiero el Micro-Bot WhatsApp para mi local.",
     homeCta: "Micro-Bot WhatsApp →",
     servicesBullet:
-      "Disponible en el proyecto: Micro-Bot WhatsApp — sitio/horarios/aparcar → reserva al chat.",
+      "Disponible en el proyecto: Micro-Bot WhatsApp - sitio/horarios/aparcar → reserva al chat.",
     bullets: [
-      "3 preguntas frecuentes como chips — respuesta instantánea",
+      "3 preguntas frecuentes como chips - respuesta instantánea",
       "Texto libre: la IA detecta intención de reserva",
       "WhatsApp con mensaje pre-rellenado",
-      "Ultra-ligero — sin login ni CRM",
+      "Ultra-ligero - sin login ni CRM",
     ],
   },
   copyAdapt: {
     title: "Adaptar copy local",
-    lead: "No es traducción literal — la IA adapta platos, ofertas y servicios al público y la cultura (ej. alemán formal austriaco para locales vs. inglés fresco para turistas).",
+    lead: "No es traducción literal - la IA adapta platos, ofertas y servicios al público y la cultura (ej. alemán formal austriaco para locales vs. inglés fresco para turistas).",
     eyebrow: "Incluido en tu web · Contenido",
     sourceLabel: "Texto original",
     sourcePlaceholder: "ej. Schnitzel vienés de ternera con ensalada de patata…",
@@ -598,25 +607,25 @@ export const esMessages: SiteMessages = {
     generate: "Adaptar copy",
     generating: "IA adaptando…",
     disclaimer:
-      "La IA puede equivocarse — revisa antes de publicar. Sin precios ni datos inventados.",
-    errorGeneric: "Falló la adaptación — inténtalo de nuevo.",
+      "La IA puede equivocarse - revisa antes de publicar. Sin precios ni datos inventados.",
+    errorGeneric: "Falló la adaptación - inténtalo de nuevo.",
     demoLinkLabel: "Ver ejemplo demo",
     shareLabel: "Enlace compartible",
     copy: "Copiar",
     copied: "Copiado",
-    previewBanner: "Concepto — no es la web oficial del local",
+    previewBanner: "Concepto - no es la web oficial del local",
     previewTitle: "Variantes de copy adaptadas",
     previewBack: "← Generar nuevo copy",
     salesWhatsapp:
       "Hola Santi, quiero el generador de copy para mi local.",
     homeCta: "Adaptar copy local →",
     servicesBullet:
-      "Disponible en el proyecto: copy local — adaptación cultural (no traducción literal) DE/EN/ES.",
+      "Disponible en el proyecto: copy local - adaptación cultural (no traducción literal) DE/EN/ES.",
     tabAgent: "Agente",
     tabCopy: "Copy",
     bullets: [
       "Alemán austriaco para locales, inglés fresco para turistas",
-      "Platos, ofertas o servicios — un texto, varios públicos",
+      "Platos, ofertas o servicios - un texto, varios públicos",
       "Enlace compartible para alinear con el equipo",
       "Integrado en conceptos de auditoría",
     ],
@@ -632,13 +641,13 @@ export const esMessages: SiteMessages = {
     generate: "Generar landing",
     generating: "IA escribiendo el esquema…",
     disclaimer:
-      "Concepto — solo texto estructurado. Revisa copy y colores antes de publicar.",
+      "Concepto - solo texto estructurado. Revisa copy y colores antes de publicar.",
     errorGeneric: "No se pudo generar el brief. Inténtalo de nuevo.",
     resultTitle: "Tu preview",
     openShare: "Abrir enlace compartible",
     copyLink: "Copiar enlace",
     copied: "Copiado",
-    previewBanner: "Concepto Brief Agent — no es la web oficial del negocio",
+    previewBanner: "Concepto Brief Agent - no es la web oficial del negocio",
     previewBack: "← Nuevo brief",
     featuresTitle: "Por qué elegirnos",
     contactTitle: "Hablemos",
@@ -657,10 +666,10 @@ export const esMessages: SiteMessages = {
     reviseError: "No se pudo aplicar el cambio. Inténtalo de nuevo.",
     reviseHint: "La IA actualiza el JSON (copy/colores). Las fotos solo cambian si lo pides.",
     bullets: [
-      "Escribes en lenguaje natural — sin HTML ni plantillas rígidas",
+      "Escribes en lenguaje natural - sin HTML ni plantillas rígidas",
       "La IA solo rellena un esquema Zod (colores, copy, 3 features)",
       "Preview React compartible por WhatsApp",
-      "Complementa el Design Agent por URL — no lo sustituye",
+      "Complementa el Design Agent por URL - no lo sustituye",
     ],
   },
   mapsKonzept: {
@@ -671,15 +680,15 @@ export const esMessages: SiteMessages = {
     urlPlaceholder: "https://maps.app.goo.gl/… o maps.google.com/…",
     urlHint: "Se resuelven enlaces cortos. Se detecta place_id o nombre del negocio.",
     generate: "Crear concepto",
-    generating: "Places + IA generando… (~60–90 s)",
+    generating: "Places + IA generando… (~60-90 s)",
     disclaimer:
       "Datos de Google Places + Anthropic. Revisa antes del pitch. Límite: 5/h por IP.",
-    errorGeneric: "Concepto fallido — revisa URL o API keys.",
+    errorGeneric: "Concepto fallido - revisa URL o API keys.",
     shareLabel: "Enlace live (listo para pitch)",
     editLink: "Editar en agente →",
     salesWhatsapp: "Hola Santi, quiero usar Maps Konzept para prospección.",
     bullets: [
-      "Fotos reales de Google si existen — si no, imágenes IA",
+      "Fotos reales de Google si existen - si no, imágenes IA",
       "URL slug /k/nombre para pitch por WhatsApp",
       "Guardado en Supabase como conceptos de auditoría",
       "Batch: npm run prospect:maps",
@@ -700,6 +709,13 @@ export const esMessages: SiteMessages = {
         ...p,
         blurb:
           "Plantilla gastro: menú, horarios, mapa y reserva por WhatsApp en un flujo simple.",
+      };
+    }
+    if (p.slug === "kellerlicht") {
+      return {
+        ...p,
+        blurb:
+          "Plantilla weinbar: Am Glas, horarios y reserva por WhatsApp en un flujo simple.",
       };
     }
     return p;

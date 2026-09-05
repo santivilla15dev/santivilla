@@ -13,18 +13,24 @@ export const metadata: Metadata = {
   title: "Demos",
 };
 
-const BANNER: Record<Locale, { notice: string; back: string }> = {
+const BANNER: Record<
+  Locale,
+  { badge: string; notice: string; back: string }
+> = {
   de: {
-    notice: "Demo / Konzept · Portfolio Santi Villa — keine offizielle Seite",
-    back: "← Projekte",
+    badge: "Konzept",
+    notice: "Portfolio-Demo · Santi Villa · keine offizielle Seite",
+    back: "Projekte",
   },
   en: {
-    notice: "Demo / Concept · Santi Villa portfolio — not an official site",
-    back: "← Projects",
+    badge: "Concept",
+    notice: "Portfolio demo · Santi Villa · not an official site",
+    back: "Projects",
   },
   es: {
-    notice: "Demo / Konzept · Portfolio Santi Villa — no es una página oficial",
-    back: "← Proyectos",
+    badge: "Konzept",
+    notice: "Demo de portfolio · Santi Villa · no es una página oficial",
+    back: "Proyectos",
   },
 };
 
@@ -35,12 +41,17 @@ export default async function DemosLayout({
 }) {
   const fromCookie = (await cookies()).get(LOCALE_COOKIE)?.value;
   const locale = fromCookie && isLocale(fromCookie) ? fromCookie : defaultLocale;
-  const { notice, back } = BANNER[locale];
+  const { badge, notice, back } = BANNER[locale];
 
   return (
     <div className="demo-immersive flex min-h-screen flex-col">
       <Suspense fallback={null}>
-        <DemoBanner locale={locale} notice={notice} back={back} />
+        <DemoBanner
+          locale={locale}
+          badge={badge}
+          notice={notice}
+          back={back}
+        />
       </Suspense>
       {children}
     </div>

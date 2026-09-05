@@ -44,6 +44,7 @@ const LOCALIZED_PAGES: LocalizedPage[] = [
 const DEMO_PATHS = [
   "/demos/stadtgalerie",
   "/demos/restaurant",
+  "/demos/kellerlicht",
   "/demos/villa-italia",
   "/demos/solo-modas",
   "/demos/universo-del-calzado",

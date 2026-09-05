@@ -4,9 +4,9 @@ const packages: SiteMessages["packages"] = [
   {
     id: "landing",
     name: "Landing",
-    price: "€400–800",
+    price: "€400-800",
     description:
-      "One clear page on mobile, tablet and desktop — with WhatsApp and domain/hosting.",
+      "One clear page on mobile, tablet and desktop - with WhatsApp and domain/hosting.",
     includes: [
       "Responsive design (all devices)",
       "1 page + sections",
@@ -17,9 +17,9 @@ const packages: SiteMessages["packages"] = [
   {
     id: "negocio",
     name: "Business website",
-    price: "€900–2,000",
+    price: "€900-2,000",
     description:
-      "Full site (4–6 pages) for restaurant, shop or local business.",
+      "Full site (4-6 pages) for restaurant, shop or local business.",
     includes: [
       "Menu / services / hours",
       "Map & contact",
@@ -30,7 +30,7 @@ const packages: SiteMessages["packages"] = [
   {
     id: "mensual",
     name: "Maintenance",
-    price: "€50–150/mo",
+    price: "€50-150/mo",
     description: "Text/photo updates, uptime and small improvements each month.",
     includes: [
       "Content changes",
@@ -44,20 +44,20 @@ const packages: SiteMessages["packages"] = [
 const projects: SiteMessages["projects"] = [
   {
     slug: "stadtgalerie",
-    title: "Stadtgalerie West — mall concept",
+    title: "Stadtgalerie West - mall concept",
     type: "Shopping center",
     href: "/demos/stadtgalerie",
     group: "vienna",
     blurb:
       "Mobile-first template for a shopping center in Vienna. Fictional concept, not an official site.",
     beforeNote:
-      "Many centers still run on legacy Typo3 — zoom on mobile, key info buried.",
+      "Many centers still run on legacy Typo3 - zoom on mobile, key info buried.",
     afterNote:
       "New home with hours, shops, directions and contact in one clear flow.",
   },
   {
     slug: "restaurant",
-    title: "Gasthaus Am Hof — Cinematic landing",
+    title: "Gasthaus Am Hof - Cinematic landing",
     type: "Restaurant",
     href: "/demos/restaurant",
     group: "template",
@@ -65,17 +65,26 @@ const projects: SiteMessages["projects"] = [
       "Cinematic landing: scroll video, menu, hours and WhatsApp booking.",
   },
   {
+    slug: "kellerlicht",
+    title: "Kellerlicht - Cinematic wine bar",
+    type: "Wine bar",
+    href: "/demos/kellerlicht",
+    group: "template",
+    blurb:
+      "Cinematic landing: scroll video, by-the-glass list, hours and WhatsApp.",
+  },
+  {
     slug: "villa-italia",
-    title: "Villa Italia — Pizzeria",
+    title: "Villa Italia - Pizzeria",
     type: "Pizzeria",
     href: "/demos/villa-italia",
     group: "template",
     blurb:
-      "Pizzeria template: menu, hours, delivery and WhatsApp — mobile-first.",
+      "Pizzeria template: menu, hours, delivery and WhatsApp - mobile-first.",
   },
   {
     slug: "solo-modas",
-    title: "Solo Modas — Fashion",
+    title: "Solo Modas - Fashion",
     type: "Fashion",
     href: "/demos/solo-modas",
     group: "template",
@@ -84,16 +93,16 @@ const projects: SiteMessages["projects"] = [
   },
   {
     slug: "universo-del-calzado",
-    title: "Universo del Calzado — Sports",
+    title: "Universo del Calzado - Sports",
     type: "Sports retail",
     href: "/demos/universo-del-calzado",
     group: "template",
     blurb:
-      "Sports retail template: catalog, two stores and WhatsApp — mobile-first.",
+      "Sports retail template: catalog, two stores and WhatsApp - mobile-first.",
   },
   {
     slug: "vaultshield",
-    title: "VaultShield — Password manager",
+    title: "VaultShield - Password manager",
     type: "SaaS · Landing",
     href: "/demos/vaultshield",
     group: "saas",
@@ -102,7 +111,7 @@ const projects: SiteMessages["projects"] = [
   },
   {
     slug: "novaai",
-    title: "NovaAI — Cinematic landing",
+    title: "NovaAI - Cinematic landing",
     type: "SaaS · Landing",
     href: "/demos/novaai",
     group: "saas",
@@ -113,7 +122,7 @@ const projects: SiteMessages["projects"] = [
 
 export const enMessages: SiteMessages = {
   meta: {
-    title: "Santi Villa — Websites for local businesses in Vienna",
+    title: "Santi Villa - Websites for local businesses in Vienna",
     description:
       "Modern responsive websites (mobile, tablet, desktop) for restaurants, shops and centers. Vienna / Remote.",
     ogLocale: "en_US",
@@ -131,9 +140,9 @@ export const enMessages: SiteMessages = {
     menuOpen: "Open menu",
     menuClose: "Close menu",
     localeLabels: {
-      de: "Deutsch — clients in Vienna",
-      en: "English — portfolio / partners",
-      es: "Español — portfolio",
+      de: "Deutsch - clients in Vienna",
+      en: "English - portfolio / partners",
+      es: "Español - portfolio",
     },
   },
   footer: {
@@ -144,12 +153,12 @@ export const enMessages: SiteMessages = {
     agb: "Terms",
     about: "About",
     copyright:
-      "Demos are concepts — not official websites of the businesses shown.",
-    tagline: "Modern websites — clear on every device",
+      "Demos are concepts - not official websites of the businesses shown.",
+    tagline: "Modern websites - clear on every device",
   },
   consent: {
     title: "Cookies & privacy",
-    body: "We use necessary cookies for language and — only if you opt in — optional analytics or marketing cookies. In v1 we load no tracking scripts until you enable those categories.",
+    body: "We use necessary cookies for language and - only if you opt in - optional analytics or marketing cookies. In v1 we load no tracking scripts until you enable those categories.",
     acceptAll: "Accept all",
     rejectNonEssential: "Reject non-essential",
     customize: "Customize",
@@ -171,10 +180,10 @@ export const enMessages: SiteMessages = {
   },
   home: {
     heroLead:
-      "Guests decide in seconds whether to stay. I build websites that win those seconds — for restaurants, shops and centers in Vienna.",
+      "Guests decide in seconds whether to stay. I build websites that win those seconds - for restaurants, shops and centers in Vienna.",
     heroH1: "Websites for local businesses in Vienna",
     heroCost:
-      "On mobile, 53% of visits are abandoned if a page takes longer than 3 seconds (Google, Need for Mobile Speed, 2016). A slow site doesn’t just look bad — it loses customers before they read you.",
+      "On mobile, 53% of visits are abandoned if a page takes longer than 3 seconds (Google, Need for Mobile Speed, 2016). A slow site doesn’t just look bad - it loses customers before they read you.",
     heroCardEyebrow: "Konzept · mobile-first",
     heroCardTitle: "Your business on mobile",
     heroCardAlt: "Mobile-first concept shown on a phone",
@@ -184,7 +193,7 @@ export const enMessages: SiteMessages = {
     trustSignals: [
       {
         id: "hosting",
-        label: "HTTPS · Vercel hosting — real speed",
+        label: "HTTPS · Vercel hosting - real speed",
       },
       {
         id: "payment",
@@ -215,7 +224,7 @@ export const enMessages: SiteMessages = {
       },
       {
         title: "You talk to the one who builds",
-        body: "No project managers, no tickets. You write on WhatsApp — and the person building your site answers.",
+        body: "No project managers, no tickets. You write on WhatsApp - and the person building your site answers.",
       },
       {
         title: "Clear pricing and scope",
@@ -225,18 +234,18 @@ export const enMessages: SiteMessages = {
     clientDesignEyebrow: "How we work",
     clientDesignTitle: "See the design before you pay",
     clientDesignBody:
-      "You see the design before you pay a euro: first a free Konzept — a visual idea of how your business could look online. It's not the official site; an honest demo, free and no commitment. You can request changes (menu, hours, language) and when it fits, I launch the real site with domain, hosting and WhatsApp.",
+      "You see the design before you pay a euro: first a free Konzept - a visual idea of how your business could look online. It's not the official site; an honest demo, free and no commitment. You can request changes (menu, hours, language) and when it fits, I launch the real site with domain, hosting and WhatsApp.",
     clientDesignSteps: [
       "Audit or demo (free): your URL or a close template for your niche.",
       "Konzept (free): responsive design with your info (or data you send).",
-      "Feedback: WhatsApp — refine until you say yes.",
-      "Real website (fixed scope & price): launch, domain, done — no more legacy CMS.",
+      "Feedback: WhatsApp - refine until you say yes.",
+      "Real website (fixed scope & price): launch, domain, done - no more legacy CMS.",
     ],
     clientDesignCtaDemo: "View Stadtgalerie demo →",
     proofEyebrow: "Measured case · Vienna",
-    proofTitle: "Shopping center — mobile before / after",
+    proofTitle: "Shopping center - mobile before / after",
     proofBody:
-      "Typical Typo3 mall vs. Stadtgalerie West concept. Numbers from Google PageSpeed Insights (mobile). Public demo is fictional — not an official site.",
+      "Typical Typo3 mall vs. Stadtgalerie West concept. Numbers from Google PageSpeed Insights (mobile). Public demo is fictional - not an official site.",
     proofCtaDemo: "View Stadtgalerie demo →",
     proofCtaWork: "See work →",
     selfScoreEyebrow: "This page",
@@ -248,11 +257,11 @@ export const enMessages: SiteMessages = {
     includesEyebrow: "One service",
     includesTitle: "How we build your website",
     includesLead:
-      "Step by step, in the same project. These pieces come in when your business needs them — not separate products.",
+      "Step by step, in the same project. These pieces come in when your business needs them - not separate products.",
     includes: [
       {
         title: "We start with your URL",
-        body: "Score 0–100 and an auto concept from your site — clear before/after.",
+        body: "Score 0-100 and an auto concept from your site - clear before/after.",
         tool: "audit",
       },
       {
@@ -272,14 +281,14 @@ export const enMessages: SiteMessages = {
       },
       {
         title: "Prefer to write?",
-        body: "A short brief becomes a landing draft — same project, different starting point.",
+        body: "A short brief becomes a landing draft - same project, different starting point.",
         tool: "brief",
       },
     ],
     pricingEyebrow: "Pricing",
     pricingFrom: "From €400",
     pricingBody:
-      "A clear mobile landing with WhatsApp and domain setup. Business sites and retainers with a fixed scope — no surprises.",
+      "A clear mobile landing with WhatsApp and domain setup. Business sites and retainers with a fixed scope - no surprises.",
     pricingLink: "See packages →",
     workTitle: "Work & demos",
     workBody:
@@ -294,13 +303,13 @@ export const enMessages: SiteMessages = {
         id: "timeline",
         question: "How long until my site is ready?",
         answer:
-          "After deposit and a closed brief: landing ~1–2 weeks; business site ~2–4 weeks; shopping-center class projects ~4–8+ weeks. Timelines depend on timely feedback and content from you.",
+          "After deposit and a closed brief: landing ~1-2 weeks; business site ~2-4 weeks; shopping-center class projects ~4-8+ weeks. Timelines depend on timely feedback and content from you.",
       },
       {
         id: "design",
         question: "What if I don’t like the design?",
         answer:
-          "We refine the free Konzept via WhatsApp until you say yes — you see the design before paying a euro for the real site. The paid build includes 2 revision rounds before the remaining balance.",
+          "We refine the free Konzept via WhatsApp until you say yes - you see the design before paying a euro for the real site. The paid build includes 2 revision rounds before the remaining balance.",
       },
       {
         id: "assets",
@@ -312,13 +321,13 @@ export const enMessages: SiteMessages = {
         id: "deposit",
         question: "How does the deposit work?",
         answer:
-          "You reserve the date with a 30–50% deposit of the agreed price (SEPA transfer / Austrian invoice). The rest is due on code handover or go-live. The deposit is non-refundable if you cancel after booking; you won’t be charged the balance if the project isn’t delivered.",
+          "You reserve the date with a 30-50% deposit of the agreed price (SEPA transfer / Austrian invoice). The rest is due on code handover or go-live. The deposit is non-refundable if you cancel after booking; you won’t be charged the balance if the project isn’t delivered.",
       },
       {
         id: "hosting",
         question: "Does it include maintenance or hosting?",
         answer:
-          "Site packages include domain + Vercel hosting setup. Monthly maintenance (€50–150) is optional: content updates, basic monitoring, and WhatsApp support.",
+          "Site packages include domain + Vercel hosting setup. Monthly maintenance (€50-150) is optional: content updates, basic monitoring, and WhatsApp support.",
       },
       {
         id: "location",
@@ -330,16 +339,16 @@ export const enMessages: SiteMessages = {
     aboutEyebrow: "About",
     aboutTitle: "Santi Villa",
     aboutBody:
-      "I work solo: you talk to the person who designs, builds, and ships. No account layers, no agency markup — clear timelines and price from day one. Based in Vienna, also remote, for local businesses that want a site that makes sense on mobile.",
+      "I work solo: you talk to the person who designs, builds, and ships. No account layers, no agency markup - clear timelines and price from day one. Based in Vienna, also remote, for local businesses that want a site that makes sense on mobile.",
     aboutStackLabel: "Stack",
     aboutStack:
-      "Next.js + Vercel — fast sites, HTTPS, and clean deploys (the same stack we measure on this page).",
-    aboutPhotoAlt: "Santi Villa — stylised 3D portrait",
+      "Next.js + Vercel - fast sites, HTTPS, and clean deploys (the same stack we measure on this page).",
+    aboutPhotoAlt: "Santi Villa - stylised 3D portrait",
     resultsEyebrow: "Results",
     resultsTitle: "Before / after in numbers",
     resultsLead:
       "One clear metric per project. The first is a measured public Konzept; the other two are placeholders until real clients grant permission.",
-    resultsPlaceholderBadge: "Placeholder — TODO",
+    resultsPlaceholderBadge: "Placeholder - TODO",
     resultsBeforeLabel: "Before",
     resultsAfterLabel: "After",
     resultsItems: [
@@ -377,13 +386,13 @@ export const enMessages: SiteMessages = {
   },
   services: {
     title: "Services",
-    lead: "One clear product: your website. First the concept, then the real site. Three clear packages — mobile, tablet, desktop.",
+    lead: "One clear product: your website. First the concept, then the real site. Three clear packages - mobile, tablet, desktop.",
     packageLabel: "Package",
     alsoTitle: "Included or available in your project",
     alsoItems: [
-      "Shopping center / multi-shop — from ~€3,000–8,000+ depending on shops, languages, CMS.",
-      "Pitch demo — like Stadtgalerie, to show the owner a vision.",
-      "Domain + hosting — Vercel setup included in site packages.",
+      "Shopping center / multi-shop - from ~€3,000-8,000+ depending on shops, languages, CMS.",
+      "Pitch demo - like Stadtgalerie, to show the owner a vision.",
+      "Domain + hosting - Vercel setup included in site packages.",
     ],
     agbLink: "Process, deposit & guarantee (see the design before you pay) → Terms",
     whatsappMessage: "Hi Santi, I'd like a quote for a website package.",
@@ -394,7 +403,7 @@ export const enMessages: SiteMessages = {
     stadtgalerieEyebrow: "Template · Vienna",
     stadtgalerieTitle: "Stadtgalerie West: before vs after",
     stadtgalerieBody:
-      "Many shopping centers still fight Typo3 on mobile. The public demo is a fictional mobile-first concept — not an official site for any real center.",
+      "Many shopping centers still fight Typo3 on mobile. The public demo is a fictional mobile-first concept - not an official site for any real center.",
     before: "Before",
     after: "After · Demo",
     beforeNote: "Dense layout · small type · hard on mobile.",
@@ -405,7 +414,7 @@ export const enMessages: SiteMessages = {
     openDemo: "Open demo →",
     openDemoCta: "Open Stadtgalerie demo",
     konzeptNote:
-      "Fictional concept — not the official website of any shopping center.",
+      "Fictional concept - not the official website of any shopping center.",
     viennaTitle: "Vienna",
     viennaLead:
       "Public template: shopping center in Vienna (Stadtgalerie West).",
@@ -420,7 +429,7 @@ export const enMessages: SiteMessages = {
     open: "Open",
     pricingTitle: "Guide prices",
     pricingLead:
-      "Guide prices in euros (Austria / EU). Deposit (30–50%) reserves the slot; code handover on payment.",
+      "Guide prices in euros (Austria / EU). Deposit (30-50%) reserves the slot; code handover on payment.",
     centerNote: "Shopping center (multi-section + shops): from ~€3,000 depending on scope.",
     whatsappMessage:
       "Hi Santi, I saw your work (Stadtgalerie / restaurant) and want to discuss a project.",
@@ -432,12 +441,12 @@ export const enMessages: SiteMessages = {
     metricsLcp: "LCP",
     metricsFcp: "FCP",
     metricsUxNote:
-      "WhatsApp 1-tap in hero vs. Typo3 sites without a clear link — UX fact, not an analytics claim.",
+      "WhatsApp 1-tap in hero vs. Typo3 sites without a clear link - UX fact, not an analytics claim.",
   },
   contact: {
     title: "Contact",
     lead: "Want to see how it could look first? Try",
-    leadAudit: "or write me — next step in minutes.",
+    leadAudit: "or write me - next step in minutes.",
     auditLinkLabel: "Try with your URL",
     briefAlt: "Prefer to write a brief instead of calling?",
     briefLink: "Open Brief Agent →",
@@ -447,19 +456,19 @@ export const enMessages: SiteMessages = {
     schedule: "Calendar",
     formTitle: "Quick message",
     formLead:
-      "Message is saved — Santi will reply by email or WhatsApp.",
+      "Message is saved - Santi will reply by email or WhatsApp.",
     formName: "Your name",
     formBusiness: "Business",
     formMessage: "What do you need?",
     formSubmit: "Send",
-    formSuccess: "Thanks — message saved. We'll be in touch.",
+    formSuccess: "Thanks - message saved. We'll be in touch.",
     formError: "Could not send. Try email or WhatsApp.",
     pitchLabel: "Pitch ready",
     pitchQuote:
-      "“Hi, I'm Santi — here's how your site could look on mobile. 15 min?”",
+      "“Hi, I'm Santi - here's how your site could look on mobile. 15 min?”",
     pitchBody:
       "Use this message with the link to /demos/stadtgalerie or your demo. Transparent: concept, not the official site.",
-    mailSubject: "Website inquiry — santivilla.com",
+    mailSubject: "Website inquiry - santivilla.com",
     mailBody: "Hi Santi,\n\nI'd like to talk about a website for...\n",
     whatsappMessage:
       "Hi Santi, I want to talk about a website for my business.",
@@ -468,12 +477,12 @@ export const enMessages: SiteMessages = {
     eyebrow: "Free site audit",
     title: "Audit instantly.",
     titleBreak: "Concept automatically.",
-    lead: "Free, no commitment: 1) Paste URL → score on mobile, tablet, desktop. 2) Responsive HTML concept with the agent. 3) Like it? WhatsApp — we quote the real site.",
+    lead: "Free, no commitment: 1) Paste URL → score on mobile, tablet, desktop. 2) Responsive HTML concept with the agent. 3) Like it? WhatsApp - we quote the real site.",
     steps: ["01 Audit", "02 AI concept", "03 WhatsApp / deal"],
     uxScoreLabel: "UX Score",
     lighthouseLabel: "Lighthouse mobile",
     lighthouseLoading: "Loading Lighthouse… (Google PageSpeed)",
-    lighthouseFailed: "Lighthouse unavailable — UX score still valid.",
+    lighthouseFailed: "Lighthouse unavailable - UX score still valid.",
     lighthouseUnavailable: "Lighthouse API not configured.",
     performance: "Performance",
     accessibility: "Accessibility",
@@ -504,27 +513,27 @@ export const enMessages: SiteMessages = {
     backLink: "← Back to the audit",
     seoBadge: "SEO · JSON-LD",
     seoTooltip:
-      "Machine-readable Schema.org data for Google — auto-generated from business facts.",
+      "Machine-readable Schema.org data for Google - auto-generated from business facts.",
     seoOpeningHours: "Opening hours",
     seoMenu: "Menu",
     menuLinkLabel: "Link digitized menu (Menu ID)",
     menuLinkPlaceholder: "e.g. menu-abc123 or demo-konzept",
     menuLinkButton: "Link",
-    menuLinkSuccess: "Menu linked — JSON-LD updated.",
-    menuLinkError: "Link failed — check the ID.",
+    menuLinkSuccess: "Menu linked - JSON-LD updated.",
+    menuLinkError: "Link failed - check the ID.",
   },
   menuDigitizer: {
     title: "Digitize your menu",
-    lead: "Upload a photo of your menu — in seconds see how it looks as a mobile website. Concept, no contract.",
+    lead: "Upload a photo of your menu - in seconds see how it looks as a mobile website. Concept, no contract.",
     uploadLabel: "Photograph menu",
     uploadHint: "JPEG, PNG or WebP · max 4 MB · well lit, straight",
     processing: "Preparing image…",
     extracting: "AI reading your menu…",
     disclaimer:
-      "OCR may contain errors — verify prices and allergens before publishing.",
-    ocrNote: "Only readable text is extracted — nothing invented.",
+      "OCR may contain errors - verify prices and allergens before publishing.",
+    ocrNote: "Only readable text is extracted - nothing invented.",
     allergenNote:
-      "Allergens only if visible on the menu — not a substitute for HACCP advice.",
+      "Allergens only if visible on the menu - not a substitute for HACCP advice.",
     demoLinkLabel: "View demo menu (example)",
     demoLink: "/en/menu/demo-konzept",
     successTitle: "Your digital menu is ready",
@@ -533,17 +542,17 @@ export const enMessages: SiteMessages = {
     whatsappMessage:
       "Hi Santi, I digitized my menu and want to turn it into a real website.",
     previewBanner:
-      "Concept / OCR preview — not the restaurant's official website",
+      "Concept / OCR preview - not the restaurant's official website",
     previewTitleFallback: "Your menu",
     previewBack: "← Upload new menu",
-    previewEmpty: "No dishes detected — try a sharper photo.",
+    previewEmpty: "No dishes detected - try a sharper photo.",
     homeCta: "Photograph your menu →",
     servicesBullet:
-      "Available in your project: menu digitization — photo → mobile preview (restaurant).",
+      "Available in your project: menu digitization - photo → mobile preview (restaurant).",
   },
   microBot: {
     title: "Micro-Bot WhatsApp",
-    lead: "Three questions that flood your phone — tables, hours, parking. Instant answers, booking via WhatsApp. Not an annoying chatbot.",
+    lead: "Three questions that flood your phone - tables, hours, parking. Instant answers, booking via WhatsApp. Not an annoying chatbot.",
     eyebrow: "Part of your site · Restaurant",
     chipAvailability: "Tables today?",
     chipHours: "Opening hours",
@@ -552,7 +561,7 @@ export const enMessages: SiteMessages = {
     send: "Send",
     openWhatsapp: "Open WhatsApp",
     disclaimer:
-      "Concept — not official booking. Free text uses AI (Anthropic).",
+      "Concept - not official booking. Free text uses AI (Anthropic).",
     greeting:
       "Hi! I help with tables, opening hours and parking. Pick a question or type yours.",
     thinking: "One moment…",
@@ -565,17 +574,17 @@ export const enMessages: SiteMessages = {
       "Hi Santi, I want the Micro-Bot WhatsApp for my restaurant.",
     homeCta: "Micro-Bot WhatsApp →",
     servicesBullet:
-      "Available in your project: Micro-Bot WhatsApp — tables/hours/parking → booking chat.",
+      "Available in your project: Micro-Bot WhatsApp - tables/hours/parking → booking chat.",
     bullets: [
-      "Top 3 questions as chips — instant answers",
+      "Top 3 questions as chips - instant answers",
       "Free text: AI detects booking intent",
       "WhatsApp with pre-filled message",
-      "Ultra-light — no login, no CRM",
+      "Ultra-light - no login, no CRM",
     ],
   },
   copyAdapt: {
     title: "Local copy adaptation",
-    lead: "Not literal translation — AI adapts menu items, offers and services to audience and culture (e.g. formal Austrian German for locals vs. fresh English for tourists).",
+    lead: "Not literal translation - AI adapts menu items, offers and services to audience and culture (e.g. formal Austrian German for locals vs. fresh English for tourists).",
     eyebrow: "Part of your site · Content",
     sourceLabel: "Source text",
     sourcePlaceholder: "e.g. Wiener schnitzel from veal with potato salad…",
@@ -598,25 +607,25 @@ export const enMessages: SiteMessages = {
     generate: "Adapt copy",
     generating: "AI adapting…",
     disclaimer:
-      "AI may err — review before publishing. No invented prices or facts.",
-    errorGeneric: "Adaptation failed — please try again.",
+      "AI may err - review before publishing. No invented prices or facts.",
+    errorGeneric: "Adaptation failed - please try again.",
     demoLinkLabel: "View demo example",
     shareLabel: "Shareable link",
     copy: "Copy",
     copied: "Copied",
-    previewBanner: "Concept — not the business official website",
+    previewBanner: "Concept - not the business official website",
     previewTitle: "Adapted copy variants",
     previewBack: "← Generate new copy",
     salesWhatsapp:
       "Hi Santi, I want the copy generator for my business.",
     homeCta: "Local copy adaptation →",
     servicesBullet:
-      "Available in your project: local copy — cultural adaptation (not literal translation) DE/EN/ES.",
+      "Available in your project: local copy - cultural adaptation (not literal translation) DE/EN/ES.",
     tabAgent: "Agent",
     tabCopy: "Copy",
     bullets: [
       "Austrian German for locals, fresh English for tourists",
-      "Dishes, offers or services — one text, multiple audiences",
+      "Dishes, offers or services - one text, multiple audiences",
       "Shareable link to align with your team",
       "Integrated into audit concepts",
     ],
@@ -632,13 +641,13 @@ export const enMessages: SiteMessages = {
     generate: "Generate landing",
     generating: "AI writing the schema…",
     disclaimer:
-      "Concept — structured text only. Review copy and colors before publishing.",
+      "Concept - structured text only. Review copy and colors before publishing.",
     errorGeneric: "Could not generate the brief. Please try again.",
     resultTitle: "Your preview",
     openShare: "Open shareable link",
     copyLink: "Copy link",
     copied: "Copied",
-    previewBanner: "Brief Agent concept — not the official business site",
+    previewBanner: "Brief Agent concept - not the official business site",
     previewBack: "← New brief",
     featuresTitle: "Why choose us",
     contactTitle: "Let’s talk",
@@ -657,10 +666,10 @@ export const enMessages: SiteMessages = {
     reviseError: "Could not apply the change. Please try again.",
     reviseHint: "The AI updates the JSON (copy/colors). Photos change only if you ask.",
     bullets: [
-      "Natural language — no HTML, no rigid templates",
+      "Natural language - no HTML, no rigid templates",
       "The AI only fills a Zod schema (colors, copy, 3 features)",
       "Shareable React preview for WhatsApp pitch",
-      "Complements the URL Design Agent — does not replace it",
+      "Complements the URL Design Agent - does not replace it",
     ],
   },
   mapsKonzept: {
@@ -671,15 +680,15 @@ export const enMessages: SiteMessages = {
     urlPlaceholder: "https://maps.app.goo.gl/… or maps.google.com/…",
     urlHint: "Short links are resolved. place_id or business name from the URL is detected.",
     generate: "Create concept",
-    generating: "Places + AI generating… (~60–90 s)",
+    generating: "Places + AI generating… (~60-90 s)",
     disclaimer:
       "Data from Google Places + Anthropic. Verify before pitching. Rate limit: 5/h per IP.",
-    errorGeneric: "Concept failed — check URL or API keys.",
+    errorGeneric: "Concept failed - check URL or API keys.",
     shareLabel: "Live link (pitch-ready)",
     editLink: "Edit in agent →",
     salesWhatsapp: "Hi Santi, I want to use Maps concept for prospecting.",
     bullets: [
-      "Real Google photos when available — otherwise AI images",
+      "Real Google photos when available - otherwise AI images",
       "Slug URL /k/name for WhatsApp pitch",
       "Stored in Supabase like audit concepts",
       "Batch: npm run prospect:maps",
@@ -700,6 +709,13 @@ export const enMessages: SiteMessages = {
         ...p,
         blurb:
           "Gastro template: menu, hours, map and WhatsApp booking in one flow.",
+      };
+    }
+    if (p.slug === "kellerlicht") {
+      return {
+        ...p,
+        blurb:
+          "Wine bar template: by-the-glass list, hours and WhatsApp booking in one flow.",
       };
     }
     return p;

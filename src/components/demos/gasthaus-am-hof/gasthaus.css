@@ -1,0 +1,51 @@
+.gh-display {
+  font-family: var(--font-gasthaus-display), "Times New Roman", serif;
+}
+
+.gh-mono {
+  font-family: var(--font-gasthaus-mono), ui-monospace, monospace;
+}
+
+.gh-hero-copy,
+.gh-cream {
+  color: #f3ebe0;
+}
+
+.gh-hero-copy a {
+  color: inherit;
+}
+
+.gh-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  background: #c4893a;
+  color: #3d2a1f;
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.gh-btn-wine {
+  display: inline-flex;
+  align-items: center;
+  background: #6b2c2c;
+  color: #f3ebe0;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.gh-scrim-bottom {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(26, 18, 14, 0.88) 0%,
+    rgba(26, 18, 14, 0.55) 28%,
+    rgba(26, 18, 14, 0.12) 55%,
+    transparent 72%
+  );
+}

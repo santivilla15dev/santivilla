@@ -1,11 +1,11 @@
-/** Datos centrales del sitio — cámbialos cuando tengas WhatsApp / Cal reales */
+/** Datos centrales del sitio - cámbialos cuando tengas WhatsApp / Cal reales */
 export const site = {
   name: "Santi Villa",
   shortName: "SantiVilla",
   domain: "santivilla.com",
   tagline: {
     es: "Webs modernas que se ven bien en cualquier dispositivo",
-    de: "Moderne Websites — klar auf jedem Gerät",
+    de: "Moderne Websites - klar auf jedem Gerät",
   },
   email: "hola@santivilla.com",
   location: "Wien / Remote",
@@ -42,7 +42,7 @@ export const packages = [
   {
     id: "landing",
     name: "Landing",
-    price: "€400–800",
+    price: "€400-800",
     description:
       "Una página clara en móvil, tablet y desktop, con WhatsApp y dominio/hosting.",
     includes: [
@@ -55,9 +55,9 @@ export const packages = [
   {
     id: "negocio",
     name: "Sitio negocio",
-    price: "€900–2.000",
+    price: "€900-2.000",
     description:
-      "Sitio completo (4–6 páginas) para restaurante, tienda o local.",
+      "Sitio completo (4-6 páginas) para restaurante, tienda o local.",
     includes: [
       "Menú / servicios / horarios",
       "Mapa y contacto",
@@ -68,7 +68,7 @@ export const packages = [
   {
     id: "mensual",
     name: "Mantenimiento",
-    price: "€50–150/mes",
+    price: "€50-150/mes",
     description: "Cambios de texto/fotos, uptime y peques mejoras cada mes.",
     includes: [
       "Cambios de contenido",
@@ -82,7 +82,7 @@ export const packages = [
 export const projects = [
   {
     slug: "auditoria",
-    title: "Auditoría — score + concepto",
+    title: "Auditoría - score + concepto",
     type: "Producto",
     href: "/auditoria",
     blurb:
@@ -91,7 +91,7 @@ export const projects = [
   },
   {
     slug: "stadtgalerie",
-    title: "Stadtgalerie West — Konzept centro",
+    title: "Stadtgalerie West - Konzept centro",
     type: "Centro comercial",
     href: "/demos/stadtgalerie",
     blurb:
@@ -104,7 +104,7 @@ export const projects = [
   },
   {
     slug: "restaurant",
-    title: "Gasthaus Am Hof — Cinemática",
+    title: "Gasthaus Am Hof - Cinemática",
     type: "Restaurante",
     href: "/demos/restaurant",
     blurb:
@@ -112,35 +112,44 @@ export const projects = [
     tags: ["Demo", "Gastro", "DE"],
   },
   {
+    slug: "kellerlicht",
+    title: "Kellerlicht - Weinbar cinemática",
+    type: "Weinbar",
+    href: "/demos/kellerlicht",
+    blurb:
+      "Landing con vídeo scroll: Am Glas, horarios y reserva WhatsApp.",
+    tags: ["Demo", "Gastro", "DE"],
+  },
+  {
     slug: "villa-italia",
-    title: "Villa Italia — Pizzería",
+    title: "Villa Italia - Pizzería",
     type: "Pizzería",
     href: "/demos/villa-italia",
     blurb:
-      "Demo para pizzería en Colombia: carta, horarios, domicilios y WhatsApp — mobile-first.",
+      "Demo para pizzería en Colombia: carta, horarios, domicilios y WhatsApp - mobile-first.",
     tags: ["Demo", "Gastro", "CO"],
   },
   {
     slug: "solo-modas",
-    title: "Solo Modas — Retail",
+    title: "Solo Modas - Retail",
     type: "Moda",
     href: "/demos/solo-modas",
     blurb:
-      "Demo tienda de ropa: categorías, varias sedes, horarios y WhatsApp — mobile-first.",
+      "Demo tienda de ropa: categorías, varias sedes, horarios y WhatsApp - mobile-first.",
     tags: ["Demo", "Retail", "CO"],
   },
   {
     slug: "universo-del-calzado",
-    title: "Universo del Calzado — Sports",
+    title: "Universo del Calzado - Sports",
     type: "Sports retail",
     href: "/demos/universo-del-calzado",
     blurb:
-      "Demo Santa Rosa de Osos: shoes, club shirts, two stores and WhatsApp — mobile-first.",
+      "Demo Santa Rosa de Osos: shoes, club shirts, two stores and WhatsApp - mobile-first.",
     tags: ["Demo", "Retail", "CO"],
   },
   {
     slug: "vaultshield",
-    title: "VaultShield — SaaS",
+    title: "VaultShield - SaaS",
     type: "Landing de producto",
     href: "/demos/vaultshield",
     blurb:
@@ -149,7 +158,7 @@ export const projects = [
   },
   {
     slug: "novaai",
-    title: "NovaAI — SaaS",
+    title: "NovaAI - SaaS",
     type: "Landing cinematográfica",
     href: "/demos/novaai",
     blurb:
@@ -160,10 +169,10 @@ export const projects = [
 
 export const viennaMallCase = projects.find((p) => p.slug === "stadtgalerie")!;
 
-/** Copy de la home — narrativa para clientes locales */
+/** Copy de la home - narrativa para clientes locales */
 export const homeContent = {
   heroLead:
-    "Tus clientes deciden en segundos si se quedan. Yo construyo webs que ganan esos segundos — para restaurantes, locales y centros en Wien.",
+    "Tus clientes deciden en segundos si se quedan. Yo construyo webs que ganan esos segundos - para restaurantes, locales y centros en Wien.",
   intro: {
     eyebrow: "De qué se trata",
     title: "Una web que tus clientes entienden en segundos",
@@ -190,11 +199,11 @@ export const homeContent = {
   clientDesign: {
     eyebrow: "Diseño para clientes",
     title: "Así trabajamos el diseño juntos",
-    body: "Primero creo un Konzept: una propuesta visual de cómo podría verse tu negocio online. No es el sitio oficial — es una demo honesta para que veas el salto. Puedes pedir cambios (menú, horarios, idioma) y, cuando encaje, lanzo la web real con dominio, hosting y WhatsApp listo.",
+    body: "Primero creo un Konzept: una propuesta visual de cómo podría verse tu negocio online. No es el sitio oficial - es una demo honesta para que veas el salto. Puedes pedir cambios (menú, horarios, idioma) y, cuando encaje, lanzo la web real con dominio, hosting y WhatsApp listo.",
     steps: [
       "Audit o demo: vemos tu web actual o una plantilla cercana a tu rubro.",
       "Konzept: diseño responsive con tu info (o datos que me pases).",
-      "Feedback: WhatsApp o el chat del agente — afinamos hasta que digas sí.",
+      "Feedback: WhatsApp o el chat del agente - afinamos hasta que digas sí.",
       "Web real: publicamos, conectamos dominio y dejas de depender de sitios antiguos.",
     ],
     ctaDemo: "Ver demo Stadtgalerie",
@@ -203,7 +212,7 @@ export const homeContent = {
   mobileErst: {
     eyebrow: "Producto",
     title: "Auditoría con tu URL",
-    body: "Pega la URL de tu negocio: recibes un score responsive (0–100) y un concepto HTML automático con el Santi Design Agent. Ideal para enseñar el “antes / después” al dueño o a ti mismo.",
+    body: "Pega la URL de tu negocio: recibes un score responsive (0-100) y un concepto HTML automático con el Santi Design Agent. Ideal para enseñar el “antes / después” al dueño o a ti mismo.",
   },
   work: {
     title: "Trabajos y demos",

@@ -3,17 +3,17 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
 import {
-  gasthausBody,
-  gasthausDisplay,
-  gasthausMono,
+  kellerlichtBody,
+  kellerlichtDisplay,
+  kellerlichtMono,
 } from "./font";
-import "./gasthaus.css";
+import "./kellerlicht.css";
 
 const CREAM =
-  "radial-gradient(1200px 600px at 10% -10%, rgba(196, 137, 58, 0.12), transparent 55%), radial-gradient(900px 500px at 100% 0%, rgba(107, 44, 44, 0.08), transparent 50%), linear-gradient(180deg, #e8dfd0 0%, #f3ebe0 28%, #e6dccb 100%)";
+  "radial-gradient(1200px 600px at 10% -10%, rgba(212, 160, 90, 0.12), transparent 55%), radial-gradient(900px 500px at 100% 0%, rgba(122, 46, 58, 0.08), transparent 50%), linear-gradient(180deg, #e6dbcf 0%, #f2e8dc 28%, #e4d9cc 100%)";
 
 /** Shell de página: crema siempre (hero oscuro va en su sticky). */
-export function GasthausShell({ children }: { children: ReactNode }) {
+export function KellerlichtShell({ children }: { children: ReactNode }) {
   const preview = useSearchParams().get("preview") === "1";
 
   useEffect(() => {
@@ -22,9 +22,9 @@ export function GasthausShell({ children }: { children: ReactNode }) {
     const body = document.body;
     const prevHtml = html.style.cssText;
     const prevBody = body.style.cssText;
-    html.style.background = "#e8dfd0";
+    html.style.background = "#e6dbcf";
     body.style.margin = "0";
-    body.style.background = "#e8dfd0";
+    body.style.background = "#e6dbcf";
     return () => {
       html.style.cssText = prevHtml;
       body.style.cssText = prevBody;
@@ -33,9 +33,9 @@ export function GasthausShell({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className={`${gasthausDisplay.variable} ${gasthausBody.variable} ${gasthausMono.variable} relative min-h-svh leading-relaxed antialiased`}
+      className={`${kellerlichtDisplay.variable} ${kellerlichtBody.variable} ${kellerlichtMono.variable} relative min-h-svh leading-relaxed antialiased`}
       style={{
-        fontFamily: "var(--font-gasthaus-body), system-ui, sans-serif",
+        fontFamily: "var(--font-kellerlicht-body), system-ui, sans-serif",
         color: "#2a211c",
         background: CREAM,
       }}

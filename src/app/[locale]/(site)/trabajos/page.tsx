@@ -14,6 +14,7 @@ export const revalidate = 3600;
 
 const AFTER_HERO = "/demos/lugner-hero.jpg";
 const GASTHAUS_THUMB = "/demos/restaurant/hero-poster.jpg";
+const KELLERLICHT_THUMB = "/demos/kellerlicht/hero-poster.jpg";
 const VILLA_THUMB =
   "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80";
 const SOLO_MODAS_THUMB =
@@ -29,6 +30,8 @@ function projectThumb(slug: string) {
   switch (slug) {
     case "restaurant":
       return GASTHAUS_THUMB;
+    case "kellerlicht":
+      return KELLERLICHT_THUMB;
     case "villa-italia":
       return VILLA_THUMB;
     case "solo-modas":
